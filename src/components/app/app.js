@@ -18,9 +18,6 @@ export default {
       content: 'Type Emoji: ',
     }
   },
-  created() {
-    console.log('CoolTextArea', CoolTextArea);
-  },
   computed: {
     emojiDataAll() {
       return EmojiDataAll;
@@ -67,7 +64,6 @@ export default {
       }
 
       const docElement = document.getElementById('messages-sent');
-      console.log('CONTENT', JSON.stringify(this.content));
       const formattedContent = EmojiService.getEmojiImgFromUnicode(this.content);
       docElement.appendChild(this.createElementFromHTML(
         '<div class="container code-block-cream text-wrap margin-bottom padding-all text-break">' 

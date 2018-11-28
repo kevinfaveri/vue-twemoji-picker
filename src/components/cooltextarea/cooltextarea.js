@@ -127,7 +127,6 @@ export default {
       if (content.length !== 0 && content[content.length - 1] === '\n') {
         content = content.slice(0, -1);
       }
-      console.log('content', content);
       this.$emit('update:content', content);
       this.$emit('contentChanged');
     },
