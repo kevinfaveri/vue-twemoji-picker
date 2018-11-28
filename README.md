@@ -5,7 +5,7 @@
 
 
 ## Documentation
-Documentation and demo are available here: https://cooltextarea.github.io
+Documentation and demo are available here: https://kevinfaguiar.github.io/cooltextarea/#home
 
 ## License
 MIT 2018 Kevin de Faveri Aguiar

@@ -1,6 +1,6 @@
 {
   "name": "cooltextarea",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "./index.js",
   "license": "MIT",
   "keywords": [
@@ -13,7 +13,7 @@
   ],
   "scripts": {
     "serve:app": "vue-cli-service serve",
-    "build:app": "vue-cli-service build --mode production",
+    "build:app": "vue-cli-service build --mode production --no-clean",
     "build:test": "vue-cli-service build --mode build-test",
     "build:comp": "vue-cli-service build --target lib --name cooltextarea ./index.js",
     "publish:npm": "npm publish --access public",
