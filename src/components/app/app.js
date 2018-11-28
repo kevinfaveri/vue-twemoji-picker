@@ -70,7 +70,7 @@ export default {
         + formattedContent + 
         '</div>')
       );
-      if (docElement.childElementCount > 5) {
+      if (docElement.childElementCount > 6) {
         docElement.removeChild(docElement.childNodes[1]);
       }
       this.$refs.cooltextareaSend.cleanText();
