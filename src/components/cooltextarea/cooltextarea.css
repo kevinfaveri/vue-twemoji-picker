@@ -1,4 +1,4 @@
-// Global
+/* Global */
 #btn-emoji:focus, 
 .cooltextarea:focus,
 .tone:focus {
@@ -17,7 +17,7 @@ img.emoji {
   vertical-align: -0.5em;
 }
 
-// Textarea
+/* Textarea */
 .cooltextarea {
   flex-grow: 95;
   flex-basis: 0;
@@ -50,7 +50,7 @@ img.emoji {
   margin-bottom: 10px;
 }
 
-// Parent Emoji Popover
+/* Parent Emoji Popover */
 #emoji-pack {
   max-height: 200px;
   width: 250px;
@@ -58,7 +58,7 @@ img.emoji {
   overflow-x: hidden;
 }
 
-// Inside Emoji Pack
+/* Inside Emoji Pack */
 #emoji-list-header {
   margin-top: 5px;
   margin-bottom: 5px;
@@ -100,7 +100,7 @@ img.emoji {
   background-color: #cacaca;
 }
 
-// Popper Emoji
+/* Popper Emoji */
 #popper-emoji {
   flex-grow: 5;
   flex-basis: 0;
@@ -122,7 +122,7 @@ border: none;
   width: 25px;
 }
 
-// Emoji Tones
+/* Emoji Tones */
 #tones {
   padding: 0px;
   margin-top: 5px;
@@ -169,7 +169,7 @@ border: none;
   background-color: #7C533E;
 }
 
-// Component Colors
+/* Component Colors */
 .bg-cream {
   background-color: #ece7e7 !important;
 }
@@ -230,7 +230,7 @@ border: none;
   background-color: #c7d392 !important;
 }
 
-// Scrollbar
+/* Scrollbar */
 .scroll-clean::-webkit-scrollbar {
   width: 12px;
 }
