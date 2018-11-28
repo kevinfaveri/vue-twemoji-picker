@@ -1,0 +1,545 @@
+<div class="roboto-font">
+    <div class="fixed-pos doc-index">
+        <div class="row doc-index-lvl1"><a href="#home">CoolTextArea</a></div>
+        <div class="row doc-index-lvl2"><a href="#requirements">Requirements</a></div>
+        <div class="row doc-index-lvl2"><a href="#getting-started">Getting Started</a></div>
+        <div class="row doc-index-lvl2"><a href="#component-attributes">Component Attributes</a></div>
+        <div class="row doc-index-lvl2"><a href="#component-events">Component Events</a></div>
+        <div class="row doc-index-lvl2"><a href="#component-useful-methods">Component Useful Methods</a></div>
+        <div class="row doc-index-lvl2"><a href="#emoji-data-index">Emoji Data Index</a></div>
+        <div class="row doc-index-lvl2"><a href="#credits">Credits</a></div>
+        <div class="row doc-index-lvl2"><a href="#roadmap">Roadmap</a></div>
+    </div>
+    <div class="app container padding-all">
+        <div class="header1 margin-top" id="home">
+            <span>CoolTextArea - A plug-n-play [Tw]emoji Picker and Textarea for </span>
+            <img class="margin-top" src="https://vuejs.org/images/logo.png" height="32" width="32" alt="Vue"/>
+        </div>
+        <div class="header2">
+            Based on latest emoji Unicode specs (which includes support for skin tones selection).
+        </div>
+        <div class="text-center margin-top margin-bottom">
+            <strong>CoolTextArea</strong> is a modern textarea component built with Vue which includes a emoji picker.
+        </div>
+    
+        <cooltextarea class="container margin-top" 
+            :content.sync="content" 
+            :emojiData="emojiDataAll" 
+            :emojiGroups="emojiGroups" 
+            :skinToneSelection="true"
+            :enableSendBtn="true"
+            @enterKey="onEnterKey"
+            ref="cooltextareaSend"></cooltextarea>
+            <div class="text-center margin-bottom">
+                Tip: You can send any message above to try the component!
+            </div>  
+    
+        <div id="messages-sent">
+            <div class="container header2">Messages Sent (max. 5):</div>
+            <div class="container code-block-cream text-wrap margin-bottom padding-all">Send your message here! <img class="emoji" draggable="false" alt="😀" src="https://twemoji.maxcdn.com/2/72x72/1f600.png"><img class="emoji" draggable="false" alt="🤔" src="https://twemoji.maxcdn.com/2/72x72/1f914.png">
+            </div>
+        </div>
+        
+    
+        <div class="container border-bottom"></div>
+    
+        <div class="text-center container margin-top margin-bottom">
+            <strong>CoolTextArea</strong> is meant to be a plug-n-play textarea which provides string 
+            sanitization for HTML tags and emoji support.
+            <div class="row margin-top header2">
+                CoolTextArea Presentation:
+            </div>
+            <div class="row code-block-cream margin-top">
+                &lt;strong&gt;This is a CoolTextArea&lt;/strong&gt;
+                </br>
+                <img class="emoji" draggable="false" alt="😄" src="https://twemoji.maxcdn.com/2/72x72/1f604.png">
+                </br>
+                indeed!
+            </div>
+            <div class="row margin-top header2">
+                CoolTextArea Output (With string sanitization and emoji art conversion to Unicode):
+            </div>
+            <div class="row code-block margin-top">
+                &lt;strong&gt;This is a CoolTextArea&lt;/strong&gt; \n 😄 \n indeed!
+            </div>
+        </div>
+    
+        <div class="container border-bottom"></div>
+        
+        <div class="text-center container margin-top margin-bottom">
+            <strong>CoolTextArea</strong> emoji picker uses 
+            <a href="http://www.unicode.org/emoji/charts-11.0/">Emoji Unicode 11</a> 
+            (latest emoji spec, from 2018, which includes skin tones) as its base, 
+            and apply some trimming on the emoji list for better optimization of component size. 
+            Also, for the sake of your bundle size, you can opt if you want all 
+            emoji groups, or only smileys, or even only smileys and foods! The choice is yours!
+        </div>
+    
+        <div class="header2 container margin-top">One Emoji Group</div>
+        <cooltextarea class="margin-top container" 
+            :content="content" 
+            :emojiData="emojiDataOneCollection"
+            :emojiGroups="emojiGroups"
+            componentColor="forest"></cooltextarea>
+    
+        <div class="header2 container margin-top">Two Emoji Groups</div>
+        <cooltextarea class="margin-top container" 
+            :content="content" 
+            :emojiData="emojiDataTwoCollections"
+            :emojiGroups="emojiGroups"
+            componentColor="cherry"></cooltextarea>
+    
+        <div class="header2 container margin-top">Three Emoji Groups</div>
+        <cooltextarea class="margin-top container" 
+            :content="content" 
+            :emojiData="emojiDataThreeCollections"
+            :emojiGroups="emojiGroups"
+            componentColor="ocean"></cooltextarea>
+    
+        <div class="header2 container margin-top">Four Emoji Groups</div>
+        <cooltextarea class="margin-top container" 
+            :content="content" 
+            :emojiData="emojiDataFourCollections"
+            :emojiGroups="emojiGroups"
+            componentColor="sun"></cooltextarea>
+    
+        <div class="header1 row margin-top margin-bottom" id="requirements">
+            Requirements:
+        </div>
+        <div class="container margin-bottom">- CoolTextArea is made with Vue, for Vue (for the time being).</div>
+        <div class="container margin-bottom">
+            - For the emoji picker to work your browser needs to 
+            support <a href="https://caniuse.com/#feat=intersectionobserver">IntersectionObserver.</a>
+        </div>
+        <div class="container margin-bottom">
+            - For CoolTextArea layouting proportions correctly 
+            render your browser needs to support <a href="https://caniuse.com/#feat=flexbox">CSS Flexbox</a>.
+        </div>
+        <div class="margin-bottom text-center container">
+            Any suggestion or bug please report at <a href="https://github.com/kevinfaguiar/cooltextarea/issues">Issues</a>
+        </div>
+    
+        <div class="header1 row margin-top margin-bottom" id="getting-started">
+            Getting Started
+        </div>
+        <div class="container">
+            <strong class="row margin-top">- To install CoolTextArea on your Vue project you can run, for NPM:</strong>
+            <div class="row code-block padding-all margin-bottom">npm install cooltextarea</div>
+    
+            <strong class="row margin-top">- For Yarn:</strong>
+            <div class="row code-block padding-all margin-bottom">yarn add cooltextarea</div>
+    
+            <strong class="row margin-top">- To import CoolTextArea on your Vue project you can do as follows:</strong>
+            <div class="row code-block padding-all margin-bottom text-wrap text-break">
+                JAVASCRIPT:
+                import CoolTextArea from 'cooltextarea';
+                import EmojiData from 'cooltextarea/src/emoji-data/emoji-all-groups.json';
+                import EmojiGroups from 'cooltextarea/src/emoji-data/emoji-groups.json';
+    
+                export default {
+                    name: 'App',
+                    components: { 'cooltextarea': CoolTextarea },
+                    computed: {
+                        emojiDataAll() {
+                            return EmojiData;
+                        },
+                        emojiGroups() {
+                            return EmojiGroups;
+                        }
+                    }
+                }
+    
+                TEMPLATE:
+                &lt;cooltextarea
+                    :content.sync="content" 
+                    :emojiData="emojiDataAll" 
+                    :emojiGroups="emojiGroups"
+                    @enterKey="onEnterKey"
+                    ref="cooltextareaRef"&gt;&lt;/cooltextarea&gt;
+            </div>
+    
+            <div class="row margin-top margin-bottom">
+                This is a basic example for importing CoolTextArea in a Vue project.
+                You will, of course, want to choose the emoji collections you want to import, 
+                if you want to display the emoji picker only, or the textarea only, or don't display the send button.
+            </div>
+            <strong class="row margin-top">Detailed documentation are on sections Attributes, Events, and Emoji Data Index below.</strong>
+        </div>
+        
+        <div class="header1 row margin-top margin-bottom" id="component-attributes">
+            Component Attributes
+        </div>
+        <table class="row col-12 table">
+            <thead>
+                <tr>
+                    <th>Attribute</th>
+                    <th>Type</th>
+                    <th>Valid Values</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>content</td>
+                    <td>String</td>
+                    <td>Any String Variable</td> 
+                    <td class="table-description">
+                        This is the content variable which 
+                        will be the output of the textarea, with the HTML 
+                        string already sanitized and the IMG emoji art 
+                        converted to its correspondent Unicode.
+                    </td>
+                </tr>
+                <tr>
+                    <td>emojiData</td>
+                    <td>Array</td> 
+                    <td>Array with the Specified Structure</td>
+                    <td class="table-description">
+                        This is the array of emojis which is supplied by 
+                        this library, like exemplified in Emoji Data Index. 
+                        Default: [].
+                    </td>
+                </tr>
+                <tr>
+                    <td>emojiGroups</td>
+                    <td>Array</td> 
+                    <td>Array with the Specified Structure</td>
+                    <td class="table-description">
+                        This is the array of emoji groups which is supplied by 
+                        this library, like exemplified in Emoji Data Index. Default: [].
+                    </td>
+                </tr>
+                <tr>
+                    <td>skinToneSelection</td>
+                    <td>Boolean</td> 
+                    <td>True / False</td>
+                    <td class="table-description">
+                        This is a boolean to enable or disable skin 
+                        tone selection in the emoji picker. Default: false.
+                    </td>
+                </tr>
+                <tr>
+                    <td>enableEmojiPicker</td>
+                    <td>Boolean</td> 
+                    <td>True / False</td>
+                    <td class="table-description">
+                        This is a boolean to enable or 
+                        disable the emoji picker. Default: true.
+                    </td>
+                </tr>
+                <tr>
+                    <td>enableTextarea</td>
+                    <td>Boolean</td> 
+                    <td>True / False</td>
+                    <td class="table-description">
+                        This is a boolean to enable or 
+                        disable the textarea. Default: true.
+                    </td>
+                </tr>
+                <tr>
+                    <td>enableSendBtn</td>
+                    <td>Boolean</td> 
+                    <td>True / False</td>
+                    <td class="table-description">
+                        This is a boolean to enable or 
+                        disable the send button. Default: false.
+                    </td>
+                </tr>
+                <tr>
+                    <td>componentColor</td>
+                    <td>String</td> 
+                    <td>'cream', 'cherry', 'forest', 'ocean', 'sun'</td>
+                    <td class="table-description">
+                        This is a variable to define the component color. Default: 'cream'.
+                    </td>
+                </tr>
+                <tr>
+                    <td>twemojiPath</td>
+                    <td>String</td> 
+                    <td>Any String URL</td>
+                    <td class="table-description">
+                        This is a variable to define where are stored the  
+                        emoji arts static resources. Default: 'https://twemoji.maxcdn.com/2/'.
+                    </td>
+                </tr>
+                <tr>
+                    <td>twemojiExtension</td>
+                    <td>String</td> 
+                    <td>'.png', '.svg', '.jpg', '.jpeg', '.ico'</td>
+                    <td class="table-description">
+                        This is a variable to define emoji arts static resources extension. 
+                        Note: This property only changes the extension, the filename will always be the codepoint for the emoji Unicode.
+                        Default: '.png'.
+                    </td>
+                </tr>
+                <tr>
+                    <td>twemojiFolder</td>
+                    <td>String</td> 
+                    <td>Any String folder name</td>
+                    <td class="table-description">
+                        This is a variable to define the folder 
+                        where are stored the emoji arts static resources in the 'twemojiPath'.
+                        Default: '72x72'.
+                    </td>
+                </tr>
+                <tr>
+                    <td>outerDivClasses</td>
+                    <td>Array of Strings</td> 
+                    <td>Array of Strings (CSS classes)</td>
+                    <td class="table-description">
+                        This is an array of CSS classes for those who wish 
+                        to further customize the style of the 
+                        outer div of the component (which encompasses emoji picker and textarea).
+                        Default: [].
+                    </td>
+                </tr>
+                <tr>
+                    <td>btnEmojiClasses</td>
+                    <td>Array of Strings</td> 
+                    <td>Array of Strings (CSS classes)</td>
+                    <td class="table-description">
+                        This is an array of CSS classes for those who wish 
+                        to further customize the style of the 
+                        emoji button of the component.
+                        Default: [].
+                    </td>
+                </tr>
+                <tr>
+                    <td>cooltextAreaClasses</td>
+                    <td>Array of Strings</td> 
+                    <td>Array of Strings (CSS classes)</td>
+                    <td class="table-description">
+                        This is an array of CSS classes for those who wish 
+                        to further customize the style of the 
+                        textarea of the component.
+                        Default: [].
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <div class="header1 row margin-top margin-bottom" id="component-events">
+            Component Events
+        </div>
+        <table class="row col-12 table">
+            <thead>
+                <tr>
+                    <th>Event</th>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>contentChanged</td>
+                    <td>None</td>
+                    <td class="table-description">
+                        This event fires everytime the textarea content is updated.
+                    </td>
+                </tr>
+                <tr>
+                    <td>enterKey</td>
+                    <td>None</td>
+                    <td class="table-description">
+                        This event fires everytime the enter key is pressed or the send button is clicked, 
+                        so that you can define what action is to be performed.
+                    </td>
+                </tr>
+                <tr>
+                    <td>emojiUnicodeAdded</td>
+                    <td>emojiUnicode</td>
+                    <td class="table-description">
+                        This event fires everytime the user selects an emoji in the picker, 
+                        and send as a parameter the emoji in its Unicode format.
+                    </td>
+                </tr>
+                <tr>
+                    <td>emojiImgAdded</td>
+                    <td>emojiImgTag</td>
+                    <td class="table-description">
+                        This event fires everytime the user selects an emoji in the picker, 
+                        and send as a parameter the emoji in its HTML IMG tag.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="header1 row margin-top margin-bottom" id="component-useful-methods">
+            Component Useful Methods
+        </div>
+        <div class="container">
+            These are useful methods of the component 
+            you can access if you define a ref attribute to your component. 
+            The method can then be accessed on your Vue parent component with:
+            <div class="code-block padding-all">
+                this.$refs.yourRefName.methodName
+            </div>
+        </div>
+        <table class="row col-12 table">
+            <thead>
+                <tr>
+                    <th>Method</th>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>addText(text)</td>
+                    <td>text - String</td>
+                    <td class="table-description">
+                        This method adds a text to the textarea. The text parameter will 
+                        then be sanitized and emojis Unicodes converted to emoji IMG 
+                        arts from Twemoji.
+                    </td>
+                </tr>
+                <tr>
+                    <td>cleanText()</td>
+                    <td>None</td>
+                    <td class="table-description">
+                        This method cleans the textarea.
+                    </td>
+                </tr>
+                <tr>
+                    <td>setSkinTone(tone)</td>
+                    <td>tone - Number (a number &gt;= 0 and &lt;= 5)</td>
+                    <td class="table-description">
+                        This method sets the skin tone active in the emoji picker.
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="header1 row margin-top margin-bottom" id="emoji-data-index">
+            Emoji Data Index
+        </div>
+        <div class="container">
+            As seen in the example you will need, for the emoji picker to work, 
+            to import an indexed list of emojis and emoji groups name (which is provided by this lib) and pass as a prop of the CoolTextArea component.
+            There is already different bundles so you are able to choose if you want your emoji picker to have all emojis or only smileys, or only smileys and objects, etc.
+        </div>
+        <div class="container margin-top">
+            This library execute some optimizations excluding unnecessary fields (for this component) in an already indexed list of Unicode 
+            emojis from the lib <a href="https://milesj.gitbook.io/emojibase">'emojibase'</a>. Below you have info for each emoji bundle:
+        </div>
+
+        <table class="row col-12 table">
+            <thead>
+                <tr>
+                    <th>Bundle Import Path</th>
+                    <th>Size (aprox.)</th>
+                    <th>GZIP Size (aprox.)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>'cooltextarea/src/emoji-data/emoji-all-groups.json'</td>
+                    <td>120KB</td>
+                    <td>23KB</td>
+                </tr>
+                <tr>
+                    <td>'cooltextarea/src/emoji-data/emoji-group-smileys-people.json'</td>
+                    <td>60KB</td>
+                    <td>10KB</td>
+                </tr>
+                <tr>
+                    <td>'cooltextarea/src/emoji-data/emoji-group-symbols.json'</td>
+                    <td>14KB</td>
+                    <td>3KB</td>
+                </tr>
+                <tr>
+                    <td>'cooltextarea/src/emoji-data/emoji-group-travel-places.json'</td>
+                    <td>12KB</td>
+                    <td>3KB</td>
+                </tr>
+                <tr>
+                    <td>'cooltextarea/src/emoji-data/emoji-group-objects.json'</td>
+                    <td>12KB</td>
+                    <td>3KB</td>
+                </tr>
+                <tr>
+                    <td>'cooltextarea/src/emoji-data/emoji-group-flags.json'</td>
+                    <td>14KB</td>
+                    <td>2KB</td>
+                </tr>
+                <tr>
+                    <td>'cooltextarea/src/emoji-data/emoji-group-food-drink.json'</td>
+                    <td>7KB</td>
+                    <td>2KB</td>
+                </tr>
+                <tr>
+                    <td>'cooltextarea/src/emoji-data/emoji-group-animals-nature.json'</td>
+                    <td>7KB</td>
+                    <td>2KB</td>
+                </tr>
+                <tr>
+                    <td>'cooltextarea/src/emoji-data/emoji-group-activities.json'</td>
+                    <td>6KB</td>
+                    <td>2KB</td>
+                </tr>
+                <tr>
+                    <td>'cooltextarea/src/emoji-data/emoji-groups.json'</td>
+                    <td>700B</td>
+                    <td>460B</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="container">
+            PS: You can provide your own emoji.json index file with a list of emoji Unicodes, 
+            but you will need to follow the structure of the bundles generated by this library (like cooltextarea/src/emoji-data/emoji-all-groups.json).
+        </div>
+        <div class="container">
+            PS: You can provide your own emoji-groups.json index file with a list of emoji groups name, 
+            but you will need to follow the structure of the bundle generated by this library (cooltextarea/src/emoji-data/emoji-groups.json).
+        </div>
+
+        <div class="header1 row margin-top margin-bottom" id="credits">
+            Credits
+        </div>
+        <div class="container margin-bottom">
+            - Thanks to <a href="https://twitter.com/">Twitter</a> for the emoji arts used in this component from their lib 
+            <a href="https://github.com/twitter/twemoji">Twemoji</a>.
+        </div>
+        <div class="container margin-bottom">
+            - Thanks to <a href="https://milesj.gitbook.io/emojibase">Emojibase</a> for their JSON emoji list builded with base on latest Unicode.
+        </div>
+        <div class="container margin-bottom">
+            - Also thanks to VuePopper (by extension, PopperJS) and VueObserveVisibity, which are the other libs used in this component.
+        </div>
+
+        <div class="header1 row margin-top margin-bottom" id="roadmap">
+            Roadmap
+        </div>
+        <div class="container margin-bottom">
+            - Divide smileys emoji index bundle in two bundles: one with skin tones and other without.
+        </div>
+        <div class="container margin-bottom">
+            - Feature: Recent used emojis (option to enable/disable; to choose to save in localStorage or sessionStorage; to define variable name)
+        </div>
+        <div class="container margin-bottom">
+            - Feature: Emoji groups header
+        </div>
+        <div class="container margin-bottom">
+            - Feature: Emoji search (option to enable/disable)
+        </div>
+        <div class="container margin-bottom">
+            - Show a loading icon while IMG tags are loading in Emoji picker
+        </div>
+        <div class="container margin-bottom">
+            - Multiple languages support for emoji bundles
+        </div>
+        <div class="container margin-bottom">
+            - Subdivide CoolTextArea component in more components
+        </div>
+        <div class="container margin-bottom">
+            - Validator for emojiData and emojiGroups structures; and for twemojiPath prop
+        </div>
+        <div class="container margin-bottom">
+            - Optimize Popover plugin size
+        </div>
+        <div class="container margin-bottom">
+            - Support for React, Angular, Ember
+        </div>
+    </div>
+   
+</div>

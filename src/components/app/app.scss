@@ -1,0 +1,129 @@
+@import '../../assets/simple-grid.css';
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+body {
+    background-color: #e6e6e6;
+}
+
+a {
+    text-decoration: none;
+    color: #05adad;
+}
+
+a:hover {
+    color: teal;
+}
+
+.doc-index {
+    background-color: #fafafa;
+    width: 300px;
+    padding: 50px;
+    border-radius: 10px;
+}
+
+.doc-index-lvl1 {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.doc-index-lvl2 {
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 15px;
+}
+
+.app {
+    background-color: #fafafa;
+    border-radius: 25px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.fixed-pos {
+    position: fixed;
+}
+
+.text-wrap {
+    white-space: pre-wrap;
+}
+
+.text-break {
+    word-break: break-word;
+}
+
+.roboto-font {
+    font-family: 'Roboto', sans-serif;
+}
+
+.margin-top {
+    margin-top: 20px;
+}
+
+.margin-bottom {
+    margin-bottom: 20px;
+}
+
+.border-bottom {
+    border-bottom: #cacaca solid 1px;
+}
+
+.padding-all {
+    padding: 5px;
+}
+
+.header1 {
+    font-size: 25px;
+    border-bottom: #cacaca solid 1px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.header2 {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.table {
+    margin: 15px;
+}
+
+.table > thead {
+    font-size: 18px;
+    background-color: #cacaca;
+}
+
+.table > tbody {
+    font-size: 14px;
+    text-align: center;
+}
+
+.table > tbody > tr > td {
+    border: #cacaca solid 1px;
+}
+
+.table-description {
+    max-width: 200px;
+}
+
+.code-block {
+    background-color: #404040;
+    color: #fafafa;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
+.code-block-cream {
+    background-color: #ece7e7;
+    color: #404040;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 10px;
+}
+
+.text-center {
+    text-align: center;
+}

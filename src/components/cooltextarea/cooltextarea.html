@@ -1,0 +1,59 @@
+
+<div class="cooltextarea-outer" :class="outerDivClasses.concat('bg-' + componentColor)">
+  <popper id="popper-emoji" trigger="click" :options="{placement: 'top'}" 
+    v-if="enableEmojiPicker">
+    <div class="popper" id="emoji-popup">
+        <div id="emoji-pack" class="scroll-clean">
+          <div v-for="(emojiGroup, index) in emojiPack" 
+            :key="emojiGroup.group" 
+            :id="emojiGroup.group" 
+            v-observe-visibility="visibilityChanged">
+            <p id="emoji-list-header">
+              <span v-html="getEmojiGroupDescription(emojiGroup.group)"></span>
+            </p>
+            <p id="emoji-list">
+              <span
+                v-for="emoji in emojiPack[index].emojiList" 
+                :key="emojiGroup.unicode" 
+                v-html="emoji.img"
+                @click="addEmojiToTextarea(emoji)">
+              </span>
+            </p>
+          </div>
+        </div>
+        <p id="tones" v-if="skinToneSelection">
+          <button class="tone no-tone" @click="setSkinTone(0)"></button>
+          <button class="tone light-skin-tone" @click="setSkinTone(1)"></button>
+          <button class="tone medium-light-skin-tone" @click="setSkinTone(2)"></button>
+          <button class="tone medium-skin-tone" @click="setSkinTone(3)"></button>
+          <button class="tone medium-dark-skin-tone" @click="setSkinTone(4)"></button>
+          <button class="tone dark-skin-tone" @click="setSkinTone(5)"></button>
+        </p>
+    </div>
+      
+    <button id="btn-emoji" 
+      @mouseenter="onMouseEnterEmojiBtn()" 
+      @mouseleave="onMouseLeaveEmojiBtn()" 
+      slot="reference"
+      :class="btnEmojiClasses.concat('btn-' + componentColor)">
+      <div v-html="randomEmojiImg"></div>
+    </button>
+  </popper>
+  
+  <div ref="coolTextarea" 
+    class="cooltextarea" 
+    :class="cooltextAreaClasses"
+    contenteditable="true" 
+    @input="updateContent"
+    @paste="onPaste"
+    @keydown.enter="enterKey"
+    @keydown.shift.enter="shiftEnterKey"
+    @mouseup="saveSelection" 
+    @keyup="saveSelection" 
+    @focus="restoreSelection">
+  </div>
+
+  <div id="send-btn" @click="emitEnterKeyEvent()" v-if="enableSendBtn">
+    <img src="../../assets/send-icon.png"/>
+  </div>
+</div>
