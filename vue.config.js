@@ -6,6 +6,7 @@ function resolve (dir) {
 }
 
 module.exports = {
+  baseUrl: '/kevinfaguiar/',
   runtimeCompiler: true,
   productionSourceMap: false,
   configureWebpack: config => {
