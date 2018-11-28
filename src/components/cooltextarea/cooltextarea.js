@@ -124,6 +124,9 @@ export default {
     updateContent(event) {
       let content = event.target.innerHTML;
       content = TextareaParser.replaceEmojiWithAltAttribute(content);
+      console.log('content', content);
+      content = TextareaParser.unescapeHtml(content);
+      console.log('content', content);
       if (content.length !== 0 && content[content.length - 1] === '\n') {
         content = content.slice(0, -1);
       }

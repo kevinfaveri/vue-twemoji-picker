@@ -9,6 +9,7 @@ import EmojiDataSymbols from '../../emoji-data/emoji-group-symbols.json';
 import EmojiDataFlags from '../../emoji-data/emoji-group-flags.json';
 import EmojiGroups from '../../emoji-data/emoji-groups.json';
 import EmojiService from '../../services/emoji-service';
+import TextareaParser from '../../services/textarea-parser';
 
 export default {
   name: 'App',
@@ -64,7 +65,9 @@ export default {
       }
 
       const docElement = document.getElementById('messages-sent');
-      const formattedContent = EmojiService.getEmojiImgFromUnicode(this.content);
+     
+      let formattedContent = TextareaParser.escapeHTML(this.content);
+      formattedContent = EmojiService.getEmojiImgFromUnicode(formattedContent);
       docElement.appendChild(this.createElementFromHTML(
         '<div class="container code-block-cream text-wrap margin-bottom padding-all text-break">' 
         + formattedContent + 
