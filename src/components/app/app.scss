@@ -15,9 +15,9 @@ a:hover {
 }
 
 .bm-burger-button {
-    position: fixed;
-    top: 15px;
-    left: 15px;
+    position: fixed !important;
+    top: 15px !important;
+    left: 15px !important;
     background-color: #ffffff;
     z-index: 9999;
 }
