@@ -14,11 +14,15 @@ a:hover {
     color: teal;
 }
 
-.bm-burger-button {
+.slide-fixed > div > .bm-burger-button {
     position: fixed !important;
     top: 15px !important;
     left: 15px !important;
     background-color: #ffffff;
+    z-index: 9998;
+}
+
+.slide-fixed > div > #sideNav {
     z-index: 9999;
 }
 
