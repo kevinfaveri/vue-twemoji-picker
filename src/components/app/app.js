@@ -16,7 +16,7 @@ export default {
   components: { 'cooltextarea': CoolTextArea },
   data() {
     return {
-      content: 'Type Emoji: ',
+      content: '',
     }
   },
   computed: {

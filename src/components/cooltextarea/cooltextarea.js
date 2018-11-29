@@ -4,6 +4,8 @@ import Popper from 'vue-popperjs';
 import 'vue-popperjs/dist/css/vue-popper.css';
 import { ObserveVisibility } from 'vue-observe-visibility';
 
+// Mobile support for doc site
+// Check why execCommand fires keyboard in smartphones
 export default {
   name: 'CoolTextArea',
   components: {
