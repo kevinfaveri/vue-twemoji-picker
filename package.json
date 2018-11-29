@@ -1,6 +1,6 @@
 {
   "name": "cooltextarea",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "main": "./index.js",
   "license": "MIT",
   "keywords": [
@@ -16,6 +16,7 @@
     "build:app": "vue-cli-service build --mode production --dest docs",
     "build:test": "vue-cli-service build --mode build-test",
     "build:comp": "vue-cli-service build --target lib --name cooltextarea ./index.js",
+    "publish:gh-pages": "git subtree push --prefix docs origin gh-pages",
     "publish:npm": "npm publish --access public",
     "lint": "vue-cli-service lint"
   },

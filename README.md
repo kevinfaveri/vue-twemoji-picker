@@ -3,7 +3,6 @@
 
 ![alt text](https://i.imgur.com/kd7JPiC.png "CoolTextArea Demo")
 
-
 ## Documentation
 Documentation and demo are available here: https://kevinfaguiar.github.io/cooltextarea/#home
 
