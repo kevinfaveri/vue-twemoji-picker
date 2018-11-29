@@ -1,25 +1,25 @@
-<div class="roboto-font row">
-    <div class="fixed-pos doc-index">
-        <div class="row doc-index-lvl1"><a href="#home">CoolTextArea</a></div>
-        <div class="row doc-index-lvl2"><a href="#requirements">Requirements</a></div>
-        <div class="row doc-index-lvl2"><a href="#getting-started">Getting Started</a></div>
-        <div class="row doc-index-lvl2"><a href="#component-attributes">Component Attributes</a></div>
-        <div class="row doc-index-lvl2"><a href="#component-events">Component Events</a></div>
-        <div class="row doc-index-lvl2"><a href="#component-useful-methods">Component Useful Methods</a></div>
-        <div class="row doc-index-lvl2"><a href="#emoji-data-index">Emoji Data Index</a></div>
-        <div class="row doc-index-lvl2"><a href="#credits">Credits</a></div>
-        <div class="row doc-index-lvl2"><a href="#roadmap">Roadmap</a></div>
-    </div>
-    <div class="app container padding-all">
+<div class="roboto-font" id="app">
+    <slide noOverlay :isOpen="isSlideOpen">
+        <a href="#home" class="doc-index-lvl1">CoolTextArea</a>
+        <a href="#requirements" class="doc-index-lvl2">Requirements</a>
+        <a href="#getting-started" class="doc-index-lvl2">Getting Started</a>
+        <a href="#component-attributes" class="doc-index-lvl2">Component Attributes</a>
+        <a href="#component-events" class="doc-index-lvl2">Component Events</a>
+        <a href="#component-useful-methods" class="doc-index-lvl2">Component Useful Methods</a>
+        <a href="#emoji-data-index" class="doc-index-lvl2">Emoji Data Index</a>
+        <a href="#credits" class="doc-index-lvl2">Credits</a>
+        <a href="#roadmap" class="doc-index-lvl2">Roadmap</a>
+    </slide>
+    <div class="app container">
         <div class="header1 margin-top" id="home">
-            <span>CoolTextArea - A plug-n-play [Tw]emoji Picker and Textarea for </span>
-            <img class="margin-top" src="https://vuejs.org/images/logo.png" height="32" width="32" alt="Vue"/>
+            <span>CoolTextArea</span>
         </div>
-        <div class="header2">
-            Based on latest emoji Unicode specs (which includes support for skin tones selection).
+        <div class="header2" id="home">
+            <span>A plug-n-play [Tw]emoji Picker and Textarea for Vue</span>
         </div>
         <div class="text-center margin-top margin-bottom">
-            <strong>CoolTextArea</strong> is a modern textarea component built with Vue which includes a emoji picker.
+            <strong>CoolTextArea</strong> is a modern textarea component built with Vue which includes 
+            a emoji picker (and supports latest emoji Unicode specs, including skin tone selection).
         </div>
     
         <cooltextarea class="container margin-top" 
@@ -393,6 +393,16 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>addTextBlur(text)</td>
+                    <td>text - String</td>
+                    <td class="table-description">
+                        This method adds a text to the textarea. The text parameter will 
+                        then be sanitized and emojis Unicodes converted to emoji IMG 
+                        arts from Twemoji. It is the same as addText(text) method, 
+                        but this one doesn't trigger smartphone keyboard.
+                    </td>
+                </tr>
+                <tr>
                     <td>cleanText()</td>
                     <td>None</td>
                     <td class="table-description">
@@ -513,6 +523,9 @@
             - Divide smileys emoji index bundle in two bundles: one with skin tones and the other without.
         </div>
         <div class="container margin-bottom">
+            - Feature: option for user to choose send method (Enter or Shift + Enter)
+        </div>
+        <div class="container margin-bottom">
             - Feature: Recent used emojis (option to enable/disable; to choose to save in localStorage or sessionStorage; to define variable name)
         </div>
         <div class="container margin-bottom">
@@ -543,5 +556,4 @@
             - Support for React, Angular, Ember
         </div>
     </div>
-   
 </div>

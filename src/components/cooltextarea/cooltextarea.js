@@ -4,8 +4,7 @@ import Popper from 'vue-popperjs';
 import 'vue-popperjs/dist/css/vue-popper.css';
 import { ObserveVisibility } from 'vue-observe-visibility';
 
-// Mobile support for doc site
-// Check why execCommand fires keyboard in smartphones
+// TODO: Add Burguer index 
 export default {
   name: 'CoolTextArea',
   components: {
@@ -126,9 +125,7 @@ export default {
     updateContent(event) {
       let content = event.target.innerHTML;
       content = TextareaParser.replaceEmojiWithAltAttribute(content);
-      console.log('content', content);
       content = TextareaParser.unescapeHtml(content);
-      console.log('content', content);
       if (content.length !== 0 && content[content.length - 1] === '\n') {
         content = content.slice(0, -1);
       }
@@ -191,6 +188,10 @@ export default {
         this.saveSelection();
       }
     },
+    blur() {
+      const doc = this.coolTextarea;
+      doc.blur();
+    },
     saveSelection(){
       if (window.getSelection) {
         this.savedRange = window.getSelection().getRangeAt(0);
@@ -216,6 +217,16 @@ export default {
       }
     },
 
+    addTextBlur(text) {
+      this.focus();
+
+      text = TextareaParser.escapeHTML(text);
+      text = EmojiService.getEmojiImgFromUnicode(text, this.twemojiOptions);
+
+      window.document.execCommand('insertHTML', false, text);
+      this.saveSelection();
+      this.blur();
+    },
     addText(text) {
       this.focus();
 
@@ -278,7 +289,7 @@ export default {
       } else {
         emojiUnicode = emoji.unicode;
       }
-      this.addText(emojiUnicode);
+      this.addTextBlur(emojiUnicode);
       this.$emit('emojiUnicodeAdded', emojiUnicode);
       this.$emit('emojiImgAdded', EmojiService.getEmojiImgFromUnicode(emojiUnicode, this.twemojiOptions));
     },

@@ -10,13 +10,18 @@ import EmojiDataFlags from '../../emoji-data/emoji-group-flags.json';
 import EmojiGroups from '../../emoji-data/emoji-groups.json';
 import EmojiService from '../../services/emoji-service';
 import TextareaParser from '../../services/textarea-parser';
+import { Slide } from 'vue-burger-menu';
 
 export default {
   name: 'App',
-  components: { 'cooltextarea': CoolTextArea },
+  components: { 
+    'cooltextarea': CoolTextArea, 
+    'slide': Slide 
+},
   data() {
     return {
       content: '',
+      isSlideOpen: false,
     }
   },
   computed: {
@@ -77,6 +82,6 @@ export default {
         docElement.removeChild(docElement.childNodes[1]);
       }
       this.$refs.cooltextareaSend.cleanText();
-    }
+    },
   }
 };

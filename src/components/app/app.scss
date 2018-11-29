@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
-    background-color: #e6e6e6;
+    background-color: #fafafa;
 }
 
 a {
@@ -14,19 +14,26 @@ a:hover {
     color: teal;
 }
 
-.doc-index {
-    background-color: #fafafa;
-    padding: 50px;
-    border-radius: 10px;
-    display: none;
+.bm-burger-button {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    background-color: #ffffff;
+    z-index: 9999;
 }
 
 .doc-index-lvl1 {
+    color: #fafafa !important;
     font-size: 20px;
     font-weight: bold;
 }
 
+.doc-index-lvl1:hover {
+    color: #cacaca !important;
+}
+
 .doc-index-lvl2 {
+    color: #fafafa;
     font-size: 18px;
     font-weight: bold;
     margin-top: 5px;
@@ -34,15 +41,14 @@ a:hover {
     margin-left: 15px;
 }
 
+.doc-index-lvl2:hover {
+    color: #cacaca !important;
+}
+
 .app {
-    background-color: #fafafa;
     border-radius: 25px;
     margin-top: 20px;
     margin-bottom: 20px;
-}
-
-.fixed-pos {
-    position: fixed;
 }
 
 .text-wrap {
@@ -87,7 +93,9 @@ a:hover {
 }
 
 .table {
-    margin: 15px;
+    margin: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .table > thead {

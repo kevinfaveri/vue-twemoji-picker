@@ -5,6 +5,13 @@
   outline: none !important;
 }
 
+#btn-emoji,
+#emoji-list,
+#send-btn,
+#tones {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
 .cooltextarea-outer {
   display: flex;
   flex-flow: row wrap;
