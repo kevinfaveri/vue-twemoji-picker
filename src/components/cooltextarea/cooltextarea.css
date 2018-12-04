@@ -1,4 +1,10 @@
 /* Global */
+#popper-emoji {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
 #btn-emoji:focus, 
 .cooltextarea:focus,
 .tone:focus {
