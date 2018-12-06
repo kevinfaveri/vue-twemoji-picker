@@ -63,7 +63,8 @@ img.emoji {
 
 #emoji-list > span {
   font-size: 15px;
-  padding: 5px;
+  padding: 4px;
+  margin: 3px;
   cursor: pointer;
   border-radius: 15px;
 }
