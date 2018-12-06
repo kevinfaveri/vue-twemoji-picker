@@ -1,6 +1,6 @@
 {
-  "name": "cooltextarea",
-  "version": "1.0.15",
+  "name": "cool-emoji-picker",
+  "version": "1.1.0",
   "main": "./index.js",
   "license": "MIT",
   "keywords": [
@@ -15,7 +15,7 @@
     "serve:app": "vue-cli-service serve",
     "build:app": "vue-cli-service build --mode production --dest docs",
     "build:test": "vue-cli-service build --mode build-test",
-    "build:comp": "vue-cli-service build --target lib --name cooltextarea ./index.js",
+    "build:comp": "vue-cli-service build --target lib --name cool-emoji-picker ./index.js",
     "publish:gh-pages": "git subtree split --prefix docs -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages",
     "publish:npm": "npm publish --access public",
     "lint": "vue-cli-service lint"

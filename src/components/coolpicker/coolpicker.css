@@ -1,0 +1,161 @@
+/* Global */
+#popper-emoji {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+#btn-emoji:focus, 
+.tone:focus {
+  outline: none !important;
+}
+
+#btn-emoji,
+#emoji-list,
+#tones {
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+
+img.emoji {
+  height: 1.5em;
+  width: 1.5em;
+  vertical-align: -0.5em;
+}
+
+/* Parent Emoji Popover */
+#emoji-pack {
+  max-height: 200px;
+  width: 250px;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Inside Emoji Pack */
+#emoji-list-header {
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+#emoji-list-header > span {
+  border-radius: 10px;
+  padding: 10px;
+  background-color: #d9d9d9;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+#emoji-list-header > span > img.emoji {
+  margin-right: 2px;
+  margin-left: 2px;
+  width: 27px;
+  height: 27px;
+}
+
+#emoji-list {
+  padding-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 10px;
+  border-bottom: #999999 solid 1px;
+  text-align: justify;
+}
+
+#emoji-list > span {
+  font-size: 15px;
+  padding: 5px;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+#emoji-list > span:hover {
+  background-color: #cacaca;
+}
+
+/* Popper Emoji */
+#popper-emoji {
+  flex-grow: 5;
+  flex-basis: 0;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#btn-emoji {
+  flex-grow: 100;
+  border: none;
+  cursor: pointer;
+  height: 45px;
+  border-radius: 25px;
+  margin: 10px;
+  background-color: transparent;
+}
+
+#btn-emoji > div > img.emoji {
+  height: 25px;
+  width: 25px;
+}
+
+/* Emoji Tones */
+#tones {
+  padding: 0px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+.tone {
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  padding: 0;
+  margin-right: 5px;
+  margin-left: 5px;
+  width: 25px;
+  height: 25px;
+}
+
+.tone:hover {
+  opacity: 0.5;
+}
+
+.no-tone {
+  background-color: #FFCC4D;
+}
+
+.light-skin-tone {
+  background-color: #F7DECE;
+}
+
+.medium-light-skin-tone {
+  background-color: #F3D2A2;
+}
+
+.medium-skin-tone {
+  background-color: #D5AB88;
+}
+
+.medium-dark-skin-tone {
+  background-color: #AF7E57;
+}
+
+.dark-skin-tone {
+  background-color: #7C533E;
+}
+
+/* Scrollbar */
+.scroll-clean::-webkit-scrollbar {
+  width: 12px;
+}
+
+.scroll-clean::-webkit-scrollbar-track {
+  background-color: #eaeaea;
+  border-left: 1px solid #ccc;
+}
+
+.scroll-clean::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+}
+
+.scroll-clean::-webkit-scrollbar-thumb:hover {
+  background-color: #aaa;
+}

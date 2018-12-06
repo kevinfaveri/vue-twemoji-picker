@@ -1,4 +1,4 @@
-import CoolTextArea from '../../../index';
+import { CoolTextArea, CoolPicker } from '../../../index';
 import EmojiDataAll from '../../emoji-data/emoji-all-groups.json';
 import EmojiDataAnimalsNature from '../../emoji-data/emoji-group-animals-nature.json';
 import EmojiDataFoodDrink from '../../emoji-data/emoji-group-food-drink.json';
@@ -16,6 +16,7 @@ export default {
   name: 'App',
   components: { 
     'cooltextarea': CoolTextArea, 
+    'coolpicker': CoolPicker,
     'slide': Slide 
 },
   data() {
@@ -74,7 +75,7 @@ export default {
       let formattedContent = TextareaParser.escapeHTML(this.content);
       formattedContent = EmojiService.getEmojiImgFromUnicode(formattedContent);
       docElement.appendChild(this.createElementFromHTML(
-        '<div class="container code-block-cream text-wrap margin-bottom padding-all text-break">' 
+        '<div class="code-block-cream text-wrap margin-bottom padding-all text-break">' 
         + formattedContent + 
         '</div>')
       );

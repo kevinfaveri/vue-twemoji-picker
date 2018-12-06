@@ -1,10 +1,10 @@
-## CoolTextArea
- A plug-n-play [Tw]emoji Picker and Textarea component built for Vue.
+## Cool Emoji Picker
+A plug-n-play [Tw]emoji Picker (+Textarea for Twemoji rendering) for Vue
 
-![alt text](https://i.imgur.com/kd7JPiC.png "CoolTextArea Demo")
+![alt text](https://i.imgur.com/kd7JPiC.png "Cool Emoji Picker Demo")
 
 ## Documentation
-Documentation and demo are available here: https://kevinfaguiar.github.io/cooltextarea/#home
+Documentation and demo are available here: https://kevinfaguiar.github.io/cool-emoji-picker/#home
 
 ## License
 MIT 2018 Kevin de Faveri Aguiar
