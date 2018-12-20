@@ -1,19 +1,32 @@
 <popper id="popper-emoji" trigger="click" :options="{placement: 'top'}">
   <div class="popper" id="emoji-popup">
-      <div id="emoji-pack" class="scroll-clean">
+      <div id="emoji-popover-inner" class="scroll-clean">
+        <div v-if="recentEmojisFeat && recentEmojis.length !== 0">
+          <p class="emoji-list-header">
+            <span>⏱️</span>
+          </p>
+          <p class="emoji-list">
+            <span
+              v-for="emoji in recentEmojis" 
+              :key="emoji.unicode" 
+              v-html="emoji.img"
+              @click="clickEmoji(emoji.unicode)">
+            </span>
+          </p>
+        </div>        
         <div v-for="(emojiGroup, index) in emojiPack" 
           :key="emojiGroup.group" 
           :id="emojiGroup.group" 
           v-observe-visibility="visibilityChanged">
-          <p id="emoji-list-header">
+          <p class="emoji-list-header">
             <span v-html="getEmojiGroupDescription(emojiGroup.group)"></span>
           </p>
-          <p id="emoji-list">
+          <p class="emoji-list">
             <span
               v-for="emoji in emojiPack[index].emojiList" 
               :key="emojiGroup.unicode" 
               v-html="emoji.img"
-              @click="addEmojiToTextarea(emoji)">
+              @click="clickEmoji(emoji)">
             </span>
           </p>
         </div>

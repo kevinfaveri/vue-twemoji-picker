@@ -8,10 +8,6 @@ export default {
     'coolpicker': CoolPicker,
   },
   props: {
-    content: {
-      default: '',
-      type: String
-    },
     emojiData: {
       default: () => [],
       type: Array,
@@ -24,20 +20,32 @@ export default {
       default: false,
       type: Boolean,
     },
-    enableSendBtn: {
+    recentEmojisFeat: {
       default: false,
-      type: Boolean
+      type: Boolean,
     },
-    componentColor: {
-      default: 'cream',
+    recentEmojisStorage: {
+      default: 'none',
+      type: String,
       validator: function (value) {
-        let bolValid =  ['cream', 'cherry', 'forest', 'ocean', 'sun'].indexOf(value) !== -1;
-        if (bolValid === false) {
-          console.error('The value entered for the prop "componentColor" is invalid. '+
-            'Valid values: "cream", "cherry", "forest", "ocean", "sun".');
+        if (value !== 'local' && value !== 'session' && value !== 'none') {
+          console.error('The value entered for the prop "recentEmojisStorage" is invalid. '+
+            'Valid values: "local", "session" and "none".');
         }
         return true;
       }
+    },
+    recentEmojiStorageName: {
+      default: 'cep-recent-emojis',
+      type: String,
+    },
+    recentEmojiLimit: {
+      default: 12,
+      type: Number,
+    },
+    btnEmojiClasses: {
+      default: () => [],
+      type: Array
     },
     twemojiPath: {
       default: 'https://twemoji.maxcdn.com/2/',
@@ -60,11 +68,26 @@ export default {
       type: String
     },
 
-    outerDivClasses: {
-      default: () => [],
-      type: Array
+    content: {
+      default: '',
+      type: String
     },
-    btnEmojiClasses: {
+    enableSendBtn: {
+      default: false,
+      type: Boolean
+    },
+    componentColor: {
+      default: 'cream',
+      validator: function (value) {
+        let bolValid =  ['cream', 'cherry', 'forest', 'ocean', 'sun'].indexOf(value) !== -1;
+        if (bolValid === false) {
+          console.error('The value entered for the prop "componentColor" is invalid. '+
+            'Valid values: "cream", "cherry", "forest", "ocean", "sun".');
+        }
+        return true;
+      }
+    },
+    outerDivClasses: {
       default: () => [],
       type: Array
     },

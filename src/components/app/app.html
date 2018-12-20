@@ -49,6 +49,8 @@
                 :skinToneSelection="true"
                 :enableSendBtn="true"
                 @enterKey="onEnterKey"
+                :recentEmojisFeat="true"
+                recentEmojisStorage="none"
                 ref="cooltextareaSend"></cooltextarea>
             <div class="text-center margin-bottom">
                 Tip: You can send any message above to try the component!
@@ -125,7 +127,9 @@
         <div class="container margin-bottom">- Cool Emoji Picker is made with Vue, for Vue (for the time being).</div>
         <div class="container margin-bottom">
             - For CoolPicker component to work your browser needs to 
-            support <a href="https://caniuse.com/#feat=intersectionobserver">IntersectionObserver.</a>
+            support <a href="https://caniuse.com/#feat=intersectionobserver">IntersectionObserver</a> 
+            and <a href="https://caniuse.com/#feat=array-find">ES6 Array functions</a>. 
+            In both cases <a href="https://polyfill.io/v2/docs/">Polyfill.io</a> should solve the problem.
         </div>
         <div class="container margin-bottom">
             - For CoolTextArea component layouting proportions correctly 
@@ -248,10 +252,47 @@
                 <tr>
                     <td>skinToneSelection</td>
                     <td>Boolean</td> 
-                    <td>True / False</td>
+                    <td>true / false</td>
                     <td class="table-description">
                         This is a boolean to enable or disable skin 
                         tone selection in the emoji picker. Default: false.
+                    </td>
+                </tr>
+                <tr>
+                    <td>recentEmojisFeat</td>
+                    <td>Boolean</td> 
+                    <td>true / false</td>
+                    <td class="table-description">
+                        This is a boolean to enable or disable 
+                        recent emojis feature in the emoji picker. Default: false.
+                    </td>
+                </tr>
+                <tr>
+                    <td>recentEmojisStorage</td>
+                    <td>String</td> 
+                    <td>'local', 'session', 'none'</td>
+                    <td class="table-description">
+                        Sets the type of storage for recent emojis in a browser.
+                        'local': LocalStorage; 'session': SessionStorage; 'none': Disable storage. 
+                        Default: 'none'.
+                    </td>
+                </tr>
+                <tr>
+                    <td>recentEmojiStorageName</td>
+                    <td>String</td> 
+                    <td>Any String</td>
+                    <td class="table-description">
+                        Sets the name of the browser storage object, if enabled. 
+                        Default: 'cep-recent-emojis'.
+                    </td>
+                </tr>
+                <tr>
+                    <td>recentEmojiLimit</td>
+                    <td>Number</td> 
+                    <td>Any Number</td>
+                    <td class="table-description">
+                        Sets the maximum amount of recent emojis.
+                        Default: 12.
                     </td>
                 </tr>
                 <tr>
@@ -347,16 +388,6 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>content</td>
-                    <td>String</td>
-                    <td>Any String Variable</td> 
-                    <td class="table-description">
-                        This is the content variable which 
-                        will be the output of the textarea with the emoji art IMG tags
-                        converted to its correspondent Unicode.
-                    </td>
-                </tr>
-                <tr>
                     <td>emojiData</td>
                     <td>Array</td> 
                     <td>Array with the Specified Structure</td>
@@ -378,27 +409,47 @@
                 <tr>
                     <td>skinToneSelection</td>
                     <td>Boolean</td> 
-                    <td>True / False</td>
+                    <td>true / false</td>
                     <td class="table-description">
                         This is a boolean to enable or disable skin 
                         tone selection in the emoji picker. Default: false.
                     </td>
                 </tr>
-                <tr>
-                    <td>enableSendBtn</td>
+                 <tr>
+                    <td>recentEmojisFeat</td>
                     <td>Boolean</td> 
-                    <td>True / False</td>
+                    <td>true / false</td>
                     <td class="table-description">
-                        This is a boolean to enable or 
-                        disable the send button. Default: false.
+                        This is a boolean to enable or disable 
+                        recent emojis feature in the emoji picker. Default: false.
                     </td>
                 </tr>
                 <tr>
-                    <td>componentColor</td>
+                    <td>recentEmojisStorage</td>
                     <td>String</td> 
-                    <td>'cream', 'cherry', 'forest', 'ocean', 'sun'</td>
+                    <td>'local', 'session', 'none'</td>
                     <td class="table-description">
-                        This is a variable to define the component color. Default: 'cream'.
+                        Sets the type of storage for recent emojis in a browser.
+                        'local': LocalStorage; 'session': SessionStorage; 'none': Disable storage. 
+                        Default: 'none'.
+                    </td>
+                </tr>
+                <tr>
+                    <td>recentEmojiStorageName</td>
+                    <td>String</td> 
+                    <td>Any String</td>
+                    <td class="table-description">
+                        Sets the name of the browser storage object, if enabled. 
+                        Default: 'cep-recent-emojis'.
+                    </td>
+                </tr>
+                <tr>
+                    <td>recentEmojiLimit</td>
+                    <td>Number</td> 
+                    <td>Any Number</td>
+                    <td class="table-description">
+                        Sets the maximum amount of recent emojis.
+                        Default: 12.
                     </td>
                 </tr>
                 <tr>
@@ -431,17 +482,6 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>outerDivClasses</td>
-                    <td>Array of Strings</td> 
-                    <td>Array of Strings (CSS classes)</td>
-                    <td class="table-description">
-                        This is an array of CSS classes for those who wish 
-                        to further customize the style of the 
-                        outer div of the component (which encompasses emoji picker and textarea).
-                        Default: [].
-                    </td>
-                </tr>
-                <tr>
                     <td>btnEmojiClasses</td>
                     <td>Array of Strings</td> 
                     <td>Array of Strings (CSS classes)</td>
@@ -449,6 +489,45 @@
                         This is an array of CSS classes for those who wish 
                         to further customize the style of the 
                         emoji button of the component.
+                        Default: [].
+                    </td>
+                </tr>
+                <tr><td>-</td><td>-</td><td>-</td><td>-</td></tr>
+                <tr>
+                    <td>content</td>
+                    <td>String</td>
+                    <td>Any String Variable</td> 
+                    <td class="table-description">
+                        This is the content variable which 
+                        will be the output of the textarea with the emoji art IMG tags
+                        converted to its correspondent Unicode.
+                    </td>
+                </tr>
+                <tr>
+                    <td>enableSendBtn</td>
+                    <td>Boolean</td> 
+                    <td>true / false</td>
+                    <td class="table-description">
+                        This is a boolean to enable or 
+                        disable the send button. Default: false.
+                    </td>
+                </tr>
+                <tr>
+                    <td>componentColor</td>
+                    <td>String</td> 
+                    <td>'cream', 'cherry', 'forest', 'ocean', 'sun'</td>
+                    <td class="table-description">
+                        This is a variable to define the component color. Default: 'cream'.
+                    </td>
+                </tr>
+                <tr>
+                    <td>outerDivClasses</td>
+                    <td>Array of Strings</td> 
+                    <td>Array of Strings (CSS classes)</td>
+                    <td class="table-description">
+                        This is an array of CSS classes for those who wish 
+                        to further customize the style of the 
+                        outer div of the component (which encompasses emoji picker and textarea).
                         Default: [].
                     </td>
                 </tr>
@@ -675,9 +754,6 @@
             - Feature: option for user to choose send method (Enter or Shift + Enter)
         </div>
         <div class="container margin-bottom">
-            - Feature: Recent used emojis (option to enable/disable; to choose to save in localStorage or sessionStorage; to define variable name)
-        </div>
-        <div class="container margin-bottom">
             - Feature: Emoji groups header
         </div>
         <div class="container margin-bottom">
@@ -685,6 +761,9 @@
         </div>
         <div class="container margin-bottom">
             - Feature: Auto popup emoji picker on typing : (also searchs the picker the keyword)
+        </div>
+        <div class="container margin-bottom">
+            - Feature: Tabs for Emojis Groups
         </div>
         <div class="container margin-bottom">
             - Show a loading icon while IMG tags are loading in Emoji picker

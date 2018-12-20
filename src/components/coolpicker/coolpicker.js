@@ -3,6 +3,7 @@ import Popper from 'vue-popperjs';
 import 'vue-popperjs/dist/css/vue-popper.css';
 import { ObserveVisibility } from 'vue-observe-visibility';
 
+
 export default {
   name: 'CoolPicker',
   components: {
@@ -23,6 +24,29 @@ export default {
     skinToneSelection: {
       default: false,
       type: Boolean,
+    },
+    recentEmojisFeat: {
+      default: false,
+      type: Boolean,
+    },
+    recentEmojisStorage: {
+      default: 'none',
+      type: String,
+      validator: function (value) {
+        if (value !== 'local' && value !== 'session' && value !== 'none') {
+          console.error('The value entered for the prop "recentEmojisStorage" is invalid. '+
+            'Valid values: "local", "session" and "none".');
+        }
+        return true;
+      }
+    },
+    recentEmojiStorageName: {
+      default: 'cep-recent-emojis',
+      type: String,
+    },
+    recentEmojiLimit: {
+      default: 12,
+      type: Number,
     },
     twemojiPath: {
       default: 'https://twemoji.maxcdn.com/2/',
@@ -57,7 +81,8 @@ export default {
       randomEmoji: '😄',
       skinToneActive: 0,
       isPointerOnEmojiBtn: false,
-      twemojiOptions: {}
+      twemojiOptions: {},
+      recentEmojis: [],
     }
   },
   watch: {
@@ -72,6 +97,9 @@ export default {
   },
   created() {
     this.twemojiOptions = { base: this.twemojiPath, ext: this.twemojiExtension, size: this.twemojiFolder };
+    if (this.recentEmojisFeat) {
+      this.setRecentEmojis();
+    }
     this.buildEmojiPack();
     this.setRandomEmoji();
   },
@@ -115,7 +143,7 @@ export default {
       this.randomEmoji = emoji.unicode;
     },
 
-    addEmojiToTextarea(emoji) {
+    clickEmoji(emoji) {
       let emojiUnicode;
       if (emoji.skins !== undefined 
         && emoji.skins.length !== 0 
@@ -124,6 +152,11 @@ export default {
       } else {
         emojiUnicode = emoji.unicode;
       }
+
+      if (this.recentEmojisFeat) {
+        this.addEmojiToRecentEmojis(emojiUnicode);
+      }
+
       this.$emit('addTextBlur', emojiUnicode);
       this.$emit('emojiUnicodeAdded', emojiUnicode);
       this.$emit('emojiImgAdded', EmojiService.getEmojiImgFromUnicode(emojiUnicode, this.twemojiOptions));
@@ -158,5 +191,52 @@ export default {
         }
       }
     },
+
+    setRecentEmojis() {
+      let recentEmojis = null;
+      if (this.recentEmojisStorage === 'local') {
+        recentEmojis = JSON.parse(localStorage.getItem(this.recentEmojiStorageName));
+      } else if (this.recentEmojisStorage === 'session') {
+        recentEmojis = JSON.parse(sessionStorage.getItem(this.recentEmojiStorageName));
+      } else {
+        recentEmojis = [];
+      }
+
+      if (recentEmojis !== undefined && recentEmojis !== null) {
+        this.recentEmojis = recentEmojis;
+      }
+    },
+
+    addEmojiToRecentEmojis(emojiUnicode) {
+      if (this.recentEmojis.length === this.recentEmojiLimit) {
+        this.recentEmojis.splice(-1, 1);
+      }
+
+      const indexToRemove = this.recentEmojis.findIndex(x => x.unicode === emojiUnicode);
+      if (indexToRemove !== -1) {
+        this.recentEmojis.splice(indexToRemove, 1);
+        this.recentEmojis
+          .unshift(
+            { 
+              'unicode': emojiUnicode, 
+              'img': EmojiService.getEmojiImgFromUnicode(emojiUnicode, this.twemojiOptions)
+            }
+          );
+      } else {
+        this.recentEmojis
+          .unshift(
+            { 
+              'unicode': emojiUnicode, 
+              'img': EmojiService.getEmojiImgFromUnicode(emojiUnicode, this.twemojiOptions)
+            }
+          );
+      }
+
+      if (this.recentEmojisStorage === 'local') {
+        localStorage.setItem(this.recentEmojiStorageName, JSON.stringify(this.recentEmojis));
+      } else if (this.recentEmojisStorage === 'session') {
+        sessionStorage.setItem(this.recentEmojiStorageName, JSON.stringify(this.recentEmojis));
+      }
+    }
   }
 };
