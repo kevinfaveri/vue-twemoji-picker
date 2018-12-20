@@ -8,6 +8,7 @@ export default {
     'coolpicker': CoolPicker,
   },
   props: {
+    // ** Picker Props **/
     emojiData: {
       default: () => [],
       type: Array,
@@ -68,6 +69,7 @@ export default {
       type: String
     },
 
+    // ** Textarea Props **/
     content: {
       default: '',
       type: String
