@@ -1,6 +1,6 @@
 {
   "name": "cool-emoji-picker",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "main": "./index.js",
   "license": "MIT",
   "keywords": [
