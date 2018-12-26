@@ -44,6 +44,18 @@ export default {
       default: 12,
       type: Number,
     },
+    searchEmojisFeat: {
+      default: false,
+      type: Boolean,
+    },
+    searchEmojiPlaceholder: {
+      default: 'Search emojis.',
+      type: String,
+    },
+    searchEmojiNotFound: {
+      default: 'No emojis found.',
+      type: String,
+    },
     btnEmojiClasses: {
       default: () => [],
       type: Array

@@ -1,23 +1,48 @@
 <popper id="popper-emoji" trigger="click" :options="{placement: 'top'}">
   <div class="popper" id="emoji-popup">
+      <div id="emoji-popover-search" v-if="searchEmojisFeat">
+        <div id="search-header">
+          <input @input="searchEmojiByTerm" :placeholder="searchEmojiPlaceholder" v-model="searchTerm"/>
+          <span v-html="getEmojiImgFromUnicode('🔍')"></span>
+        </div>
+      </div>
+
       <div id="emoji-popover-inner" class="scroll-clean">
-        <div v-if="recentEmojisFeat && recentEmojis.length !== 0">
+
+        <div v-if="searchTerm.length !== 0 && searchEmojis.length === 0">
+          <strong>{{ searchEmojiNotFound }}</strong>
+        </div>
+
+        <div v-if="searchTerm.length !== 0 && searchEmojis.length > 0">
+          <p class="emoji-list">
+            <span
+              v-for="(emoji, index) in searchEmojis" 
+              :key="index" 
+              v-html="emoji.img"
+              @click="clickEmoji(emoji.unicode)">
+            </span>
+          </p>
+        </div>
+        
+        <div v-if="recentEmojisFeat && recentEmojis.length !== 0 && searchTerm.length === 0">
           <p class="emoji-list-header">
-            <span>⏱️</span>
+            <span v-html="getEmojiImgFromUnicode('⏱️')"></span>
           </p>
           <p class="emoji-list">
             <span
               v-for="emoji in recentEmojis" 
               :key="emoji.unicode" 
               v-html="emoji.img"
-              @click="clickEmoji(emoji.unicode)">
+              @click="clickEmoji(emoji)">
             </span>
           </p>
-        </div>        
+        </div>
+
         <div v-for="(emojiGroup, index) in emojiPack" 
           :key="emojiGroup.group" 
           :id="emojiGroup.group" 
-          v-observe-visibility="visibilityChanged">
+          v-observe-visibility="visibilityChanged"
+          v-if="searchTerm.length === 0">
           <p class="emoji-list-header">
             <span v-html="getEmojiGroupDescription(emojiGroup.group)"></span>
           </p>
@@ -31,13 +56,26 @@
           </p>
         </div>
       </div>
+
       <p id="tones" v-if="skinToneSelection">
-        <button class="tone no-tone" @click="setSkinTone(0)"></button>
-        <button class="tone light-skin-tone" @click="setSkinTone(1)"></button>
-        <button class="tone medium-light-skin-tone" @click="setSkinTone(2)"></button>
-        <button class="tone medium-skin-tone" @click="setSkinTone(3)"></button>
-        <button class="tone medium-dark-skin-tone" @click="setSkinTone(4)"></button>
-        <button class="tone dark-skin-tone" @click="setSkinTone(5)"></button>
+        <button class="tone no-tone" @click="setSkinTone(0)">
+          <strong v-if="skinToneActive === 0">x</strong>
+        </button>
+        <button class="tone light-skin-tone" @click="setSkinTone(1)">
+          <strong v-if="skinToneActive === 1">x</strong>
+        </button>
+        <button class="tone medium-light-skin-tone" @click="setSkinTone(2)">
+          <strong v-if="skinToneActive === 2">x</strong>
+        </button>
+        <button class="tone medium-skin-tone" @click="setSkinTone(3)">
+          <strong v-if="skinToneActive === 3">x</strong>
+        </button>
+        <button class="tone medium-dark-skin-tone" @click="setSkinTone(4)">
+          <strong v-if="skinToneActive === 4">x</strong>
+        </button>
+        <button class="tone dark-skin-tone" @click="setSkinTone(5)">
+          <strong v-if="skinToneActive === 5">x</strong>
+        </button>
       </p>
   </div>
     

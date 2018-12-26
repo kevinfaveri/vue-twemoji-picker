@@ -33,7 +33,10 @@
                 class="bg-cream margin-bottom margin-top b-rounded"
                 :emojiData="emojiDataAll" 
                 :emojiGroups="emojiGroups" 
-                :skinToneSelection="true"></coolpicker>
+                :skinToneSelection="true"
+                :searchEmojisFeat="true"
+                searchEmojiPlaceholder="Search here."
+                searchEmojiNotFound="Emojis not found."></coolpicker>
         </div>
 
         <div class="container border-bottom"></div>
@@ -51,6 +54,7 @@
                 @enterKey="onEnterKey"
                 :recentEmojisFeat="true"
                 recentEmojisStorage="none"
+                :searchEmojisFeat="true"
                 ref="cooltextareaSend"></cooltextarea>
             <div class="text-center margin-bottom">
                 Tip: You can send any message above to try the component!
@@ -129,12 +133,20 @@
             - For CoolPicker component to work your browser needs to 
             support <a href="https://caniuse.com/#feat=intersectionobserver">IntersectionObserver</a> 
             and <a href="https://caniuse.com/#feat=array-find">ES6 Array functions</a>. 
-            In both cases <a href="https://polyfill.io/v2/docs/">Polyfill.io</a> should solve the problem.
+        </div>
+        <div class="container margin-bottom">
+            - For CoolPicker component search feature to work your browser needs to support 
+            <a href="https://caniuse.com/#feat=es6-string-includes">String Includes</a>.
         </div>
         <div class="container margin-bottom">
             - For CoolTextArea component layouting proportions correctly 
             render your browser needs to support <a href="https://caniuse.com/#feat=flexbox">CSS Flexbox</a>.
         </div>
+
+        <div class="container margin-bottom">
+            - In most cases <a href="https://polyfill.io/v2/docs/">Polyfill.io</a> can ensure support for older browsers.
+        </div>
+       
         <div class="margin-bottom text-center container">
             Any suggestion or bug please report at <a href="https://github.com/kevinfaguiar/cool-emoji-picker/issues">Issues</a>
         </div>
@@ -296,6 +308,33 @@
                     </td>
                 </tr>
                 <tr>
+                    <td>searchEmojisFeat</td>
+                    <td>Boolean</td> 
+                    <td>true / false</td>
+                    <td class="table-description">
+                        This is a boolean to enable or disable 
+                        search emojis feature in the emoji picker. Default: false.
+                    </td>
+                </tr>
+                <tr>
+                    <td>searchEmojiPlaceholder</td>
+                    <td>String</td> 
+                    <td>Any String</td>
+                    <td class="table-description">
+                        Define the search input placeholder. 
+                        Default: 'Search emojis.'.
+                    </td>
+                </tr>
+                <tr>
+                    <td>searchEmojiNotFound</td>
+                    <td>String</td> 
+                    <td>Any String</td>
+                    <td class="table-description">
+                        Define the label when there are no emojis found.
+                        Default: 'No emojis found.'.
+                    </td>
+                </tr>
+                <tr>
                     <td>twemojiPath</td>
                     <td>String</td> 
                     <td>Any String URL</td>
@@ -450,6 +489,33 @@
                     <td class="table-description">
                         Sets the maximum amount of recent emojis.
                         Default: 12.
+                    </td>
+                </tr>
+                <tr>
+                    <td>searchEmojisFeat</td>
+                    <td>Boolean</td> 
+                    <td>true / false</td>
+                    <td class="table-description">
+                        This is a boolean to enable or disable 
+                        search emojis feature in the emoji picker. Default: false.
+                    </td>
+                </tr>
+                <tr>
+                    <td>searchEmojiPlaceholder</td>
+                    <td>String</td> 
+                    <td>Any String</td>
+                    <td class="table-description">
+                        Define the search input placeholder. 
+                        Default: 'Search emojis.'.
+                    </td>
+                </tr>
+                <tr>
+                    <td>searchEmojiNotFound</td>
+                    <td>String</td> 
+                    <td>Any String</td>
+                    <td class="table-description">
+                        Define the label when there are no emojis found.
+                        Default: 'No emojis found.'.
                     </td>
                 </tr>
                 <tr>

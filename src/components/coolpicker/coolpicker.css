@@ -6,7 +6,9 @@
 }
 
 #btn-emoji:focus, 
-.tone:focus {
+.tone:focus,
+#emoji-popover-search > #search-header > input,
+#emoji-popover-search > #search-header > button {
   outline: none !important;
 }
 
@@ -40,7 +42,7 @@ img.emoji {
 .emoji-list-header > span {
   border-radius: 10px;
   padding: 10px;
-  background-color: #d9d9d9;
+  background-color: #e6e6e6;
   font-weight: bold;
   font-size: 16px;
 }
@@ -56,8 +58,6 @@ img.emoji {
   padding: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
-  border-radius: 10px;
-  border-bottom: #999999 solid 1px;
   text-align: justify;
 }
 
@@ -100,10 +100,11 @@ img.emoji {
 
 /* Emoji Tones */
 #tones {
-  padding: 0px;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  margin: 0px;
   text-align: center;
+  border-top: #999999 solid 1px;
 }
 
 .tone {
@@ -162,3 +163,34 @@ img.emoji {
 .scroll-clean::-webkit-scrollbar-thumb:hover {
   background-color: #aaa;
 }
+
+/* Search Bar */
+#emoji-popover-search {
+  background-color: #e6e6e6;
+  border-radius: 3px;
+  margin-bottom: 5px;
+}
+
+#emoji-popover-search > #search-header {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  display: flex;
+  flex-flow: row wrap;
+}
+
+#emoji-popover-search > #search-header > input {
+  flex-grow: 90;
+  padding: 5px;
+  margin-left: 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: #fafafa;
+}
+
+#emoji-popover-search > #search-header > span {
+  flex-grow: 10;
+  border-radius: 5px;
+  border: none;
+  background-color: transparent;
+}
+

@@ -3,7 +3,6 @@ import Popper from 'vue-popperjs';
 import 'vue-popperjs/dist/css/vue-popper.css';
 import { ObserveVisibility } from 'vue-observe-visibility';
 
-
 export default {
   name: 'CoolPicker',
   components: {
@@ -48,6 +47,18 @@ export default {
       default: 12,
       type: Number,
     },
+    searchEmojisFeat: {
+      default: false,
+      type: Boolean,
+    },
+    searchEmojiPlaceholder: {
+      default: 'Search emojis.',
+      type: String,
+    },
+    searchEmojiNotFound: {
+      default: 'No emojis found.',
+      type: String,
+    },
     twemojiPath: {
       default: 'https://twemoji.maxcdn.com/2/',
       type: String
@@ -82,12 +93,20 @@ export default {
       skinToneActive: 0,
       isPointerOnEmojiBtn: false,
       twemojiOptions: {},
+
       recentEmojis: [],
+
+      searchTerm: '',
+      searchEmojis: [],
+      searchTimeout: null,
     }
   },
   watch: {
     skinToneActive() {
       this.buildEmojiPack();
+      if (this.searchTerm.length !== 0) {
+        this.searchEmojiByTerm();
+      }
     },
   },
   computed: {
@@ -173,6 +192,10 @@ export default {
       this.skinToneActive = tone;
     },
 
+    getEmojiImgFromUnicode(unicode) {
+      return EmojiService.getEmojiImgFromUnicode(unicode, this.twemojiOptions);
+    },
+
     // On Demand Rendering of Emoji Groups
     visibilityChanged(isVisible, entry) {
       if (isVisible) {
@@ -206,7 +229,6 @@ export default {
         this.recentEmojis = recentEmojis;
       }
     },
-
     addEmojiToRecentEmojis(emojiUnicode) {
       if (this.recentEmojis.length === this.recentEmojiLimit) {
         this.recentEmojis.splice(-1, 1);
@@ -236,6 +258,21 @@ export default {
         localStorage.setItem(this.recentEmojiStorageName, JSON.stringify(this.recentEmojis));
       } else if (this.recentEmojisStorage === 'session') {
         sessionStorage.setItem(this.recentEmojiStorageName, JSON.stringify(this.recentEmojis));
+      }
+    },
+
+    searchEmojiByTerm() {
+      clearTimeout(this.searchTimeout);
+      if (this.searchTerm.length > 0) {
+        this.searchTimeout = setTimeout(() => {
+          this.searchEmojis = EmojiService
+            .getEmojiImgArrayFromEmojiPackByTerm(
+              this.emojiData, 
+              this.skinToneActive, 
+              this.twemojiOptions, 
+              this.searchTerm
+              );
+          }, 300);
       }
     }
   }
