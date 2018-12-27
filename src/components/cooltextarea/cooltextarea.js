@@ -9,6 +9,14 @@ export default {
   },
   props: {
     // ** Picker Props **/
+    pickerWidth: {
+      default: 250,
+      type: Number,
+    },
+    pickerMaxHeight: {
+      default: 200,
+      type: Number,
+    },
     emojiData: {
       default: () => [],
       type: Array,

@@ -115,9 +115,10 @@ export default {
   watch: {
     skinToneActive() {
       this.buildEmojiPack();
-      this.emojiListActive = this.emojiPack[this.emojiGroupActive].emojiList;
       if (this.searchTerm.length !== 0) {
         this.searchEmojiByTerm();
+      } else if (this.emojiGroupActive !== -1) {
+        this.emojiListActive = this.emojiPack[this.emojiGroupActive].emojiList;
       }
     },
   },
