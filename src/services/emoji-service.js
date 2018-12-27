@@ -12,19 +12,25 @@ export default {
 
     if (emojiPack !== undefined &&  emojiPack.length !== 0) {
       for (let i = 0; i < emojiPack.length; i++) {
+        emojiPackWithImg[i] = {};
+        emojiPackWithImg[i].group = emojiPack[i].group;
+        emojiPackWithImg[i].emojiList = [];
+
         for (let j = 0; j < emojiPack[i].emojiList.length; j++) {
-          const emoji = emojiPack[i].emojiList[j];
-          if (emoji.skins !== undefined 
-            && emoji.skins.length !== 0 
+          const emoji = {};
+
+          if (emojiPack[i].emojiList[j].skins !== undefined 
+            && emojiPack[i].emojiList[j].skins.length !== 0 
             && skinTone !== 0) {
-            emoji.img = this.getEmojiImgFromUnicode(emoji.skins[skinTone - 1].unicode, twemojiOptions);
+            emoji.unicode = emojiPack[i].emojiList[j].skins[skinTone - 1].unicode;
           } else {
-            emoji.img = this.getEmojiImgFromUnicode(emoji.unicode, twemojiOptions);
+            emoji.unicode = emojiPack[i].emojiList[j].unicode;
           }
+
+          emoji.img = this.getEmojiImgFromUnicode(emoji.unicode, twemojiOptions);
+          emojiPackWithImg[i].emojiList.push(emoji);
         }
       }
-
-      emojiPackWithImg = emojiPack;
     }
 
     return emojiPackWithImg;

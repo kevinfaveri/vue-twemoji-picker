@@ -22,7 +22,7 @@
   },
   "dependencies": {
     "twemoji": "^11.2.0",
-    "vue-observe-visibility": "^0.4.3",
+    "vue-dragscroll": "^1.8.1",
     "vue-popperjs": "^1.6.1"
   },
   "devDependencies": {

@@ -102,38 +102,37 @@
             :content="content" 
             :emojiData="emojiDataOneCollection"
             :emojiGroups="emojiGroups"
-            componentColor="forest"></cooltextarea>
+            componentColor="forest"
+            :searchEmojisFeat="true"></cooltextarea>
     
         <div class="header2 container margin-top">Two Emoji Groups</div>
         <cooltextarea class="margin-top container" 
             :content="content" 
             :emojiData="emojiDataTwoCollections"
             :emojiGroups="emojiGroups"
-            componentColor="cherry"></cooltextarea>
+            componentColor="cherry"
+            :searchEmojisFeat="true"></cooltextarea>
     
         <div class="header2 container margin-top">Three Emoji Groups</div>
         <cooltextarea class="margin-top container" 
             :content="content" 
             :emojiData="emojiDataThreeCollections"
             :emojiGroups="emojiGroups"
-            componentColor="ocean"></cooltextarea>
+            componentColor="ocean"
+            :searchEmojisFeat="true"></cooltextarea>
     
         <div class="header2 container margin-top">Four Emoji Groups</div>
         <cooltextarea class="margin-top container" 
             :content="content" 
             :emojiData="emojiDataFourCollections"
             :emojiGroups="emojiGroups"
-            componentColor="sun"></cooltextarea>
+            componentColor="sun"
+            :searchEmojisFeat="true"></cooltextarea>
     
         <div class="header1 row margin-top margin-bottom" id="requirements">
             Requirements:
         </div>
         <div class="container margin-bottom">- Cool Emoji Picker is made with Vue, for Vue (for the time being).</div>
-        <div class="container margin-bottom">
-            - For CoolPicker component to work your browser needs to 
-            support <a href="https://caniuse.com/#feat=intersectionobserver">IntersectionObserver</a> 
-            and <a href="https://caniuse.com/#feat=array-find">ES6 Array functions</a>. 
-        </div>
         <div class="container margin-bottom">
             - For CoolPicker component search feature to work your browser needs to support 
             <a href="https://caniuse.com/#feat=es6-string-includes">String Includes</a>.
@@ -818,15 +817,6 @@
         </div>
         <div class="container margin-bottom">
             - Feature: option for user to choose send method (Enter or Shift + Enter)
-        </div>
-        <div class="container margin-bottom">
-            - Feature: Emoji groups header
-        </div>
-        <div class="container margin-bottom">
-            - Feature: Emoji search (option to enable/disable)
-        </div>
-        <div class="container margin-bottom">
-            - Feature: Auto popup emoji picker on typing : (also searchs the picker the keyword)
         </div>
         <div class="container margin-bottom">
             - Feature: Tabs for Emojis Groups

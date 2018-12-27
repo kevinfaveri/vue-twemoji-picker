@@ -1,7 +1,7 @@
 import EmojiService from '../../services/emoji-service';
 import Popper from 'vue-popperjs';
 import 'vue-popperjs/dist/css/vue-popper.css';
-import { ObserveVisibility } from 'vue-observe-visibility';
+import { dragscroll } from 'vue-dragscroll';
 
 export default {
   name: 'CoolPicker',
@@ -9,7 +9,7 @@ export default {
     'popper': Popper,
   },
   directives: {
-    ObserveVisibility
+    'dragscroll': dragscroll
   },
   props: {
     emojiData: {
@@ -88,8 +88,11 @@ export default {
   data() {
     return {
       emojiPack: [],
-      visibleEmojiGroups: [],
+      emojiListActive: [],
+      emojiGroupActive: 0,
+
       randomEmoji: '😄',
+
       skinToneActive: 0,
       isPointerOnEmojiBtn: false,
       twemojiOptions: {},
@@ -97,13 +100,14 @@ export default {
       recentEmojis: [],
 
       searchTerm: '',
-      searchEmojis: [],
+      searchEmojis: [ { emoji: '😄' }],
       searchTimeout: null,
     }
   },
   watch: {
     skinToneActive() {
       this.buildEmojiPack();
+      this.emojiListActive = this.emojiPack[this.emojiGroupActive].emojiList;
       if (this.searchTerm.length !== 0) {
         this.searchEmojiByTerm();
       }
@@ -120,23 +124,13 @@ export default {
       this.setRecentEmojis();
     }
     this.buildEmojiPack();
+    this.emojiListActive = this.emojiPack[0].emojiList;
     this.setRandomEmoji();
   },
   methods: {
     // Emoji Pack
     buildEmojiPack() {
-      const emojiDataTrim = [];
-      if (this.emojiData.length === 1) {
-        emojiDataTrim.push(this.emojiData[0]);
-        this.visibleEmojiGroups.push(this.emojiData[0].group);
-      } else if (this.emojiData.length >= 2) {
-        this.visibleEmojiGroups.push(this.emojiData[0].group);
-        this.visibleEmojiGroups.push(this.emojiData[1].group);
-
-        emojiDataTrim.push(this.emojiData[0]);
-        emojiDataTrim.push(this.emojiData[1]);
-      }
-      this.emojiPack = EmojiService.getEmojiImgArrayFromEmojiPack(emojiDataTrim, this.skinToneActive, this.twemojiOptions);
+      this.emojiPack = EmojiService.getEmojiImgArrayFromEmojiPack(this.emojiData, this.skinToneActive, this.twemojiOptions);
     },
     addOnDemandToEmojiPack(emojiData) {
       this.emojiPack = this.emojiPack.concat(
@@ -188,31 +182,22 @@ export default {
       return 'Group ' + emojiGroup;
     },
 
+    changeEmojiListActive(index) {
+      this.searchTerm = '';
+      this.emojiGroupActive = index;
+      if (index >= 0) {
+        this.emojiListActive = this.emojiPack[index].emojiList;
+      } else if (index === -1) {
+        this.emojiListActive = this.recentEmojis;
+      }
+    },
+
     setSkinTone(tone) {
       this.skinToneActive = tone;
     },
 
     getEmojiImgFromUnicode(unicode) {
       return EmojiService.getEmojiImgFromUnicode(unicode, this.twemojiOptions);
-    },
-
-    // On Demand Rendering of Emoji Groups
-    visibilityChanged(isVisible, entry) {
-      if (isVisible) {
-        const groupIdVisible = Number(entry.target.id);
-        const indexOfEmojiData = this.emojiData.findIndex(x => x.group === groupIdVisible);
-        let indexOfVisibleEmojiGroup;
-
-        if ((indexOfEmojiData + 1) !== this.emojiData.length) {
-          indexOfVisibleEmojiGroup = this.visibleEmojiGroups.findIndex(x => x === this.emojiData[indexOfEmojiData + 1].group);
-        }
-
-        if (this.emojiData[indexOfEmojiData + 1] !== undefined 
-          && indexOfVisibleEmojiGroup === -1) {
-          this.visibleEmojiGroups.push(this.emojiData[indexOfEmojiData + 1].group);
-          this.addOnDemandToEmojiPack(this.emojiData[indexOfEmojiData + 1]);
-        }
-      }
     },
 
     setRecentEmojis() {
@@ -230,10 +215,6 @@ export default {
       }
     },
     addEmojiToRecentEmojis(emojiUnicode) {
-      if (this.recentEmojis.length === this.recentEmojiLimit) {
-        this.recentEmojis.splice(-1, 1);
-      }
-
       const indexToRemove = this.recentEmojis.findIndex(x => x.unicode === emojiUnicode);
       if (indexToRemove !== -1) {
         this.recentEmojis.splice(indexToRemove, 1);
@@ -254,6 +235,10 @@ export default {
           );
       }
 
+      if (this.recentEmojis.length > this.recentEmojiLimit) {
+        this.recentEmojis.splice(-1, 1);
+      }
+
       if (this.recentEmojisStorage === 'local') {
         localStorage.setItem(this.recentEmojiStorageName, JSON.stringify(this.recentEmojis));
       } else if (this.recentEmojisStorage === 'session') {
@@ -272,7 +257,11 @@ export default {
               this.twemojiOptions, 
               this.searchTerm
               );
+          this.emojiGroupActive = -2;
+          this.emojiListActive = this.searchEmojis;
           }, 300);
+      } else {
+        this.changeEmojiListActive(0);
       }
     }
   }

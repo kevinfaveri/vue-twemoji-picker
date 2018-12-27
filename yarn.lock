@@ -7871,6 +7871,11 @@ vue-burger-menu@^1.0.9:
   dependencies:
     vue "^2.5.17"
 
+vue-dragscroll@^1.8.1:
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/vue-dragscroll/-/vue-dragscroll-1.8.1.tgz#cedcf4559678379e360c1a3300d48f22225be00d"
+  integrity sha512-dZFhNDKFiYs8v+IUpO8IO7HKkmhVNvTTpUUDCGot+8M6C9EUG9CBb9tilA7Uv7f1KBSYRUV/gC8bMvUlIHtv3Q==
+
 vue-eslint-parser@^2.0.3:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/vue-eslint-parser/-/vue-eslint-parser-2.0.3.tgz#c268c96c6d94cfe3d938a5f7593959b0ca3360d1"
@@ -7910,11 +7915,6 @@ vue-loader@^15.4.2:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
-
-vue-observe-visibility@^0.4.3:
-  version "0.4.3"
-  resolved "https://registry.yarnpkg.com/vue-observe-visibility/-/vue-observe-visibility-0.4.3.tgz#b2694a83c94b274f566e03a497df51540e2daedc"
-  integrity sha512-YyyO3a5OUkgpmC0NEf+xWJR0jVdFWzVbKRDzUumOVMhfr3+jxXEycYNHCM3rEO5lcj3ZNJpDomZEYEx0Wqqh9A==
 
 vue-popperjs@^1.6.1:
   version "1.6.1"

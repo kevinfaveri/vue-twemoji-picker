@@ -1,7 +1,8 @@
 ## Cool Emoji Picker
 A plug-n-play [Tw]emoji Picker (+ optional textarea for Twemoji rendering) for Vue with search and recent emojis features!
+Supports latest emoji unicodes released (v. 11) and skin tones.
 
-![alt text](https://i.imgur.com/iamvbSL.png "Cool Emoji Picker Demo")
+![alt text](https://i.imgur.com/J85ENXD.png "Cool Emoji Picker Demo")
 
 ## Documentation
 GitHub Repo: 

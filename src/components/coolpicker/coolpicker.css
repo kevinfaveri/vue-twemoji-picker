@@ -25,7 +25,24 @@ img.emoji {
 }
 
 /* Parent Emoji Popover */
+#emoji-popup {
+  width: 250px;
+}
+
+#emoji-popover-header {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+#emoji-popover-header::-webkit-scrollbar {
+  display: none;
+}
+
 #emoji-popover-inner {
+  border-top: #bdbcbc solid 1px;
   max-height: 200px;
   width: 250px;
   overflow-y: auto;
@@ -33,31 +50,30 @@ img.emoji {
 }
 
 /* Inside Emoji Pack */
-.emoji-list-header {
-  margin-top: 5px;
-  margin-bottom: 5px;
-  text-align: center;
+.emoji-tab {
+  margin: 3px;
+  border-radius: 5px;
+  padding: 5px;
+  padding-bottom: 8px;
+  cursor: pointer;
+  border-top: 3px solid #e6e6e6;
+  border-left: 3px solid #e6e6e6;
+  border-right: 3px solid #e6e6e6;
 }
 
-.emoji-list-header > span {
-  border-radius: 10px;
-  padding: 10px;
-  background-color: #e6e6e6;
-  font-weight: bold;
-  font-size: 16px;
+.emoji-tab:hover {
+  background-color: #bdbcbc;
+  border-color: #bdbcbc;
 }
 
-.emoji-list-header > span > img.emoji {
-  margin-right: 2px;
-  margin-left: 2px;
-  width: 27px;
-  height: 27px;
+.emoji-tab.active {
+  background-color: #bdbcbc;
+  border-color: #bdbcbc;
 }
 
 .emoji-list {
   padding: 10px;
-  margin-top: 10px;
-  margin-bottom: 10px;
+  margin: 0px;
   text-align: justify;
 }
 
@@ -104,7 +120,7 @@ img.emoji {
   padding-bottom: 5px;
   margin: 0px;
   text-align: center;
-  border-top: #999999 solid 1px;
+  border-top: #bdbcbc solid 1px;
 }
 
 .tone {
@@ -148,6 +164,7 @@ img.emoji {
 
 /* Scrollbar */
 .scroll-clean::-webkit-scrollbar {
+  height: 12px;
   width: 12px;
 }
 
@@ -193,4 +210,3 @@ img.emoji {
   border: none;
   background-color: transparent;
 }
-
