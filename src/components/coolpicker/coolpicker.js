@@ -12,6 +12,14 @@ export default {
     'dragscroll': dragscroll
   },
   props: {
+    pickerWidth: {
+      default: 250,
+      type: Number,
+    },
+    pickerMaxHeight: {
+      default: 200,
+      type: Number,
+    },
     emojiData: {
       default: () => [],
       type: Array,

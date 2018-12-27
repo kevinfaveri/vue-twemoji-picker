@@ -25,10 +25,6 @@ img.emoji {
 }
 
 /* Parent Emoji Popover */
-#emoji-popup {
-  width: 250px;
-}
-
 #emoji-popover-header {
   padding-top: 5px;
   padding-bottom: 5px;
@@ -43,8 +39,6 @@ img.emoji {
 
 #emoji-popover-inner {
   border-top: #bdbcbc solid 1px;
-  max-height: 200px;
-  width: 250px;
   overflow-y: auto;
   overflow-x: hidden;
 }

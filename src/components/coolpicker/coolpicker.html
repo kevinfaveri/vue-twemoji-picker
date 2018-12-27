@@ -1,5 +1,5 @@
 <popper id="popper-emoji" trigger="click" :options="{placement: 'top'}">
-  <div class="popper" id="emoji-popup">
+  <div class="popper" id="emoji-popup" :style="{ width: pickerWidth + 'px' }">
       <div id="emoji-popover-header" v-dragscroll>
         <span 
           v-if="recentEmojisFeat && recentEmojis.length !== 0"
@@ -24,7 +24,8 @@
         </div>
       </div>
 
-      <div id="emoji-popover-inner" class="scroll-clean">
+      <div id="emoji-popover-inner" class="scroll-clean" 
+        :style="{ width: pickerWidth + 'px', maxHeight: pickerMaxHeight + 'px' }">
 
         <div v-if="searchTerm.length !== 0 && searchEmojis.length === 0">
           <strong>{{ searchEmojiNotFound }}</strong>
