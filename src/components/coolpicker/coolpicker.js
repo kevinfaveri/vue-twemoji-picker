@@ -136,7 +136,6 @@ export default {
     this.setRandomEmoji();
   },
   methods: {
-    // Emoji Pack
     buildEmojiPack() {
       this.emojiPack = EmojiService.getEmojiImgArrayFromEmojiPack(this.emojiData, this.skinToneActive, this.twemojiOptions);
     },

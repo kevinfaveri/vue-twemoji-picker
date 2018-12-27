@@ -6,6 +6,7 @@
         <a href="#coolpicker-docs" class="doc-index-lvl2">CoolPicker Docs</a>
         <a href="#cooltextarea-docs" class="doc-index-lvl2">CoolTextArea Docs</a>
         <a href="#emoji-data-index" class="doc-index-lvl2">Emoji Data Index</a>
+        <a href="#emoji-langs" class="doc-index-lvl2">Emoji Langs</a>
         <a href="#credits" class="doc-index-lvl2">Credits</a>
         <a href="#roadmap" class="doc-index-lvl2">Roadmap</a>
     </slide>
@@ -146,14 +147,10 @@
             - In most cases <a href="https://polyfill.io/v2/docs/">Polyfill.io</a> can ensure support for older browsers.
         </div>
        
-        <div class="margin-bottom text-center container">
-            Any suggestion or bug please report at <a href="https://github.com/kevinfaguiar/cool-emoji-picker/issues">Issues</a>
-        </div>
-    
         <div class="header1 row margin-top margin-bottom" id="getting-started">
             Getting Started
         </div>
-        <div class="container">
+        <div class="row col-12">
             <strong class="row margin-top">- To install Cool Emoji Picker on your Vue project you can run, for NPM:</strong>
             <div class="row code-block padding-all margin-bottom">npm install cool-emoji-picker</div>
     
@@ -164,7 +161,9 @@
             <div class="row code-block padding-all margin-bottom text-wrap text-break">
                 JAVASCRIPT:
                 import { CoolPicker } from 'cool-emoji-picker';
-                import EmojiData from 'cool-emoji-picker/src/emoji-data/emoji-all-groups.json';
+                import EmojiData from 'cool-emoji-picker/src/emoji-data/{LANG}/emoji-all-groups.json';
+                import EmojiDataAnimalsNature from 'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-animals-nature.json';
+                import EmojiDataFoodDrink from 'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-food-drink.json';
                 import EmojiGroups from 'cool-emoji-picker/src/emoji-data/emoji-groups.json';
     
                 export default {
@@ -174,6 +173,12 @@
                         emojiDataAll() {
                             return EmojiData;
                         },
+                        emojiDataTwoCollections() {
+                            const emojiData = [];
+                            emojiData.push(EmojiDataAnimalsNature);
+                            emojiData.push(EmojiDataFoodDrink);
+                            return emojiData;
+                        },
                         emojiGroups() {
                             return EmojiGroups;
                         }
@@ -181,8 +186,17 @@
                 }
     
                 TEMPLATE:
+                // Emoji picker component using all emojis
                 &lt;coolpicker
                     :emojiData="emojiDataAll" 
+                    :emojiGroups="emojiGroups" 
+                    :skinToneSelection="true"
+                    @emojiUnicodeAdded="yourMethodToCatchEmojiUnicode"
+                    @emojiImgAdded="yourMethodToCatchEmojiImg" &gt;&lt;/coolpicker&gt;
+
+                // Emoji picker component using only two emoji groups
+                &lt;coolpicker
+                    :emojiData="emojiDataTwoCollections" 
                     :emojiGroups="emojiGroups" 
                     :skinToneSelection="true"
                     @emojiUnicodeAdded="yourMethodToCatchEmojiUnicode"
@@ -758,7 +772,8 @@
         </div>
         <div class="container margin-top">
             This library execute some optimizations excluding unnecessary fields (for this component) in an already indexed list of Unicode 
-            emojis from the lib <a href="https://milesj.gitbook.io/emojibase">'emojibase'</a>. Below you have info for each emoji bundle:
+            emojis from the lib <a href="https://milesj.gitbook.io/emojibase">'emojibase'</a>. Below you have info for each emoji bundle and 
+            import paths (<a href="#emoji-langs">where {LANG} is your preferred language</a>):
         </div>
 
         <table class="row col-12 table">
@@ -771,47 +786,47 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/emoji-all-groups.json'</td>
+                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-all-groups.json'</td>
                     <td>120KB</td>
                     <td>23KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/emoji-group-smileys-people.json'</td>
+                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-smileys-people.json'</td>
                     <td>60KB</td>
                     <td>10KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/emoji-group-symbols.json'</td>
+                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-symbols.json'</td>
                     <td>14KB</td>
                     <td>3KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/emoji-group-travel-places.json'</td>
+                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-travel-places.json'</td>
                     <td>12KB</td>
                     <td>3KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/emoji-group-objects.json'</td>
+                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-objects.json'</td>
                     <td>12KB</td>
                     <td>3KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/emoji-group-flags.json'</td>
+                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-flags.json'</td>
                     <td>14KB</td>
                     <td>2KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/emoji-group-food-drink.json'</td>
+                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-food-drink.json'</td>
                     <td>7KB</td>
                     <td>2KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/emoji-group-animals-nature.json'</td>
+                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-animals-nature.json'</td>
                     <td>7KB</td>
                     <td>2KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/emoji-group-activities.json'</td>
+                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-activities.json'</td>
                     <td>6KB</td>
                     <td>2KB</td>
                 </tr>
@@ -824,11 +839,39 @@
         </table>
         <div class="container">
             PS: You can provide your own emoji.json index file with a list of emoji Unicodes, 
-            but you will need to follow the structure of the bundles generated by this library (like cool-emoji-picker/src/emoji-data/emoji-all-groups.json).
+            but you will need to follow the structure of the bundles generated by this library (like cool-emoji-picker/src/emoji-data/{LANG}/emoji-all-groups.json).
         </div>
         <div class="container">
             PS: You can provide your own emoji-groups.json index file with a list of emoji groups name, 
             but you will need to follow the structure of the bundle generated by this library (cool-emoji-picker/src/emoji-data/emoji-groups.json).
+        </div>
+
+        <div class="header1 row margin-top margin-bottom" id="emoji-langs">
+            Emoji Langs
+        </div>
+        <div class="container">
+            The emoji bundles comes with 19 emoji bundles for 19 different languages. Below is the list of available languages:
+        </div>
+        <div class="container">
+            <strong class="row col-12">- emoji-data/zh - Chinese (zh)</strong>
+            <strong class="row col-12">- emoji-data/zh-hant - Chinese, Traditional (zh-hant)</strong>
+            <strong class="row col-12">- emoji-data/da - Danish (da)</strong>
+            <strong class="row col-12">- emoji-data/nl - Dutch (nl)</strong>
+            <strong class="row col-12">- emoji-data/en - English (en)</strong>
+            <strong class="row col-12">- emoji-data/en-gb - English, Great Britain (en-gb)</strong>
+            <strong class="row col-12">- emoji-data/fr - French (fr)</strong>
+            <strong class="row col-12">- emoji-data/de - German (de)</strong>
+            <strong class="row col-12">- emoji-data/it - Italian (it)</strong>
+            <strong class="row col-12">- emoji-data/ja - Japanese (ja)</strong>
+            <strong class="row col-12">- emoji-data/ko - Korean (ko)</strong>
+            <strong class="row col-12">- emoji-data/ms - Malay (ms)</strong>
+            <strong class="row col-12">- emoji-data/pl - Polish (pl)</strong>
+            <strong class="row col-12">- emoji-data/pt - Portuguese (pt)</strong>
+            <strong class="row col-12">- emoji-data/ru - Russian (ru)</strong>
+            <strong class="row col-12">- emoji-data/es - Spanish (es)</strong>
+            <strong class="row col-12">- emoji-data/es-mx - Spanish, Mexico (es-mx)</strong>
+            <strong class="row col-12">- emoji-data/sv - Swedish (sv)</strong>
+            <strong class="row col-12">- emoji-data/th - Thai (th)</strong>
         </div>
 
         <div class="header1 row margin-top margin-bottom" id="credits">
@@ -855,22 +898,20 @@
             - Feature: option for user to choose send method (Enter or Shift + Enter)
         </div>
         <div class="container margin-bottom">
-            - Feature: Tabs for Emojis Groups
-        </div>
-        <div class="container margin-bottom">
             - Show a loading icon while IMG tags are loading in Emoji picker
-        </div>
-        <div class="container margin-bottom">
-            - Multiple languages support for emoji bundles
         </div>
         <div class="container margin-bottom">
             - Validator for emojiData and emojiGroups structures; and for twemojiPath prop
         </div>
         <div class="container margin-bottom">
-            - Optimize Popover plugin size
+            - Component size optimization
         </div>
         <div class="container margin-bottom">
             - Support for React, Angular, Ember
+        </div>
+
+        <div class="margin-bottom text-center container">
+            Any suggestion or bug please report at <a href="https://github.com/kevinfaguiar/cool-emoji-picker/issues">Issues</a>
         </div>
     </div>
 </div>
