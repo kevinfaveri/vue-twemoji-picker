@@ -1,17 +1,17 @@
 <popper id="popper-emoji" trigger="click" :options="{placement: 'top'}">
   <div class="popper" id="emoji-popup" :style="{ width: pickerWidth + 'px' }">
-      <div id="emoji-popover-header" v-dragscroll>
+      <div id="emoji-popover-header" class="grab-bing" v-dragscroll>
         <span 
           v-if="recentEmojisFeat && recentEmojis.length !== 0"
           v-html="getEmojiImgFromUnicode('⏱️')"
-          class="emoji-tab"
+          class="emoji-tab grab-bing"
           @click="changeEmojiListActive(-1)"
           :class="{ 'active': emojiGroupActive === -1 }"></span>
         <span v-for="(emojiGroup, index) in emojiPack" 
           :key="emojiGroup.group" 
           :id="emojiGroup.group"
           v-html="getEmojiGroupDescription(emojiGroup.group)"
-          class="emoji-tab"
+          class="emoji-tab grab-bing"
           @click="changeEmojiListActive(index)"
           :class="{ 'active': emojiGroupActive === index }">
         </span>

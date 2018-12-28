@@ -26,8 +26,7 @@ img.emoji {
 
 /* Parent Emoji Popover */
 #emoji-popover-header {
-  padding-top: 5px;
-  padding-bottom: 5px;
+  padding: 5px;
   overflow-y: hidden;
   overflow-x: auto;
   white-space: nowrap;
@@ -203,4 +202,20 @@ img.emoji {
   border-radius: 5px;
   border: none;
   background-color: transparent;
+}
+
+/** Grab Cursor */
+.grab-bing {
+  cursor : -webkit-grab;
+  cursor : -moz-grab;
+  cursor : -o-grab;
+  cursor : grab;
+}
+ 
+ 
+.grab-bing:active {
+  cursor : -webkit-grabbing;
+  cursor : -moz-grabbing;
+  cursor : -o-grabbing;
+  cursor : grabbing;
 }
