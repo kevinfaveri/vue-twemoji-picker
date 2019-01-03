@@ -20,6 +20,21 @@ export default {
       default: 200,
       type: Number,
     },
+    appendToBody: {
+      default: false,
+      type: Boolean,
+    },
+    triggerType: {
+      default: 'click',
+      type: String,
+      validator: function (value) {
+        if (value !== 'click' && value !== 'hover') {
+          console.error('The value entered for the prop "triggerType" is invalid. '+
+            'Valid values: "click" and "hover".');
+        }
+        return true;
+      }
+    },
     emojiData: {
       default: () => [],
       type: Array,

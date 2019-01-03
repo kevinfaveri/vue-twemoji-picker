@@ -1,4 +1,4 @@
-<popper id="popper-emoji" trigger="click" :options="{placement: 'top'}">
+<popper id="popper-emoji" :trigger="triggerType" :options="{placement: 'top'}" :append-to-body="appendToBody">
   <div class="popper" id="emoji-popup" :style="{ width: pickerWidth + 'px' }">
       <div id="emoji-popover-header" class="grab-bing" v-dragscroll>
         <span 
