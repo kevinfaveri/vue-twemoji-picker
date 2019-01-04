@@ -3,6 +3,10 @@
   "version": "2.0.3",
   "main": "./index.js",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:kevinfaguiar/cool-emoji-picker.git"
+  },
   "keywords": [
     "emoji-data",
     "twemoji",
