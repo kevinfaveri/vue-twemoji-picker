@@ -4,11 +4,7 @@ Supports latest emoji unicodes released (v. 11), skin tones and 19 languages.
 
 ![alt text](https://i.imgur.com/J85ENXD.png "Cool Emoji Picker Demo")
 
-## Documentation
-GitHub Repo: 
-https://github.com/kevinfaguiar/cool-emoji-picker
-
-Documentation and demo are available here:
+## Documentation and Demo
 https://kevinfaguiar.github.io/cool-emoji-picker/#home
 
 ## Credits
