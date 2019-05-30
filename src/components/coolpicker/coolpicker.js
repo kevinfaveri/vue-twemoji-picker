@@ -20,6 +20,10 @@ export default {
       default: 200,
       type: Number,
     },
+    emojisEffect:{
+      default:true,
+      type:Boolean,
+    },
     appendToBody: {
       default: false,
       type: Boolean,
@@ -135,7 +139,7 @@ export default {
       } else if (this.emojiGroupActive !== -1) {
         this.emojiListActive = this.emojiPack[this.emojiGroupActive].emojiList;
       }
-    },
+    },    
   },
   computed: {
     randomEmojiImg() {
@@ -161,14 +165,18 @@ export default {
       );
     },
     onMouseEnterEmojiBtn() {
-      if (this.isPointerOnEmojiBtn === false) {
-        this.isPointerOnEmojiBtn = true;
-        this.setRandomEmoji();
+      if(this.emojisEffect) {
+        if (this.isPointerOnEmojiBtn === false) {
+          this.isPointerOnEmojiBtn = true;
+          this.setRandomEmoji();
+        }
       }
-    },
+   },
     onMouseLeaveEmojiBtn() {
-      if (this.isPointerOnEmojiBtn === true) {
-        this.isPointerOnEmojiBtn = false;
+      if(this.emojisEffect) {
+        if (this.isPointerOnEmojiBtn === true) {
+          this.isPointerOnEmojiBtn = false;
+        }
       }
     },
     setRandomEmoji() {
