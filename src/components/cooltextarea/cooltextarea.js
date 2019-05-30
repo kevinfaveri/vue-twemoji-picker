@@ -17,6 +17,10 @@ export default {
       default: 200,
       type: Number,
     },
+     emojisEffect:{
+      default:true,
+      type:Boolean,
+    },
     appendToBody: {
       default: false,
       type: Boolean,
