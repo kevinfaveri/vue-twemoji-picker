@@ -41,4 +41,7 @@
   <div id="send-btn" @click="emitEnterKeyEvent()" v-if="enableSendBtn">
     <img src="../../assets/send-icon.png"/>
   </div>
+  
+  <slot name='microphone'></slot>
+  
 </div>
