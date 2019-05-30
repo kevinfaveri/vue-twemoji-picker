@@ -21,7 +21,7 @@ export default {
       type: Number,
     },
     emojisEffect:{
-      default:true,
+      default:false,
       type:Boolean,
     },
     appendToBody: {
