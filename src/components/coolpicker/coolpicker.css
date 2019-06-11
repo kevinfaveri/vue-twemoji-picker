@@ -1,20 +1,19 @@
 /* Global */
-#popper-emoji {
+.disable-user-select {
   -moz-user-select: none;
   -webkit-user-select: none;
   -ms-user-select: none;
 }
 
+.tooltip:focus,
 #btn-emoji:focus, 
-.tone:focus,
 #emoji-popover-search > #search-header > input,
 #emoji-popover-search > #search-header > button {
   outline: none !important;
 }
 
 #btn-emoji,
-.emoji-list,
-#tones {
+.emoji-list {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
@@ -25,6 +24,10 @@ img.emoji {
 }
 
 /* Parent Emoji Popover */
+#emoji-popup > .v-popover {
+  max-height: 0px !important;
+}
+
 #emoji-popover-header {
   padding: 5px;
   overflow-y: hidden;
@@ -36,7 +39,7 @@ img.emoji {
   display: none;
 }
 
-#emoji-popover-inner {
+.emoji-popover-inner {
   border-top: #bdbcbc solid 1px;
   overflow-y: auto;
   overflow-x: hidden;
@@ -85,13 +88,6 @@ img.emoji {
 }
 
 /* Popper Emoji */
-#popper-emoji {
-  flex-grow: 5;
-  flex-basis: 0;
-  display: flex;
-  flex-flow: row wrap;
-}
-
 #btn-emoji {
   flex-grow: 100;
   border: none;
@@ -105,54 +101,6 @@ img.emoji {
 #btn-emoji > div > img.emoji {
   height: 25px;
   width: 25px;
-}
-
-/* Emoji Tones */
-#tones {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  margin: 0px;
-  text-align: center;
-  border-top: #bdbcbc solid 1px;
-}
-
-.tone {
-  cursor: pointer;
-  border: none;
-  border-radius: 5px;
-  padding: 0;
-  margin-right: 5px;
-  margin-left: 5px;
-  width: 25px;
-  height: 25px;
-}
-
-.tone:hover {
-  opacity: 0.5;
-}
-
-.no-tone {
-  background-color: #FFCC4D;
-}
-
-.light-skin-tone {
-  background-color: #F7DECE;
-}
-
-.medium-light-skin-tone {
-  background-color: #F3D2A2;
-}
-
-.medium-skin-tone {
-  background-color: #D5AB88;
-}
-
-.medium-dark-skin-tone {
-  background-color: #AF7E57;
-}
-
-.dark-skin-tone {
-  background-color: #7C533E;
 }
 
 /* Scrollbar */
@@ -204,7 +152,7 @@ img.emoji {
   background-color: transparent;
 }
 
-/** Grab Cursor */
+/** Cursor */
 .grab-bing {
   cursor : -webkit-grab;
   cursor : -moz-grab;
@@ -218,4 +166,125 @@ img.emoji {
   cursor : -moz-grabbing;
   cursor : -o-grabbing;
   cursor : grabbing;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+/*Vue Tooltip / Popover Styles */
+.tooltip {
+  display: block !important;
+  z-index: 10000;
+}
+
+.tooltip .tooltip-inner {
+  background: black;
+  color: white;
+  border-radius: 16px;
+  padding: 5px 10px 4px;
+}
+
+.tooltip .tooltip-arrow {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  position: absolute !important;
+  margin: 5px;
+  border-color: #777676 !important;
+  z-index: 1;
+}
+
+.tooltip[x-placement^="top"] {
+  margin-bottom: 5px;
+}
+
+.tooltip[x-placement^="top"] .tooltip-arrow {
+  border-width: 5px 5px 0 5px;
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+  bottom: -5px;
+  left: calc(50% - 5px);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.tooltip[x-placement^="bottom"] {
+  margin-top: 5px;
+}
+
+.tooltip[x-placement^="bottom"] .tooltip-arrow {
+  border-width: 0 5px 5px 5px;
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+  border-top-color: transparent !important;
+  top: -5px;
+  left: calc(50% - 5px);
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.tooltip[x-placement^="right"] {
+  margin-left: 5px;
+}
+
+.tooltip[x-placement^="right"] .tooltip-arrow {
+  border-width: 5px 5px 5px 0;
+  border-left-color: transparent !important;
+  border-top-color: transparent !important;
+  border-bottom-color: transparent !important;
+  left: -5px;
+  top: calc(50% - 5px);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.tooltip[x-placement^="left"] {
+  margin-right: 5px;
+}
+
+.tooltip[x-placement^="left"] .tooltip-arrow {
+  border-width: 5px 0 5px 5px;
+  border-top-color: transparent !important;
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+  right: -5px;
+  top: calc(50% - 5px);
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.tooltip.popover .popover-inner {
+  padding: 5px !important;
+  background: #f9f9f9;
+  color: black;
+  padding: 24px;
+  border-radius: 5px;
+  border: #bdbcbc solid 1px;
+  box-shadow: 0 5px 30px rgba(black, .1);
+}
+
+.tooltip.popover .popover-arrow {
+  border-color: #f9f9f9;
+}
+
+.tooltip[aria-hidden='true'] {
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .15s, visibility .15s;
+}
+
+.tooltip[aria-hidden='false'] {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity .15s;
+}
+
+.tooltip-arrow {
+  z-index: 99999 !important;
+}
+
+.popover-arrow {
+  border-color: #bdbcbc;
 }

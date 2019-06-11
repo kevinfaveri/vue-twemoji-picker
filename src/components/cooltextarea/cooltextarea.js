@@ -40,7 +40,7 @@ export default {
       default: () => [],
       type: Array,
     },
-    skinToneSelection: {
+    skinsSelection: {
       default: false,
       type: Boolean,
     },

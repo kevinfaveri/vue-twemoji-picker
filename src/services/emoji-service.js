@@ -6,7 +6,7 @@ export default {
     return Twemoji.parse(unicode, twemojiOptions);
   },
   
-  getEmojiImgArrayFromEmojiPack(emojiPack, skinTone, twemojiOptions) {
+  getEmojiImgArrayFromEmojiPack(emojiPack, twemojiOptions) {
     emojiPack = JSON.parse(JSON.stringify(emojiPack));
     let emojiPackWithImg = [];
 
@@ -20,9 +20,16 @@ export default {
           const emoji = {};
 
           if (emojiPack[i].emojiList[j].skins !== undefined 
-            && emojiPack[i].emojiList[j].skins.length !== 0 
-            && skinTone !== 0) {
-            emoji.unicode = emojiPack[i].emojiList[j].skins[skinTone - 1].unicode;
+            && emojiPack[i].emojiList[j].skins.length !== 0) {
+            emoji.unicode = emojiPack[i].emojiList[j].unicode;
+            emoji.skins = [];
+            for (let k = 0; k < emojiPack[i].emojiList[j].skins.length; k++) {
+              const skinObject = { 
+                unicode: emojiPack[i].emojiList[j].skins[k].unicode, 
+                img: this.getEmojiImgFromUnicode(emojiPack[i].emojiList[j].skins[k].unicode, twemojiOptions)
+              };
+              emoji.skins.push(skinObject);
+            }
           } else {
             emoji.unicode = emojiPack[i].emojiList[j].unicode;
           }
@@ -35,8 +42,7 @@ export default {
 
     return emojiPackWithImg;
   },
-
-  getEmojiImgArrayFromEmojiPackByTerm(emojiPack, skinTone, twemojiOptions, searchTerm) {
+  getEmojiImgArrayFromEmojiPackByTerm(emojiPack, twemojiOptions, searchTerm) {
     emojiPack = JSON.parse(JSON.stringify(emojiPack));
     let emojiPackWithImg = [];
 
@@ -46,9 +52,16 @@ export default {
           const emoji = {};
 
           if (emojiPack[i].emojiList[j].skins !== undefined 
-            && emojiPack[i].emojiList[j].skins.length !== 0 
-            && skinTone !== 0) {
-            emoji.unicode = emojiPack[i].emojiList[j].skins[skinTone - 1].unicode;
+            && emojiPack[i].emojiList[j].skins.length !== 0) {
+            emoji.unicode = emojiPack[i].emojiList[j].unicode;
+            emoji.skins = [];
+            for (let k = 0; k < emojiPack[i].emojiList[j].skins.length; k++) {
+              const skinObject = { 
+                unicode: emojiPack[i].emojiList[j].skins[k].unicode, 
+                img: this.getEmojiImgFromUnicode(emojiPack[i].emojiList[j].skins[k].unicode, twemojiOptions)
+              };
+              emoji.skins.push(skinObject);
+            }
           } else {
             emoji.unicode = emojiPack[i].emojiList[j].unicode;
           }

@@ -11,7 +11,7 @@
         <a href="#roadmap" class="doc-index-lvl2">Roadmap</a>
     </slide>
     <div class="app container">
-        <div class="header1 margin-top" id="home">
+        <div class="header1 margin-header" id="home">
             <span>Cool Emoji Picker</span>
         </div>
 
@@ -34,8 +34,9 @@
                 class="bg-cream margin-bottom margin-top b-rounded"
                 :emojiData="emojiDataAll" 
                 :emojiGroups="emojiGroups" 
-                :skinToneSelection="true"
+                :skinsSelection="false"
                 :searchEmojisFeat="true"
+                :appendToBody="true"
                 searchEmojiPlaceholder="Search here."
                 searchEmojiNotFound="Emojis not found."></coolpicker>
         </div>
@@ -50,12 +51,13 @@
                 :content.sync="content" 
                 :emojiData="emojiDataAll" 
                 :emojiGroups="emojiGroups" 
-                :skinToneSelection="true"
+                :skinsSelection="true"
                 :enableSendBtn="true"
                 @enterKey="onEnterKey"
                 :recentEmojisFeat="true"
                 recentEmojisStorage="none"
                 :searchEmojisFeat="true"
+                :appendToBody="true"
                 ref="cooltextareaSend"></cooltextarea>
             <div class="text-center margin-bottom">
                 Tip: You can send any message above to try the component!
@@ -91,8 +93,8 @@
         
         <div class="text-center container margin-top margin-bottom">
             <strong>Cool Emoji Picker</strong> emoji picker uses 
-            <a href="http://www.unicode.org/emoji/charts-11.0/">Emoji Unicode 11</a> 
-            (latest emoji spec, from 2018, which includes skin tones) as its base, 
+            <a href="http://www.unicode.org/emoji/charts-12.0/">Emoji Unicode 12</a> 
+            (latest emoji spec, from 2019, which includes skins [tones, hair and diversity]) as its base, 
             and apply some trimming on the emoji list for better optimization of component size. 
             Also, for the sake of your bundle size, you can opt if you want all 
             emoji groups, or only smileys, or even only smileys and foods! The choice is yours!
@@ -190,7 +192,7 @@
                 &lt;coolpicker
                     :emojiData="emojiDataAll" 
                     :emojiGroups="emojiGroups" 
-                    :skinToneSelection="true"
+                    :skinsSelection="true"
                     @emojiUnicodeAdded="yourMethodToCatchEmojiUnicode"
                     @emojiImgAdded="yourMethodToCatchEmojiImg" &gt;&lt;/coolpicker&gt;
 
@@ -198,7 +200,7 @@
                 &lt;coolpicker
                     :emojiData="emojiDataTwoCollections" 
                     :emojiGroups="emojiGroups" 
-                    :skinToneSelection="true"
+                    :skinsSelection="true"
                     @emojiUnicodeAdded="yourMethodToCatchEmojiUnicode"
                     @emojiImgAdded="yourMethodToCatchEmojiImg" &gt;&lt;/coolpicker&gt;
             </div>
@@ -311,12 +313,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>skinToneSelection</td>
+                    <td>skinsSelection</td>
                     <td>Boolean</td> 
                     <td>true / false</td>
                     <td class="table-description">
-                        This is a boolean to enable or disable skin 
-                        tone selection in the emoji picker. Default: false.
+                        This is a boolean to enable or disable skins selection in the emoji picker. Default: false.
                     </td>
                 </tr>
                 <tr>
@@ -531,12 +532,11 @@
                     </td>
                 </tr>
                 <tr>
-                    <td>skinToneSelection</td>
+                    <td>skinsSelection</td>
                     <td>Boolean</td> 
                     <td>true / false</td>
                     <td class="table-description">
-                        This is a boolean to enable or disable skin 
-                        tone selection in the emoji picker. Default: false.
+                        This is a boolean to enable or disable skins selection in the emoji picker. Default: false.
                     </td>
                 </tr>
                  <tr>
@@ -788,13 +788,6 @@
                         This method cleans the textarea.
                     </td>
                 </tr>
-                <tr>
-                    <td>setSkinTone(tone)</td>
-                    <td>tone - Number (a number &gt;= 0 and &lt;= 5)</td>
-                    <td class="table-description">
-                        This method sets the skin tone active in the emoji picker.
-                    </td>
-                </tr>
             </tbody>
         </table>
 
@@ -823,12 +816,17 @@
             <tbody>
                 <tr>
                     <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-all-groups.json'</td>
-                    <td>120KB</td>
-                    <td>23KB</td>
+                    <td>129KB</td>
+                    <td>26KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-smileys-people.json'</td>
-                    <td>60KB</td>
+                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-smileys-emotion.json'</td>
+                    <td>9KB</td>
+                    <td>3KB</td>
+                </tr>
+                <tr>
+                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-people-body.json'</td>
+                    <td>57KB</td>
                     <td>10KB</td>
                 </tr>
                 <tr>
@@ -928,7 +926,7 @@
             Roadmap
         </div>
         <div class="container margin-bottom">
-            - Divide smileys emoji index bundle in two bundles: one with skin tones and the other without.
+            - Divide emoji index bundle in two bundles: one with skin tones and the other without.
         </div>
         <div class="container margin-bottom">
             - Feature: option for user to choose send method (Enter or Shift + Enter)

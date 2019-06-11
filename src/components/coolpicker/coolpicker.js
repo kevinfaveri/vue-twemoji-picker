@@ -1,12 +1,11 @@
 import EmojiService from '../../services/emoji-service';
-import Popper from 'vue-popperjs';
-import 'vue-popperjs/dist/css/vue-popper.css';
+import { VPopover } from 'v-tooltip';
 import { dragscroll } from 'vue-dragscroll';
 
 export default {
   name: 'CoolPicker',
   components: {
-    'popper': Popper,
+    'v-popover': VPopover,
   },
   directives: {
     'dragscroll': dragscroll
@@ -43,7 +42,7 @@ export default {
       default: () => [],
       type: Array,
     },
-    skinToneSelection: {
+    skinsSelection: {
       default: false,
       type: Boolean,
     },
@@ -110,13 +109,22 @@ export default {
   },
   data() {
     return {
+      popperOptions: {
+        modifiers: {
+          flip: {
+            enabled: false,
+          },
+        },
+      },
+      showSkinsSelector: false,
+      skinsListActive: [],
+
       emojiPack: [],
       emojiListActive: [],
       emojiGroupActive: 0,
 
       randomEmoji: '😄',
 
-      skinToneActive: 0,
       isPointerOnEmojiBtn: false,
       twemojiOptions: {},
 
@@ -126,16 +134,6 @@ export default {
       searchEmojis: [ { emoji: '😄' }],
       searchTimeout: null,
     }
-  },
-  watch: {
-    skinToneActive() {
-      this.buildEmojiPack();
-      if (this.searchTerm.length !== 0) {
-        this.searchEmojiByTerm();
-      } else if (this.emojiGroupActive !== -1) {
-        this.emojiListActive = this.emojiPack[this.emojiGroupActive].emojiList;
-      }
-    },
   },
   computed: {
     randomEmojiImg() {
@@ -153,12 +151,7 @@ export default {
   },
   methods: {
     buildEmojiPack() {
-      this.emojiPack = EmojiService.getEmojiImgArrayFromEmojiPack(this.emojiData, this.skinToneActive, this.twemojiOptions);
-    },
-    addOnDemandToEmojiPack(emojiData) {
-      this.emojiPack = this.emojiPack.concat(
-        EmojiService.getEmojiImgArrayFromEmojiPack([emojiData], this.skinToneActive, this.twemojiOptions)
-      );
+      this.emojiPack = EmojiService.getEmojiImgArrayFromEmojiPack(this.emojiData, this.twemojiOptions);
     },
     onMouseEnterEmojiBtn() {
       if (this.isPointerOnEmojiBtn === false) {
@@ -182,9 +175,12 @@ export default {
     clickEmoji(emoji) {
       let emojiUnicode;
       if (emoji.skins !== undefined 
-        && emoji.skins.length !== 0 
-        && this.skinToneActive !== 0) {
-          emojiUnicode = emoji.skins[this.skinToneActive - 1].unicode;
+        && emoji.skins.length !== 0
+        && this.skinsSelection) {
+          this.skinsListActive = Array.from(emoji.skins);
+          this.skinsListActive.unshift({ unicode: emoji.unicode, img: emoji.img });
+          this.showSkinsSelector = true;
+          return;
       } else {
         emojiUnicode = emoji.unicode;
       }
@@ -206,6 +202,7 @@ export default {
     },
 
     changeEmojiListActive(index) {
+      this.showSkinsSelector = false;
       this.searchTerm = '';
       this.emojiGroupActive = index;
       if (index >= 0) {
@@ -213,10 +210,6 @@ export default {
       } else if (index === -1) {
         this.emojiListActive = this.recentEmojis;
       }
-    },
-
-    setSkinTone(tone) {
-      this.skinToneActive = tone;
     },
 
     getEmojiImgFromUnicode(unicode) {
@@ -275,8 +268,7 @@ export default {
         this.searchTimeout = setTimeout(() => {
           this.searchEmojis = EmojiService
             .getEmojiImgArrayFromEmojiPackByTerm(
-              this.emojiData, 
-              this.skinToneActive, 
+              this.emojiData,
               this.twemojiOptions, 
               this.searchTerm
               );
