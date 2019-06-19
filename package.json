@@ -1,6 +1,6 @@
 {
   "name": "cool-emoji-picker",
-  "version": "3.0.1",
+  "version": "3.1.0",
   "main": "./index.js",
   "license": "MIT",
   "repository": {
@@ -27,8 +27,7 @@
   },
   "dependencies": {
     "twemoji": "^12.0.4",
-    "v-tooltip": "^2.0.2",
-    "vue-dragscroll": "^1.8.3"
+    "v-tooltip": "^2.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.4.5",

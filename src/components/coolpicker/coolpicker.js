@@ -1,14 +1,10 @@
 import EmojiService from '../../services/emoji-service';
 import { VPopover } from 'v-tooltip';
-import { dragscroll } from 'vue-dragscroll';
 
 export default {
   name: 'CoolPicker',
   components: {
     'v-popover': VPopover,
-  },
-  directives: {
-    'dragscroll': dragscroll
   },
   props: {
     pickerWidth: {

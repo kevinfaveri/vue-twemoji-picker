@@ -35,10 +35,6 @@ img.emoji {
   white-space: nowrap;
 }
 
-#emoji-popover-header::-webkit-scrollbar {
-  display: none;
-}
-
 .emoji-popover-inner {
   border-top: #bdbcbc solid 1px;
   overflow-y: auto;
@@ -104,6 +100,11 @@ img.emoji {
 }
 
 /* Scrollbar */
+.scroll-min::-webkit-scrollbar {
+  height: 6px !important;
+  width: 6px !important;
+}
+
 .scroll-clean::-webkit-scrollbar {
   height: 12px;
   width: 12px;
@@ -153,21 +154,6 @@ img.emoji {
 }
 
 /** Cursor */
-.grab-bing {
-  cursor : -webkit-grab;
-  cursor : -moz-grab;
-  cursor : -o-grab;
-  cursor : grab;
-}
- 
- 
-.grab-bing:active {
-  cursor : -webkit-grabbing;
-  cursor : -moz-grabbing;
-  cursor : -o-grabbing;
-  cursor : grabbing;
-}
-
 .clickable {
   cursor: pointer;
 }
@@ -261,12 +247,16 @@ img.emoji {
   color: black;
   padding: 24px;
   border-radius: 5px;
-  border: #bdbcbc solid 1px;
-  box-shadow: 0 5px 30px rgba(black, .1);
+  border-top: #bdbcbc solid 1px;
+  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
 }
 
 .tooltip.popover .popover-arrow {
-  border-color: #f9f9f9;
+  border-color: #000000 !important;
+  border-left-color: transparent !important;
+  border-right-color: transparent !important;
+  border-bottom-color: transparent !important;
+  left: calc(50% - 10px) !important;
 }
 
 .tooltip[aria-hidden='true'] {
@@ -283,8 +273,4 @@ img.emoji {
 
 .tooltip-arrow {
   z-index: 99999 !important;
-}
-
-.popover-arrow {
-  border-color: #bdbcbc;
 }
