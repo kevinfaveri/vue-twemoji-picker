@@ -4,6 +4,7 @@ import CoolPicker from '../coolpicker/coolpicker.vue';
 
 export default {
   name: 'CoolTextArea',
+  template:require('./cooltextarea.html'),
   components: {
     'coolpicker': CoolPicker,
   },
