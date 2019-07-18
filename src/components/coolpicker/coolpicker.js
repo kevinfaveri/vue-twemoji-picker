@@ -5,6 +5,7 @@ import { dragscroll } from 'vue-dragscroll';
 
 export default {
   name: 'CoolPicker',
+  template:require('./coolpicker.html'),
   components: {
     'popper': Popper,
   },
