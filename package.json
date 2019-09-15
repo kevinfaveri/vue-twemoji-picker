@@ -26,26 +26,26 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "twemoji": "^12.0.4",
+    "twemoji": "^12.1.2",
     "v-tooltip": "^2.0.2"
   },
   "devDependencies": {
-    "@babel/core": "^7.4.5",
-    "@vue/cli-plugin-babel": "^3.8.0",
-    "@vue/cli-plugin-eslint": "^3.8.0",
-    "@vue/cli-service": "^3.8.0",
-    "babel-eslint": "^10.0.1",
-    "babel-loader": "^8.0.4",
+    "@babel/core": "^7.6.0",
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "babel-eslint": "^10.0.3",
+    "babel-loader": "^8.0.6",
     "babel-preset-vue": "^2.0.2",
-    "emojibase-data": "^4.0.0",
+    "emojibase-data": "^4.0.2",
     "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0-0",
-    "node-sass": "^4.10.0",
-    "sass-loader": "^7.1.0",
+    "eslint-plugin-vue": "^5.2.3",
+    "node-sass": "^4.12.0",
+    "sass-loader": "^8.0.0",
     "vue": "^2.6.10",
-    "vue-burger-menu": "^2.0.1",
+    "vue-burger-menu": "^2.0.2",
     "vue-template-compiler": "^2.6.10",
-    "webpack-bundle-analyzer": "^3.3.2"
+    "webpack-bundle-analyzer": "^3.5.0"
   },
   "eslintConfig": {
     "root": true,
