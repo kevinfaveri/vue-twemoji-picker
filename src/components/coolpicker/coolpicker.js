@@ -106,7 +106,7 @@ export default {
   data() {
     return {
       disabled: {
-        default: true,
+        default: false,
         type: Boolean
       },
       popperOptions: {

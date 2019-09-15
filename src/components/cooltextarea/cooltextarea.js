@@ -114,11 +114,11 @@ export default {
       type: Boolean
     },
     disableEmojiPicker: {
-      default: true,
+      default: false,
       type: Boolean
     },
     disabled: {
-      default: true,
+      default: false,
       type: Boolean
     },
     componentColor: {
