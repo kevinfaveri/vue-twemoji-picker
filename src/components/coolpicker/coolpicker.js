@@ -1,10 +1,11 @@
 import EmojiService from '../../services/emoji-service';
-import { VPopover } from 'v-tooltip';
+import { Dropdown } from 'v-tooltip';
+import 'v-tooltip/dist/v-tooltip.css';
 
 export default {
   name: 'CoolPicker',
   components: {
-    'v-popover': VPopover,
+    'v-popover': Dropdown,
   },
   props: {
     disabled: {

@@ -2669,13 +2669,13 @@ cookie@0.4.0:
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.0.tgz#beb437e7022b3b6d49019d088665303ebe9c14ba"
   integrity sha512-+Hp8fLp57wnUSt0tY0tHEXh4voZRDnoIrZPqlo3DPiI4y9lwg/jqx+1Om94/W6ZaPDOUbnjOt/99w66zk+l1Xg==
 
-cool-emoji-picker@^3.2.1:
-  version "3.2.1"
-  resolved "https://registry.npmjs.org/cool-emoji-picker/-/cool-emoji-picker-3.2.1.tgz#5dcdbc76277b690c78303f9cbe5e7f03008b69a3"
-  integrity sha512-JfhCjXQeiNg+HuQyBdmkVTJZGQ4gOL19wywzbIHjcRIhqE3+fqwcRE+HkAEvmo/TCuI16k7qkfpHCvoIUd/FHQ==
+cool-emoji-picker@^4.0.0-beta-3:
+  version "4.0.0-beta-3"
+  resolved "https://registry.npmjs.org/cool-emoji-picker/-/cool-emoji-picker-4.0.0-beta-3.tgz#94864422ae4039690050efa82442c3dc45021444"
+  integrity sha512-1yQpve2oQrmDNYNgc3WP1cq+zqzESe96/xwNsyvyFJKINu71OBS29wQx/7L/qDIOyCokkxM/Y1clSpIO3PlXpQ==
   dependencies:
     twemoji "^12.1.2"
-    v-tooltip "^2.0.2"
+    v-tooltip "^3.0.0-alpha.11"
 
 copy-concurrently@^1.0.0:
   version "1.0.5"
@@ -9220,12 +9220,11 @@ uuid@^3.0.1, uuid@^3.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.3.2.tgz#1b4af4955eb3077c501c23872fc6513811587131"
   integrity sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==
 
-v-tooltip@^2.0.2:
-  version "2.0.2"
-  resolved "https://registry.yarnpkg.com/v-tooltip/-/v-tooltip-2.0.2.tgz#8610d9eece2cc44fd66c12ef2f12eec6435cab9b"
-  integrity sha512-xQ+qzOFfywkLdjHknRPgMMupQNS8yJtf9Utd5Dxiu/0n4HtrxqsgDtN2MLZ0LKbburtSAQgyypuE/snM8bBZhw==
+v-tooltip@^3.0.0-alpha.11:
+  version "3.0.0-alpha.11"
+  resolved "https://registry.npmjs.org/v-tooltip/-/v-tooltip-3.0.0-alpha.11.tgz#e278dfb068246acdd7b633baba2135599b3b22ab"
+  integrity sha512-n95vxc1fBZrCkmkJTuH/O0if+8r7r+dFfZpOYCysYT+bIJiK4gxMiEo8olTMoIM1uxikiOGN+CMURcW764m6Xw==
   dependencies:
-    lodash "^4.17.11"
     popper.js "^1.15.0"
     vue-resize "^0.4.5"
 
@@ -9267,6 +9266,13 @@ vue-burger-menu@^2.0.2:
   integrity sha512-SOJKRyEiSm92Qafnu1AxKKb9vQkFSHN5RtVyOi0heteObxPhz9gyT2tneInkOL8F9WdDwvop6EcDk/EeIl9p1A==
   dependencies:
     vue "^2.5.17"
+
+vue-cli-plugin-webpack-bundle-analyzer@^1.4.0:
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/vue-cli-plugin-webpack-bundle-analyzer/-/vue-cli-plugin-webpack-bundle-analyzer-1.4.0.tgz#a72bad03875f7d0d989103b962998e0f5ee70428"
+  integrity sha512-x7NIDe17IewKc/RaIkM2JBVGJLIKqlscxYKFJ130++yncU6zelAnwIVAKZI9cmtTi3nDJENB44H1BLi4CeU84A==
+  dependencies:
+    webpack-bundle-analyzer "^3.3.2"
 
 vue-eslint-parser@^2.0.3:
   version "2.0.3"
@@ -9386,9 +9392,9 @@ webpack-bundle-analyzer@^3.3.0:
     opener "^1.5.1"
     ws "^6.0.0"
 
-webpack-bundle-analyzer@^3.5.0:
+webpack-bundle-analyzer@^3.3.2:
   version "3.5.0"
-  resolved "https://registry.yarnpkg.com/webpack-bundle-analyzer/-/webpack-bundle-analyzer-3.5.0.tgz#c82130a490a05f9267aa5956871aef574dff5074"
+  resolved "https://registry.npmjs.org/webpack-bundle-analyzer/-/webpack-bundle-analyzer-3.5.0.tgz#c82130a490a05f9267aa5956871aef574dff5074"
   integrity sha512-NzueflueLSJxWGzDlMq5oUV+P8Qoq6yiaQlXGCbDYUpHEKlmzWdPLBJ4k/B6HTdAP/vHM8ply1Fx08mDnY+S8Q==
   dependencies:
     acorn "^6.0.7"

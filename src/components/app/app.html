@@ -100,7 +100,7 @@
             emoji groups, or only smileys, or even only smileys and foods! The choice is yours!
         </div>
     
-        <div class="header2 container margin-top">One Emoji Group</div>
+        <div class="header2 container margin-top">One Emoji Group - Forest Color</div>
         <cooltextarea class="margin-top container" 
             :content="content" 
             :emojiData="emojiDataOneCollection"
@@ -108,7 +108,7 @@
             componentColor="forest"
             :searchEmojisFeat="true"></cooltextarea>
     
-        <div class="header2 container margin-top">Two Emoji Groups</div>
+        <div class="header2 container margin-top">Two Emoji Groups - Cherry Color</div>
         <cooltextarea class="margin-top container" 
             :content="content" 
             :emojiData="emojiDataTwoCollections"
@@ -116,7 +116,7 @@
             componentColor="cherry"
             :searchEmojisFeat="true"></cooltextarea>
     
-        <div class="header2 container margin-top">Three Emoji Groups</div>
+        <div class="header2 container margin-top">Three Emoji Groups - Ocean Color</div>
         <cooltextarea class="margin-top container" 
             :content="content" 
             :emojiData="emojiDataThreeCollections"
@@ -124,13 +124,21 @@
             componentColor="ocean"
             :searchEmojisFeat="true"></cooltextarea>
     
-        <div class="header2 container margin-top">Four Emoji Groups</div>
+        <div class="header2 container margin-top">Four Emoji Groups - Sun Color</div>
         <cooltextarea class="margin-top container" 
             :content="content" 
             :emojiData="emojiDataFourCollections"
             :emojiGroups="emojiGroups"
             componentColor="sun"
             :searchEmojisFeat="true"></cooltextarea>
+
+        <div class="header2 container margin-top">All Emoji Groups - Transparent Color</div>
+        <cooltextarea class="margin-top container" 
+                :content="content" 
+                :emojiData="emojiDataAll"
+                :emojiGroups="emojiGroups"
+                componentColor="transparent"
+                :searchEmojisFeat="true"></cooltextarea>
     
         <div class="header1 row margin-top margin-bottom" id="requirements">
             Requirements:
@@ -163,10 +171,10 @@
             <div class="row code-block padding-all margin-bottom text-wrap text-break">
                 JAVASCRIPT:
                 import { CoolPicker } from 'cool-emoji-picker';
-                import EmojiData from 'cool-emoji-picker/src/emoji-data/{LANG}/emoji-all-groups.json';
-                import EmojiDataAnimalsNature from 'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-animals-nature.json';
-                import EmojiDataFoodDrink from 'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-food-drink.json';
-                import EmojiGroups from 'cool-emoji-picker/src/emoji-data/emoji-groups.json';
+                import EmojiData from 'cool-emoji-picker/emoji-data/{LANG}/emoji-all-groups.json';
+                import EmojiDataAnimalsNature from 'cool-emoji-picker/emoji-data/{LANG}/emoji-group-animals-nature.json';
+                import EmojiDataFoodDrink from 'cool-emoji-picker/emoji-data/{LANG}/emoji-group-food-drink.json';
+                import EmojiGroups from 'cool-emoji-picker/emoji-data/emoji-groups.json';
     
                 export default {
                     name: 'App',
@@ -209,8 +217,8 @@
             <div class="row code-block padding-all margin-bottom text-wrap text-break">
                 JAVASCRIPT:
                 import { CoolTextArea } from 'cool-emoji-picker';
-                import EmojiData from 'cool-emoji-picker/src/emoji-data/emoji-all-groups.json';
-                import EmojiGroups from 'cool-emoji-picker/src/emoji-data/emoji-groups.json';
+                import EmojiData from 'cool-emoji-picker/emoji-data/emoji-all-groups.json';
+                import EmojiGroups from 'cool-emoji-picker/emoji-data/emoji-groups.json';
     
                 export default {
                     name: 'App',
@@ -693,7 +701,7 @@
                 <tr>
                     <td>componentColor</td>
                     <td>String</td> 
-                    <td>'cream', 'cherry', 'forest', 'ocean', 'sun'</td>
+                    <td>'cream', 'cherry', 'forest', 'ocean', 'sun', 'transparent'</td>
                     <td class="table-description">
                         This is a variable to define the component color. Default: 'cream'.
                     </td>
@@ -821,6 +829,10 @@
         <div class="header1 row margin-top margin-bottom" id="emoji-data-index">
             Emoji Data Index
         </div>
+        <div class="container margin-top">
+            PS: If you are using cool-emoji-picker in a version below 4.0.0 the path for emoji-data is 'cool-emoji-picker/src/emoji-data', 
+            otherwise it will be 'cool-emoji-picker/emoji-data'.
+        </div>
         <div class="container">
             As seen in the example you will need, for the emoji picker to work, 
             to import an indexed list of emojis and emoji groups name (which is provided by this lib) and pass as a prop of the CoolTextArea/CoolPicker component.
@@ -842,57 +854,57 @@
             </thead>
             <tbody>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-all-groups.json'</td>
+                    <td>'cool-emoji-picker/emoji-data/{LANG}/emoji-all-groups.json'</td>
                     <td>129KB</td>
                     <td>26KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-smileys-emotion.json'</td>
+                    <td>'cool-emoji-picker/emoji-data/{LANG}/emoji-group-smileys-emotion.json'</td>
                     <td>9KB</td>
                     <td>3KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-people-body.json'</td>
+                    <td>'cool-emoji-picker/emoji-data/{LANG}/emoji-group-people-body.json'</td>
                     <td>57KB</td>
                     <td>10KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-symbols.json'</td>
+                    <td>'cool-emoji-picker/emoji-data/{LANG}/emoji-group-symbols.json'</td>
                     <td>14KB</td>
                     <td>3KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-travel-places.json'</td>
+                    <td>'cool-emoji-picker/emoji-data/{LANG}/emoji-group-travel-places.json'</td>
                     <td>12KB</td>
                     <td>3KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-objects.json'</td>
+                    <td>'cool-emoji-picker/emoji-data/{LANG}/emoji-group-objects.json'</td>
                     <td>12KB</td>
                     <td>3KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-flags.json'</td>
+                    <td>'cool-emoji-picker/emoji-data/{LANG}/emoji-group-flags.json'</td>
                     <td>14KB</td>
                     <td>2KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-food-drink.json'</td>
+                    <td>'cool-emoji-picker/emoji-data/{LANG}/emoji-group-food-drink.json'</td>
                     <td>7KB</td>
                     <td>2KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-animals-nature.json'</td>
+                    <td>'cool-emoji-picker/emoji-data/{LANG}/emoji-group-animals-nature.json'</td>
                     <td>7KB</td>
                     <td>2KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/{LANG}/emoji-group-activities.json'</td>
+                    <td>'cool-emoji-picker/emoji-data/{LANG}/emoji-group-activities.json'</td>
                     <td>6KB</td>
                     <td>2KB</td>
                 </tr>
                 <tr>
-                    <td>'cool-emoji-picker/src/emoji-data/emoji-groups.json'</td>
+                    <td>'cool-emoji-picker/emoji-data/emoji-groups.json'</td>
                     <td>700B</td>
                     <td>460B</td>
                 </tr>
@@ -900,11 +912,11 @@
         </table>
         <div class="container">
             PS: You can provide your own emoji.json index file with a list of emoji Unicodes, 
-            but you will need to follow the structure of the bundles generated by this library (like cool-emoji-picker/src/emoji-data/{LANG}/emoji-all-groups.json).
+            but you will need to follow the structure of the bundles generated by this library (like cool-emoji-picker/emoji-data/{LANG}/emoji-all-groups.json).
         </div>
         <div class="container">
             PS: You can provide your own emoji-groups.json index file with a list of emoji groups name, 
-            but you will need to follow the structure of the bundle generated by this library (cool-emoji-picker/src/emoji-data/emoji-groups.json).
+            but you will need to follow the structure of the bundle generated by this library (cool-emoji-picker/emoji-data/emoji-groups.json).
         </div>
 
         <div class="header1 row margin-top margin-bottom" id="emoji-langs">

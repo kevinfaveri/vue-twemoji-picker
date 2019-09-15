@@ -1,8 +1,4 @@
 /* Global */
-.cooltextarea:focus {
-  outline: none !important;
-}
-
 #send-btn {
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
@@ -55,61 +51,69 @@ img.emoji {
 
 /* Component Colors */
 .bg-cream {
-  background-color: #ece7e7 !important;
+  background-color: #ece7e7;
 }
 
 .btn-cream {
-  background-color: #ece7e7 !important;
+  background-color: #ece7e7;
 }
 
 .btn-cream:hover {
-  background-color: #ded3d3 !important;
+  background-color: #ded3d3;
 }
 
 .bg-cherry {
-  background-color: #dd7e91 !important;
+  background-color: #dd7e91;
 }
 
 .btn-cherry {
-  background-color: #dd7e91 !important;
+  background-color: #dd7e91;
 }
 
 .btn-cherry:hover {
-  background-color: #d45e76 !important;
+  background-color: #d45e76;
 }
 
 .bg-forest {
-  background-color: #84caaf !important;
+  background-color: #84caaf;
 }
 
 .btn-forest {
-  background-color: #84caaf !important;
+  background-color: #84caaf;
 }
 
 .btn-forest:hover {
-  background-color: #5eba97 !important;
+  background-color: #5eba97;
 }
 
 .bg-ocean {
-  background-color: #93b8e9 !important;
+  background-color: #93b8e9;
 }
 
 .btn-ocean {
-  background-color: #93b8e9 !important;
+  background-color: #93b8e9;
 }
 
 .btn-ocean:hover {
-  background-color: #6b9ee1 !important;
+  background-color: #6b9ee1;
 }
 
 .bg-sun {
-  background-color: #d6dfb0 !important;
+  background-color: #d6dfb0;
 }
 
 .btn-sun {
-  background-color: #d6dfb0 !important;
+  background-color: #d6dfb0;
 }
 
 .btn-sun:hover {
-  background-color: #c7d392 !important;
+  background-color: #c7d392;
+}
+
+.btn-transparent {
+  background-color: transparent;
+}
+
+.btn-transparent:hover {
+  background-color: transparent;
 }

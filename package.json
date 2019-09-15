@@ -1,6 +1,6 @@
 {
   "name": "cool-emoji-picker",
-  "version": "3.2.2",
+  "version": "4.0.0-beta-4",
   "main": "./dist/cool-emoji-picker.common.js",
   "unpkg": "./dist/cool-emoji-picker.umd.min.js",
   "files": [
@@ -30,13 +30,14 @@
     "build:app": "vue-cli-service build --mode production --dest docs",
     "build:test": "vue-cli-service build --mode build-test",
     "build:comp": "vue-cli-service build --target lib --name cool-emoji-picker ./entry.js",
+    "build:comp:test": "vue-cli-service build --target lib --mode build-test --name cool-emoji-picker ./entry.js",
     "publish:gh-pages": "git subtree split --prefix docs -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages",
     "publish:npm": "npm publish --access public",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
     "twemoji": "^12.1.2",
-    "v-tooltip": "^2.0.2"
+    "v-tooltip": "^3.0.0-alpha.11"
   },
   "devDependencies": {
     "@babel/core": "^7.6.0",
@@ -46,7 +47,7 @@
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-preset-vue": "^2.0.2",
-    "cool-emoji-picker": "^3.2.1",
+    "cool-emoji-picker": "^4.0.0-beta-3",
     "emojibase-data": "^4.0.2",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.2.3",
@@ -54,8 +55,8 @@
     "sass-loader": "^8.0.0",
     "vue": "^2.6.10",
     "vue-burger-menu": "^2.0.2",
-    "vue-template-compiler": "^2.6.10",
-    "webpack-bundle-analyzer": "^3.5.0"
+    "vue-cli-plugin-webpack-bundle-analyzer": "^1.4.0",
+    "vue-template-compiler": "^2.6.10"
   },
   "eslintConfig": {
     "root": true,

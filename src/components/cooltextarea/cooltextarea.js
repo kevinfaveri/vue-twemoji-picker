@@ -124,7 +124,7 @@ export default {
     componentColor: {
       default: 'cream',
       validator: function (value) {
-        let bolValid =  ['cream', 'cherry', 'forest', 'ocean', 'sun'].indexOf(value) !== -1;
+        let bolValid =  ['cream', 'cherry', 'forest', 'ocean', 'sun', 'transparent'].indexOf(value) !== -1;
         if (bolValid === false) {
           console.error('The value entered for the prop "componentColor" is invalid. '+
             'Valid values: "cream", "cherry", "forest", "ocean", "sun".');

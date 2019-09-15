@@ -1,3 +1,4 @@
+// import { CoolTextArea, CoolPicker } from '../../../entry';
 import { CoolTextArea, CoolPicker } from 'cool-emoji-picker';
 import EmojiDataAll from 'cool-emoji-picker/emoji-data/en/emoji-all-groups.json';
 import EmojiDataAnimalsNature from 'cool-emoji-picker/emoji-data/en/emoji-group-animals-nature.json';

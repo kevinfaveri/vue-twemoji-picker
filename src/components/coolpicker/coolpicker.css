@@ -1,22 +1,4 @@
 /* Global */
-.disable-user-select {
-  -moz-user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
-}
-
-.tooltip:focus,
-#btn-emoji:focus, 
-#emoji-popover-search > #search-header > input,
-#emoji-popover-search > #search-header > button {
-  outline: none !important;
-}
-
-#btn-emoji,
-.emoji-list {
-  -webkit-tap-highlight-color: rgba(0,0,0,0);
-}
-
 img.emoji {
   height: 1.5rem;
   width: 1.5rem;
@@ -24,10 +6,6 @@ img.emoji {
 }
 
 /* Parent Emoji Popover */
-#emoji-popup > .v-popover {
-  max-height: 0px !important;
-}
-
 #emoji-popover-header {
   padding: 5px;
   overflow-y: hidden;
@@ -109,30 +87,6 @@ img.emoji {
   pointer-events: none;
 }
 
-/* Scrollbar */
-.scroll-min::-webkit-scrollbar {
-  height: 6px !important;
-  width: 6px !important;
-}
-
-.scroll-clean::-webkit-scrollbar {
-  height: 12px;
-  width: 12px;
-}
-
-.scroll-clean::-webkit-scrollbar-track {
-  background-color: #eaeaea;
-  border-left: 1px solid #ccc;
-}
-
-.scroll-clean::-webkit-scrollbar-thumb {
-  background-color: #ccc;
-}
-
-.scroll-clean::-webkit-scrollbar-thumb:hover {
-  background-color: #aaa;
-}
-
 /* Search Bar */
 #emoji-popover-search {
   background-color: #e6e6e6;
@@ -169,120 +123,9 @@ img.emoji {
 }
 
 /*Vue Tooltip / Popover Styles */
-.tooltip {
-  display: block !important;
-  z-index: 10000;
-}
-
-.tooltip .tooltip-inner {
-  background: black;
-  color: white;
-  border-radius: 16px;
-  padding: 5px 10px 4px;
-}
-
-.tooltip .tooltip-arrow {
-  width: 0;
-  height: 0;
-  border-style: solid;
-  position: absolute !important;
-  margin: 5px;
-  border-color: #777676 !important;
-  z-index: 1;
-}
-
-.tooltip[x-placement^="top"] {
-  margin-bottom: 5px;
-}
-
-.tooltip[x-placement^="top"] .tooltip-arrow {
-  border-width: 5px 5px 0 5px;
-  border-left-color: transparent !important;
-  border-right-color: transparent !important;
-  border-bottom-color: transparent !important;
-  bottom: -5px;
-  left: calc(50% - 5px);
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.tooltip[x-placement^="bottom"] {
-  margin-top: 5px;
-}
-
-.tooltip[x-placement^="bottom"] .tooltip-arrow {
-  border-width: 0 5px 5px 5px;
-  border-left-color: transparent !important;
-  border-right-color: transparent !important;
-  border-top-color: transparent !important;
-  top: -5px;
-  left: calc(50% - 5px);
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-.tooltip[x-placement^="right"] {
-  margin-left: 5px;
-}
-
-.tooltip[x-placement^="right"] .tooltip-arrow {
-  border-width: 5px 5px 5px 0;
-  border-left-color: transparent !important;
-  border-top-color: transparent !important;
-  border-bottom-color: transparent !important;
-  left: -5px;
-  top: calc(50% - 5px);
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.tooltip[x-placement^="left"] {
-  margin-right: 5px;
-}
-
-.tooltip[x-placement^="left"] .tooltip-arrow {
-  border-width: 5px 0 5px 5px;
-  border-top-color: transparent !important;
-  border-right-color: transparent !important;
-  border-bottom-color: transparent !important;
-  right: -5px;
-  top: calc(50% - 5px);
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.tooltip.popover .popover-inner {
-  padding: 5px !important;
-  background: #f9f9f9;
-  color: black;
-  padding: 24px;
-  border-radius: 5px;
-  border-top: #bdbcbc solid 1px;
-  box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
-}
-
-.tooltip.popover .popover-arrow {
-  border-color: #000000 !important;
-  border-left-color: transparent !important;
-  border-right-color: transparent !important;
-  border-bottom-color: transparent !important;
-  left: calc(50% - 10px) !important;
-}
-
-.tooltip[aria-hidden='true'] {
-  visibility: hidden;
-  opacity: 0;
-  transition: opacity .15s, visibility .15s;
-}
-
-.tooltip[aria-hidden='false'] {
-  visibility: visible;
-  opacity: 1;
-  transition: opacity .15s;
-}
-
-.tooltip-arrow {
-  z-index: 99999 !important;
+.v-popper__wrapper > .v-popper__inner {
+  padding: 0;
+  border: 3px #fafafa solid;
 }
 
 /** Transition - Fade */
