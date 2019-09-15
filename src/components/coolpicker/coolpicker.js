@@ -7,6 +7,10 @@ export default {
     'v-popover': VPopover,
   },
   props: {
+    disabled: {
+      default: false,
+      type: Boolean
+    },
     pickerWidth: {
       default: 250,
       type: Number,
@@ -105,10 +109,6 @@ export default {
   },
   data() {
     return {
-      disabled: {
-        default: false,
-        type: Boolean
-      },
       popperOptions: {
         modifiers: {
           flip: {
