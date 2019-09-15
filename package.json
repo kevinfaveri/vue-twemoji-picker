@@ -47,7 +47,7 @@
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-preset-vue": "^2.0.2",
-    "cool-emoji-picker": "^4.0.0-beta-3",
+    "cool-emoji-picker": "^4.0.0-beta-4",
     "emojibase-data": "^4.0.2",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.2.3",
