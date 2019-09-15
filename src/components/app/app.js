@@ -1,15 +1,15 @@
-import { CoolTextArea, CoolPicker } from '../../../index';
-import EmojiDataAll from '../../emoji-data/en/emoji-all-groups.json';
-import EmojiDataAnimalsNature from '../../emoji-data/en/emoji-group-animals-nature.json';
-import EmojiDataFoodDrink from '../../emoji-data/en/emoji-group-food-drink.json';
-import EmojiDataTravelPlaces from '../../emoji-data/en/emoji-group-travel-places.json';
-import EmojiDataActivities from '../../emoji-data/en/emoji-group-activities.json';
-import EmojiDataObjects from '../../emoji-data/en/emoji-group-objects.json';
-import EmojiDataSymbols from '../../emoji-data/en/emoji-group-symbols.json';
-import EmojiDataFlags from '../../emoji-data/en/emoji-group-flags.json';
-import EmojiGroups from '../../emoji-data/emoji-groups.json';
-import EmojiService from '../../services/emoji-service';
-import TextareaParser from '../../services/textarea-parser';
+import { CoolTextArea, CoolPicker } from 'cool-emoji-picker';
+import EmojiDataAll from 'cool-emoji-picker/src/emoji-data/en/emoji-all-groups.json';
+import EmojiDataAnimalsNature from 'cool-emoji-picker/emoji-data/en/emoji-group-animals-nature.json';
+import EmojiDataFoodDrink from 'cool-emoji-picker/emoji-data/en/emoji-group-food-drink.json';
+import EmojiDataTravelPlaces from 'cool-emoji-picker/emoji-data/en/emoji-group-travel-places.json';
+import EmojiDataActivities from 'cool-emoji-picker/emoji-data/en/emoji-group-activities.json';
+import EmojiDataObjects from 'cool-emoji-picker/emoji-data/en/emoji-group-objects.json';
+import EmojiDataSymbols from 'cool-emoji-picker/emoji-data/en/emoji-group-symbols.json';
+import EmojiDataFlags from 'cool-emoji-picker/emoji-data/en/emoji-group-flags.json';
+import EmojiGroups from 'cool-emoji-picker/emoji-data/emoji-groups.json';
+import EmojiService from 'cool-emoji-picker/services/emoji-service';
+import TextareaParser from 'cool-emoji-picker/services/textarea-parser';
 import { Slide } from 'vue-burger-menu';
 
 export default {

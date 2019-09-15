@@ -7,6 +7,7 @@ function resolve (dir) {
 
 module.exports = {
   publicPath: '/cool-emoji-picker/',
+  css: { extract: false },
   runtimeCompiler: true,
   productionSourceMap: false,
   configureWebpack: config => {

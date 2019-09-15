@@ -1,7 +1,21 @@
 {
   "name": "cool-emoji-picker",
-  "version": "3.1.5",
+  "version": "3.2.0",
   "main": "./dist/cool-emoji-picker.common.js",
+  "unpkg": "./dist/cool-emoji-picker.umd.min.js",
+  "files": [
+    "dist/*",
+    "src/*",
+    "public/*",
+    "*.json",
+    "*.js"
+  ],
+  "browser": {
+    "./coolpicker": "./src/components/coolpicker",
+    "./cooltextarea": "./src/components/cooltextarea",
+    "./emoji-data": "./src/emoji-data",
+    "./services": "./src/services"
+  },
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -20,7 +34,7 @@
     "build:emoji-data": "node ./src/utils/remove-unused-with-tags.js",
     "build:app": "vue-cli-service build --mode production --dest docs",
     "build:test": "vue-cli-service build --mode build-test",
-    "build:comp": "vue-cli-service build --target lib --name cool-emoji-picker ./index.js",
+    "build:comp": "vue-cli-service build --target lib --name cool-emoji-picker ./entry.js",
     "publish:gh-pages": "git subtree split --prefix docs -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages",
     "publish:npm": "npm publish --access public",
     "lint": "vue-cli-service lint"
@@ -30,6 +44,7 @@
     "v-tooltip": "^2.0.2"
   },
   "devDependencies": {
+    "cool-emoji-picker": "^3.1.6",
     "@babel/core": "^7.6.0",
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-plugin-eslint": "^3.11.0",
