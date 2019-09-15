@@ -1,5 +1,5 @@
 <v-popover
-  :trigger="triggerType"
+  :trigger="disabled ? 'manual' : triggerType"
   placement="top" 
   :offset="-12"
   :popperOptions="popperOptions"
@@ -73,7 +73,8 @@
     @mouseenter="onMouseEnterEmojiBtn()" 
     @mouseleave="onMouseLeaveEmojiBtn()" 
     :class="btnEmojiClasses"
-    class="tooltip-target">
+    class="tooltip-target"
+    :disabled="disabled">
     <div v-html="randomEmojiImg"></div>
   </button>
 

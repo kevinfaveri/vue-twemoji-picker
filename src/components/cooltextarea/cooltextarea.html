@@ -20,6 +20,7 @@
     :twemojiExtension="twemojiExtension"
     :twemojiFolder="twemojiFolder"
     :btnEmojiClasses="btnEmojiClasses"
+    :disabled="disableEmojiPicker"
     @addTextBlur="addTextBlur"
     @emojiUnicodeAdded="emojiUnicodeAdded"
     @emojiImgAdded="emojiImgAdded"></coolpicker>
@@ -28,7 +29,7 @@
     id="cool-text-area"
     class="cooltextarea" 
     :class="cooltextAreaClasses"
-    contenteditable="true" 
+    :contenteditable="disabled ? false : true" 
     @input="updateContent"
     @paste="onPaste"
     @keydown.enter="enterKey"

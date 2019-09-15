@@ -99,6 +99,11 @@ img.emoji {
   width: 25px;
 }
 
+#btn-emoji:disabled {
+  opacity: .6;
+  pointer-events: none;
+}
+
 /* Scrollbar */
 .scroll-min::-webkit-scrollbar {
   height: 6px !important;

@@ -113,6 +113,14 @@ export default {
       default: false,
       type: Boolean
     },
+    disableEmojiPicker: {
+      default: true,
+      type: Boolean
+    },
+    disabled: {
+      default: true,
+      type: Boolean
+    },
     componentColor: {
       default: 'cream',
       validator: function (value) {

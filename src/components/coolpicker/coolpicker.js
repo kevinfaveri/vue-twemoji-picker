@@ -105,6 +105,10 @@ export default {
   },
   data() {
     return {
+      disabled: {
+        default: true,
+        type: Boolean
+      },
       popperOptions: {
         modifiers: {
           flip: {
