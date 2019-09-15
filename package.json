@@ -1,7 +1,7 @@
 {
   "name": "cool-emoji-picker",
-  "version": "3.1.4",
-  "main": "./index.js",
+  "version": "3.1.5",
+  "main": "./dist/cool-emoji-picker.common.js",
   "license": "MIT",
   "repository": {
     "type": "git",
