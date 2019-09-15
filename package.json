@@ -1,6 +1,6 @@
 {
   "name": "cool-emoji-picker",
-  "version": "3.2.0",
+  "version": "3.2.1",
   "main": "./dist/cool-emoji-picker.common.js",
   "unpkg": "./dist/cool-emoji-picker.umd.min.js",
   "files": [
@@ -10,12 +10,6 @@
     "*.json",
     "*.js"
   ],
-  "browser": {
-    "./coolpicker": "./src/components/coolpicker",
-    "./cooltextarea": "./src/components/cooltextarea",
-    "./emoji-data": "./src/emoji-data",
-    "./services": "./src/services"
-  },
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -44,7 +38,6 @@
     "v-tooltip": "^2.0.2"
   },
   "devDependencies": {
-    "cool-emoji-picker": "^3.1.6",
     "@babel/core": "^7.6.0",
     "@vue/cli-plugin-babel": "^3.11.0",
     "@vue/cli-plugin-eslint": "^3.11.0",
@@ -52,6 +45,7 @@
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-preset-vue": "^2.0.2",
+    "cool-emoji-picker": "^3.2.0",
     "emojibase-data": "^4.0.2",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.2.3",

@@ -1,5 +1,5 @@
 import { CoolTextArea, CoolPicker } from 'cool-emoji-picker';
-import EmojiDataAll from 'cool-emoji-picker/src/emoji-data/en/emoji-all-groups.json';
+import EmojiDataAll from 'cool-emoji-picker/emoji-data/en/emoji-all-groups.json';
 import EmojiDataAnimalsNature from 'cool-emoji-picker/emoji-data/en/emoji-group-animals-nature.json';
 import EmojiDataFoodDrink from 'cool-emoji-picker/emoji-data/en/emoji-group-food-drink.json';
 import EmojiDataTravelPlaces from 'cool-emoji-picker/emoji-data/en/emoji-group-travel-places.json';
@@ -8,8 +8,8 @@ import EmojiDataObjects from 'cool-emoji-picker/emoji-data/en/emoji-group-object
 import EmojiDataSymbols from 'cool-emoji-picker/emoji-data/en/emoji-group-symbols.json';
 import EmojiDataFlags from 'cool-emoji-picker/emoji-data/en/emoji-group-flags.json';
 import EmojiGroups from 'cool-emoji-picker/emoji-data/emoji-groups.json';
-import EmojiService from 'cool-emoji-picker/services/emoji-service';
-import TextareaParser from 'cool-emoji-picker/services/textarea-parser';
+import EmojiService from 'cool-emoji-picker/src/services/emoji-service';
+import TextareaParser from 'cool-emoji-picker/src/services/textarea-parser';
 import { Slide } from 'vue-burger-menu';
 
 export default {
