@@ -2669,10 +2669,10 @@ cookie@0.4.0:
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.0.tgz#beb437e7022b3b6d49019d088665303ebe9c14ba"
   integrity sha512-+Hp8fLp57wnUSt0tY0tHEXh4voZRDnoIrZPqlo3DPiI4y9lwg/jqx+1Om94/W6ZaPDOUbnjOt/99w66zk+l1Xg==
 
-cool-emoji-picker@^3.2.0:
-  version "3.2.0"
-  resolved "https://registry.npmjs.org/cool-emoji-picker/-/cool-emoji-picker-3.2.0.tgz#ecfd5f11969aabc577e6a7acc3960c31f5b77776"
-  integrity sha512-euYa9b+7Jh2J1zG0Sb75hetONsKOMTj2N11J7Hjs6iP0Yd+9DHAswZRS/wb106SFTbGDijnjPvcl/y/yv6xIoA==
+cool-emoji-picker@^3.2.1:
+  version "3.2.1"
+  resolved "https://registry.npmjs.org/cool-emoji-picker/-/cool-emoji-picker-3.2.1.tgz#5dcdbc76277b690c78303f9cbe5e7f03008b69a3"
+  integrity sha512-JfhCjXQeiNg+HuQyBdmkVTJZGQ4gOL19wywzbIHjcRIhqE3+fqwcRE+HkAEvmo/TCuI16k7qkfpHCvoIUd/FHQ==
   dependencies:
     twemoji "^12.1.2"
     v-tooltip "^2.0.2"

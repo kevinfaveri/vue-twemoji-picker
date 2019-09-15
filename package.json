@@ -1,12 +1,13 @@
 {
   "name": "cool-emoji-picker",
-  "version": "3.2.1",
+  "version": "3.2.2",
   "main": "./dist/cool-emoji-picker.common.js",
   "unpkg": "./dist/cool-emoji-picker.umd.min.js",
   "files": [
     "dist/*",
     "src/*",
     "public/*",
+    "emoji-data/*",
     "*.json",
     "*.js"
   ],
@@ -45,7 +46,7 @@
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "babel-preset-vue": "^2.0.2",
-    "cool-emoji-picker": "^3.2.0",
+    "cool-emoji-picker": "^3.2.1",
     "emojibase-data": "^4.0.2",
     "eslint": "^5.8.0",
     "eslint-plugin-vue": "^5.2.3",
