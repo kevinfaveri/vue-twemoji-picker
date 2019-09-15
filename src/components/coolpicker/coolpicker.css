@@ -99,6 +99,11 @@ img.emoji {
   width: 25px;
 }
 
+#btn-emoji > #dummy-el {
+  height: 25px;
+  width: 25px;
+}
+
 #btn-emoji:disabled {
   opacity: .6;
   pointer-events: none;
@@ -278,4 +283,25 @@ img.emoji {
 
 .tooltip-arrow {
   z-index: 99999 !important;
+}
+
+/** Transition - Fade */
+.fade-in {
+	opacity: 1;
+	animation-name: fadeInOpacity;
+	animation-iteration-count: 1;
+	animation-timing-function: ease-in;
+	animation-duration: .3s;
+}
+
+@keyframes fadeInOpacity {
+	0% {
+		opacity: .4;
+  }
+  50% {
+		opacity: .8;
+	}
+	100% {
+		opacity: 1;
+	}
 }

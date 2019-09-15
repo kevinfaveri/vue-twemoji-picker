@@ -1,81 +1,57 @@
-<v-popover
-  :trigger="disabled ? 'manual' : triggerType"
-  placement="top" 
-  :offset="-12"
-  :popperOptions="popperOptions"
-  :container="appendToBody ? 'body' : '#btn-emoji'"
-  popoverInnerClass="tooltip-inner popover-inner disable-user-select">
+<v-popover :trigger="disabled ? 'manual' : triggerType" placement="top" :offset="-12" :popperOptions="popperOptions"
+  :container="appendToBody ? 'body' : '#btn-emoji'" popoverInnerClass="tooltip-inner popover-inner disable-user-select">
   <template slot="popover">
     <div id="emoji-popup" :style="{ width: pickerWidth + 'px' }">
-        <div id="emoji-popover-header" class="scroll-clean scroll-min">
-          <span 
-            v-if="recentEmojisFeat && recentEmojis.length !== 0"
-            v-html="getEmojiImgFromUnicode('⏱️')"
-            class="emoji-tab"
-            @click="changeEmojiListActive(-1)"
-            :class="{ 'active': emojiGroupActive === -1 }"></span>
-          <span v-for="(emojiGroup, index) in emojiPack" 
-            :key="emojiGroup.group" 
-            :id="emojiGroup.group"
-            v-html="getEmojiGroupDescription(emojiGroup.group)"
-            class="emoji-tab"
-            @click="changeEmojiListActive(index)"
-            :class="{ 'active': emojiGroupActive === index }">
-          </span>
+      <div id="emoji-popover-header" class="scroll-clean scroll-min">
+        <span v-if="recentEmojisFeat && recentEmojis.length !== 0" v-html="getEmojiImgFromUnicode('⏱️')"
+          class="emoji-tab" @click="changeEmojiListActive(-1)" :class="{ 'active': emojiGroupActive === -1 }"></span>
+        <span v-for="(emojiGroup, index) in emojiPack" :key="emojiGroup.group" :id="emojiGroup.group"
+          v-html="getEmojiGroupDescription(emojiGroup.group)" class="emoji-tab" @click="changeEmojiListActive(index)"
+          :class="{ 'active': emojiGroupActive === index }">
+        </span>
+      </div>
+
+      <div id="emoji-popover-search" v-if="searchEmojisFeat">
+        <div id="search-header">
+          <input @input="searchEmojiByTerm" :placeholder="searchEmojiPlaceholder" v-model="searchTerm" />
+          <span v-html="getEmojiImgFromUnicode('🔍')"></span>
         </div>
-  
-        <div id="emoji-popover-search" v-if="searchEmojisFeat">
-          <div id="search-header">
-            <input @input="searchEmojiByTerm" :placeholder="searchEmojiPlaceholder" v-model="searchTerm"/>
-            <span v-html="getEmojiImgFromUnicode('🔍')"></span>
-          </div>
+      </div>
+
+      <div class="scroll-clean emoji-popover-inner"
+        :style="{ width: pickerWidth + 'px', maxHeight: pickerMaxHeight + 'px' }">
+
+        <div v-if="searchTerm.length !== 0 && searchEmojis.length === 0">
+          <strong>{{ searchEmojiNotFound }}</strong>
         </div>
 
-        <div class="scroll-clean emoji-popover-inner" 
+        <div v-if="emojiListActive.length !== 0">
+          <p class="emoji-list">
+            <span v-for="emoji in emojiListActive" :key="emoji.unicode" v-html="emoji.img" @click="clickEmoji(emoji)">
+            </span>
+          </p>
+        </div>
+      </div>
+
+      <div id="emoji-skins-popup" :style="{ width: pickerWidth + 'px' }" v-if="showSkinsSelector">
+        <div class="scroll-clean emoji-popover-inner"
           :style="{ width: pickerWidth + 'px', maxHeight: pickerMaxHeight + 'px' }">
-  
-          <div v-if="searchTerm.length !== 0 && searchEmojis.length === 0">
-            <strong>{{ searchEmojiNotFound }}</strong>
-          </div>
-  
           <div v-if="emojiListActive.length !== 0">
             <p class="emoji-list">
-              <span
-                v-for="emoji in emojiListActive" 
-                :key="emoji.unicode" 
-                v-html="emoji.img"
-                @click="clickEmoji(emoji)">
+              <span v-for="emoji in skinsListActive" :key="emoji.unicode" v-html="emoji.img" @click="clickEmoji(emoji)">
               </span>
             </p>
           </div>
         </div>
-
-        <div id="emoji-skins-popup" :style="{ width: pickerWidth + 'px' }" v-if="showSkinsSelector">
-            <div class="scroll-clean emoji-popover-inner" 
-              :style="{ width: pickerWidth + 'px', maxHeight: pickerMaxHeight + 'px' }">
-              <div v-if="emojiListActive.length !== 0">
-                <p class="emoji-list">
-                  <span
-                    v-for="emoji in skinsListActive" 
-                    :key="emoji.unicode" 
-                    v-html="emoji.img"
-                    @click="clickEmoji(emoji)">
-                  </span>
-                </p>
-              </div>
-            </div>
-        </div>
+      </div>
     </div>
   </template>
-  
-    
-  <button id="btn-emoji" 
-    @mouseenter="onMouseEnterEmojiBtn()" 
-    @mouseleave="onMouseLeaveEmojiBtn()" 
-    :class="btnEmojiClasses"
-    class="tooltip-target"
-    :disabled="disabled">
-    <div v-html="randomEmojiImg"></div>
+
+
+  <button id="btn-emoji" @mouseenter="onMouseEnterEmojiBtn()" @mouseleave="onMouseLeaveEmojiBtn()"
+    :class="btnEmojiClasses" class="tooltip-target" :disabled="disabled">
+      <div v-show="showEmoji" v-html="randomEmojiImg" class="fade-in"></div>
+      <div v-show="!showEmoji" id="dummy-el"></div>
   </button>
 
 </v-popover>

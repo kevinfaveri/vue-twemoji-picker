@@ -109,6 +109,7 @@ export default {
   },
   data() {
     return {
+      showEmoji: false,
       popperOptions: {
         modifiers: {
           flip: {
@@ -137,6 +138,8 @@ export default {
   },
   computed: {
     randomEmojiImg() {
+      this.showEmoji = false;
+      setTimeout(() => this.showEmoji = true);
       return EmojiService.getEmojiImgFromUnicode(this.randomEmoji, this.twemojiOptions);
     },
   },
