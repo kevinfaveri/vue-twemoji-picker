@@ -2883,10 +2883,10 @@ cookie@0.4.0:
   resolved "https://registry.yarnpkg.com/cookie/-/cookie-0.4.0.tgz#beb437e7022b3b6d49019d088665303ebe9c14ba"
   integrity sha512-+Hp8fLp57wnUSt0tY0tHEXh4voZRDnoIrZPqlo3DPiI4y9lwg/jqx+1Om94/W6ZaPDOUbnjOt/99w66zk+l1Xg==
 
-cool-emoji-picker@^4.0.0:
-  version "4.0.0"
-  resolved "https://registry.npmjs.org/cool-emoji-picker/-/cool-emoji-picker-4.0.0.tgz#908be30c9f3e0e25a4e8731746d45c96dc3a52c2"
-  integrity sha512-p6sTLperh172gjLOJWFzcnRoEL9kYbXnhygE7lxY78aTPsAAb8qXbu7GExDYI5+cSuEtoaI+7oiRezjGYfkR6Q==
+cool-emoji-picker@^4.0.3:
+  version "4.0.3"
+  resolved "https://registry.npmjs.org/cool-emoji-picker/-/cool-emoji-picker-4.0.3.tgz#896e40f94780aaed19c46b99ac0c305f230bbd04"
+  integrity sha512-rrSkNUZxnuulcnyl6XFoDJA/seYk2ZzWIcEjdB6w2PVQOu0YxQGuosPTLEDUwRGR3XQ+izN9jC6NyVVOwwS8zw==
   dependencies:
     twemoji "^12.1.2"
     v-tooltip "^3.0.0-alpha.11"
@@ -3686,7 +3686,7 @@ emoji-regex@^7.0.1:
 
 emojibase-data@^4.0.2:
   version "4.0.2"
-  resolved "https://registry.yarnpkg.com/emojibase-data/-/emojibase-data-4.0.2.tgz#6b5ee0b6e8d04f9fcbca2c308c3341da8be47797"
+  resolved "https://registry.npmjs.org/emojibase-data/-/emojibase-data-4.0.2.tgz#6b5ee0b6e8d04f9fcbca2c308c3341da8be47797"
   integrity sha512-ezU6rqxbrsINFD+lg28IQwRsWLoSpwpt6TH65fBEx/GxIrPpbIP1ZvNu1jUkRD+oALspstjyujZvcv0VlJozhg==
 
 emojis-list@^2.0.0:

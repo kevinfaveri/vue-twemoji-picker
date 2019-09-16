@@ -162,11 +162,7 @@ export default {
       this.$emit('enterKey', event);
     },
     enterKey(event) {
-      event.stopPropagation();
-      event.preventDefault();
-      if (event.shiftKey === false) {
-        this.emitEnterKeyEvent(event);
-      }
+      if (event.shiftKey === false) this.emitEnterKeyEvent(event);
     },
     shiftEnterKey(event) {
       event.stopPropagation();

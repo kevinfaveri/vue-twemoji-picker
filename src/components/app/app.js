@@ -66,7 +66,9 @@ export default {
       div.innerHTML = htmlString.trim();
       return div.firstChild; 
     },
-    onEnterKey() {
+    onEnterKey(event) {
+      event.stopPropagation();
+      event.preventDefault();
       if (this.content.length === 0) {
         return;
       }

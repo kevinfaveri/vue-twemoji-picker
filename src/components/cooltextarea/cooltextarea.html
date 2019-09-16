@@ -37,7 +37,7 @@
     @focus="restoreSelection">
   </div>
 
-  <div id="send-btn" @click="emitEnterKeyEvent()" v-if="enableSendBtn">
+  <div id="send-btn" @click="emitEnterKeyEvent" v-if="enableSendBtn">
     <send-icon-img />
   </div>
 </div>
