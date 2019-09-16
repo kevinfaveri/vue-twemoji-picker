@@ -1,11 +1,13 @@
 import TextareaParser from '../../services/textarea-parser';
 import EmojiService from '../../services/emoji-service';
 import CoolPicker from '../coolpicker/coolpicker.vue';
+import SendIconImg from './send-icon-img.vue';
 
 export default {
   name: 'CoolTextArea',
   components: {
     'coolpicker': CoolPicker,
+    'send-icon-img': SendIconImg,
   },
   props: {
     // ** Picker Props **/
