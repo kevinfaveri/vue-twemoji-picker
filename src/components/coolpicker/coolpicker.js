@@ -102,11 +102,6 @@ export default {
       default: '72x72',
       type: String
     },
-
-    btnEmojiClasses: {
-      default: () => [],
-      type: Array
-    },
   },
   data() {
     return {

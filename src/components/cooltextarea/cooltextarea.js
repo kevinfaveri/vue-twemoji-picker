@@ -81,10 +81,6 @@ export default {
       default: 'No emojis found.',
       type: String,
     },
-    btnEmojiClasses: {
-      default: () => [],
-      type: Array
-    },
     twemojiPath: {
       default: 'https://twemoji.maxcdn.com/2/',
       type: String
@@ -133,14 +129,6 @@ export default {
         }
         return true;
       }
-    },
-    outerDivClasses: {
-      default: () => [],
-      type: Array
-    },
-    cooltextAreaClasses: {
-      default: () => [],
-      type: Array
     },
   },
   data() {

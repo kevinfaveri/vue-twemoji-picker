@@ -18,8 +18,7 @@
         </div>
       </div>
 
-      <div class="emoji-popover-inner"
-        :style="{ width: pickerWidth + 'px', maxHeight: pickerMaxHeight + 'px' }">
+      <div class="emoji-popover-inner" :style="{ width: pickerWidth + 'px', maxHeight: pickerMaxHeight + 'px' }">
 
         <div v-if="searchTerm.length !== 0 && searchEmojis.length === 0">
           <strong>{{ searchEmojiNotFound }}</strong>
@@ -34,8 +33,7 @@
       </div>
 
       <div id="emoji-skins-popup" :style="{ width: pickerWidth + 'px' }" v-if="showSkinsSelector">
-        <div class="emoji-popover-inner"
-          :style="{ width: pickerWidth + 'px', maxHeight: pickerMaxHeight + 'px' }">
+        <div class="emoji-popover-inner" :style="{ width: pickerWidth + 'px', maxHeight: pickerMaxHeight + 'px' }">
           <div v-if="emojiListActive.length !== 0">
             <p class="emoji-list">
               <span v-for="emoji in skinsListActive" :key="emoji.unicode" v-html="emoji.img" @click="clickEmoji(emoji)">
@@ -48,8 +46,7 @@
   </template>
 
 
-  <button id="btn-emoji" @mouseenter="onMouseEnterEmojiBtn()" @mouseleave="onMouseLeaveEmojiBtn()"
-    :class="btnEmojiClasses" :disabled="disabled">
+  <button id="btn-emoji" @mouseenter="onMouseEnterEmojiBtn()" @mouseleave="onMouseLeaveEmojiBtn()" :disabled="disabled">
     <div v-show="showEmoji" v-html="randomEmojiImg" class="fade-in"></div>
     <div v-show="!showEmoji" id="dummy-el"></div>
   </button>

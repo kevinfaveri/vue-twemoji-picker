@@ -1,5 +1,5 @@
 
-<div class="cooltextarea-outer" :class="outerDivClasses.concat('bg-' + componentColor)">
+<div class="cooltextarea-outer" :class="'bg-' + componentColor">
   
   <coolpicker 
     :pickerWidth="pickerWidth"
@@ -19,7 +19,6 @@
     :twemojiPath="twemojiPath"
     :twemojiExtension="twemojiExtension"
     :twemojiFolder="twemojiFolder"
-    :btnEmojiClasses="btnEmojiClasses"
     :disabled="disableEmojiPicker"
     @addTextBlur="addTextBlur"
     @emojiUnicodeAdded="emojiUnicodeAdded"
@@ -28,7 +27,6 @@
   <div ref="coolTextarea"
     id="cool-text-area"
     class="cooltextarea" 
-    :class="cooltextAreaClasses"
     :contenteditable="disabled ? false : true" 
     @input="updateContent"
     @paste="onPaste"
