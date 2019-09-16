@@ -1,6 +1,6 @@
 {
   "name": "cool-emoji-picker",
-  "version": "4.0.1",
+  "version": "4.0.2",
   "main": "dist/cool-emoji-picker.umd.js",
   "module": "dist/cool-emoji-picker.esm.js",
   "unpkg": "dist/cool-emoji-picker.min.js",

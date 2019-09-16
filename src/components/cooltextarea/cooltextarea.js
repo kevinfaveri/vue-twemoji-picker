@@ -158,14 +158,14 @@ export default {
       this.$emit('update:content', content);
       this.$emit('contentChanged');
     },
-    emitEnterKeyEvent() {
-      this.$emit('enterKey');
+    emitEnterKeyEvent(event) {
+      this.$emit('enterKey', event);
     },
     enterKey(event) {
       event.stopPropagation();
       event.preventDefault();
       if (event.shiftKey === false) {
-        this.emitEnterKeyEvent();
+        this.emitEnterKeyEvent(event);
       }
     },
     shiftEnterKey(event) {
