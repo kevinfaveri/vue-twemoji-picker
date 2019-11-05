@@ -6,80 +6,84 @@ import SendIconImg from './send-icon-img.vue';
 export default {
   name: 'CoolTextArea',
   components: {
-    'coolpicker': CoolPicker,
-    'send-icon-img': SendIconImg,
+    coolpicker: CoolPicker,
+    'send-icon-img': SendIconImg
   },
   props: {
     // ** Picker Props **/
     pickerWidth: {
       default: 250,
-      type: Number,
+      type: Number
     },
     pickerMaxHeight: {
       default: 200,
-      type: Number,
+      type: Number
     },
     appendToBody: {
       default: false,
-      type: Boolean,
+      type: Boolean
     },
     triggerType: {
       default: 'click',
       type: String,
-      validator: function (value) {
+      validator: function(value) {
         if (value !== 'click' && value !== 'hover') {
-          console.error('The value entered for the prop "triggerType" is invalid. '+
-            'Valid values: "click" and "hover".');
+          console.error(
+            'The value entered for the prop "triggerType" is invalid. ' +
+              'Valid values: "click" and "hover".'
+          );
         }
         return true;
       }
     },
     emojiData: {
       default: () => [],
-      type: Array,
+      type: Array
     },
     emojiGroups: {
       default: () => [],
-      type: Array,
+      type: Array
     },
     skinsSelection: {
       default: false,
-      type: Boolean,
+      type: Boolean
     },
     recentEmojisFeat: {
       default: false,
-      type: Boolean,
+      type: Boolean
     },
     recentEmojisStorage: {
       default: 'none',
       type: String,
-      validator: function (value) {
+      validator: function(value) {
         if (value !== 'local' && value !== 'session' && value !== 'none') {
-          console.error('The value entered for the prop "recentEmojisStorage" is invalid. '+
-            'Valid values: "local", "session" and "none".');
+          console.error(
+            'The value entered for the prop "recentEmojisStorage" is invalid. ' +
+              'Valid values: "local", "session" and "none".'
+          );
         }
         return true;
       }
     },
     recentEmojiStorageName: {
       default: 'cep-recent-emojis',
-      type: String,
+      type: String
     },
     recentEmojiLimit: {
       default: 12,
-      type: Number,
+      type: Number
     },
     searchEmojisFeat: {
       default: false,
-      type: Boolean,
+      type: Boolean
     },
     searchEmojiPlaceholder: {
       default: 'Search emojis.',
-      type: String,
+      type: String
     },
     searchEmojiNotFound: {
       default: 'No emojis found.',
-      type: String,
+      type: String
     },
     twemojiPath: {
       default: 'https://twemoji.maxcdn.com/2/',
@@ -88,11 +92,14 @@ export default {
     twemojiExtension: {
       default: '.png',
       type: String,
-      validator: function (value) {
-        let bolValid = ['.png', '.svg', '.jpg', '.jpeg', '.ico'].indexOf(value) !== -1;
+      validator: function(value) {
+        let bolValid =
+          ['.png', '.svg', '.jpg', '.jpeg', '.ico'].indexOf(value) !== -1;
         if (bolValid === false) {
-          console.error('The value entered for the prop "twemojiPath" is invalid. '+
-            'Valid values: ".png", ".svg", ".jpg", ".jpeg", ".ico".');
+          console.error(
+            'The value entered for the prop "twemojiPath" is invalid. ' +
+              'Valid values: ".png", ".svg", ".jpg", ".jpeg", ".ico".'
+          );
         }
         return true;
       }
@@ -121,28 +128,37 @@ export default {
     },
     componentColor: {
       default: 'cream',
-      validator: function (value) {
-        let bolValid =  ['cream', 'cherry', 'forest', 'ocean', 'sun', 'transparent'].indexOf(value) !== -1;
+      validator: function(value) {
+        let bolValid =
+          ['cream', 'cherry', 'forest', 'ocean', 'sun', 'transparent'].indexOf(
+            value
+          ) !== -1;
         if (bolValid === false) {
-          console.error('The value entered for the prop "componentColor" is invalid. '+
-            'Valid values: "cream", "cherry", "forest", "ocean", "sun".');
+          console.error(
+            'The value entered for the prop "componentColor" is invalid. ' +
+              'Valid values: "cream", "cherry", "forest", "ocean", "sun".'
+          );
         }
         return true;
       }
-    },
+    }
   },
   data() {
     return {
-      savedRange: null,
-    }
+      savedRange: null
+    };
   },
   computed: {
     coolTextarea() {
       return this.$refs.coolTextarea;
-    },
+    }
   },
   created() {
-    this.twemojiOptions = { base: this.twemojiPath, ext: this.twemojiExtension, size: this.twemojiFolder };
+    this.twemojiOptions = {
+      base: this.twemojiPath,
+      ext: this.twemojiExtension,
+      size: this.twemojiFolder
+    };
   },
   mounted() {
     this.addText(this.content);
@@ -168,8 +184,11 @@ export default {
       event.stopPropagation();
       event.preventDefault();
 
-      if (this.coolTextarea.innerHTML === '' || 
-        this.coolTextarea.innerHTML[this.coolTextarea.innerHTML.length -1] !== '\n') {
+      if (
+        this.coolTextarea.innerHTML === '' ||
+        this.coolTextarea.innerHTML[this.coolTextarea.innerHTML.length - 1] !==
+          '\n'
+      ) {
         this.addText('\n');
         this.addText('\n');
       } else {
@@ -187,7 +206,10 @@ export default {
       clipboardData = pasteEvent.clipboardData || window.clipboardData;
       pastedData = clipboardData.getData('Text');
       pastedData = TextareaParser.escapeHTML(pastedData);
-      pastedData = EmojiService.getEmojiImgFromUnicode(pastedData, this.twemojiOptions);
+      pastedData = EmojiService.getEmojiImgFromUnicode(
+        pastedData,
+        this.twemojiOptions
+      );
 
       window.document.execCommand('insertHTML', false, pastedData);
 
@@ -214,26 +236,26 @@ export default {
       const doc = this.coolTextarea;
       doc.blur();
     },
-    saveSelection(){
+    saveSelection() {
       if (window.getSelection) {
         this.savedRange = window.getSelection().getRangeAt(0);
-      } else if (document.selection) { 
-        this.savedRange = document.selection.createRange();  
-      } 
+      } else if (document.selection) {
+        this.savedRange = document.selection.createRange();
+      }
     },
-    restoreSelection(){
+    restoreSelection() {
       const doc = this.coolTextarea;
       doc.focus();
       if (this.savedRange != null) {
-        if (window.getSelection)  {
+        if (window.getSelection) {
           const s = window.getSelection();
           if (s.rangeCount > 0) {
             s.removeAllRanges();
           }
           s.addRange(this.savedRange);
-        } else if (document.createRange)  {
+        } else if (document.createRange) {
           window.getSelection().addRange(this.savedRange);
-        } else if (document.selection)  {
+        } else if (document.selection) {
           this.savedRange.select();
         }
       }

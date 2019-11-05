@@ -12,7 +12,7 @@ export function install(Vue) {
 }
 
 const plugin = {
-  install,
+  install
 };
 
 let GlobalVue = null;

@@ -15,16 +15,16 @@ import { Slide } from 'vue-burger-menu';
 
 export default {
   name: 'App',
-  components: { 
-    'cooltextarea': CoolTextArea, 
-    'coolpicker': CoolPicker,
-    'slide': Slide 
-},
+  components: {
+    cooltextarea: CoolTextArea,
+    coolpicker: CoolPicker,
+    slide: Slide
+  },
   data() {
     return {
       content: '',
-      isSlideOpen: false,
-    }
+      isSlideOpen: false
+    };
   },
   computed: {
     emojiDataAll() {
@@ -64,7 +64,7 @@ export default {
     createElementFromHTML(htmlString) {
       var div = document.createElement('div');
       div.innerHTML = htmlString.trim();
-      return div.firstChild; 
+      return div.firstChild;
     },
     onEnterKey(event) {
       event.stopPropagation();
@@ -74,18 +74,20 @@ export default {
       }
 
       const docElement = document.getElementById('messages-sent');
-     
+
       let formattedContent = TextareaParser.escapeHTML(this.content);
       formattedContent = EmojiService.getEmojiImgFromUnicode(formattedContent);
-      docElement.appendChild(this.createElementFromHTML(
-        '<div class="code-block-cream text-wrap margin-bottom padding-all text-break">' 
-        + formattedContent + 
-        '</div>')
+      docElement.appendChild(
+        this.createElementFromHTML(
+          '<div class="code-block-cream text-wrap margin-bottom padding-all text-break">' +
+            formattedContent +
+            '</div>'
+        )
       );
       if (docElement.childElementCount > 6) {
         docElement.removeChild(docElement.childNodes[1]);
       }
       this.$refs.cooltextareaSend.cleanText();
-    },
+    }
   }
 };
