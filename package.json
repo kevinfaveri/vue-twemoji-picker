@@ -31,7 +31,7 @@
   ],
   "scripts": {
     "serve:app": "vue-cli-service serve",
-    "build:emoji-data": "node ./src/utils/remove-unused-with-tags.js",
+    "build:emoji-data": "node ./utils/remove-unused-with-tags.js",
     "build:app": "vue-cli-service build --mode production --dest docs",
     "build:app:test": "vue-cli-service build --mode build-test",
     "publish:docs": "git subtree split --prefix docs -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages",
