@@ -8,5 +8,8 @@ https://kevinfaguiar.github.io/cool-emoji-picker/#home
 ## Credits
 Thanks to Twitter for the emoji arts used in this component which are available in their lib: https://github.com/twitter/twemoji
 
+## Support me
+[![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/E1E11BKWW)
+
 ## License
 MIT 2018 Kevin de Faveri Aguiar
