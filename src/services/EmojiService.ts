@@ -17,15 +17,13 @@ export default {
 
     if (emojiPackArray?.length !== 0) {
       for (let i = 0; i < emojiPackArray.length; i++) {
-        emojiPackWithImg[i] = { group: emojiPackArray[i].group, emojiList: []};
+        emojiPackWithImg[i] = { group: emojiPackArray[i].group, emojiList: [] };
 
         for (let j = 0; j < emojiPackArray[i].emojiList.length; j++) {
-          const emoji: Emoji = { unicode: '', img: '', skins: [], tags: []};
+          const emoji: Emoji = { unicode: '', img: '', skins: [], tags: [] };
           const emojiAuxObj: Emoji = emojiPackArray[i].emojiList[j];
 
-          if (
-            emojiAuxObj.skins.length > 0
-          ) {
+          if (emojiAuxObj.skins.length > 0) {
             emoji.unicode = emojiAuxObj.unicode;
             emoji.skins = [];
             for (let k = 0; k < emojiAuxObj.skins.length; k++) {
@@ -54,19 +52,21 @@ export default {
     return emojiPackWithImg;
   },
 
-  getEmojiImgArrayFromEmojiPackByTerm(emojiPackArray: Array<EmojiPack>, twemojiOptions: object, searchTerm: string) {
+  getEmojiImgArrayFromEmojiPackByTerm(
+    emojiPackArray: Array<EmojiPack>,
+    twemojiOptions: object,
+    searchTerm: string
+  ) {
     emojiPackArray = JSON.parse(JSON.stringify(emojiPackArray));
     const emojiPackWithImg = [];
 
     if (emojiPackArray?.length !== 0) {
       for (let i = 0; i < emojiPackArray.length; i++) {
         for (let j = 0; j < emojiPackArray[i].emojiList.length; j++) {
-          const emoji: Emoji = { unicode: '', img: '', skins: [], tags: []};
+          const emoji: Emoji = { unicode: '', img: '', skins: [], tags: [] };
           const emojiAuxObj: Emoji = emojiPackArray[i].emojiList[j];
 
-          if (
-            emojiAuxObj.skins?.length !== 0
-          ) {
+          if (emojiAuxObj.skins?.length !== 0) {
             emoji.unicode = emojiAuxObj.unicode;
             emoji.skins = [];
             for (let k = 0; k < emojiAuxObj.skins.length; k++) {
@@ -88,12 +88,12 @@ export default {
             twemojiOptions
           );
 
-            for (let k = 0; k < emojiAuxObj.tags.length; k++) {
-              if (emojiAuxObj.tags[k].includes(searchTerm)) {
-                emojiPackWithImg.push(emoji);
-                break;
-              }
+          for (let k = 0; k < emojiAuxObj.tags.length; k++) {
+            if (emojiAuxObj.tags[k].includes(searchTerm)) {
+              emojiPackWithImg.push(emoji);
+              break;
             }
+          }
         }
       }
     }
