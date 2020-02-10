@@ -6,8 +6,8 @@ import visualizer from 'rollup-plugin-visualizer';
 const config = Object.assign({}, base, {
   output: {
     exports: 'named',
-    name: 'TwemojiPicker',
-    file: 'dist/twemoji-picker.min.js',
+    name: 'VueTwemojiPicker',
+    file: 'dist/vue-twemoji-picker.min.js',
     format: 'iife'
   },
   external: ['vue']
