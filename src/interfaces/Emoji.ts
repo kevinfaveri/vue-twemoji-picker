@@ -1,8 +1,8 @@
-import { EmojiSkin } from './EmojiSkin';
+import EmojiSkin from './EmojiSkin';
 
-export interface Emoji {
+export default interface Emoji {
   unicode: string;
   img: string;
   skins: Array<EmojiSkin>;
-  tags: Array<string>
+  tags: Array<string>;
 }

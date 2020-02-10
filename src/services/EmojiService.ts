@@ -1,10 +1,10 @@
 import Twemoji from 'twemoji';
-import { Emoji } from '@/interfaces/Emoji';
-import { EmojiPack } from '@/interfaces/EmojiPack';
-import { EmojiSkin } from '@/interfaces/EmojiSkin';
+import Emoji from '@/interfaces/Emoji';
+import EmojiPack from '@/interfaces/EmojiPack';
+import EmojiSkin from '@/interfaces/EmojiSkin';
 
 export default {
-  getEmojiImgFromUnicode(unicode: string, twemojiOptions: object) {
+  getEmojiImgFromUnicode(unicode: string, twemojiOptions?: object) {
     return Twemoji.parse(unicode, twemojiOptions);
   },
 
@@ -23,7 +23,7 @@ export default {
           const emoji: Emoji = { unicode: '', img: '', skins: [], tags: [] };
           const emojiAuxObj: Emoji = emojiPackArray[i].emojiList[j];
 
-          if (emojiAuxObj.skins.length > 0) {
+          if (emojiAuxObj.skins?.length > 0) {
             emoji.unicode = emojiAuxObj.unicode;
             emoji.skins = [];
             for (let k = 0; k < emojiAuxObj.skins.length; k++) {

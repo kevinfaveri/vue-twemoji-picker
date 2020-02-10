@@ -1,5 +1,5 @@
 <template>
-  <div class="cooltextarea-outer" :class="'bg-' + componentColor">
+  <div class="twemoji-textarea-outer" :class="'bg-' + componentColor">
     <twemoji-picker
       :pickerWidth="pickerWidth"
       :pickerMaxHeight="pickerMaxHeight"
@@ -25,9 +25,9 @@
     ></twemoji-picker>
 
     <div
-      ref="coolTextarea"
-      id="cool-text-area"
-      class="cooltextarea"
+      ref="twemojiTextarea"
+      id="twemoji-textarea"
+      class="twemojiTextarea"
       :contenteditable="disabled ? false : true"
       @input="updateContent"
       @paste="onPaste"
@@ -49,7 +49,7 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.cooltextarea-outer {
+.twemoji-textarea-outer {
   display: flex;
   flex-flow: row wrap;
   border-radius: 25px;
@@ -62,7 +62,7 @@ img.emoji {
 }
 
 /* Textarea */
-.cooltextarea {
+.twemojiTextarea {
   flex-grow: 95;
   flex-basis: 0;
   background-color: #fafafa;
@@ -170,6 +170,9 @@ import TextareaParser from '../services/TextareaParser';
 import EmojiService from '../services/EmojiService';
 import TwemojiPicker from './TwemojiPicker.vue';
 import SendIconImg from './SendIconImg.vue';
+import EmojiPack from '../interfaces/EmojiPack';
+import EmojiGroup from '../interfaces/EmojiGroup';
+import TwemojiOptions from '../interfaces/TwemojiOptions';
 
 export default Vue.extend({
   name: 'TwemojiTextarea',
@@ -183,19 +186,19 @@ export default Vue.extend({
     // ** Picker Props **/
     pickerWidth: {
       default: 250,
-      type: Number
+      type: Number as () => number
     },
     pickerMaxHeight: {
       default: 200,
-      type: Number
+      type: Number as () => number
     },
     appendToBody: {
       default: false,
-      type: Boolean
+      type: Boolean as () => boolean
     },
     triggerType: {
       default: 'click',
-      type: String,
+      type: String as () => string,
       validator: function(value) {
         if (value !== 'click' && value !== 'hover') {
           console.error(
@@ -208,23 +211,23 @@ export default Vue.extend({
     },
     emojiData: {
       default: () => [],
-      type: Array
+      type: Array as () => Array<EmojiPack>
     },
     emojiGroups: {
       default: () => [],
-      type: Array
+      type: Array as () => Array<EmojiGroup>
     },
     skinsSelection: {
       default: false,
-      type: Boolean
+      type: Boolean as () => boolean
     },
     recentEmojisFeat: {
       default: false,
-      type: Boolean
+      type: Boolean as () => boolean
     },
     recentEmojisStorage: {
       default: 'none',
-      type: String,
+      type: String as () => string,
       validator: function(value) {
         if (value !== 'local' && value !== 'session' && value !== 'none') {
           console.error(
@@ -236,32 +239,32 @@ export default Vue.extend({
       }
     },
     recentEmojiStorageName: {
-      default: 'cep-recent-emojis',
-      type: String
+      default: 'vue-recent-twemojis',
+      type: String as () => string
     },
     recentEmojiLimit: {
       default: 12,
-      type: Number
+      type: Number as () => number
     },
     searchEmojisFeat: {
       default: false,
-      type: Boolean
+      type: Boolean as () => boolean
     },
     searchEmojiPlaceholder: {
       default: 'Search emojis.',
-      type: String
+      type: String as () => string
     },
     searchEmojiNotFound: {
       default: 'No emojis found.',
-      type: String
+      type: String as () => string
     },
     twemojiPath: {
       default: 'https://twemoji.maxcdn.com/2/',
-      type: String
+      type: String as () => string
     },
     twemojiExtension: {
       default: '.png',
-      type: String,
+      type: String as () => string,
       validator: function(value) {
         const bolValid =
           ['.png', '.svg', '.jpg', '.jpeg', '.ico'].indexOf(value) !== -1;
@@ -276,27 +279,28 @@ export default Vue.extend({
     },
     twemojiFolder: {
       default: '72x72',
-      type: String
+      type: String as () => string
     },
 
     // ** Textarea Props **/
     content: {
       default: '',
-      type: String
+      type: String as () => string
     },
     enableSendBtn: {
       default: false,
-      type: Boolean
+      type: Boolean as () => boolean
     },
     disableEmojiPicker: {
       default: false,
-      type: Boolean
+      type: Boolean as () => boolean
     },
     disabled: {
       default: false,
-      type: Boolean
+      type: Boolean as () => boolean
     },
     componentColor: {
+      type: String as () => string,
       default: 'cream',
       validator: function(value) {
         const bolValid =
@@ -316,17 +320,18 @@ export default Vue.extend({
 
   data() {
     return {
-      savedRange: null
+      savedRange: null as any,
+      twemojiOptions: {} as TwemojiOptions
     };
   },
 
   computed: {
-    coolTextarea() {
-      return this.$refs.coolTextarea;
+    twemojiTextarea(): HTMLElement {
+      return this.$refs.twemojiTextarea as HTMLElement;
     }
   },
 
-  created() {
+  created(): void {
     this.twemojiOptions = {
       base: this.twemojiPath,
       ext: this.twemojiExtension,
@@ -334,13 +339,14 @@ export default Vue.extend({
     };
   },
 
-  mounted() {
+  mounted(): void {
     this.addText(this.content);
   },
 
   methods: {
-    updateContent(event: object) {
-      let content = event.target.innerHTML;
+    updateContent(event: Event): void {
+      const targetedElement = event.target as HTMLElement;
+      let content = targetedElement.innerHTML;
       content = TextareaParser.replaceEmojiWithAltAttribute(content);
       content = TextareaParser.unescapeHtml(content);
       if (content.length !== 0 && content[content.length - 1] === '\n') {
@@ -349,20 +355,21 @@ export default Vue.extend({
       this.$emit('update:content', content);
       this.$emit('contentChanged');
     },
-    emitEnterKeyEvent(event: object) {
+    emitEnterKeyEvent(event: Event): void {
       this.$emit('enterKey', event);
     },
-    enterKey(event: object) {
+    enterKey(event: MouseEvent): void {
       if (event.shiftKey === false) this.emitEnterKeyEvent(event);
     },
-    shiftEnterKey(event: object) {
+    shiftEnterKey(event: MouseEvent): void {
       event.stopPropagation();
       event.preventDefault();
 
       if (
-        this.coolTextarea.innerHTML === '' ||
-        this.coolTextarea.innerHTML[this.coolTextarea.innerHTML.length - 1] !==
-          '\n'
+        this.twemojiTextarea.innerHTML === '' ||
+        this.twemojiTextarea.innerHTML[
+          this.twemojiTextarea.innerHTML.length - 1
+        ] !== '\n'
       ) {
         this.addText('\n');
         this.addText('\n');
@@ -370,16 +377,15 @@ export default Vue.extend({
         this.addText('\n');
       }
 
-      this.coolTextarea.scrollTop = this.coolTextarea.scrollHeight;
+      this.twemojiTextarea.scrollTop = this.twemojiTextarea.scrollHeight;
     },
-    onPaste(pasteEvent: object) {
-      let clipboardData, pastedData;
+    onPaste(pasteEvent: ClipboardEvent): void {
+      let pastedData;
 
       pasteEvent.stopPropagation();
       pasteEvent.preventDefault();
-
-      clipboardData = pasteEvent.clipboardData || window.clipboardData;
-      pastedData = clipboardData.getData('Text');
+      const clipboardData = pasteEvent.clipboardData;
+      pastedData = clipboardData?.getData('Text') || '';
       pastedData = TextareaParser.escapeHTML(pastedData);
       pastedData = EmojiService.getEmojiImgFromUnicode(
         pastedData,
@@ -388,10 +394,10 @@ export default Vue.extend({
 
       window.document.execCommand('insertHTML', false, pastedData);
 
-      this.coolTextarea.scrollTop = this.coolTextarea.scrollHeight;
+      this.twemojiTextarea.scrollTop = this.twemojiTextarea.scrollHeight;
     },
-    focus() {
-      const doc = this.coolTextarea;
+    focus(): void {
+      const doc = this.twemojiTextarea;
       const childNode = doc.childNodes[0];
       doc.focus();
 
@@ -402,41 +408,35 @@ export default Vue.extend({
         const sel = window.getSelection();
         range.setStart(doc.childNodes[0], 0);
         range.collapse(true);
-        sel.removeAllRanges();
-        sel.addRange(range);
+        sel?.removeAllRanges();
+        sel?.addRange(range);
         this.saveSelection();
       }
     },
-    blur() {
-      const doc = this.coolTextarea;
+    blur(): void {
+      const doc = this.twemojiTextarea;
       doc.blur();
     },
-    saveSelection() {
+    saveSelection(): void {
       if (window.getSelection) {
-        this.savedRange = window.getSelection().getRangeAt(0);
-      } else if (document.selection) {
-        this.savedRange = document.selection.createRange();
+        this.savedRange = window.getSelection()?.getRangeAt(0);
       }
     },
-    restoreSelection() {
-      const doc = this.coolTextarea;
+    restoreSelection(): void {
+      const doc = this.twemojiTextarea;
       doc.focus();
       if (this.savedRange != null) {
         if (window.getSelection) {
           const s = window.getSelection();
-          if (s.rangeCount > 0) {
-            s.removeAllRanges();
+          if (s?.rangeCount || 0 > 0) {
+            s?.removeAllRanges();
           }
-          s.addRange(this.savedRange);
-        } else if (document.createRange) {
-          window.getSelection().addRange(this.savedRange);
-        } else if (document.selection) {
-          this.savedRange.select();
+          s?.addRange(this.savedRange);
         }
       }
     },
 
-    addTextBlur(text: string) {
+    addTextBlur(text: string): void {
       this.focus();
 
       text = TextareaParser.escapeHTML(text);
@@ -446,7 +446,7 @@ export default Vue.extend({
       this.saveSelection();
       this.blur();
     },
-    addText(text: string) {
+    addText(text: string): void {
       this.focus();
 
       text = TextareaParser.escapeHTML(text);
@@ -455,14 +455,14 @@ export default Vue.extend({
       window.document.execCommand('insertHTML', false, text);
       this.saveSelection();
     },
-    cleanText() {
-      this.coolTextarea.innerHTML = '';
+    cleanText(): void {
+      this.twemojiTextarea.innerHTML = '';
       this.$emit('update:content', '');
     },
-    emojiUnicodeAdded(unicode: string) {
+    emojiUnicodeAdded(unicode: string): void {
       this.$emit('emojiUnicodeAdded', unicode);
     },
-    emojiImgAdded(img: string) {
+    emojiImgAdded(img: string): void {
       this.$emit('emojiImgAdded', img);
     }
   }

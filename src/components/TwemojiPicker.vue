@@ -257,9 +257,15 @@ img.emoji {
 </style>
 <script lang="ts">
 import Vue from 'vue';
-import EmojiService from '../services/EmojiService';
+import EmojiService from '@/services/EmojiService';
 import { Dropdown } from 'v-tooltip';
 import 'v-tooltip/dist/v-tooltip.css';
+import EmojiPack from '@/interfaces/EmojiPack';
+import Emoji from '@/interfaces/Emoji';
+import TwemojiOptions from '@/interfaces/TwemojiOptions';
+import PopperOptions from '@/interfaces/PopperOptions';
+import EmojiSkin from '@/interfaces/EmojiSkin';
+import EmojiGroup from '@/interfaces/EmojiGroup';
 
 export default Vue.extend({
   name: 'TwemojiPicker',
@@ -271,23 +277,23 @@ export default Vue.extend({
   props: {
     disabled: {
       default: false,
-      type: Boolean
+      type: Boolean as () => boolean
     },
     pickerWidth: {
       default: 250,
-      type: Number
+      type: Number as () => number
     },
     pickerMaxHeight: {
       default: 200,
-      type: Number
+      type: Number as () => number
     },
     appendToBody: {
       default: false,
-      type: Boolean
+      type: Boolean as () => boolean
     },
     triggerType: {
       default: 'click',
-      type: String,
+      type: String as () => string,
       validator: function(value) {
         if (value !== 'click' && value !== 'hover') {
           console.error(
@@ -300,23 +306,23 @@ export default Vue.extend({
     },
     emojiData: {
       default: () => [],
-      type: Array
+      type: Array as () => Array<EmojiPack>
     },
     emojiGroups: {
       default: () => [],
-      type: Array
+      type: Array as () => Array<EmojiGroup>
     },
     skinsSelection: {
       default: false,
-      type: Boolean
+      type: Boolean as () => boolean
     },
     recentEmojisFeat: {
       default: false,
-      type: Boolean
+      type: Boolean as () => boolean
     },
     recentEmojisStorage: {
       default: 'none',
-      type: String,
+      type: String as () => string,
       validator: function(value) {
         if (value !== 'local' && value !== 'session' && value !== 'none') {
           console.error(
@@ -328,32 +334,32 @@ export default Vue.extend({
       }
     },
     recentEmojiStorageName: {
-      default: 'cep-recent-emojis',
-      type: String
+      default: 'vue-recent-twemojis',
+      type: String as () => string
     },
     recentEmojiLimit: {
       default: 12,
-      type: Number
+      type: Number as () => number
     },
     searchEmojisFeat: {
       default: false,
-      type: Boolean
+      type: Boolean as () => boolean
     },
     searchEmojiPlaceholder: {
       default: 'Search emojis.',
-      type: String
+      type: String as () => string
     },
     searchEmojiNotFound: {
       default: 'No emojis found.',
-      type: String
+      type: String as () => string
     },
     twemojiPath: {
       default: 'https://twemoji.maxcdn.com/2/',
-      type: String
+      type: String as () => string
     },
     twemojiExtension: {
       default: '.png',
-      type: String,
+      type: String as () => string,
       validator: function(value) {
         const bolValid =
           ['.png', '.svg', '.jpg', '.jpeg', '.ico'].indexOf(value) !== -1;
@@ -368,44 +374,43 @@ export default Vue.extend({
     },
     twemojiFolder: {
       default: '72x72',
-      type: String
+      type: String as () => string
     }
   },
 
   data() {
     return {
-      showEmoji: false,
+      showEmoji: false as boolean,
       popperOptions: {
         modifiers: {
           flip: {
             enabled: false
           }
         }
-      },
-      showSkinsSelector: false,
-      skinsListActive: [],
+      } as PopperOptions,
+      showSkinsSelector: false as boolean,
+      skinsListActive: [] as Array<EmojiSkin>,
 
-      emojiPack: [],
-      emojiListActive: [],
-      emojiGroupActive: 0,
+      emojiPack: [] as Array<EmojiPack>,
+      emojiListActive: [] as Array<Emoji>,
+      emojiGroupActive: 0 as number,
 
-      randomEmoji: '😄',
+      randomEmoji: '😄' as string,
 
-      isPointerOnEmojiBtn: false,
-      twemojiOptions: {},
+      isPointerOnEmojiBtn: false as boolean,
+      twemojiOptions: {} as TwemojiOptions,
 
-      recentEmojis: [],
+      recentEmojis: [] as Array<Emoji>,
 
-      searchTerm: '',
-      searchEmojis: [{ emoji: '😄' }],
-      searchTimeout: null
+      searchTerm: '' as string,
+      searchEmojis: [] as Array<Emoji>,
+      searchTimeout: null as any
     };
   },
 
   computed: {
-    randomEmojiImg() {
-      this.showEmoji = false;
-      setTimeout(() => (this.showEmoji = true));
+    randomEmojiImg(): string {
+      this.triggerShowEmoji();
       return EmojiService.getEmojiImgFromUnicode(
         this.randomEmoji,
         this.twemojiOptions
@@ -413,7 +418,7 @@ export default Vue.extend({
     }
   },
 
-  created() {
+  created(): void {
     this.twemojiOptions = {
       base: this.twemojiPath,
       ext: this.twemojiExtension,
@@ -428,24 +433,28 @@ export default Vue.extend({
   },
 
   methods: {
-    buildEmojiPack() {
+    triggerShowEmoji(): void {
+      this.showEmoji = false;
+      setTimeout(() => (this.showEmoji = true));
+    },
+    buildEmojiPack(): void {
       this.emojiPack = EmojiService.getEmojiImgArrayFromEmojiPack(
         this.emojiData,
         this.twemojiOptions
       );
     },
-    onMouseEnterEmojiBtn() {
+    onMouseEnterEmojiBtn(): void {
       if (this.isPointerOnEmojiBtn === false) {
         this.isPointerOnEmojiBtn = true;
         this.setRandomEmoji();
       }
     },
-    onMouseLeaveEmojiBtn() {
+    onMouseLeaveEmojiBtn(): void {
       if (this.isPointerOnEmojiBtn === true) {
         this.isPointerOnEmojiBtn = false;
       }
     },
-    setRandomEmoji() {
+    setRandomEmoji(): void {
       let emoji = { unicode: '😄' };
       if (this.emojiPack.length !== 0) {
         emoji = this.emojiPack[0].emojiList[Math.floor(Math.random() * 20)];
@@ -453,13 +462,9 @@ export default Vue.extend({
       this.randomEmoji = emoji.unicode;
     },
 
-    clickEmoji(emoji: string) {
+    clickEmoji(emoji: Emoji): void {
       let emojiUnicode;
-      if (
-        emoji.skins !== undefined &&
-        emoji.skins.length !== 0 &&
-        this.skinsSelection
-      ) {
+      if (emoji.skins?.length !== 0 && this.skinsSelection) {
         this.skinsListActive = Array.from(emoji.skins);
         this.skinsListActive.unshift({
           unicode: emoji.unicode,
@@ -483,17 +488,20 @@ export default Vue.extend({
       );
     },
 
-    getEmojiGroupDescription(emojiGroup: string) {
-      if (this.emojiGroups.length > 0) {
+    getEmojiGroupDescription(emojiGroup: number): string {
+      const emojiGroupFound = this.emojiGroups.find(
+        (x: EmojiGroup) => x.group === emojiGroup
+      );
+      if (emojiGroupFound) {
         return EmojiService.getEmojiImgFromUnicode(
-          this.emojiGroups.find((x) => x.group === emojiGroup).description,
+          emojiGroupFound.description,
           this.twemojiOptions
         );
       }
       return 'Group ' + emojiGroup;
     },
 
-    changeEmojiListActive(index: number) {
+    changeEmojiListActive(index: number): void {
       this.showSkinsSelector = false;
       this.searchTerm = '';
       this.emojiGroupActive = index;
@@ -504,19 +512,19 @@ export default Vue.extend({
       }
     },
 
-    getEmojiImgFromUnicode(unicode: string) {
+    getEmojiImgFromUnicode(unicode: string): string {
       return EmojiService.getEmojiImgFromUnicode(unicode, this.twemojiOptions);
     },
 
-    setRecentEmojis() {
+    setRecentEmojis(): void {
       let recentEmojis = null;
       if (this.recentEmojisStorage === 'local') {
         recentEmojis = JSON.parse(
-          localStorage.getItem(this.recentEmojiStorageName)
+          localStorage.getItem(this.recentEmojiStorageName) || '[]'
         );
       } else if (this.recentEmojisStorage === 'session') {
         recentEmojis = JSON.parse(
-          sessionStorage.getItem(this.recentEmojiStorageName)
+          sessionStorage.getItem(this.recentEmojiStorageName) || '[]'
         );
       } else {
         recentEmojis = [];
@@ -526,9 +534,9 @@ export default Vue.extend({
         this.recentEmojis = recentEmojis;
       }
     },
-    addEmojiToRecentEmojis(emojiUnicode: string) {
+    addEmojiToRecentEmojis(emojiUnicode: string): void {
       const indexToRemove = this.recentEmojis.findIndex(
-        (x) => x.unicode === emojiUnicode
+        (x: Emoji) => x.unicode === emojiUnicode
       );
       if (indexToRemove !== -1) {
         this.recentEmojis.splice(indexToRemove, 1);
@@ -537,7 +545,9 @@ export default Vue.extend({
           img: EmojiService.getEmojiImgFromUnicode(
             emojiUnicode,
             this.twemojiOptions
-          )
+          ),
+          skins: [],
+          tags: []
         });
       } else {
         this.recentEmojis.unshift({
@@ -545,7 +555,9 @@ export default Vue.extend({
           img: EmojiService.getEmojiImgFromUnicode(
             emojiUnicode,
             this.twemojiOptions
-          )
+          ),
+          skins: [],
+          tags: []
         });
       }
 

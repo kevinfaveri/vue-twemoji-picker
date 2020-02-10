@@ -36,7 +36,7 @@
         for more info) so you can catch the selected emoji selected and perform
         some action.
 
-        <coolpicker
+        <twemoji-picker
           class="bg-cream margin-bottom margin-top b-rounded"
           :emojiData="emojiDataAll"
           :emojiGroups="emojiGroups"
@@ -45,7 +45,7 @@
           :appendToBody="true"
           searchEmojiPlaceholder="Search here."
           searchEmojiNotFound="Emojis not found."
-        ></coolpicker>
+        ></twemoji-picker>
       </div>
 
       <div class="container border-bottom"></div>
@@ -55,7 +55,7 @@
         + textarea which provides string sanitization for HTML tags and emoji
         support.
 
-        <cooltextarea
+        <twemoji-textarea
           class="margin-top text-justify"
           :content.sync="content"
           :emojiData="emojiDataAll"
@@ -68,7 +68,7 @@
           :searchEmojisFeat="true"
           :appendToBody="true"
           ref="cooltextareaSend"
-        ></cooltextarea>
+        ></twemoji-textarea>
         <div class="text-center margin-bottom">
           Tip: You can send any message above to try the component!
         </div>
@@ -132,62 +132,62 @@
       <div class="header2 container margin-top">
         One Emoji Group - Forest Color
       </div>
-      <cooltextarea
+      <twemoji-textarea
         class="margin-top container"
         :content="content"
         :emojiData="emojiDataOneCollection"
         :emojiGroups="emojiGroups"
         componentColor="forest"
         :searchEmojisFeat="true"
-      ></cooltextarea>
+      ></twemoji-textarea>
 
       <div class="header2 container margin-top">
         Two Emoji Groups - Cherry Color
       </div>
-      <cooltextarea
+      <twemoji-textarea
         class="margin-top container"
         :content="content"
         :emojiData="emojiDataTwoCollections"
         :emojiGroups="emojiGroups"
         componentColor="cherry"
         :searchEmojisFeat="true"
-      ></cooltextarea>
+      ></twemoji-textarea>
 
       <div class="header2 container margin-top">
         Three Emoji Groups - Ocean Color
       </div>
-      <cooltextarea
+      <twemoji-textarea
         class="margin-top container"
         :content="content"
         :emojiData="emojiDataThreeCollections"
         :emojiGroups="emojiGroups"
         componentColor="ocean"
         :searchEmojisFeat="true"
-      ></cooltextarea>
+      ></twemoji-textarea>
 
       <div class="header2 container margin-top">
         Four Emoji Groups - Sun Color
       </div>
-      <cooltextarea
+      <twemoji-textarea
         class="margin-top container"
         :content="content"
         :emojiData="emojiDataFourCollections"
         :emojiGroups="emojiGroups"
         componentColor="sun"
         :searchEmojisFeat="true"
-      ></cooltextarea>
+      ></twemoji-textarea>
 
       <div class="header2 container margin-top">
         All Emoji Groups - Transparent
       </div>
-      <cooltextarea
+      <twemoji-textarea
         class="margin-top container"
         :content="content"
         :emojiData="emojiDataAll"
         :emojiGroups="emojiGroups"
         componentColor="transparent"
         :searchEmojisFeat="true"
-      ></cooltextarea>
+      ></twemoji-textarea>
 
       <div class="header1 row margin-top margin-bottom" id="requirements">
         Requirements:
@@ -239,17 +239,15 @@
           class="row code-block padding-all margin-bottom text-wrap text-break"
         >
           JAVASCRIPT: import { CoolPicker } from 'cool-emoji-picker'; import
-          EmojiData from
-          'cool-emoji-picker/emoji-data/{LANG}/emoji-all-groups.json'; import
+          EmojiData from '../emoji-data/{LANG}/emoji-all-groups.json'; import
           EmojiDataAnimalsNature from
-          'cool-emoji-picker/emoji-data/{LANG}/emoji-group-animals-nature.json';
-          import EmojiDataFoodDrink from
-          'cool-emoji-picker/emoji-data/{LANG}/emoji-group-food-drink.json';
-          import EmojiGroups from
-          'cool-emoji-picker/emoji-data/emoji-groups.json'; export default {
-          name: 'App', components: { 'coolpicker': CoolPicker }, computed: {
-          emojiDataAll() { return EmojiData; }, emojiDataTwoCollections() {
-          const emojiData = []; emojiData.push(EmojiDataAnimalsNature);
+          '../emoji-data/{LANG}/emoji-group-animals-nature.json'; import
+          EmojiDataFoodDrink from
+          '../emoji-data/{LANG}/emoji-group-food-drink.json'; import EmojiGroups
+          from '../emoji-data/emoji-groups.json'; export default { name: 'App',
+          components: { 'coolpicker': CoolPicker }, computed: { emojiDataAll() {
+          return EmojiData; }, emojiDataTwoCollections() { const emojiData = [];
+          emojiData.push(EmojiDataAnimalsNature);
           emojiData.push(EmojiDataFoodDrink); return emojiData; }, emojiGroups()
           { return EmojiGroups; } } } TEMPLATE: // Emoji picker component using
           all emojis &lt;coolpicker :emojiData="emojiDataAll"
@@ -271,9 +269,8 @@
           class="row code-block padding-all margin-bottom text-wrap text-break"
         >
           JAVASCRIPT: import { CoolTextArea } from 'cool-emoji-picker'; import
-          EmojiData from 'cool-emoji-picker/emoji-data/emoji-all-groups.json';
-          import EmojiGroups from
-          'cool-emoji-picker/emoji-data/emoji-groups.json'; export default {
+          EmojiData from '../emoji-data/emoji-all-groups.json'; import
+          EmojiGroups from '../emoji-data/emoji-groups.json'; export default {
           name: 'App', components: { 'cooltextarea': CoolTextArea }, computed: {
           emojiDataAll() { return EmojiData; }, emojiGroups() { return
           EmojiGroups; } } } TEMPLATE: &lt;cooltextarea :content.sync="content"
@@ -825,7 +822,7 @@
       <div class="container margin-top">
         PS: If you are using cool-emoji-picker in a version below 4.0.0 the path
         for emoji-data is 'cool-emoji-picker/src/emoji-data', otherwise it will
-        be 'cool-emoji-picker/emoji-data'.
+        be '../emoji-data'.
       </div>
       <div class="container">
         As seen in the example you will need, for the emoji picker to work, to
@@ -855,75 +852,75 @@
         </thead>
         <tbody>
           <tr>
-            <td>'cool-emoji-picker/emoji-data/{LANG}/emoji-all-groups.json'</td>
+            <td>'../emoji-data/{LANG}/emoji-all-groups.json'</td>
             <td>129KB</td>
             <td>26KB</td>
           </tr>
           <tr>
             <td>
-              'cool-emoji-picker/emoji-data/{LANG}/emoji-group-smileys-emotion.json'
+              '../emoji-data/{LANG}/emoji-group-smileys-emotion.json'
             </td>
             <td>9KB</td>
             <td>3KB</td>
           </tr>
           <tr>
             <td>
-              'cool-emoji-picker/emoji-data/{LANG}/emoji-group-people-body.json'
+              '../emoji-data/{LANG}/emoji-group-people-body.json'
             </td>
             <td>57KB</td>
             <td>10KB</td>
           </tr>
           <tr>
             <td>
-              'cool-emoji-picker/emoji-data/{LANG}/emoji-group-symbols.json'
+              '../emoji-data/{LANG}/emoji-group-symbols.json'
             </td>
             <td>14KB</td>
             <td>3KB</td>
           </tr>
           <tr>
             <td>
-              'cool-emoji-picker/emoji-data/{LANG}/emoji-group-travel-places.json'
+              '../emoji-data/{LANG}/emoji-group-travel-places.json'
             </td>
             <td>12KB</td>
             <td>3KB</td>
           </tr>
           <tr>
             <td>
-              'cool-emoji-picker/emoji-data/{LANG}/emoji-group-objects.json'
+              '../emoji-data/{LANG}/emoji-group-objects.json'
             </td>
             <td>12KB</td>
             <td>3KB</td>
           </tr>
           <tr>
             <td>
-              'cool-emoji-picker/emoji-data/{LANG}/emoji-group-flags.json'
+              '../emoji-data/{LANG}/emoji-group-flags.json'
             </td>
             <td>14KB</td>
             <td>2KB</td>
           </tr>
           <tr>
             <td>
-              'cool-emoji-picker/emoji-data/{LANG}/emoji-group-food-drink.json'
+              '../emoji-data/{LANG}/emoji-group-food-drink.json'
             </td>
             <td>7KB</td>
             <td>2KB</td>
           </tr>
           <tr>
             <td>
-              'cool-emoji-picker/emoji-data/{LANG}/emoji-group-animals-nature.json'
+              '../emoji-data/{LANG}/emoji-group-animals-nature.json'
             </td>
             <td>7KB</td>
             <td>2KB</td>
           </tr>
           <tr>
             <td>
-              'cool-emoji-picker/emoji-data/{LANG}/emoji-group-activities.json'
+              '../emoji-data/{LANG}/emoji-group-activities.json'
             </td>
             <td>6KB</td>
             <td>2KB</td>
           </tr>
           <tr>
-            <td>'cool-emoji-picker/emoji-data/emoji-groups.json'</td>
+            <td>'../emoji-data/emoji-groups.json'</td>
             <td>700B</td>
             <td>460B</td>
           </tr>
@@ -933,13 +930,12 @@
         PS: You can provide your own emoji.json index file with a list of emoji
         Unicodes, but you will need to follow the structure of the bundles
         generated by this library (like
-        cool-emoji-picker/emoji-data/{LANG}/emoji-all-groups.json).
+        ../emoji-data/{LANG}/emoji-all-groups.json).
       </div>
       <div class="container">
         PS: You can provide your own emoji-groups.json index file with a list of
         emoji groups name, but you will need to follow the structure of the
-        bundle generated by this library
-        (cool-emoji-picker/emoji-data/emoji-groups.json).
+        bundle generated by this library (../emoji-data/emoji-groups.json).
       </div>
 
       <div class="header1 row margin-top margin-bottom" id="emoji-langs">
@@ -1186,26 +1182,27 @@ a:hover {
 </style>
 <script lang="ts">
 import Vue from 'vue';
-import { CoolTextArea, CoolPicker } from 'cool-emoji-picker';
-import EmojiDataAll from 'cool-emoji-picker/emoji-data/en/emoji-all-groups.json';
-import EmojiDataAnimalsNature from 'cool-emoji-picker/emoji-data/en/emoji-group-animals-nature.json';
-import EmojiDataFoodDrink from 'cool-emoji-picker/emoji-data/en/emoji-group-food-drink.json';
-import EmojiDataTravelPlaces from 'cool-emoji-picker/emoji-data/en/emoji-group-travel-places.json';
-import EmojiDataActivities from 'cool-emoji-picker/emoji-data/en/emoji-group-activities.json';
-import EmojiDataObjects from 'cool-emoji-picker/emoji-data/en/emoji-group-objects.json';
-import EmojiDataSymbols from 'cool-emoji-picker/emoji-data/en/emoji-group-symbols.json';
-import EmojiDataFlags from 'cool-emoji-picker/emoji-data/en/emoji-group-flags.json';
-import EmojiGroups from 'cool-emoji-picker/emoji-data/emoji-groups.json';
-import EmojiService from 'cool-emoji-picker/src/services/emoji-service';
-import TextareaParser from 'cool-emoji-picker/src/services/textarea-parser';
+import TwemojiTextarea from './TwemojiTextarea.vue';
+import TwemojiPicker from './TwemojiPicker.vue';
+import EmojiDataAll from '@/emoji-data/en/emoji-all-groups.json';
+import EmojiDataAnimalsNature from '@/emoji-data/en/emoji-group-animals-nature.json';
+import EmojiDataFoodDrink from '@/emoji-data/en/emoji-group-food-drink.json';
+import EmojiDataTravelPlaces from '@/emoji-data/en/emoji-group-travel-places.json';
+import EmojiDataActivities from '@/emoji-data/en/emoji-group-activities.json';
+import EmojiDataObjects from '@/emoji-data/en/emoji-group-objects.json';
+import EmojiDataSymbols from '@/emoji-data/en/emoji-group-symbols.json';
+import EmojiDataFlags from '@/emoji-data/en/emoji-group-flags.json';
+import EmojiGroups from '@/emoji-data/emoji-groups.json';
+import EmojiService from '@/services/EmojiService';
+import TextareaParser from '@/services/TextareaParser';
 import { Slide } from 'vue-burger-menu';
 
 export default Vue.extend({
   name: 'App',
 
   components: {
-    cooltextarea: CoolTextArea,
-    coolpicker: CoolPicker,
+    'twemoji-textarea': TwemojiTextarea,
+    'twemoji-picker': TwemojiPicker,
     slide: Slide
   },
 
@@ -1252,19 +1249,21 @@ export default Vue.extend({
   },
 
   methods: {
-    createElementFromHTML(htmlString: string) {
+    createElementFromHTML(htmlString: string): ChildNode | null {
       const div = document.createElement('div');
       div.innerHTML = htmlString.trim();
       return div.firstChild;
     },
-    onEnterKey(event: object) {
+    onEnterKey(event: MouseEvent): void {
       event.stopPropagation();
       event.preventDefault();
       if (this.content.length === 0) {
         return;
       }
 
-      const docElement = document.getElementById('messages-sent');
+      const docElement = document.getElementById(
+        'messages-sent'
+      ) as HTMLElement;
 
       let formattedContent = TextareaParser.escapeHTML(this.content);
       formattedContent = EmojiService.getEmojiImgFromUnicode(formattedContent);
