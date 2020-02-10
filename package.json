@@ -1,6 +1,6 @@
 {
   "name": "@kevinfaguiar/vue-twemoji-picker",
-  "version": "5.0.3",
+  "version": "5.0.4",
   "main": "dist/vue-twemoji-picker.umd.js",
   "module": "dist/vue-twemoji-picker.esm.js",
   "unpkg": "dist/vue-twemoji-picker.min.js",
@@ -31,10 +31,10 @@
   },
   "dependencies": {
     "twemoji": "^12.1.5",
-    "v-tooltip": "^3.0.0-alpha.11",
-    "vue": "^2.6.11"
+    "v-tooltip": "^3.0.0-alpha.11"
   },
   "devDependencies": {
+    "vue": "^2.6.11",
     "@kevinfaguiar/vue-twemoji-picker": "5.0.3",
     "@rollup/plugin-buble": "^0.21.1",
     "@rollup/plugin-commonjs": "^11.0.2",
