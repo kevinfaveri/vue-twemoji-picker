@@ -1,8 +1,8 @@
 export default {
-  replaceEmojiWithAltAttribute(text: string) {
+  replaceEmojiWithAltAttribute(text: string): string {
     return text.replace(/<img class="emoji".*?alt="(.*?)"[^>]+>/g, '$1');
   },
-  unescapeHtml(text: string) {
+  unescapeHtml(text: string): string {
     return text
       .replace(/&amp;/g, '&')
       .replace(/&lt;/g, '<')
@@ -10,7 +10,7 @@ export default {
       .replace(/&quot;/g, '"')
       .replace(/&#039;/g, "'");
   },
-  escapeHTML(text: string) {
+  escapeHTML(text: string): string {
     const divEscapedHtml: HTMLElement = document.createElement('div');
     const escapedHtmlTextNode: Text = divEscapedHtml.appendChild(
       document.createTextNode(text)

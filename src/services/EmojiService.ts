@@ -4,14 +4,14 @@ import EmojiPack from '../interfaces/EmojiPack';
 import EmojiSkin from '../interfaces/EmojiSkin';
 
 export default {
-  getEmojiImgFromUnicode(unicode: string, twemojiOptions?: object) {
+  getEmojiImgFromUnicode(unicode: string, twemojiOptions?: object): string {
     return Twemoji.parse(unicode, twemojiOptions);
   },
 
   getEmojiImgArrayFromEmojiPack(
     emojiPackArray: Array<EmojiPack>,
     twemojiOptions: object
-  ) {
+  ): Array<EmojiPack> {
     emojiPackArray = JSON.parse(JSON.stringify(emojiPackArray));
     const emojiPackWithImg: Array<EmojiPack> = [];
 
@@ -56,7 +56,7 @@ export default {
     emojiPackArray: Array<EmojiPack>,
     twemojiOptions: object,
     searchTerm: string
-  ) {
+  ): Array<Emoji> {
     emojiPackArray = JSON.parse(JSON.stringify(emojiPackArray));
     const emojiPackWithImg = [];
 
