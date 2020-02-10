@@ -1,13 +1,9 @@
 {
-  "name": "cool-emoji-picker",
-  "version": "4.0.3",
-  "main": "dist/cool-emoji-picker.umd.js",
-  "module": "dist/cool-emoji-picker.esm.js",
-  "unpkg": "dist/cool-emoji-picker.min.js",
-  "browser": {
-    "./coolpicker": "src/components/coolpicker/coolpicker.vue",
-    "./cooltextarea": "src/components/cooltextarea/cooltextarea.vue"
-  },
+  "name": "@kevinfaguiar/vue-twemoji-picker",
+  "version": "5.0.3",
+  "main": "dist/vue-twemoji-picker.umd.js",
+  "module": "dist/vue-twemoji-picker.esm.js",
+  "unpkg": "dist/vue-twemoji-picker.min.js",
   "files": [
     "dist/*",
     "src/*",
@@ -16,84 +12,64 @@
     "*.json",
     "*.js"
   ],
-  "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git@github.com:kevinfaguiar/cool-emoji-picker.git"
+    "url": "git@github.com:kevinfaguiar/vue-twemoji-picker.git"
   },
-  "keywords": [
-    "emoji-data",
-    "twemoji",
-    "emoji-picker",
-    "emoji-textarea",
-    "sanitize-textarea",
-    "vue"
-  ],
+  "license": "MIT",
   "scripts": {
-    "serve:app": "vue-cli-service serve",
-    "build:emoji-data": "node ./src/utils/remove-unused-with-tags.js",
+    "dev": "vue-cli-service serve",
     "build:app": "vue-cli-service build --mode production --dest docs",
-    "build:app:test": "vue-cli-service build --mode build-test",
     "publish:docs": "git subtree split --prefix docs -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages",
-    "build:comp": "NODE_ENV=production yarn run build:browser && yarn run build:es && yarn run build:umd",
+    "build:lib": "cross-env NODE_ENV=production yarn run build:browser && yarn run build:es && yarn run build:umd",
     "build:browser": "rollup --config build/rollup.config.browser.js",
     "build:es": "rollup --config build/rollup.config.es.js",
     "build:umd": "rollup --config build/rollup.config.umd.js",
-    "publish:comp:npm": "npm publish --access public",
+    "publish:lib:npm": "npm publish --access public",
+    "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "twemoji": "^12.1.2",
-    "v-tooltip": "^3.0.0-alpha.11"
+    "twemoji": "^12.1.5",
+    "v-tooltip": "^3.0.0-alpha.11",
+    "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@babel/core": "^7.6.0",
-    "@vue/cli-plugin-babel": "^3.11.0",
-    "@vue/cli-plugin-eslint": "^3.11.0",
-    "@vue/cli-service": "^3.11.0",
-    "babel-eslint": "^10.0.3",
-    "babel-loader": "^8.0.6",
-    "babel-preset-vue": "^2.0.2",
-    "cool-emoji-picker": "^4.0.3",
-    "emojibase-data": "^4.0.2",
-    "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.2.3",
-    "node-sass": "^4.12.0",
-    "rollup": "^1.21.3",
-    "rollup-plugin-analyzer": "^3.2.1",
+    "@kevinfaguiar/vue-twemoji-picker": "5.0.3",
+    "@rollup/plugin-buble": "^0.21.1",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-image": "^2.0.4",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-typescript": "^3.0.0",
+    "@types/jest": "^24.0.19",
+    "@types/node": "^13.7.0",
+    "@types/twemoji": "^12.1.0",
+    "@typescript-eslint/eslint-plugin": "^2.18.0",
+    "@typescript-eslint/parser": "^2.18.0",
+    "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-plugin-eslint": "~4.2.0",
+    "@vue/cli-plugin-typescript": "~4.2.0",
+    "@vue/cli-plugin-unit-jest": "~4.2.0",
+    "@vue/cli-service": "~4.2.0",
+    "@vue/eslint-config-prettier": "^6.0.0",
+    "@vue/eslint-config-typescript": "^5.0.1",
+    "@vue/test-utils": "1.0.0-beta.31",
+    "core-js": "^3.6.4",
+    "cross-env": "^7.0.0",
+    "emojibase-data": "4.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-prettier": "^3.1.1",
+    "eslint-plugin-vue": "^6.1.2",
+    "prettier": "^1.19.1",
+    "rollup": "^1.31.0",
+    "rollup-plugin-analyzer": "^3.2.2",
     "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-buble": "^0.19.8",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-image": "^1.0.2",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-postcss": "^2.0.3",
-    "rollup-plugin-terser": "^5.1.2",
-    "rollup-plugin-visualizer": "^2.6.0",
-    "rollup-plugin-vue": "^5.0.1",
-    "sass-loader": "^8.0.0",
-    "vue": "^2.6.10",
-    "vue-burger-menu": "^2.0.2",
-    "vue-cli-plugin-webpack-bundle-analyzer": "^1.4.0",
-    "vue-template-compiler": "^2.6.10"
-  },
-  "eslintConfig": {
-    "root": true,
-    "env": {
-      "node": true
-    },
-    "extends": [
-      "plugin:vue/essential",
-      "eslint:recommended"
-    ]
-  },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+    "rollup-plugin-postcss": "^2.0.6",
+    "rollup-plugin-terser": "^5.2.0",
+    "rollup-plugin-visualizer": "^3.3.1",
+    "rollup-plugin-vue": "^5.1.6",
+    "typescript": "~3.7.5",
+    "vue-burger-menu": "^2.0.3",
+    "vue-template-compiler": "^2.6.11"
+  }
 }

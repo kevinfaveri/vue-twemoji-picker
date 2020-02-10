@@ -17,8 +17,6 @@ yarn-error.log*
 *.ntvs*
 *.njsproj
 *.sln
-*.sw*
+*.sw?
 
-dist
-.cache
-data.json
+stats.html

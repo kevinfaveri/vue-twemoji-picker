@@ -1,40 +1,16 @@
-let groupMetaData = require('emojibase-data/meta/groups.json');
+const groupMetaData = require('emojibase-data/meta/groups.json');
 const fs = require('fs');
 
-const langArray = [
-  'zh', 
-  'zh-hant', 
-  'da', 
-  'nl', 
-  'en', 
-  'en-gb', 
-  'fr', 
-  'de', 
-  'it', 
-  'ja', 
-  'ko', 
-  'ms', 
-  'pl', 
-  'pt', 
-  'ru', 
-  'es', 
-  'es-mx', 
-  'sv', 
-  'th'
-];
-
-for(let i = 0; i < langArray.length; i++) {
-  generateEmojiPackByLang(langArray[i]);
-}
-
 function generateEmojiPackByLang(lang) {
-  fs.mkdirSync(`./src/emoji-data/${lang}`, err => {});
+  fs.mkdirSync(`../emoji-data/${lang}`, (err) => {});
 
-  let emojiPackLang = require('emojibase-data/' + lang + '/compact.json');
+  const emojiPackLang = require('emojibase-data/' + lang + '/compact.json');
   const emojiArray = [];
 
   for (let i = 0; i < emojiPackLang.length; i++) {
-    let emojiGroupFound = emojiArray.find(emojiGroup => emojiGroup.group === emojiPackLang[i].group);
+    const emojiGroupFound = emojiArray.find(
+      (emojiGroup) => emojiGroup.group === emojiPackLang[i].group
+    );
     let emojiGroup = {};
 
     if (emojiGroupFound !== undefined) {
@@ -43,17 +19,20 @@ function generateEmojiPackByLang(lang) {
       emojiGroup = { group: emojiPackLang[i].group, emojiList: [] };
     }
 
-    let emojiObj = { unicode: emojiPackLang[i].unicode, tags: emojiPackLang[i].tags };
+    const emojiObj = {
+      unicode: emojiPackLang[i].unicode,
+      tags: emojiPackLang[i].tags
+    };
     if (emojiPackLang[i].skins !== undefined) {
       emojiObj.skins = [];
       for (let j = 0; j < emojiPackLang[i].skins.length; j++) {
-        emojiObj.skins.push({ 
-          unicode: emojiPackLang[i].skins[j].unicode, 
+        emojiObj.skins.push({
+          unicode: emojiPackLang[i].skins[j].unicode,
           tags: emojiPackLang[i].skins[j].tags
-        })
+        });
       }
     }
-    
+
     if (emojiGroupFound !== undefined) {
       emojiGroup.emojiList.push(emojiObj);
     } else {
@@ -64,25 +43,59 @@ function generateEmojiPackByLang(lang) {
 
   const groupMeta = groupMetaData.groups;
   for (let i = 0; i < emojiArray.length; i++) {
-    if (i === 2) { continue; } 
-    else {
+    if (i === 2) {
+      continue;
+    } else {
       let emojiGroupName = '';
-      for (let group in groupMeta) {
-        if(group == emojiArray[i].group) {
+      for (const group in groupMeta) {
+        if (group == emojiArray[i].group) {
           emojiGroupName = groupMeta[group];
           break;
-        } 
+        }
       }
-      
+
       const emojiGroupString = JSON.stringify(emojiArray[i]);
       console.log(`emoji-data/${lang}/emoji-group-${emojiGroupName}.json`);
-      fs.writeFileSync(`./src/emoji-data/${lang}/emoji-group-${emojiGroupName}.json`, emojiGroupString, 'utf-8');
+      fs.writeFileSync(
+        `../emoji-data/${lang}/emoji-group-${emojiGroupName}.json`,
+        emojiGroupString,
+        'utf-8'
+      );
     }
   }
 
   emojiArray.splice(2, 1);
   const emojiArrayString = JSON.stringify(emojiArray);
   console.log('emoji-data/' + lang + 'emoji-all-groups.json');
-  fs.writeFileSync(`./src/emoji-data/${lang}/emoji-all-groups.json`, emojiArrayString, 'utf-8'); 
-  
+  fs.writeFileSync(
+    `../emoji-data/${lang}/emoji-all-groups.json`,
+    emojiArrayString,
+    'utf-8'
+  );
+}
+
+const langArray = [
+  'zh',
+  'zh-hant',
+  'da',
+  'nl',
+  'en',
+  'en-gb',
+  'fr',
+  'de',
+  'it',
+  'ja',
+  'ko',
+  'ms',
+  'pl',
+  'pt',
+  'ru',
+  'es',
+  'es-mx',
+  'sv',
+  'th'
+];
+
+for (let i = 0; i < langArray.length; i++) {
+  generateEmojiPackByLang(langArray[i]);
 }
