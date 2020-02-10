@@ -257,15 +257,15 @@ img.emoji {
 </style>
 <script lang="ts">
 import Vue from 'vue';
-import EmojiService from '@/services/EmojiService';
+import EmojiService from '../services/EmojiService';
 import { Dropdown } from 'v-tooltip';
 import 'v-tooltip/dist/v-tooltip.css';
-import EmojiPack from '@/interfaces/EmojiPack';
-import Emoji from '@/interfaces/Emoji';
-import TwemojiOptions from '@/interfaces/TwemojiOptions';
-import PopperOptions from '@/interfaces/PopperOptions';
-import EmojiSkin from '@/interfaces/EmojiSkin';
-import EmojiGroup from '@/interfaces/EmojiGroup';
+import EmojiPack from '../interfaces/EmojiPack';
+import Emoji from '../interfaces/Emoji';
+import TwemojiOptions from '../interfaces/TwemojiOptions';
+import PopperOptions from '../interfaces/PopperOptions';
+import EmojiSkin from '../interfaces/EmojiSkin';
+import EmojiGroup from '../interfaces/EmojiGroup';
 
 export default Vue.extend({
   name: 'TwemojiPicker',

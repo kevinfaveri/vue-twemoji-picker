@@ -2,10 +2,16 @@
   "name": "vue-twemoji-picker",
   "version": "5.0.0",
   "private": true,
+  "main": "dist/twemoji-picker.umd.js",
+  "module": "dist/twemoji-picker.esm.js",
+  "unpkg": "dist/twemoji-picker.min.js",
   "scripts": {
     "dev": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-lib": "vue-cli-service build --target lib --name vueTwemojiPicker ./src/wrapper.ts",
+    "build:lib": "cross-env NODE_ENV=production yarn run build:browser && yarn run build:es && yarn run build:umd",
+    "build:browser": "rollup --config build/rollup.config.browser.js",
+    "build:es": "rollup --config build/rollup.config.es.js",
+    "build:umd": "rollup --config build/rollup.config.umd.js",
     "test:unit": "vue-cli-service test:unit",
     "lint": "vue-cli-service lint"
   },
@@ -15,6 +21,11 @@
     "vue": "^2.6.11"
   },
   "devDependencies": {
+    "@rollup/plugin-buble": "^0.21.1",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "@rollup/plugin-image": "^2.0.4",
+    "@rollup/plugin-node-resolve": "^7.1.1",
+    "@rollup/plugin-typescript": "^3.0.0",
     "@types/jest": "^24.0.19",
     "@types/node": "^13.7.0",
     "@types/twemoji": "^12.1.0",
@@ -29,12 +40,21 @@
     "@vue/eslint-config-typescript": "^5.0.1",
     "@vue/test-utils": "1.0.0-beta.31",
     "core-js": "^3.6.4",
+    "cross-env": "^7.0.0",
     "emojibase-data": "4.1.0",
     "eslint": "^6.7.2",
     "eslint-plugin-prettier": "^3.1.1",
     "eslint-plugin-vue": "^6.1.2",
     "prettier": "^1.19.1",
+    "rollup": "^1.31.0",
+    "rollup-plugin-analyzer": "^3.2.2",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-postcss": "^2.0.6",
+    "rollup-plugin-terser": "^5.2.0",
+    "rollup-plugin-visualizer": "^3.3.1",
+    "rollup-plugin-vue": "^5.1.6",
     "typescript": "~3.7.5",
+    "vue-burger-menu": "^2.0.3",
     "vue-template-compiler": "^2.6.11"
   }
 }

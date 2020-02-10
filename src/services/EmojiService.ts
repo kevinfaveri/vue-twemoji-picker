@@ -1,7 +1,7 @@
 import Twemoji from 'twemoji';
-import Emoji from '@/interfaces/Emoji';
-import EmojiPack from '@/interfaces/EmojiPack';
-import EmojiSkin from '@/interfaces/EmojiSkin';
+import Emoji from '../interfaces/Emoji';
+import EmojiPack from '../interfaces/EmojiPack';
+import EmojiSkin from '../interfaces/EmojiSkin';
 
 export default {
   getEmojiImgFromUnicode(unicode: string, twemojiOptions?: object) {

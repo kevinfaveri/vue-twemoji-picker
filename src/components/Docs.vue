@@ -1182,19 +1182,21 @@ a:hover {
 </style>
 <script lang="ts">
 import Vue from 'vue';
-import TwemojiTextarea from './TwemojiTextarea.vue';
-import TwemojiPicker from './TwemojiPicker.vue';
-import EmojiDataAll from '@/emoji-data/en/emoji-all-groups.json';
-import EmojiDataAnimalsNature from '@/emoji-data/en/emoji-group-animals-nature.json';
-import EmojiDataFoodDrink from '@/emoji-data/en/emoji-group-food-drink.json';
-import EmojiDataTravelPlaces from '@/emoji-data/en/emoji-group-travel-places.json';
-import EmojiDataActivities from '@/emoji-data/en/emoji-group-activities.json';
-import EmojiDataObjects from '@/emoji-data/en/emoji-group-objects.json';
-import EmojiDataSymbols from '@/emoji-data/en/emoji-group-symbols.json';
-import EmojiDataFlags from '@/emoji-data/en/emoji-group-flags.json';
-import EmojiGroups from '@/emoji-data/emoji-groups.json';
-import EmojiService from '@/services/EmojiService';
-import TextareaParser from '@/services/TextareaParser';
+import {
+  TwemojiTextarea,
+  TwemojiPicker,
+  EmojiService,
+  TextareaParser
+} from '../../dist/twemoji-picker.umd';
+import EmojiDataAll from '../emoji-data/en/emoji-all-groups.json';
+import EmojiDataAnimalsNature from '../emoji-data/en/emoji-group-animals-nature.json';
+import EmojiDataFoodDrink from '../emoji-data/en/emoji-group-food-drink.json';
+import EmojiDataTravelPlaces from '../emoji-data/en/emoji-group-travel-places.json';
+import EmojiDataActivities from '../emoji-data/en/emoji-group-activities.json';
+import EmojiDataObjects from '../emoji-data/en/emoji-group-objects.json';
+import EmojiDataSymbols from '../emoji-data/en/emoji-group-symbols.json';
+import EmojiDataFlags from '../emoji-data/en/emoji-group-flags.json';
+import EmojiGroups from '../emoji-data/emoji-groups.json';
 import { Slide } from 'vue-burger-menu';
 
 export default Vue.extend({
