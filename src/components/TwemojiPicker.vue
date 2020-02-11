@@ -589,6 +589,7 @@ export default Vue.extend({
           );
           this.emojiGroupActive = -2;
           this.emojiListActive = this.searchEmojis;
+          this.showSkinsSelector = false;
         }, 300);
       } else {
         this.changeEmojiListActive(0);
