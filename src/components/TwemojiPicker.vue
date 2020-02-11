@@ -44,11 +44,16 @@
           class="emoji-popover-inner"
           :style="{
             width: pickerWidth + 'px',
-            maxHeight: pickerHeight + 'px'
+            height: pickerHeight + 'px'
           }"
         >
           <div v-if="isSearchingEmoji">
-            <strong>{{ isLoadingLabel }}</strong>
+            <strong
+              :style="{
+                padding: '3px'
+              }"
+              >{{ isLoadingLabel }}</strong
+            >
           </div>
 
           <div
@@ -58,7 +63,12 @@
                 isSearchingEmoji === false
             "
           >
-            <strong>{{ searchEmojiNotFound }}</strong>
+            <strong
+              :style="{
+                padding: '3px'
+              }"
+              >{{ searchEmojiNotFound }}</strong
+            >
           </div>
 
           <div
@@ -84,8 +94,7 @@
           <div
             class="emoji-popover-inner"
             :style="{
-              width: pickerWidth + 'px',
-              maxHeight: pickerHeight + 'px'
+              width: pickerWidth + 'px'
             }"
           >
             <div v-if="emojiListActive.length !== 0">
