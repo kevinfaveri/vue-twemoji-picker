@@ -18,7 +18,7 @@ features:
   details: 'Support emoji variations: skin tones, hair color and diversity.'
 - title: Localization 🔠
   details: 19 different locales for emoji tags.
-footer: 'MIT Licensed | Copyright © 2020-present @kevinfaguiar: https://kevinfaveri.now.sh/'
+footer: 'MIT Licensed | Copyright © 2020-present @kevinfaguiar | Twemoji graphics made by Twitter and licensed under CC-BY 4.0'
 ---
 
 <div style="text-align: center; margin-bottom: 15px;"><h2>Support me here:</h2></div>
