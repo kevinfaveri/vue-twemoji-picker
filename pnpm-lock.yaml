@@ -1,9 +1,8 @@
 dependencies:
   twemoji: 12.1.5
   v-tooltip: 3.0.0-alpha.13_vue@2.6.11
-  vue: 2.6.11
 devDependencies:
-  '@kevinfaguiar/vue-twemoji-picker': 5.0.3
+  '@kevinfaguiar/vue-twemoji-picker': 5.0.4_vue@2.6.11
   '@rollup/plugin-buble': 0.21.1_rollup@1.31.0
   '@rollup/plugin-commonjs': 11.0.2_rollup@1.31.0
   '@rollup/plugin-image': 2.0.4_rollup@1.31.0
@@ -37,6 +36,7 @@ devDependencies:
   rollup-plugin-visualizer: 3.3.1_rollup@1.31.0
   rollup-plugin-vue: 5.1.6_vue-template-compiler@2.6.11
   typescript: 3.7.5
+  vue: 2.6.11
   vue-burger-menu: 2.0.3
   vue-template-compiler: 2.6.11
 lockfileVersion: 5.1
@@ -1102,14 +1102,15 @@ packages:
       node: '>= 6'
     resolution:
       integrity: sha512-XKK7ze1apu5JWQ5eZjHITP66AX+QsLlbaJRBGYr8pNzwcAE2JVkwnf0yqjHTsDRcjR0mujy/NmZMXw5kl+kGBw==
-  /@kevinfaguiar/vue-twemoji-picker/5.0.3:
+  /@kevinfaguiar/vue-twemoji-picker/5.0.4_vue@2.6.11:
     dependencies:
       twemoji: 12.1.5
       v-tooltip: 3.0.0-alpha.13_vue@2.6.11
-      vue: 2.6.11
     dev: true
+    peerDependencies:
+      vue: '*'
     resolution:
-      integrity: sha512-tks4XB/gIl+ft15UN697OBVUYfBtX9gYE7ivJ96eMI/iXadfiDqFI+7m2HCM36RPRXNtJNiYAVwAQVVaHu+1xw==
+      integrity: sha512-+oGRGkpT4jj+1G971p5oeWBOb+2Pvyt1fjfvte35CCiKYB9jCPo/N5TmvGYnhzmOE5meiiZNn+xaHJHaNyTLLQ==
   /@mrmlnc/readdir-enhanced/2.2.1:
     dependencies:
       call-me-maybe: 1.0.1
@@ -11741,7 +11742,7 @@ packages:
     resolution:
       integrity: sha512-jcKpkthap6x63MB4TxwCyuIGkV0oYP/YRyuQU5UO0Yz/E/ZAu+653/uov+phdmO54n6BcvFRyyt0RRrWdN2mpw==
 specifiers:
-  '@kevinfaguiar/vue-twemoji-picker': 5.0.3
+  '@kevinfaguiar/vue-twemoji-picker': 5.0.4
   '@rollup/plugin-buble': ^0.21.1
   '@rollup/plugin-commonjs': ^11.0.2
   '@rollup/plugin-image': ^2.0.4

@@ -35,7 +35,7 @@
   },
   "devDependencies": {
     "vue": "^2.6.11",
-    "@kevinfaguiar/vue-twemoji-picker": "5.0.3",
+    "@kevinfaguiar/vue-twemoji-picker": "5.0.4",
     "@rollup/plugin-buble": "^0.21.1",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-image": "^2.0.4",

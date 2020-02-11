@@ -1192,12 +1192,14 @@ import EmojiDataSymbols from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emo
 import EmojiDataFlags from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-flags.json';
 import EmojiGroups from '@kevinfaguiar/vue-twemoji-picker/emoji-data/emoji-groups.json';
 import { Slide } from 'vue-burger-menu';
-import {
+const {
   TwemojiTextarea,
   TwemojiPicker,
   EmojiService,
   TextareaParser
-} from '@kevinfaguiar/vue-twemoji-picker';
+} = require(process.env.NODE_ENV === 'production'
+  ? '@kevinfaguiar/vue-twemoji-picker'
+  : '../wrapper.ts');
 
 export default Vue.extend({
   name: 'App',
