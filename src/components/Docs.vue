@@ -1182,12 +1182,6 @@ a:hover {
 </style>
 <script lang="ts">
 import Vue from 'vue';
-import {
-  TwemojiTextarea,
-  TwemojiPicker,
-  EmojiService,
-  TextareaParser
-} from '@kevinfaguiar/vue-twemoji-picker';
 import EmojiDataAll from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-all-groups.json';
 import EmojiDataAnimalsNature from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-animals-nature.json';
 import EmojiDataFoodDrink from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-food-drink.json';
@@ -1198,6 +1192,12 @@ import EmojiDataSymbols from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emo
 import EmojiDataFlags from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-flags.json';
 import EmojiGroups from '@kevinfaguiar/vue-twemoji-picker/emoji-data/emoji-groups.json';
 import { Slide } from 'vue-burger-menu';
+import {
+  TwemojiTextarea,
+  TwemojiPicker,
+  EmojiService,
+  TextareaParser
+} from '@kevinfaguiar/vue-twemoji-picker';
 
 export default Vue.extend({
   name: 'App',

@@ -18,8 +18,8 @@
   },
   "license": "MIT",
   "scripts": {
-    "dev": "vue-cli-service serve",
-    "build:app": "vue-cli-service build --mode production --dest docs",
+    "dev": "cross-env NODE_ENV=development vue-cli-service serve",
+    "build:app": "cross-env NODE_ENV=production vue-cli-service build --mode production --dest docs",
     "publish:docs": "git subtree split --prefix docs -b gh-pages && git push -f origin gh-pages:gh-pages && git branch -D gh-pages",
     "build:lib": "cross-env NODE_ENV=production yarn run build:browser && yarn run build:es && yarn run build:umd",
     "build:browser": "rollup --config build/rollup.config.browser.js",
