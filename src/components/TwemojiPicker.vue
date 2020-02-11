@@ -44,7 +44,7 @@
           class="emoji-popover-inner"
           :style="{
             width: pickerWidth + 'px',
-            height: pickerHeight + 'px'
+            maxHeight: pickerHeight + 'px'
           }"
         >
           <div v-if="isSearchingEmoji">
@@ -85,7 +85,7 @@
             class="emoji-popover-inner"
             :style="{
               width: pickerWidth + 'px',
-              height: pickerHeight + 'px'
+              maxHeight: pickerHeight + 'px'
             }"
           >
             <div v-if="emojiListActive.length !== 0">
@@ -480,8 +480,8 @@ export default Vue.extend({
     },
 
     clickEmoji(emoji: Emoji): void {
-      let emojiUnicode;
-      if (emoji.skins?.length !== 0 && this.skinsSelection) {
+      let emojiUnicode: string;
+      if (emoji.skins?.length > 0 && this.skinsSelection) {
         this.skinsListActive = Array.from(emoji.skins);
         this.skinsListActive.unshift({
           unicode: emoji.unicode,
