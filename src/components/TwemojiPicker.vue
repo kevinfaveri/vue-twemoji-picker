@@ -44,14 +44,26 @@
           class="emoji-popover-inner"
           :style="{
             width: pickerWidth + 'px',
-            maxHeight: pickerMaxHeight + 'px'
+            height: pickerHeight + 'px'
           }"
         >
-          <div v-if="searchTerm.length !== 0 && searchEmojis.length === 0">
+          <div v-if="isSearchingEmoji">
+            <strong>{{ isLoadingLabel }}</strong>
+          </div>
+
+          <div
+            v-if="
+              searchTerm.length !== 0 &&
+                searchEmojis.length === 0 &&
+                isSearchingEmoji === false
+            "
+          >
             <strong>{{ searchEmojiNotFound }}</strong>
           </div>
 
-          <div v-if="emojiListActive.length !== 0">
+          <div
+            v-if="emojiListActive.length !== 0 && isSearchingEmoji === false"
+          >
             <p class="emoji-list">
               <span
                 v-for="emoji in emojiListActive"
@@ -73,7 +85,7 @@
             class="emoji-popover-inner"
             :style="{
               width: pickerWidth + 'px',
-              maxHeight: pickerMaxHeight + 'px'
+              height: pickerHeight + 'px'
             }"
           >
             <div v-if="emojiListActive.length !== 0">
@@ -283,7 +295,7 @@ export default Vue.extend({
       default: 250,
       type: Number as () => number
     },
-    pickerMaxHeight: {
+    pickerHeight: {
       default: 200,
       type: Number as () => number
     },
@@ -349,6 +361,10 @@ export default Vue.extend({
       default: 'Search emojis.',
       type: String as () => string
     },
+    isLoadingLabel: {
+      default: 'Loading...',
+      type: String as () => string
+    },
     searchEmojiNotFound: {
       default: 'No emojis found.',
       type: String as () => string
@@ -404,7 +420,8 @@ export default Vue.extend({
 
       searchTerm: '' as string,
       searchEmojis: [] as Array<Emoji>,
-      searchTimeout: null as any
+      searchTimeout: null as any,
+      isSearchingEmoji: false as boolean
     };
   },
 
@@ -579,6 +596,7 @@ export default Vue.extend({
     },
 
     searchEmojiByTerm() {
+      this.isSearchingEmoji = true;
       clearTimeout(this.searchTimeout);
       if (this.searchTerm.length > 0) {
         this.searchTimeout = setTimeout(() => {
@@ -590,9 +608,11 @@ export default Vue.extend({
           this.emojiGroupActive = -2;
           this.emojiListActive = this.searchEmojis;
           this.showSkinsSelector = false;
+          this.isSearchingEmoji = false;
         }, 300);
       } else {
         this.changeEmojiListActive(0);
+        this.isSearchingEmoji = false;
       }
     }
   }
