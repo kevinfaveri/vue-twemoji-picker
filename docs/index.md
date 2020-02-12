@@ -4,7 +4,7 @@ heroText: Vue Twemoji Picker
 tagline: The fastest plug-n-play emoji picker for Vue
 heroImage: /logo.svg
 actionText: Get Started →
-actionLink: /guide/
+actionLink: /docs/
 features:
 - title: Highly Configurable ⚙️
   details: A lot of props available which makes customization a breeze.
