@@ -340,7 +340,9 @@ export default Vue.extend({
   },
 
   mounted(): void {
-    this.addText(this.content);
+    if (this.content.length === 0) {
+      this.addText(this.content);
+    }
   },
 
   methods: {
