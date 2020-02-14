@@ -1,4 +1,5 @@
 module.exports = {
+  base: '/vue-twemoji-picker/',
   title: 'Vue Twemoji Picker',
   themeConfig: {
     nav: [
