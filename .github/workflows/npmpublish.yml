@@ -5,23 +5,15 @@ on:
     types: [created]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-     - uses: actions/checkout@v2
-     - uses: actions/setup-node@v1
-       with:
-          node-version: '10.x'
-     - run: yarn install --frozen-lockfile
-     - run: yarn build:lib
-
-  publish-npm:
+  build-and-deploy:
     needs: build
     runs-on: ubuntu-latest
     steps:
       - uses: actions/setup-node@v1
         with:
           node-version: '10.x'
+      - run: yarn install --frozen-lockfile
+      - run: yarn build:lib
       - run: npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_ACCESS_TOKEN}}
