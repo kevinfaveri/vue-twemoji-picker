@@ -1,4 +1,4 @@
-name: NPM Publishing
+name: Library - Build and Deploy
 
 on:
   release:

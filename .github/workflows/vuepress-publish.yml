@@ -1,4 +1,4 @@
-name: Build and Deploy
+name: Docs - Build and Deploy
 on:
   push:
     branches:    
@@ -13,5 +13,6 @@ jobs:
     - name: Build and Deploy
       uses: kevinfaguiar/github-pages-deploy-action@master
       env:
+        ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
         BUILD_DIR: docs/.vuepress/dist
         BUILD_SCRIPT: yarn install --frozen-lockfile && yarn docs:build
