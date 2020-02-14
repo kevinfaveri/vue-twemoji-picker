@@ -4,12 +4,20 @@ title: 'Roadmap'
 
 # Roadmap
 
-- this that
+- Migration to PopperJS v2
 
-- this that
+- Divide emoji index bundle in two bundles: one with skin tones and the other without.
 
-- this that
+- Feature: option for user to choose send method (Enter or Shift + Enter)
 
-- this that
+- Show a loading placeholder while IMG tags are loading in Emoji picker
 
-- this that
+- Dark Mode for component and docs
+
+- Prop to close emoji picker after selecting one
+
+- Virtual Scroll
+
+- Rework Visual Default Style
+
+- Other Frameworks Forks

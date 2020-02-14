@@ -21,7 +21,7 @@ features:
 footer: 'MIT Licensed | Copyright © 2020-present @kevinfaguiar | Twemoji graphics made by Twitter and licensed under CC-BY 4.0'
 ---
 
-<div style="text-align: center; margin-bottom: 15px;"><h2>Support me here:</h2></div>
+<div style="text-align: center; margin-bottom: 15px;"><h2>Support this project:</h2></div>
 
 <div style="text-align: center; margin-bottom: 15px;">
 

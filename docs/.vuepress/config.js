@@ -10,7 +10,7 @@ module.exports = {
       '/docs/': getSidebar('Docs'),
     }
   },
-  plugins: ['vuepress-plugin-smooth-scroll', 'vuepress-plugin-nprogress'],
+  plugins: ['vuepress-plugin-smooth-scroll', 'vuepress-plugin-nprogress', '@vuepress/back-to-top'],
 }
 
 function getSidebar(groupName) {
