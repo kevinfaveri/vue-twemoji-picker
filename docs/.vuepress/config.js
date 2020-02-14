@@ -25,6 +25,7 @@ function getSidebar(groupName) {
         'twemoji-textarea-api/',
         'emoji-datasets/',
         'localization/',
+        'services/',
         'changelog/',
         'roadmap/',
         'credits/'
