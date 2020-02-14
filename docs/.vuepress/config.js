@@ -28,7 +28,6 @@ function getSidebar(groupName) {
         'services/',
         'changelog/',
         'roadmap/',
-        'credits/'
       ]
     }
   ]
