@@ -20,7 +20,7 @@
   "scripts": {
     "dev": "cross-env NODE_ENV=development vue-cli-service serve",
     "docs:dev": "cross-env NODE_ENV=development vuepress dev docs",
-    "docs:build": "cross-env NODE_ENV=development vuepress build docs",
+    "docs:build": "cross-env NODE_ENV=production vuepress build docs",
     "build:lib": "cross-env NODE_ENV=production yarn run build:browser && yarn run build:es && yarn run build:umd",
     "build:browser": "rollup --config build/rollup.config.browser.js",
     "build:es": "rollup --config build/rollup.config.es.js",
