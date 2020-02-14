@@ -2,6 +2,8 @@
 title: 'Twemoji Textarea API'
 ---
 
+# Twemoji Textarea API
+
 ## Props
 
 - This component inherits all Twemoji Picker props **except disabled** which for clarity issues has a new name as seen below. You can check them [here](/docs/twemoji-picker-api#props).

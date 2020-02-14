@@ -2,7 +2,9 @@
 title: 'Getting Started'
 ---
 
-# Installation
+# Getting Started
+
+## Installation
 
 For installing Vue Twemoji Picker dependency in your project use:
 

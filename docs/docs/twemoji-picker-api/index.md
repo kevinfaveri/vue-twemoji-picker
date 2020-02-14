@@ -2,6 +2,8 @@
 title: 'Twemoji Picker API'
 ---
 
+# Twemoji Picker API
+
 ## Props
 
 ### disabled
