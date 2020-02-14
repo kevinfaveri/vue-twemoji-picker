@@ -13,6 +13,7 @@ jobs:
         with:
           node-version: '12.x'
           registry-url: 'https://registry.npmjs.org'
+          scope: '@kevinfaguiar'
       - run: yarn install --frozen-lockfile
       - run: yarn build:lib
       - run: npm publish --access public
