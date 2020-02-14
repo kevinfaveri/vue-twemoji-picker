@@ -15,7 +15,7 @@ First and foremost: **there is no magic** (!)
 
 Vue Twemoji Picker **is a plug-n-play component** which emits events like @emojiUnicodeAdded so you can catch the selected emoji and perform some action. This enables the **customization of its behaviour to fit your logic**. 
 
-The emoji dataset the component uses is also defined by developer (but is distributed together with this library already optimized), which means you can import only the emoji categories in the interest of your app, **leveraging customization to a performance-wise level**.
+The emoji dataset the component uses is also defined by the developer (but is distributed together with this library already optimized), which means you can import only the emoji categories in the interest of your app, **leveraging customization to a performance-wise level**. This is a particularly useful feature bacause it enables the developer to configure the dataset request as per its needs.
 
 This library also contains an auxiliary component: **TwemojiTextarea**. It is a textarea component implementation which automatically converts emoji unicodes to Twemoji arts.
 

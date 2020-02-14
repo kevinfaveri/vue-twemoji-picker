@@ -10,6 +10,7 @@ module.exports = {
       '/docs/': getSidebar('Docs'),
     }
   },
+  plugins: ['vuepress-plugin-smooth-scroll', 'vuepress-plugin-nprogress'],
 }
 
 function getSidebar(groupName) {
@@ -19,14 +20,14 @@ function getSidebar(groupName) {
       collapsable: false,
       children: [
         '',
-        'getting-started',
-        'twemoji-picker-api',
-        'twemoji-textarea-api',
-        'emoji-datasets',
-        'localization',
-        'changelog',
-        'roadmap',
-        'credits'
+        'getting-started/',
+        'twemoji-picker-api/',
+        'twemoji-textarea-api/',
+        'emoji-datasets/',
+        'localization/',
+        'changelog/',
+        'roadmap/',
+        'credits/'
       ]
     }
   ]

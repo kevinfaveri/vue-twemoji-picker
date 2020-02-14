@@ -14,7 +14,7 @@ yarn add @kevinfaguiar/vue-twemoji-picker
 
 ## Using TwemojiPicker
 
-This component, as explained previously, is only the emoji picker so it doesn't render emojis on its own. You need to pass as prop to it the emoji dataset and use its events like @emojiUnicodeAdded to catch user interactions.
+This component, as explained previously, is only the emoji picker so it doesn't render emojis on its own. You need to pass as a prop to it the emoji dataset and use its events like @emojiUnicodeAdded to catch user interactions. [Pre-compacted emoji datasets are available](/docs/emoji-datasets) for use with this library (change {LANG} for one of the supported [locales](/docs/localization)):
 
 ``` js
 import {
@@ -53,9 +53,11 @@ export default {
 ></twemoji-picker>
 ```
 
+For the component API entire documentation, [click here](/docs/twemoji-picker-api).
+
 ## Using TwemojiTextarea
 
-This component is the one used in the demo: is a textarea with a Twemoji Picker component integrated so you can easily integrate and test the rendering of the selected emojis into your app.
+This component is the one used in the demo: is a textarea with a Twemoji Picker component integrated so you can easily prototype and test the rendering of the selected emojis into your app.
 
 ``` js
 import {
@@ -91,3 +93,5 @@ export default {
   @enterKey="onEnterKey">
 </twemoji-textarea>
 ```
+
+For the component API entire documentation, [click here](/docs/twemoji-textarea-api).
