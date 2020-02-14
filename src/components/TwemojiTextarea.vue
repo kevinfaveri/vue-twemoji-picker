@@ -174,6 +174,10 @@ import EmojiPack from '../interfaces/EmojiPack';
 import EmojiGroup from '../interfaces/EmojiGroup';
 import TwemojiOptions from '../interfaces/TwemojiOptions';
 
+/**Events */
+// contentChanged
+// enterKey
+
 export default Vue.extend({
   name: 'TwemojiTextarea',
 
@@ -360,10 +364,10 @@ export default Vue.extend({
     emitEnterKeyEvent(event: Event): void {
       this.$emit('enterKey', event);
     },
-    enterKey(event: MouseEvent): void {
+    enterKey(event: KeyboardEvent): void {
       if (event.shiftKey === false) this.emitEnterKeyEvent(event);
     },
-    shiftEnterKey(event: MouseEvent): void {
+    shiftEnterKey(event: KeyboardEvent): void {
       event.stopPropagation();
       event.preventDefault();
 

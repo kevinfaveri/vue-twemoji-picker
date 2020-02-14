@@ -11,8 +11,8 @@ title: 'Twemoji Picker API'
 The value of this prop represents whether the component is disabled.
 
 ### pickerWidth
-- Type: ``250``
-- Default: ``number``
+- Type: ``number``
+- Default: ``250``
 
 Define the emoji picker width (in pixels).
 
