@@ -1,15 +1,13 @@
 ## Vue Twemoji Picker
-A fast plug-n-play Twemoji Picker (+ optional textarea for Twemoji rendering) for Vue with search and recent emojis features!
-Supports latest emoji Unicode spec released (v. 12.0, 2019), emoji skins (tones, hair, diversity) and 19 languages.
+This component is meant to be a developer friendly, easy integrable and performatic emoji picker (with some batteries) using the Twitter emoji arts (Twemojis). Emoji Unicode 12 (latest emoji spec, from 2019, which includes skins) is used as the base dataset.
+
+ ![Vue Twemoji Picker Preview](https://i.imgur.com/5uQc4EC.png)
 
 ## Documentation and Demo
-https://kevinfaguiar.github.io/vue-twemoji-picker/#home
+https://kevinfaguiar.github.io/vue-twemoji-picker
 
-## Credits
-Thanks to Twitter for the emoji arts used in this component which are available in their lib: https://github.com/twitter/twemoji
-
-## Support me
+## Support this project
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/E1E11BKWW)
 
 ## License
-MIT 2020 Kevin de Faveri Aguiar
+MIT 2020 Licensed @kevinfaguiar | Twemoji graphics made by Twitter and licensed under CC-BY 4.0
