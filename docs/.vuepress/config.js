@@ -1,4 +1,7 @@
 module.exports = {
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.ico' }]
+  ],
   base: '/vue-twemoji-picker/',
   title: 'Vue Twemoji Picker',
   themeConfig: {
