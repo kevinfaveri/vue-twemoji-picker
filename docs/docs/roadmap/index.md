@@ -21,3 +21,7 @@ title: 'Roadmap'
 - Rework Visual Default Style
 
 - Other Frameworks Forks
+
+- Add Twemoji Mashups
+
+- Better docs on creating custom Emojis
