@@ -27,4 +27,6 @@ footer: 'MIT Licensed | Copyright © 2020-present @kevinfaguiar | Twemoji graphi
 
 <a href='https://ko-fi.com/E1E11BKWW' target='_blank'><img height='60' style='border:0px;height:60px;' src='https://az743702.vo.msecnd.net/cdn/kofi5.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
+<a href="https://www.patreon.com/bePatron?u=30687416" data-patreon-widget-type="become-patron-button">Become a Patron!</a><script async src="https://c6.patreon.com/becomePatronButton.bundle.js"></script>
+
 </div>

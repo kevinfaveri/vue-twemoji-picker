@@ -8,6 +8,7 @@ https://kevinfaguiar.github.io/vue-twemoji-picker
 
 ## Support this project
 [![ko-fi](https://www.ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/E1E11BKWW)
+[![patreon](https://i.imgur.com/3Cy1UdO.png)](https://www.patreon.com/bePatron?u=30687416)
 
 ## License
 MIT 2020 Licensed @kevinfaguiar | Twemoji graphics made by Twitter and licensed under CC-BY 4.0
