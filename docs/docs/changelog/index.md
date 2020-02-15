@@ -4,6 +4,10 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.1.1
+
+- EmojiService and TextareaParser added to the default export.
+
 ## 5.1.0
 
 - Documentation rewrite. Made with VuePress.
