@@ -15,4 +15,4 @@ jobs:
       env:
         ACCESS_TOKEN: ${{ secrets.GITHUB_ACCESS_TOKEN }}
         BUILD_DIR: docs/.vuepress/dist
-        BUILD_SCRIPT: yarn install --frozen-lockfile && yarn docs:build
+        BUILD_SCRIPT: yarn install && yarn docs:build
