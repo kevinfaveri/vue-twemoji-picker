@@ -5,21 +5,36 @@ tagline: The fastest plug-n-play emoji picker for Vue
 heroImage: /logo.svg
 actionText: Get Started →
 actionLink: /docs/
-features:
-- title: Highly Configurable ⚙️
-  details: A lot of props available which makes customization a breeze.
-- title: Performant ⚡
-  details: Compact emoji datasets which can be added on demand per category which guarantees a really fast rendering.
-- title: Advanced Features 🔎
-  details: 'Search, recently used, and optional textarea component for easily integration into apps.'
-- title: Evergreen 🌲
-  details: Continuous support which guarantees updates to latest released Unicode Standard emoji specs (currently v. 12.0, 2019).
-- title: Inclusive 💕
-  details: 'Support emoji variations: skin tones, hair color and diversity.'
-- title: Localization 🔠
-  details: 19 different locales for emoji tags.
 footer: 'MIT Licensed | Copyright © 2020-present @kevinfaguiar | Twemoji graphics made by Twitter and licensed under CC-BY 4.0'
 ---
+
+<ParentRowWrapping>
+  <template v-slot:default>
+    <ChildBlock 
+      title="Highly Configurable ⚙️" 
+      content="A lot of props available which makes customization a breeze." />
+    <ChildBlock 
+      title="Performant ⚡" 
+      content="Compact emoji datasets which can be added on demand per category which guarantees a really fast rendering." />
+    <ChildBlock 
+      title="Advanced Features 🔎" 
+      content="Search, recently used, and optional textarea component for easily integration into apps." />
+  </template>
+</ParentRowWrapping>
+
+<ParentRowWrapping>
+  <template v-slot:default>
+    <ChildBlock 
+      title="Evergreen 🌲" 
+      content="Continuous support which guarantees updates to latest released Unicode Standard emoji specs (currently v. 12.0, 2019)." />
+    <ChildBlock 
+      title="Inclusive 💕" 
+      content="Support emoji variations: skin tones, hair color and diversity." />
+    <ChildBlock 
+      title="Localization 🔠" 
+      content="19 different locales for emoji tags." />
+  </template>
+</ParentRowWrapping>
 
 <div style="text-align: center; margin-bottom: 15px;"><h2>Support this project:</h2></div>
 
