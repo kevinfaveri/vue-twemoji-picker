@@ -27,6 +27,6 @@ footer: 'MIT Licensed | Copyright © 2020-present @kevinfaguiar | Twemoji graphi
 
 <a href='https://ko-fi.com/E1E11BKWW' target='_blank'><img width='220' style='border:0px;height:60px;' src='https://az743702.vo.msecnd.net/cdn/kofi5.png?v=2' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
-<a href='https://www.patreon.com/bePatron?u=30687416' target='_blank'><img width='220' style='border:0px;height:60px;' src='https://i.imgur.com/DPLAO6F.png' border='0' alt='Become a patron' /></a>
+<a href='https://www.patreon.com/bePatron?u=30687416' target='_blank'><img width='220' style='border:0px;height:60px;' src='https://i.imgur.com/gq4tT6s.png' border='0' alt='Become a patron' /></a>
 
 </div>
