@@ -3,7 +3,6 @@
     <twemoji-picker
       :pickerWidth="pickerWidth"
       :pickerMaxHeight="pickerMaxHeight"
-      :appendToBody="appendToBody"
       :triggerType="triggerType"
       :emojiData="emojiData"
       :emojiGroups="emojiGroups"
@@ -195,10 +194,6 @@ export default Vue.extend({
     pickerMaxHeight: {
       default: 200,
       type: Number as () => number
-    },
-    appendToBody: {
-      default: false,
-      type: Boolean as () => boolean
     },
     triggerType: {
       default: 'click',

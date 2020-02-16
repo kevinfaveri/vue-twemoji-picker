@@ -5,7 +5,6 @@
       :emojiGroups="emojiGroups"
       :skinsSelection="false"
       :searchEmojisFeat="true"
-      :appendToBody="true"
       searchEmojiPlaceholder="Search here."
       searchEmojiNotFound="Emojis not found."
       isLoadingLabel="Loading..."
@@ -14,9 +13,7 @@
 </template>
 
 <script>
-import {
-  TwemojiPicker
-} from '@kevinfaguiar/vue-twemoji-picker';
+import { TwemojiPicker }from '@kevinfaguiar/vue-twemoji-picker';
 import EmojiAllData from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-all-groups.json';
 import EmojiDataAnimalsNature from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-animals-nature.json';
 import EmojiDataFoodDrink from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-food-drink.json';

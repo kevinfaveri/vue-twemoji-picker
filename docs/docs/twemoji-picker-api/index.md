@@ -24,11 +24,18 @@ Define the emoji picker width (in pixels).
 
 Define the emoji picker initial height and max height (in pixels).
 
-### appendToBody
-- Type: ``boolean``
-- Default: ``false``
+### pickerPlacement
+- Type: ``string``
+- Default ``top``
+- Valid Props: ``['top-start', 'top', 'top-end', 'bottom-start', 'bottom', 'bottom-right', 'left-start', 'left', 'left-end', 'right-start', 'right', 'right-end']``
 
-Define if the emoji picker will bind to body if true; or to parent element if false.
+Define the emoji picker placement position.
+
+### pickerArrowEnabled
+- Type: ``boolean``
+- Default ``true``
+
+Define whether the emoji picker should render a reference arrow.
 
 ### triggerType
 - Type: ``string``

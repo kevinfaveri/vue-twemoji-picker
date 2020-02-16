@@ -1,6 +1,6 @@
 {
   "name": "@kevinfaguiar/vue-twemoji-picker",
-  "version": "5.1.1",
+  "version": "5.2.0",
   "main": "dist/vue-twemoji-picker.umd.js",
   "module": "dist/vue-twemoji-picker.esm.js",
   "unpkg": "dist/vue-twemoji-picker.min.js",
@@ -30,8 +30,9 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@popperjs/core": "^2.0.6",
     "twemoji": "^12.1.5",
-    "v-tooltip": "^3.0.0-alpha.11"
+    "vue-clickaway": "^2.2.2"
   },
   "devDependencies": {
     "@kevinfaguiar/vue-twemoji-picker": "5.1.1",
@@ -43,6 +44,7 @@
     "@types/jest": "^25.1.2",
     "@types/node": "^13.7.0",
     "@types/twemoji": "^12.1.0",
+    "@types/vue-clickaway": "^2.2.0",
     "@typescript-eslint/eslint-plugin": "^2.19.2",
     "@typescript-eslint/parser": "^2.19.2",
     "@vue/babel-preset-app": "^4.2.2",

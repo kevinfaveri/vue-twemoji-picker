@@ -48,7 +48,6 @@ export default {
   :emojiGroups="emojiGroups"
   :skinsSelection="false"
   :searchEmojisFeat="true"
-  :appendToBody="true"
   searchEmojiPlaceholder="Search here."
   searchEmojiNotFound="Emojis not found."
   isLoadingLabel="Loading..."

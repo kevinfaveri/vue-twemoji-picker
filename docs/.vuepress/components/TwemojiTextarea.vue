@@ -7,7 +7,7 @@
       :enableSendBtn="true"
       :recentEmojisFeat="true"
       :searchEmojisFeat="true"
-      :appendToBody="true">
+      >
     </twemoji-textarea>
   </div>
 </template>

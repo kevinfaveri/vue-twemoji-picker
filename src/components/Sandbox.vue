@@ -1,19 +1,35 @@
 <template>
-  <div class="roboto-font" id="app">
-    <twemoji-textarea
-      class="margin-top text-justify"
-      :content.sync="content"
-      :emojiData="emojiDataAll"
-      :emojiGroups="emojiGroups"
-      :skinsSelection="true"
-      :enableSendBtn="true"
-      @enterKey="onEnterKey"
-      :recentEmojisFeat="true"
-      recentEmojisStorage="none"
-      :searchEmojisFeat="true"
-      :appendToBody="true"
-      ref="cooltextareaSend"
-    ></twemoji-textarea>
+  <div id="app">
+    <div>
+      <twemoji-picker
+        class="margin-top text-justify"
+        :content.sync="content"
+        :emojiData="emojiDataAll"
+        :emojiGroups="emojiGroups"
+        :skinsSelection="true"
+        :enableSendBtn="true"
+        @enterKey="onEnterKey"
+        :recentEmojisFeat="true"
+        recentEmojisStorage="none"
+        :searchEmojisFeat="true"
+        ref="cooltextareaSend"
+      ></twemoji-picker>
+    </div>
+    <div>
+      <twemoji-textarea
+        class="margin-top text-justify"
+        :content.sync="content"
+        :emojiData="emojiDataAll"
+        :emojiGroups="emojiGroups"
+        :skinsSelection="true"
+        :enableSendBtn="true"
+        @enterKey="onEnterKey"
+        :recentEmojisFeat="true"
+        recentEmojisStorage="none"
+        :searchEmojisFeat="true"
+        ref="cooltextareaSend"
+      ></twemoji-textarea>
+    </div>
   </div>
 </template>
 <style lang="css">
@@ -34,8 +50,11 @@ a:hover {
 }
 
 #app {
-  margin-top: 800px;
-  padding: 200px;
+  padding: 20% 10%;
+}
+
+#app > div {
+  margin: 20px 0;
 }
 </style>
 <script lang="ts">
@@ -60,7 +79,8 @@ export default Vue.extend({
   name: 'App',
 
   components: {
-    'twemoji-textarea': TwemojiTextarea
+    'twemoji-textarea': TwemojiTextarea,
+    'twemoji-picker': TwemojiPicker
   },
 
   data() {

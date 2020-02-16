@@ -4,6 +4,10 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.2.0
+
+- The popover dependency has been updated (vue-tooltip -> popper.js v2) for achieving a better bundle size.
+
 ## 5.1.1
 
 - EmojiService and TextareaParser added to the default export.

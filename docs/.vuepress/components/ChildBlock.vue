@@ -53,10 +53,12 @@ export default {
       type: String
     }
   },
-  data: () => ({
-    parsedTitle: null,
-    parsedContent: null
-  }),
+  data() {
+    return {
+      parsedTitle: null,
+      parsedContent: null
+    }
+  },
   mounted() {
     this.parsedTitle = Twemoji.parse(this.title);
     this.parsedContent = Twemoji.parse(this.content);
