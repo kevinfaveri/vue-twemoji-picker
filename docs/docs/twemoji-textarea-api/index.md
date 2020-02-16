@@ -52,6 +52,14 @@ This event fires everytime the textarea content is updated.
 
 This event fires everytime the enter key is pressed or the send button is clicked, so that you can define what action is to be performed based on the event.
 
+You can even prevent the line wrapping when pressing enter key by passing down for the component a method like that:
+```js
+onEnterKey(event) {
+  event.stopPropagation();
+  event.preventDefault();
+}
+```
+
 ## Ref Useful Methods
 
 ### addText
