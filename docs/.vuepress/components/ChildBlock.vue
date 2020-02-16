@@ -16,8 +16,9 @@
   height: 24px;
 }
 
-.child > .title {
+.child > * {
   border: none;
+  text-align: center;
 }
 </style>
 
