@@ -19,11 +19,6 @@ footer: 'MIT Licensed | Copyright © 2020-present @kevinfaguiar | Twemoji graphi
     <ChildBlock 
       title="Advanced Features 🔎" 
       content="Search, recently used, and optional textarea component for easily integration into apps." />
-  </template>
-</ParentRowWrapping>
-
-<ParentRowWrapping>
-  <template v-slot:default>
     <ChildBlock 
       title="Evergreen 🌲" 
       content="Continuous support which guarantees updates to latest released Unicode Standard emoji specs (currently v. 12.0, 2019)." />

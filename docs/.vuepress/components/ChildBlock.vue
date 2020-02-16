@@ -7,9 +7,21 @@
 
 <style>
 .child {
-  flex: 1 0 30%;
-  margin: 5px;
+  flex: 0 0 32%;
+  margin: 3px;
   min-height: 150px;
+}
+
+@media only screen and (max-width: 768px) and (min-width: 320px){
+  .child {
+    flex: 0 0 100%;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 768px){
+  .child {
+    flex: 0 0 45%;
+  }
 }
 
 .child > * > .emoji {
@@ -19,6 +31,10 @@
 .child > * {
   border: none;
   text-align: center;
+}
+
+.child > #title {
+  margin-bottom: 10px;
 }
 </style>
 
