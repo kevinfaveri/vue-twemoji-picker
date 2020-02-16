@@ -1032,13 +1032,14 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@kevinfaguiar/vue-twemoji-picker@5.1.1":
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/@kevinfaguiar/vue-twemoji-picker/-/vue-twemoji-picker-5.1.1.tgz#bfe45aaf5895c32bcca4d4138a3ac2b0045ca962"
-  integrity sha512-fQyVAqElOvzZw7wMA05tsx+61vP18RTTCda1vV22jMxBCi/ZfV+MYVR4uuB+RdhVidkiMsamhlHm5TWzM8neKw==
+"@kevinfaguiar/vue-twemoji-picker@5.2.0":
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/@kevinfaguiar/vue-twemoji-picker/-/vue-twemoji-picker-5.2.0.tgz#5e000f69797edc2f0db6852210fd735135485ffb"
+  integrity sha512-RoDaqDy4SfmU2kbmEpEJMmS9ZWsFd/qI+fjWLH8WLcCzMD+6k3OXTc+j/Cy9sVE8LebxRFsQjvqyikJFVXZcXQ==
   dependencies:
+    "@popperjs/core" "^2.0.6"
     twemoji "^12.1.5"
-    v-tooltip "^3.0.0-alpha.11"
+    vue-clickaway "^2.2.2"
 
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
@@ -8719,11 +8720,6 @@ pnp-webpack-plugin@^1.6.0:
   dependencies:
     ts-pnp "^1.1.2"
 
-popper.js@^1.16.0:
-  version "1.16.1"
-  resolved "https://registry.yarnpkg.com/popper.js/-/popper.js-1.16.1.tgz#2a223cb3dc7b6213d740e40372be40de43e65b1b"
-  integrity sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==
-
 portfinder@^1.0.13, portfinder@^1.0.25:
   version "1.0.25"
   resolved "https://registry.yarnpkg.com/portfinder/-/portfinder-1.0.25.tgz#254fd337ffba869f4b9d37edc298059cb4d35eca"
@@ -11595,14 +11591,6 @@ uuid@^3.0.1, uuid@^3.3.2:
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
 
-v-tooltip@^3.0.0-alpha.11:
-  version "3.0.0-alpha.13"
-  resolved "https://registry.yarnpkg.com/v-tooltip/-/v-tooltip-3.0.0-alpha.13.tgz#eca576b5d35486a55289bfbd9f8365540364feba"
-  integrity sha512-wX1ubmdxDhOnhBsY4+hHuKZQWZ15VdMqImJAoeMQKm+fF+OPSmMsM30m0Wcgt7G4fiX3Nylak4C7xXLbBoKjGg==
-  dependencies:
-    popper.js "^1.16.0"
-    vue-resize "^0.4.5"
-
 v8-compile-cache@^2.0.3:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/v8-compile-cache/-/v8-compile-cache-2.1.0.tgz#e14de37b31a6d194f5690d67efc4e7f6fc6ab30e"
@@ -11702,11 +11690,6 @@ vue-loader@^15.7.1, vue-loader@^15.8.3:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
-
-vue-resize@^0.4.5:
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/vue-resize/-/vue-resize-0.4.5.tgz#4777a23042e3c05620d9cbda01c0b3cc5e32dcea"
-  integrity sha512-bhP7MlgJQ8TIkZJXAfDf78uJO+mEI3CaLABLjv0WNzr4CcGRGPIAItyWYnP6LsPA4Oq0WE+suidNs6dgpO4RHg==
 
 vue-router@^3.1.3:
   version "3.1.5"
