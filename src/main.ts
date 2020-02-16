@@ -1,8 +1,8 @@
 import Vue from 'vue';
-import Docs from './components/Docs.vue';
+import Sandbox from './components/Sandbox.vue';
 
 Vue.config.productionTip = false;
 
 new Vue({
-  render: (h) => h(Docs)
+  render: (h) => h(Sandbox)
 }).$mount('#app');
