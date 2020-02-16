@@ -137,3 +137,7 @@ This event fires everytime the user selects an emoji in the picker.
 - Parameter | Type : ``emojiImgTag | string``
 
 This event fires everytime the user selects an emoji in the picker.
+
+## Styling
+
+The component doesn't enforce CSS rules using `!important` so you can easily overwrite it default style.

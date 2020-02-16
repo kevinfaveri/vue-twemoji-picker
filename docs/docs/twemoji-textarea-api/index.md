@@ -75,3 +75,7 @@ This method adds a text to the textarea. The text parameter will then be sanitiz
 ### cleanText
 
 This method cleans the textarea.
+
+## Styling
+
+The component doesn't enforce CSS rules using `!important` so you can easily overwrite it default style.
