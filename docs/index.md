@@ -41,7 +41,7 @@ footer: 'MIT Licensed | Copyright © 2020-present @kevinfaguiar | Twemoji graphi
 
 <a href='https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=kevinfaveridev@gmail.com%20&lc=US&item_name=Donation%20for%20supporting%20@kevinfaguiar%20open%20source%20projects&no_note=0&cn=&currency_code=USD&bn=PP-DonationsBF:btn_donateCC_LG.gif:NonHosted' target='_blank'><img width='220' style='border:0px;height:60px;' src='https://i.imgur.com/iu8AOCe.png' border='0' alt='Paypal Donation' /></a>
 
-<h2>Bitcoin:</h2>
+<h2 style="border: none;">Bitcoin:</h2>
 <strong style="display: block;text-align: center;">bc1q3ln0v73ketq3fzeh2saa2tsew4xmrwepdj42jw</strong>
 <div style="max-height: 95%; text-align: center;"><img style="max-height: 95%;" src="https://i.imgur.com/0OqPaVq.png"/></div>
 
