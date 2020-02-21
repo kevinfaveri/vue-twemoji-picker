@@ -147,7 +147,7 @@ This event fires everytime the user selects an emoji in the picker.
 
 ## Slots
 
-### twemoji-picker-button
+### twemoji-picker-button (5.2.1 version onwards)
 - Default: Default style featured in the [Demo](/docs/#demo).
 
 You can implement your own button, span, div, whatever so Twemoji Picker can act like a headless component.
