@@ -6,7 +6,7 @@ title: 'Changelog'
 
 ## 5.2.1
 
-- Added a Vue slot which enable the usage of TwemojiPicker as a headless component.
+- Added a Vue slot which enables the usage of TwemojiPicker as a headless component.
 
 ## 5.2.0
 
