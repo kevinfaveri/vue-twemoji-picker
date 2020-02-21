@@ -168,4 +168,4 @@ The HTMLElement provided for the slot will be DOM element which will trigger the
 
 ## Styling
 
-The component doesn't enforce CSS rules using `!important` so you can easily overwrite it default style.
+The component doesn't enforce CSS rules using `!important` so you can easily overwrite its default style.

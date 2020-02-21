@@ -78,4 +78,4 @@ This method cleans the textarea.
 
 ## Styling
 
-The component doesn't enforce CSS rules using `!important` so you can easily overwrite it default style.
+The component doesn't enforce CSS rules using `!important` so you can easily overwrite its default style.
