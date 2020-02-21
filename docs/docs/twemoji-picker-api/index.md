@@ -4,6 +4,26 @@ title: 'Twemoji Picker API'
 
 # Twemoji Picker API
 
+## Slots
+
+### twemoji-picker-button
+- Default: Default style featured in the [Demo](/docs/#demo).
+
+You can implement your own button, span, div, whatever so Twemoji Picker can act like a headless component.
+The HTMLElement provided for the slot will be DOM element which will trigger the popup opening fn, like so:
+
+```html
+<twemoji-picker
+  :emojiData="emojiDataAll"
+  :emojiGroups="emojiGroups"
+>
+  <template v-slot:twemoji-picker-button
+    >
+    <button>OMG A HEADLESS COMPONENT</button>
+  </template>
+</twemoji-picker>
+```
+
 ## Props
 
 ### disabled

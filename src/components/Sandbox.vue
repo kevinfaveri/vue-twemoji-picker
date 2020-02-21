@@ -1,19 +1,11 @@
 <template>
   <div id="app">
     <div>
-      <twemoji-picker
-        class="margin-top text-justify"
-        :content.sync="content"
-        :emojiData="emojiDataAll"
-        :emojiGroups="emojiGroups"
-        :skinsSelection="true"
-        :enableSendBtn="true"
-        @enterKey="onEnterKey"
-        :recentEmojisFeat="true"
-        recentEmojisStorage="none"
-        :searchEmojisFeat="true"
-        ref="cooltextareaSend"
-      ></twemoji-picker>
+      <twemoji-picker :emojiData="emojiDataAll" :emojiGroups="emojiGroups">
+        <template v-slot:twemoji-picker-button>
+          <span>OMG A HEADLESS COMPONENT</span>
+        </template>
+      </twemoji-picker>
     </div>
     <div>
       <twemoji-textarea

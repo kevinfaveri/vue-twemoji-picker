@@ -114,15 +114,17 @@
       </div>
     </template>
     <template v-slot:button>
-      <button
-        id="btn-emoji"
-        @mouseenter="onMouseEnterEmojiBtn()"
-        @mouseleave="onMouseLeaveEmojiBtn()"
-        :disabled="disabled"
-      >
-        <div v-show="showEmoji" v-html="randomEmojiImg" class="fade-in"></div>
-        <div v-show="!showEmoji" id="dummy-el"></div>
-      </button>
+      <slot name="twemoji-picker-button">
+        <button
+          @mouseenter="onMouseEnterEmojiBtn()"
+          @mouseleave="onMouseLeaveEmojiBtn()"
+          :disabled="disabled"
+          id="btn-emoji-default"
+        >
+          <div v-show="showEmoji" v-html="randomEmojiImg" class="fade-in"></div>
+          <div v-show="!showEmoji" id="dummy-el"></div>
+        </button>
+      </slot>
     </template>
   </popper>
 </template>
@@ -195,7 +197,7 @@ img.emoji {
 }
 
 /* Popper Emoji */
-#btn-emoji {
+#btn-emoji-default {
   flex-grow: 100;
   border: none;
   cursor: pointer;
@@ -205,17 +207,17 @@ img.emoji {
   background-color: transparent;
 }
 
-#btn-emoji > div > img.emoji {
+#btn-emoji-default > div > img.emoji {
   height: 25px;
   width: 25px;
 }
 
-#btn-emoji > #dummy-el {
+#btn-emoji-default > #dummy-el {
   height: 25px;
   width: 25px;
 }
 
-#btn-emoji:disabled {
+#btn-emoji-default:disabled {
   opacity: 0.6;
   pointer-events: none;
 }
