@@ -4,8 +4,6 @@ title: 'Roadmap'
 
 # Roadmap
 
-- Migration to PopperJS v2
-
 - Divide emoji index bundle in two bundles: one with skin tones and the other without.
 
 - Feature: option for user to choose send method (Enter or Shift + Enter)
