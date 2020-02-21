@@ -1032,10 +1032,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@kevinfaguiar/vue-twemoji-picker@5.2.0":
-  version "5.2.0"
-  resolved "https://registry.yarnpkg.com/@kevinfaguiar/vue-twemoji-picker/-/vue-twemoji-picker-5.2.0.tgz#5e000f69797edc2f0db6852210fd735135485ffb"
-  integrity sha512-RoDaqDy4SfmU2kbmEpEJMmS9ZWsFd/qI+fjWLH8WLcCzMD+6k3OXTc+j/Cy9sVE8LebxRFsQjvqyikJFVXZcXQ==
+"@kevinfaguiar/vue-twemoji-picker@5.2.1":
+  version "5.2.1"
+  resolved "https://registry.yarnpkg.com/@kevinfaguiar/vue-twemoji-picker/-/vue-twemoji-picker-5.2.1.tgz#7e304f4dd6e8bbc497529d2f3a7ad989fe882826"
+  integrity sha512-e1sSSQpPf8AiPzc4qqUNyRSEK2pMFtp/1Iujcl1jR3k9M5PSas44W+ND0LM4sik6s8uSBtsX4jAQDdVBn1B3UQ==
   dependencies:
     "@popperjs/core" "^2.0.6"
     twemoji "^12.1.5"
