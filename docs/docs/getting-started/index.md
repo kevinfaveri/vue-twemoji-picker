@@ -16,42 +16,46 @@ yarn add @kevinfaguiar/vue-twemoji-picker
 
 ## Using TwemojiPicker
 
-This component, as explained previously, is only the emoji picker so it doesn't render emojis on its own. You need to pass as a prop to it the emoji dataset and use its events like @emojiUnicodeAdded to catch user interactions. [Pre-compacted emoji datasets are available](/docs/emoji-datasets) for use with this library (change {LANG} for one of the supported [locales](/docs/localization)):
+This component, as explained previously, is only the emoji picker so it doesn't render emojis on its own. You need to pass as a prop to it the emoji dataset and use its events like @emojiUnicodeAdded to catch user interactions. [Pre-compacted emoji datasets are available](/docs/emoji-datasets) for use with this library.
 
-``` js
-import {
-  TwemojiPicker
-} from '@kevinfaguiar/vue-twemoji-picker';
-import EmojiAllData from '@kevinfaguiar/vue-twemoji-picker/emoji-data/{LANG}/emoji-all-groups.json';
-import EmojiDataAnimalsNature from '@kevinfaguiar/vue-twemoji-picker/emoji-data/{LANG}/emoji-group-animals-nature.json';
-import EmojiDataFoodDrink from '@kevinfaguiar/vue-twemoji-picker/emoji-data/{LANG}/emoji-group-food-drink.json';
-import EmojiGroups from '@kevinfaguiar/vue-twemoji-picker/emoji-data/emoji-groups.json';
-export default {
-  name: 'App',
-  components: {
-      'twemoji-picker': TwemojiPicker
-  },
-  computed: {
-    emojiDataAll() {
-      return EmojiAllData;
-    },
-    emojiGroups() {
-      return EmojiGroups;
-    }
-  }
-}
-```
+Change {LANG} for one of the supported [locales](/docs/localization):
 
 ``` html
-<twemoji-picker
-  :emojiData="emojiDataAll"
-  :emojiGroups="emojiGroups"
-  :skinsSelection="false"
-  :searchEmojisFeat="true"
-  searchEmojiPlaceholder="Search here."
-  searchEmojiNotFound="Emojis not found."
-  isLoadingLabel="Loading..."
-></twemoji-picker>
+<template>
+  <twemoji-picker
+    :emojiData="emojiDataAll"
+    :emojiGroups="emojiGroups"
+    :skinsSelection="false"
+    :searchEmojisFeat="true"
+    searchEmojiPlaceholder="Search here."
+    searchEmojiNotFound="Emojis not found."
+    isLoadingLabel="Loading..."
+  ></twemoji-picker>
+</template>
+
+<script>
+  import {
+    TwemojiPicker
+  } from '@kevinfaguiar/vue-twemoji-picker';
+  import EmojiAllData from '@kevinfaguiar/vue-twemoji-picker/emoji-data/{LANG}/emoji-all-groups.json';
+  import EmojiDataAnimalsNature from '@kevinfaguiar/vue-twemoji-picker/emoji-data/{LANG}/emoji-group-animals-nature.json';
+  import EmojiDataFoodDrink from '@kevinfaguiar/vue-twemoji-picker/emoji-data/{LANG}/emoji-group-food-drink.json';
+  import EmojiGroups from '@kevinfaguiar/vue-twemoji-picker/emoji-data/emoji-groups.json';
+  export default {
+    name: 'App',
+    components: {
+        'twemoji-picker': TwemojiPicker
+    },
+    computed: {
+      emojiDataAll() {
+        return EmojiAllData;
+      },
+      emojiGroups() {
+        return EmojiGroups;
+      }
+    }
+  }
+</script>
 ```
 
 For the component API entire documentation, [click here](/docs/twemoji-picker-api).
@@ -60,39 +64,43 @@ For the component API entire documentation, [click here](/docs/twemoji-picker-ap
 
 This component is the one used in the demo: is a textarea with a Twemoji Picker component integrated so you can easily prototype and test the rendering of the selected emojis into your app.
 
-``` js
-import {
-  TwemojiTextarea
-} from '@kevinfaguiar/vue-twemoji-picker';
-import EmojiAllData from '@kevinfaguiar/vue-twemoji-picker/emoji-data/{LANG}/emoji-all-groups.json';
-import EmojiGroups from '@kevinfaguiar/vue-twemoji-picker/emoji-data/emoji-groups.json';
-export default {
-  name: 'App',
-  components: {
-    'twemoji-textarea': TwemojiTextarea
-  },
-  computed: {
-    emojiDataAll() {
-        return EmojiAllData;
-    },
-    emojiGroups() {
-        return EmojiGroups;
-    }
-  },
-  methods: {
-    onEnterKey(e) {
-      console.log("ClickedEnter", e);
-    }
-  }
-}
-```
+Change {LANG} for one of the supported [locales](/docs/localization):
 
 ``` html
-<twemoji-textarea 
-  :emojiData="emojiDataAll" 
-  :emojiGroups="emojiGroups" 
-  @enterKey="onEnterKey">
-</twemoji-textarea>
+<template>
+  <twemoji-textarea 
+    :emojiData="emojiDataAll" 
+    :emojiGroups="emojiGroups" 
+    @enterKey="onEnterKey">
+  </twemoji-textarea>
+</template>
+
+<script>
+  import {
+    TwemojiTextarea
+  } from '@kevinfaguiar/vue-twemoji-picker';
+  import EmojiAllData from '@kevinfaguiar/vue-twemoji-picker/emoji-data/{LANG}/emoji-all-groups.json';
+  import EmojiGroups from '@kevinfaguiar/vue-twemoji-picker/emoji-data/emoji-groups.json';
+  export default {
+    name: 'App',
+    components: {
+      'twemoji-textarea': TwemojiTextarea
+    },
+    computed: {
+      emojiDataAll() {
+          return EmojiAllData;
+      },
+      emojiGroups() {
+          return EmojiGroups;
+      }
+    },
+    methods: {
+      onEnterKey(e) {
+        console.log("ClickedEnter", e);
+      }
+    }
+  }
+</script>
 ```
 
 For the component API entire documentation, [click here](/docs/twemoji-textarea-api).
