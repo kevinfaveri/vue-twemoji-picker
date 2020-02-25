@@ -134,6 +134,7 @@ Defines the emoji arts extension.
 Defines the emoji arts folder where the Twemoji official library will request.
 
 ### randomEmojiArray
+- Version: 5.2.2 onwards
 - Type: ``array of emoji Unicode``
 - Default: ``['😀','😃','😄','😁','😆','😅','🤣','😂','🙂','🙃','😉','😊','🥴','😵','🤯','🤠','🥳','😎','🤓','🧐']``
 - Validation: ``must have a length of one or more``
