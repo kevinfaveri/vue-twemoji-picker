@@ -35,7 +35,7 @@
     "vue-clickaway": "^2.2.2"
   },
   "devDependencies": {
-    "@kevinfaguiar/vue-twemoji-picker": "5.2.1",
+    "@kevinfaguiar/vue-twemoji-picker": "5.2.2",
     "@rollup/plugin-buble": "^0.21.1",
     "@rollup/plugin-commonjs": "^11.0.2",
     "@rollup/plugin-image": "^2.0.4",
