@@ -450,6 +450,37 @@ export default Vue.extend({
     twemojiFolder: {
       default: '72x72',
       type: String as () => string
+    },
+    randomEmojiArray: {
+      default: () => [
+        '😀',
+        '😃',
+        '😄',
+        '😁',
+        '😆',
+        '😅',
+        '🤣',
+        '😂',
+        '🙂',
+        '🙃',
+        '😉',
+        '😊',
+        '🥴',
+        '😵',
+        '🤯',
+        '🤠',
+        '🥳',
+        '😎',
+        '🤓',
+        '🧐'
+      ],
+      type: Array as () => Array<string>,
+      validator: function(value) {
+        if (value && value.length === 0) {
+          console.error('The Array must have a length of one or more.');
+        }
+        return true;
+      }
     }
   },
 
@@ -463,7 +494,7 @@ export default Vue.extend({
       emojiListActive: [] as Array<Emoji>,
       emojiGroupActive: 0 as number,
 
-      randomEmoji: '😄' as string,
+      randomEmoji: null as string | null,
 
       isPointerOnEmojiBtn: false as boolean,
       twemojiOptions: {} as TwemojiOptions,
@@ -524,11 +555,9 @@ export default Vue.extend({
       }
     },
     setRandomEmoji(): void {
-      let emoji = { unicode: '😄' };
-      if (this.emojiPack.length !== 0) {
-        emoji = this.emojiPack[0].emojiList[Math.floor(Math.random() * 20)];
-      }
-      this.randomEmoji = emoji.unicode;
+      this.randomEmoji = this.randomEmojiArray[
+        Math.floor(Math.random() * this.randomEmojiArray.length)
+      ];
     },
 
     clickEmoji(emoji: Emoji): void {

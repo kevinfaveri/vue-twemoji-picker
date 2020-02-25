@@ -17,6 +17,7 @@
       :twemojiPath="twemojiPath"
       :twemojiExtension="twemojiExtension"
       :twemojiFolder="twemojiFolder"
+      :randomEmojiArray="randomEmojiArray"
       :disabled="disableEmojiPicker"
       @addTextBlur="addTextBlur"
       @emojiUnicodeAdded="emojiUnicodeAdded"
@@ -279,6 +280,37 @@ export default Vue.extend({
     twemojiFolder: {
       default: '72x72',
       type: String as () => string
+    },
+    randomEmojiArray: {
+      default: () => [
+        '😀',
+        '😃',
+        '😄',
+        '😁',
+        '😆',
+        '😅',
+        '🤣',
+        '😂',
+        '🙂',
+        '🙃',
+        '😉',
+        '😊',
+        '🥴',
+        '😵',
+        '🤯',
+        '🤠',
+        '🥳',
+        '😎',
+        '🤓',
+        '🧐'
+      ],
+      type: Array as () => Array<string>,
+      validator: function(value) {
+        if (value && value.length === 0) {
+          console.error('The Array must have a length of one or more.');
+        }
+        return true;
+      }
     },
 
     // ** Textarea Props **/

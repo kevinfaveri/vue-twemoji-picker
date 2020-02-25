@@ -2,9 +2,6 @@
   <div id="app">
     <div>
       <twemoji-picker :emojiData="emojiDataAll" :emojiGroups="emojiGroups">
-        <template v-slot:twemoji-picker-button>
-          <span>OMG A HEADLESS COMPONENT</span>
-        </template>
       </twemoji-picker>
     </div>
     <div>

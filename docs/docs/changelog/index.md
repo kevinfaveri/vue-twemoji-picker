@@ -4,6 +4,10 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.2.2
+
+- Added the "randomEmojiArray" prop
+
 ## 5.2.1
 
 - Added a Vue slot which enables the usage of TwemojiPicker as a headless component.

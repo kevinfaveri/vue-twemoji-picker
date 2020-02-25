@@ -133,6 +133,13 @@ Defines the emoji arts extension.
 
 Defines the emoji arts folder where the Twemoji official library will request.
 
+### randomEmojiArray
+- Type: ``array of emoji Unicode``
+- Default: ``['😀','😃','😄','😁','😆','😅','🤣','😂','🙂','🙃','😉','😊','🥴','😵','🤯','🤠','🥳','😎','🤓','🧐']``
+- Validation: ``must have a length of one or more``
+
+Defines the array of emoji Unicode which the picker button will randomize into onHover. This prop can be used to disable picker button emoji randomize by providing an array of length equal to 1. Emoji unicodes are available here: https://unicode.org/emoji/charts/full-emoji-list.html
+
 ## Events
 
 ### emojiUnicodeAdded
