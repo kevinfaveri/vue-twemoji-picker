@@ -36,6 +36,7 @@
       @mouseup="saveSelection"
       @keyup="saveSelection"
       @focus="restoreSelection"
+      :placeholder="placeholder"
     ></div>
 
     <div id="send-btn" @click="emitEnterKeyEvent" v-if="enableSendBtn">
@@ -74,6 +75,13 @@ img.emoji {
   margin: 10px;
   border-radius: 25px;
   text-align: left;
+}
+
+#twemoji-textarea[placeholder]:empty:before {
+  content: attr(placeholder);
+  position: absolute;
+  color: gray;
+  background-color: transparent;
 }
 
 #send-btn {
@@ -346,6 +354,10 @@ export default Vue.extend({
         }
         return true;
       }
+    },
+    placeholder: {
+      type: String as () => string,
+      default: ''
     }
   },
 

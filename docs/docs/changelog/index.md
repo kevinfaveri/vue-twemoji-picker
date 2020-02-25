@@ -4,9 +4,13 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.2.3
+
+- Added the "placeholder" prop to TwemojiTextarea
+
 ## 5.2.2
 
-- Added the "randomEmojiArray" prop
+- Added the "randomEmojiArray" prop to TwemojiPicker
 
 ## 5.2.1
 

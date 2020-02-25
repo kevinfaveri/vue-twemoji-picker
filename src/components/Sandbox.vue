@@ -16,6 +16,7 @@
         :recentEmojisFeat="true"
         recentEmojisStorage="none"
         :searchEmojisFeat="true"
+        placeholder="Textarea Placeholder"
         ref="cooltextareaSend"
       ></twemoji-textarea>
     </div>

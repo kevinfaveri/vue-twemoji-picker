@@ -39,6 +39,13 @@ The value of this prop represents whether the textarea is enabled.
 
 Define the component color style.
 
+### placeholder
+- Version: 5.2.3 onwards
+- Type: ``string``
+- Default: ``''``
+
+Define the textarea placeholder.
+
 ## Events
 
 - This component inherits all Twemoji Picker events. You can check them [here](/docs/twemoji-picker-api#events).
