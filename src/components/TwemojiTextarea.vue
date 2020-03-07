@@ -8,7 +8,6 @@
       :emojiGroups="emojiGroups"
       :skinsSelection="skinsSelection"
       :recentEmojisFeat="recentEmojisFeat"
-      :blockRecentEmojiAddition="!isValidTextareaInsert"
       :recentEmojisStorage="recentEmojisStorage"
       :recentEmojiStorageName="recentEmojiStorageName"
       :recentEmojiLimit="recentEmojiLimit"
@@ -32,7 +31,6 @@
       :contenteditable="disabled ? false : true"
       @input="updateContent"
       @paste="onPaste"
-      @keydown.exact="keydownKey"
       @keydown.exact.enter="enterKey"
       @keydown.shift.enter="shiftEnterKey"
       @mouseup="saveSelection"
@@ -183,7 +181,6 @@ import SendIconImg from './SendIconImg.vue';
 import EmojiPack from '../interfaces/EmojiPack';
 import EmojiGroup from '../interfaces/EmojiGroup';
 import TwemojiOptions from '../interfaces/TwemojiOptions';
-import UtilitiesService from '../services/UtilitiesService';
 
 /**Events */
 // contentChanged
@@ -361,10 +358,6 @@ export default Vue.extend({
     placeholder: {
       type: String as () => string,
       default: ''
-    },
-    maxlength: {
-      type: Number as () => number,
-      default: null
     }
   },
 
@@ -378,18 +371,6 @@ export default Vue.extend({
   computed: {
     twemojiTextarea(): HTMLElement {
       return this.$refs.twemojiTextarea as HTMLElement;
-    },
-    contentLength(): number {
-      return [...this.content].length;
-    },
-    isValidTextareaInsert(): boolean {
-      if (this.maxlength === null) {
-        return true;
-      }
-      return UtilitiesService.isValidTextareaInsert(
-        this.contentLength,
-        this.maxlength
-      );
     }
   },
 
@@ -426,11 +407,6 @@ export default Vue.extend({
       if (event.shiftKey === false) this.emitEnterKeyEvent(event);
     },
     shiftEnterKey(event: KeyboardEvent): void {
-      if (!this.isValidTextareaInsert) {
-        event.preventDefault();
-        return;
-      }
-
       event.stopPropagation();
       event.preventDefault();
 
@@ -506,8 +482,6 @@ export default Vue.extend({
     },
 
     addTextBlur(text: string): void {
-      if (!this.isValidTextareaInsert) return;
-
       this.focus();
 
       text = TextareaParser.escapeHTML(text);
@@ -518,8 +492,6 @@ export default Vue.extend({
       this.blur();
     },
     addText(text: string): void {
-      if (!this.isValidTextareaInsert) return;
-
       this.focus();
 
       text = TextareaParser.escapeHTML(text);
@@ -537,29 +509,6 @@ export default Vue.extend({
     },
     emojiImgAdded(img: string): void {
       this.$emit('emojiImgAdded', img);
-    },
-    keydownKey(event: KeyboardEvent): void {
-      switch (event.keyCode) {
-        case 38:
-          return;
-        case 40:
-          return;
-        case 37:
-          return;
-        case 39:
-          return;
-        case 8:
-          return;
-        case 46:
-          return;
-        default:
-          break;
-      }
-
-      if (!this.isValidTextareaInsert) {
-        event.preventDefault();
-        return;
-      }
     }
   }
 });
