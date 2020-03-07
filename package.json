@@ -16,6 +16,15 @@
     "type": "git",
     "url": "git@github.com:kevinfaguiar/vue-twemoji-picker.git"
   },
+  "keywords": [
+    "emoji",
+    "emoji-data",
+    "twemoji",
+    "emoji-picker",
+    "emoji-textarea",
+    "sanitize-textarea",
+    "vue"
+  ],
   "license": "MIT",
   "scripts": {
     "dev": "cross-env NODE_ENV=development vue-cli-service serve",
