@@ -13,11 +13,12 @@
         :skinsSelection="true"
         :enableSendBtn="true"
         @enterKey="onEnterKey"
+        @actualContentLengthChanged="actualContentLengthChanged"
         :recentEmojisFeat="true"
         recentEmojisStorage="none"
         :searchEmojisFeat="true"
         placeholder="Textarea Placeholder"
-        ref="cooltextareaSend"
+        ref="twemojiTextareaRef"
       ></twemoji-textarea>
     </div>
   </div>
@@ -49,12 +50,7 @@ a:hover {
 </style>
 <script lang="ts">
 import Vue from 'vue';
-import {
-  TwemojiTextarea,
-  TwemojiPicker,
-  EmojiService,
-  TextareaParser
-} from '../wrapper';
+import { TwemojiTextarea, TwemojiPicker } from '../wrapper';
 import EmojiDataAll from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-all-groups.json';
 import EmojiDataAnimalsNature from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-animals-nature.json';
 import EmojiDataFoodDrink from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-food-drink.json';
@@ -124,6 +120,9 @@ export default Vue.extend({
     onEnterKey(event: MouseEvent): void {
       event.stopPropagation();
       event.preventDefault();
+    },
+    actualContentLengthChanged(actualLength: number): void {
+      console.log('actualLength', actualLength);
     }
   }
 });

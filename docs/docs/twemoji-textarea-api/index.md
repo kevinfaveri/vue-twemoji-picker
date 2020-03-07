@@ -54,6 +54,17 @@ Define the textarea placeholder.
 
 This event fires everytime the textarea content is updated.
 
+### actualContentLengthChanged
+- Parameter | Type : ``actualLength | number``
+
+This event fires everytime the textarea content is updated. Has a parameter which indicates the length of the content (which is in fact not a simple content.length) because some emoji unicode in Javascript are sometimes counted as more than 1 in length value.
+
+```js
+actualContentLengthChanged(actualLength) {
+  console.log('actualLength', actualLength);
+}
+```
+
 ### enterKey
 - Parameter | Type : ``event | KeyboardEvent``
 

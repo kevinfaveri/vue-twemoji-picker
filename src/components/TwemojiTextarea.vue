@@ -364,7 +364,8 @@ export default Vue.extend({
   data() {
     return {
       savedRange: null as any,
-      twemojiOptions: {} as TwemojiOptions
+      twemojiOptions: {} as TwemojiOptions,
+      actualContentLength: 0 as number
     };
   },
 
@@ -391,13 +392,15 @@ export default Vue.extend({
   methods: {
     updateContent(event: Event): void {
       const targetedElement = event.target as HTMLElement;
-      let content = targetedElement.innerHTML;
+      let content = targetedElement.innerHTML as any;
       content = TextareaParser.replaceEmojiWithAltAttribute(content);
       content = TextareaParser.unescapeHtml(content);
       if (content.length !== 0 && content[content.length - 1] === '\n') {
         content = content.slice(0, -1);
       }
+      this.actualContentLength = [...content].length;
       this.$emit('update:content', content);
+      this.$emit('actualContentLengthChanged', this.actualContentLength);
       this.$emit('contentChanged');
     },
     emitEnterKeyEvent(event: Event): void {
