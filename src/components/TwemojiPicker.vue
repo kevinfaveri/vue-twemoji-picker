@@ -391,6 +391,10 @@ export default Vue.extend({
       default: false,
       type: Boolean as () => boolean
     },
+    blockRecentEmojiAddition: {
+      default: false,
+      type: Boolean as () => boolean
+    },
     recentEmojisStorage: {
       default: 'none',
       type: String as () => string,
@@ -633,6 +637,7 @@ export default Vue.extend({
       }
     },
     addEmojiToRecentEmojis(emojiUnicode: string): void {
+      if (this.blockRecentEmojiAddition) return;
       const indexToRemove = this.recentEmojis.findIndex(
         (x: Emoji) => x.unicode === emojiUnicode
       );

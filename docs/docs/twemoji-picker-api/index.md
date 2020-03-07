@@ -62,11 +62,17 @@ This is the array of emoji groups which is delivered to the component... [Pre-co
 
 The value of this prop represents whether the skins feature is enabled.
 
-### recentEmojisFeat
+### blockRecentEmojiAddition
 - Type: ``boolean``
 - Default: ``false``
 
-The value of this prop represents whether the recent emojis feature is enabled.
+The value of this prop represents whether the recent emojis addition is enabled.
+
+### isRecentEmojiFeatBlocked
+- Type: ``boolean``
+- Default: ``false``
+
+The value of this prop represents whether the recent emojis feature is 
 
 ### recentEmojisStorage
 - Type: ``string``
