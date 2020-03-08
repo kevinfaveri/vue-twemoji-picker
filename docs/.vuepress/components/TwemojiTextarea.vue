@@ -7,6 +7,7 @@
       :enableSendBtn="true"
       :recentEmojisFeat="true"
       :searchEmojisFeat="true"
+      :maxlength="100"
       >
     </twemoji-textarea>
   </div>
