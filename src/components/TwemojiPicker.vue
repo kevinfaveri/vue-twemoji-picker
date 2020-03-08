@@ -288,11 +288,6 @@ import TwemojiOptions from '../interfaces/TwemojiOptions';
 import EmojiSkin from '../interfaces/EmojiSkin';
 import EmojiGroup from '../interfaces/EmojiGroup';
 
-/**Events */
-// addTextBlur
-// emojiUnicodeAdded
-// emojiImgAdded
-
 export default Vue.extend({
   name: 'TwemojiPicker',
 

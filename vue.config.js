@@ -1,5 +1,5 @@
 module.exports = {
-  publicPath: '/vue-twemoji-picker/',
+  publicPath: '/',
   css: { extract: false },
   configureWebpack: {
     output: {

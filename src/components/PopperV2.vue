@@ -210,10 +210,10 @@ import flip from '@popperjs/core/lib/modifiers/flip';
 import offset from '@popperjs/core/lib/modifiers/offset';
 import preventOverflow from '@popperjs/core/lib/modifiers/preventOverflow';
 
-import { mixin as clickaway } from 'vue-clickaway';
+import VueClickaway from 'vue-clickaway';
 
 export default Vue.extend({
-  mixins: [clickaway],
+  mixins: [VueClickaway.mixin],
   name: 'PopperV2',
   data() {
     return {
