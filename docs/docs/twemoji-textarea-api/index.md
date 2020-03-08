@@ -90,7 +90,7 @@ onEnterKey(event) {
 
 This event fires everytime the enter key is pressed or the send button is clicked, so that you can define what action is to be performed based on the content being overflowed or not (content is considered overflowed when its actualContentLength greater than its [maxlength](/docs/twemoji-picker-api#maxlength)).
 
-You can then prevent the submiting of the textarea onEnterKeypress by using this event:
+You can then prevent the submitting of the textarea onEnterKeypress by using this event:
 ```js
 isContentOverflowed(isContentOverflowed) {
   if(isContentOverflowed) // set variable which will prevent submiting of textarea
