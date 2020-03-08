@@ -18,19 +18,19 @@ title: 'Changelog'
 
 ## 5.2.1
 
-- Added a Vue slot which enables the usage of TwemojiPicker as a headless component.
+- Added a Vue slot which enables the usage of TwemojiPicker as a headless component
 
 ## 5.2.0
 
-- The popover dependency has been updated (vue-tooltip -> popper.js v2) for achieving a better bundle size.
+- The popover dependency has been updated (vue-tooltip -> popper.js v2) for achieving a better bundle size
 
 ## 5.1.1
 
-- EmojiService and TextareaParser added to the default export.
+- EmojiService and TextareaParser added to the default export
 
 ## 5.1.0
 
-- Documentation rewrite. Made with VuePress.
+- Documentation rewrite. Made with VuePress
 
 ## 5.0.5
 
