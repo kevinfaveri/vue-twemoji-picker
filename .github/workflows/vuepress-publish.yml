@@ -2,7 +2,7 @@ name: Docs - Build and Deploy
 on:
   push:
     paths:
-      - 'docs/*'
+      - "docs/**"
     branches:    
       - master
 jobs:
