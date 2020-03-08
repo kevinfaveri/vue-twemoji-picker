@@ -1,5 +1,9 @@
 <template>
-  <div class="twemoji-textarea-outer" :class="'bg-' + componentColor">
+  <div
+    class="twemoji-textarea-outer"
+    :class="'bg-' + componentColor"
+    :style="{ paddingBottom: maxlength ? '15px' : '0px' }"
+  >
     <twemoji-picker
       :pickerWidth="pickerWidth"
       :pickerMaxHeight="pickerMaxHeight"
@@ -42,6 +46,15 @@
     <div id="send-btn" @click="emitEnterKeyEvent" v-if="enableSendBtn">
       <send-icon-img />
     </div>
+
+    <div id="length-indicator" v-if="maxlength">
+      <span
+        :style="{ color: actualContentLength > maxlength ? 'red' : 'black' }"
+        >{{ actualContentLength }}</span
+      >
+      /
+      <span>{{ maxlength }}</span>
+    </div>
   </div>
 </template>
 <style lang="css">
@@ -51,6 +64,7 @@
 }
 
 .twemoji-textarea-outer {
+  position: relative;
   display: flex;
   flex-flow: row wrap;
   border-radius: 25px;
@@ -82,6 +96,13 @@ img.emoji {
   position: absolute;
   color: gray;
   background-color: transparent;
+}
+
+#length-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 20px;
+  font-weight: bold;
 }
 
 #send-btn {
@@ -181,10 +202,6 @@ import SendIconImg from './SendIconImg.vue';
 import EmojiPack from '../interfaces/EmojiPack';
 import EmojiGroup from '../interfaces/EmojiGroup';
 import TwemojiOptions from '../interfaces/TwemojiOptions';
-
-/**Events */
-// contentChanged
-// enterKey
 
 export default Vue.extend({
   name: 'TwemojiTextarea',
@@ -358,6 +375,10 @@ export default Vue.extend({
     placeholder: {
       type: String as () => string,
       default: ''
+    },
+    maxlength: {
+      type: Number as () => number,
+      default: null
     }
   },
 
@@ -403,11 +424,20 @@ export default Vue.extend({
       this.$emit('actualContentLengthChanged', this.actualContentLength);
       this.$emit('contentChanged');
     },
+    emitIsContentOverflowed() {
+      if (this.actualContentLength > this.maxlength)
+        this.$emit('isContentOverflowed', true);
+      else this.$emit('isContentOverflowed', false);
+    },
     emitEnterKeyEvent(event: Event): void {
+      this.emitIsContentOverflowed();
       this.$emit('enterKey', event);
     },
     enterKey(event: KeyboardEvent): void {
-      if (event.shiftKey === false) this.emitEnterKeyEvent(event);
+      if (event.shiftKey === false) {
+        this.emitIsContentOverflowed();
+        this.emitEnterKeyEvent(event);
+      }
     },
     shiftEnterKey(event: KeyboardEvent): void {
       event.stopPropagation();

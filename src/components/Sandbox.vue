@@ -18,6 +18,8 @@
         recentEmojisStorage="none"
         :searchEmojisFeat="true"
         placeholder="Textarea Placeholder"
+        :maxlength="100"
+        @isContentOverflowed="isContentOverflowed"
         ref="twemojiTextareaRef"
       ></twemoji-textarea>
     </div>
@@ -123,6 +125,9 @@ export default Vue.extend({
     },
     actualContentLengthChanged(actualLength: number): void {
       console.log('actualLength', actualLength);
+    },
+    isContentOverflowed(isContentOverflowed: boolean) {
+      console.log('isContentOverflowed', isContentOverflowed);
     }
   }
 });

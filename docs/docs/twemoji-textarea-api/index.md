@@ -46,6 +46,13 @@ Define the component color style.
 
 Define the textarea placeholder.
 
+### maxlength
+- Version: 5.2.4 onwards
+- Type: ``number``
+- Default: ``null``
+
+Define the textarea maxlength. If set to null has no default maxlength. If set to any number the textarea will automatically expand itself to show a character count.
+
 ## Events
 
 - This component inherits all Twemoji Picker events. You can check them [here](/docs/twemoji-picker-api#events).
@@ -75,6 +82,18 @@ You can even prevent the line wrapping when pressing enter key by passing down f
 onEnterKey(event) {
   event.stopPropagation();
   event.preventDefault();
+}
+```
+
+### isContentOverflowed
+- Parameter | Type : ``isContentOverflowed | boolean``
+
+This event fires everytime the enter key is pressed or the send button is clicked, so that you can define what action is to be performed based on the content being overflowed or not (content is considered overflowed when its actualContentLength greater than its [maxlength](/docs/twemoji-picker-api#maxlength)).
+
+You can then prevent the submiting of the textarea onEnterKeypress by using this event:
+```js
+isContentOverflowed(isContentOverflowed) {
+  if(isContentOverflowed) // set variable which will prevent submiting of textarea
 }
 ```
 
