@@ -4,6 +4,10 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.2.4
+
+- Added the "maxlength" prop to TwemojiTextarea
+
 ## 5.2.3
 
 - Added the "placeholder" prop to TwemojiTextarea
