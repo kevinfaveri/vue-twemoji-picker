@@ -51,11 +51,11 @@ a:hover {
 }
 </style>
 <script lang="ts">
-const TwemojiPicker = (window as any).VueTwemojiPicker.TwemojiPicker;
-const TwemojiTextarea = (window as any).VueTwemojiPicker.TwemojiTextarea;
+// const TwemojiPicker = (window as any).VueTwemojiPicker.TwemojiPicker;
+// const TwemojiTextarea = (window as any).VueTwemojiPicker.TwemojiTextarea;
 
 import Vue from 'vue';
-// import { TwemojiPicker,TwemojiTextarea } from '../wrapper';
+import { TwemojiPicker, TwemojiTextarea } from '../wrapper';
 import EmojiDataAll from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-all-groups.json';
 import EmojiDataAnimalsNature from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-animals-nature.json';
 import EmojiDataFoodDrink from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-food-drink.json';
