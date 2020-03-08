@@ -1,4 +1,4 @@
-import buble from '@rollup/plugin-buble';
+import babel from 'rollup-plugin-babel';
 import resolve from '@rollup/plugin-node-resolve';
 import vue from 'rollup-plugin-vue';
 import cjs from '@rollup/plugin-commonjs';
@@ -29,7 +29,10 @@ export default {
       plugins: [autoprefixer]
     }),
     cjs(),
-    buble(),
+    babel({
+      exclude: 'node_modules/**',
+      runtimeHelpers: true
+    }),
     replace({
       'process.env.NODE_ENV': JSON.stringify('production')
     })
