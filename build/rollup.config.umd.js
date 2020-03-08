@@ -10,11 +10,11 @@ const config = Object.assign({}, base, {
   output: {
     exports: 'named',
     name: 'VueTwemojiPicker',
-    file: 'dist/vue-twemoji-picker.umd.js',
+    file: 'dist/vue-twemoji-picker.umd.min.js',
     format: 'umd',
-    globals // , 'clickaway', 'Twemoji'
+    globals
   },
-  external: ['vue'] // , 'vue-clickaway', 'twemoji', '@popperjs/core'
+  external: ['vue']
 });
 
 config.plugins.push(analyze());

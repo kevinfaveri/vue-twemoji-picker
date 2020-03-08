@@ -1,8 +1,8 @@
 {
   "name": "@kevinfaguiar/vue-twemoji-picker",
   "version": "5.2.4",
-  "main": "dist/vue-twemoji-picker.umd.js",
-  "module": "dist/vue-twemoji-picker.esm.js",
+  "main": "dist/vue-twemoji-picker.umd.min.js",
+  "module": "dist/vue-twemoji-picker.esm.min.js",
   "unpkg": "dist/vue-twemoji-picker.min.js",
   "files": [
     "dist/*",

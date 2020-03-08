@@ -12,8 +12,8 @@ globals['@popperjs/core'] = '@popperjs/core';
 const config = Object.assign({}, base, {
   output: {
     name: 'VueTwemojiPicker',
-    file: 'dist/vue-twemoji-picker.esm.js',
-    format: 'es',
+    file: 'dist/vue-twemoji-picker.esm.min.js',
+    format: 'es'
   },
   external: ['vue', 'vue-clickaway', 'twemoji', '@popperjs/core']
 });
