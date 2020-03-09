@@ -104,3 +104,18 @@ Change {LANG} for one of the supported [locales](/docs/localization):
 ```
 
 For the component API entire documentation, [click here](/docs/twemoji-textarea-api).
+
+## Using UMD/IIFE Builds
+- Version: 5.4.0 onwards
+
+This project exports UMD/IIFE builds which can be used in any HTML/JS project. Below is an example:
+
+<ClientOnly>
+  <iframe
+     src="https://codesandbox.io/embed/angry-shadow-we3co?autoresize=1&fontsize=14&hidenavigation=1&view=preview"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="vue-twemoji-picker-vanilla-example"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
+</ClientOnly>

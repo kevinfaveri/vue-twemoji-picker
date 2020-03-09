@@ -4,9 +4,13 @@ title: 'Changelog'
 
 # Changelog
 
-## 5.3.0
+## 5.4.0
 
 - Rollup upgrade to v2 + fixed some bugs in UMD builds
+
+## 5.3.1
+
+- Project deps update
 
 ## 5.2.4
 
