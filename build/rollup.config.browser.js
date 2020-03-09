@@ -17,8 +17,9 @@ const config = Object.assign({}, base, {
   external: ['vue']
 });
 
-config.plugins.push(analyze());
+/* config.plugins.push(analyze());
 config.plugins.push(terser());
 config.plugins.push(visualizer());
+*/
 
 export default config;

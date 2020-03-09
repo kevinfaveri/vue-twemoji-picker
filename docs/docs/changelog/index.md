@@ -4,6 +4,10 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.3.0
+
+- Rollup upgrade to v2 + fixed some bugs in UMD builds
+
 ## 5.2.4
 
 - Added the "maxlength" prop to TwemojiTextarea
