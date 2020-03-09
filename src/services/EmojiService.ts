@@ -5,7 +5,6 @@ import EmojiSkin from '../interfaces/EmojiSkin';
 
 export default {
   getEmojiImgFromUnicode(unicode: string, twemojiOptions?: object): string {
-    console.log("unicode ->", unicode);
     return Twemoji.parse(unicode, twemojiOptions);
   },
 

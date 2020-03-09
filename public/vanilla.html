@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Parcel Sandbox</title>
+    <meta charset="UTF-8" />
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/vue@2.6.11/dist/vue.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../dist/vue-twemoji-picker.umd.min.js"
+    ></script>
+    <script type="text/javascript">
+      let EmojiDataAll,
+        EmojiGroups = null;
+      const TwemojiPicker = window.VueTwemojiPicker.TwemojiPicker;
+      const TwemojiTextarea = window.VueTwemojiPicker.TwemojiTextarea;
+      console.log("TwemojiPicker", TwemojiPicker);
+      console.log("TwemojiTextarea", TwemojiTextarea);
+
+      (async () => {
+        console.log("Is fetching");
+        const fetchedDataAllResponse = await fetch(
+          "https://unpkg.com/@kevinfaguiar/vue-twemoji-picker@5.3.0/emoji-data/en/emoji-all-groups.json"
+        );
+        EmojiDataAll = await fetchedDataAllResponse.json();
+
+        const fetchedGroupsResponse = await fetch(
+          "https://unpkg.com/@kevinfaguiar/vue-twemoji-picker@5.3.0/emoji-data/emoji-groups.json"
+        );
+        EmojiGroups = await fetchedGroupsResponse.json();
+
+        const vueInstance = new Vue({
+          el: "#app",
+          components: {
+            "twemoji-picker": TwemojiPicker
+          },
+          computed: {
+            emojiDataAll() {
+              console.log("EmojiDataAll", EmojiDataAll);
+              return [];
+            },
+            emojiGroups() {
+              return null;
+            }
+          }
+        });
+
+        console.log("vueInstance", vueInstance);
+      })();
+    </script>
+  </head>
+
+  <body>
+    <div id="app">
+      <twemoji-picker
+        :emojiData="emojiDataAll"
+        :emojiGroups="emojiGroups"
+        :skinsSelection="false"
+        :searchEmojisFeat="true"
+        searchEmojiPlaceholder="Search here."
+        searchEmojiNotFound="Emojis not found."
+        isLoadingLabel="Loading..."
+      ></twemoji-picker>
+    </div>
+  </body>
+</html>
