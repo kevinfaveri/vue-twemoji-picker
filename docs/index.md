@@ -27,7 +27,7 @@ footer: 'MIT Licensed | Copyright © 2020-present @kevinfaguiar | Twemoji graphi
       content="Support emoji variations: skin tones, hair color and diversity." />
     <ChildBlock 
       title="Localization 🔠" 
-      content="19 different locales for emoji tags." />
+      content="19 different locales for emoji tags. Supports loading localized datasets on demand." />
   </template>
 </ParentRowWrapping>
 
