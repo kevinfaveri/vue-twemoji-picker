@@ -32,7 +32,6 @@ function getSidebar(groupName) {
         'localization/',
         'services/',
         'changelog/',
-        'roadmap/',
       ]
     }
   ]
