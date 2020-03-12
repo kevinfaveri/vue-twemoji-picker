@@ -9,7 +9,7 @@ So I did what every developer does when he doesn't find a library ready: wrote m
 
 This library is meant to be a developer friendly, easy integrable and performatic emoji picker (with some batteries) using the Twitter emoji arts (Twemojis). Emoji Unicode 12 (latest emoji spec, from 2019, which includes skins) is used as the base dataset.
 
-Updates to the emoji list from this library depends on two factors: release of the new standard of emojis released yearly and release of official Twitter emoji arts for the new released standard.
+Updates to the emoji list of this library depends on two factors: release of the new standard of emojis released yearly and release of official Twitter emoji arts for the new released standard.
 
 ## What is the Magic
 
