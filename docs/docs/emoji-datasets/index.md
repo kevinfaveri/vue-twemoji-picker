@@ -4,6 +4,8 @@ title: 'Emoji Datasets'
 
 # Emoji Datasets
 
+The dataset distributed with this library is based on the Unicode standard: [http://cldr.unicode.org/index/downloads/cldr-35](http://cldr.unicode.org/index/downloads/cldr-35) This means that the tags used for search and filtering; the shortcodes used for shortcode usage; and some other data are based on a standard; therefore these datasets will not be fattened by this library, which will strictly follow the standard.
+
 This library bundles optimized emoji datasets for ease of use. Below you have info regarding each emoji dataset as well as its import paths (where {LANG} is your preferred language, see [localization](/docs/localization)):
 
 ### Datasets

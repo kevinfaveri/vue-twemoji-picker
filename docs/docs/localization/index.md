@@ -28,10 +28,12 @@ The emoji datasets comes with 19 different locales:
 
 ## Use Case - Loading Localized Datasets on Demand
 
-<iframe
-  src="https://codesandbox.io/embed/vue-twemojij-picker-dynamic-localization-demo-9wnqv?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
-  style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-  title="vue-twemojij-picker-dynamic-localization-demo"
-  allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-  sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-></iframe>
+<ClientOnly>
+  <iframe
+    src="https://codesandbox.io/embed/vue-twemojij-picker-dynamic-localization-demo-9wnqv?autoresize=1&fontsize=14&hidenavigation=1&theme=dark"
+    style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+    title="vue-twemojij-picker-dynamic-localization-demo"
+    allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+    sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+  ></iframe>
+</ClientOnly>

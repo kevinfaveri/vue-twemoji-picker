@@ -38,8 +38,5 @@ export default {
       showTwemojiTextarea: false,
     };
   },
-  mounted() {
-    document.documentElement.scrollTop = 0;
-  }
 }
 </script>
