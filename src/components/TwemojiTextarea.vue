@@ -406,7 +406,7 @@ export default Vue.extend({
 
   mounted(): void {
     if (this.content.length === 0) {
-      this.addText(this.content);
+      this.twemojiTextarea.innerHTML = this.content;
     }
   },
 

@@ -8,7 +8,7 @@
       <twemoji-textarea
         class="margin-top text-justify"
         :content.sync="content"
-        :emojiData="emojiDataAll"
+        :emojiData="emojiDataThreeCollections"
         :emojiGroups="emojiGroups"
         :skinsSelection="true"
         :enableSendBtn="true"
@@ -47,7 +47,7 @@ a:hover {
 }
 
 #app > div {
-  margin: 20px 0;
+  margin: 100vh 0;
 }
 </style>
 <script lang="ts">
