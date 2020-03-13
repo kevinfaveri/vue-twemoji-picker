@@ -67,3 +67,7 @@ title: 'Changelog'
 ## 5.0.0
 
 - Major new version with a codebase rewrite in Typescript, new repo name, but no API breaking changes!!!
+
+## < 5.0.0
+
+- Changelog was not documented before major version 5.0.0, sorry.
