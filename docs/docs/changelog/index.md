@@ -4,6 +4,10 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.4.1
+
+- Fix autofocus bug in Twemoji Textarea
+
 ## 5.4.0
 
 - Rollup upgrade to v2 + fixed some bugs in UMD builds
