@@ -6,8 +6,8 @@
       v-on-clickaway="clickAwayPopper"
       @mouseleave="hoverTriggerPopper"
     >
+      <div id="arrow" data-popper-arrow />
       <div id="popper-inner">
-        <div id="arrow" data-popper-arrow v-if="arrowEnabled" />
         <slot name="container" v-if="containerRef" />
       </div>
     </div>
@@ -35,9 +35,8 @@
 
 #popper-container {
   padding: 0;
-  background: #fafafa;
-  border: 3px #fafafa solid;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  background: #ebebeb;
+  border: 3px #ebebeb solid;
   border-radius: 3px;
   animation: fadein 300ms;
   z-index: 1;
@@ -51,152 +50,38 @@
   display: block;
 }
 
-#popper-container > #popper-inner > #arrow {
-  position: inherit !important;
-  background: #fafafa;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
-}
-
-#popper-container[data-popper-placement^='top'] > #popper-inner > #arrow {
-  transform: none !important;
-}
-
-#popper-container[data-popper-placement^='top']
-  > #popper-inner
-  > #arrow::before,
-#popper-container[data-popper-placement^='top']
-  > #popper-inner
-  > #arrow::after {
-  top: 100%;
-  left: 50%;
-  border: solid transparent;
-  content: ' ';
-  height: 0;
-  width: 0;
+#arrow,
+#arrow::before {
   position: absolute;
-  pointer-events: none;
+  z-index: -1;
 }
 
-#popper-container[data-popper-placement^='top']
-  > #popper-inner
-  > #arrow:before {
-  border-color: rgba(194, 225, 245, 0);
-  border-top-color: #fafafa;
-  border-width: 16px;
-  margin-left: -16px;
+#arrow::before {
+  content: '';
+  transform: rotate(45deg);
+  background: #ebebeb;
+  width: 24px;
+  height: 24px;
 }
 
-#popper-container[data-popper-placement^='top'] > #popper-inner > #arrow:after {
-  border-color: rgba(136, 183, 213, 0);
-  border-top-color: #fafafa;
-  border-width: 15px;
-  margin-left: -15px;
+#popper-container[data-popper-placement^='top'] > #arrow {
+  bottom: 12px;
+  padding-right: 25px;
 }
 
-#popper-container[data-popper-placement^='bottom'] > #popper-inner > #arrow {
-  transform: none !important;
+#popper-container[data-popper-placement^='bottom'] > #arrow {
+  top: -12px;
+  padding-right: 25px;
 }
 
-#popper-container[data-popper-placement^='bottom']
-  > #popper-inner
-  > #arrow::before,
-#popper-container[data-popper-placement^='bottom']
-  > #popper-inner
-  > #arrow::after {
-  bottom: 100%;
-  left: 50%;
-  border: solid transparent;
-  content: ' ';
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
+#popper-container[data-popper-placement^='left'] > #arrow {
+  right: 12px;
+  padding-bottom: 25px;
 }
 
-#popper-container[data-popper-placement^='bottom']
-  > #popper-inner
-  > #arrow:before {
-  border-color: rgba(194, 225, 245, 0);
-  border-bottom-color: #fafafa;
-  border-width: 16px;
-  margin-left: -16px;
-}
-
-#popper-container[data-popper-placement^='bottom']
-  > #popper-inner
-  > #arrow:after {
-  border-color: rgba(136, 183, 213, 0);
-  border-bottom-color: #fafafa;
-  border-width: 15px;
-  margin-left: -15px;
-}
-
-#popper-container[data-popper-placement^='left']
-  > #popper-inner
-  > #arrow::before,
-#popper-container[data-popper-placement^='left']
-  > #popper-inner
-  > #arrow::after {
-  left: 100%;
-  top: 50%;
-  border: solid transparent;
-  content: ' ';
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-
-#popper-container[data-popper-placement^='left']
-  > #popper-inner
-  > #arrow:before {
-  border-color: rgba(194, 225, 245, 0);
-  border-left-color: #fafafa;
-  border-width: 16px;
-  margin-top: -16px;
-}
-
-#popper-container[data-popper-placement^='left']
-  > #popper-inner
-  > #arrow:after {
-  border-color: rgba(136, 183, 213, 0);
-  border-left-color: #fafafa;
-  border-width: 15px;
-  margin-top: -15px;
-}
-
-#popper-container[data-popper-placement^='right']
-  > #popper-inner
-  > #arrow::before,
-#popper-container[data-popper-placement^='right']
-  > #popper-inner
-  > #arrow::after {
-  right: 100%;
-  top: 50%;
-  border: solid transparent;
-  content: ' ';
-  height: 0;
-  width: 0;
-  position: absolute;
-  pointer-events: none;
-}
-
-#popper-container[data-popper-placement^='right']
-  > #popper-inner
-  > #arrow:before {
-  border-color: rgba(194, 225, 245, 0);
-  border-right-color: #fafafa;
-  border-width: 16px;
-  margin-top: -16px;
-}
-
-#popper-container[data-popper-placement^='right']
-  > #popper-inner
-  > #arrow:after {
-  border-color: rgba(136, 183, 213, 0);
-  border-right-color: #fafafa;
-  border-width: 15px;
-  margin-top: -15px;
+#popper-container[data-popper-placement^='right'] > #arrow {
+  left: -12px;
+  padding-bottom: 25px;
 }
 </style>
 
@@ -208,6 +93,7 @@ import {
 } from '@popperjs/core/lib/popper-lite';
 import flip from '@popperjs/core/lib/modifiers/flip';
 import offset from '@popperjs/core/lib/modifiers/offset';
+import arrow from '@popperjs/core/lib/modifiers/arrow';
 import preventOverflow from '@popperjs/core/lib/modifiers/preventOverflow';
 
 import VueClickaway from 'vue-clickaway';
@@ -234,6 +120,10 @@ export default Vue.extend({
       default: 'top',
       type: String as () => string
     },
+    autoflip: {
+      default: false,
+      type: Boolean as () => boolean
+    },
     offset: {
       default: [0, -12],
       type: Array as () => Array<number>
@@ -257,12 +147,21 @@ export default Vue.extend({
     }
   },
   mounted(): void {
+    const defaultModifiersObj = [
+      ...defaultModifiers,
+      offset,
+      preventOverflow,
+      arrow
+    ];
+    if (this.autoflip) defaultModifiersObj.push(flip);
+
     const createPopper = popperGenerator({
-      defaultModifiers: [...defaultModifiers, offset, flip, preventOverflow]
+      defaultModifiers: defaultModifiersObj
     });
 
     this.containerRef = this.$refs.container;
     this.buttonRef = this.$refs.button;
+    console.log('this.placement', this.placement);
 
     this.popperInstance = createPopper(this.buttonRef, this.containerRef, {
       placement: this.placement,
@@ -271,6 +170,12 @@ export default Vue.extend({
           name: 'offset',
           options: {
             offset: this.offset
+          }
+        },
+        {
+          name: 'arrow',
+          options: {
+            element: '#arrow'
           }
         }
       ]

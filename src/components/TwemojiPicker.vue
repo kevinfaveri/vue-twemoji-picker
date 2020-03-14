@@ -5,6 +5,7 @@
       :disabled="disabled"
       :triggerType="triggerType"
       :placement="pickerPlacement"
+      :autoflip="pickerAutoflip"
       :arrowEnabled="pickerArrowEnabled"
       :offset="pickerArrowEnabled ? [0, 20] : [0, 10]"
     >
@@ -211,6 +212,7 @@ img.emoji {
   border: none;
   cursor: pointer;
   height: 45px;
+  width: 45px;
   border-radius: 25px;
   margin: 10px;
   background-color: transparent;
@@ -297,6 +299,8 @@ import TwemojiOptions from '../interfaces/TwemojiOptions';
 import EmojiSkin from '../interfaces/EmojiSkin';
 import EmojiGroup from '../interfaces/EmojiGroup';
 
+// TODO: Entender pq positions nao se comportam como deveriam
+// TODO: Close on clickaway = true or false;
 export default Vue.extend({
   name: 'TwemojiPicker',
 
@@ -311,14 +315,22 @@ export default Vue.extend({
     },
     pickerWidth: {
       default: 250,
-      type: Number as () => number
+      type: [Number as () => number, String as () => string],
+      validator: function(value) {
+        if (typeof value === 'string' && !value.startsWith('#')) {
+          console.error(
+            'The value you entered is invalid: should be a number or a ID tag beginning with "#"'
+          );
+        }
+        return true;
+      }
     },
     pickerHeight: {
       default: 200,
       type: Number as () => number
     },
     pickerPlacement: {
-      default: 'top',
+      default: 'top-end',
       type: String as () => string,
       validator: function(value) {
         if (
@@ -364,6 +376,10 @@ export default Vue.extend({
     },
     pickerArrowEnabled: {
       default: true,
+      type: Boolean as () => boolean
+    },
+    pickerAutoflip: {
+      default: false,
       type: Boolean as () => boolean
     },
     triggerType: {

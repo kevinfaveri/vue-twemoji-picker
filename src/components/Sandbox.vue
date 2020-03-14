@@ -1,12 +1,42 @@
 <template>
   <div id="app">
     <div>
-      <twemoji-picker :emojiData="emojiDataAll" :emojiGroups="emojiGroups">
+      <twemoji-picker
+        :emojiData="emojiDataAll"
+        :emojiGroups="emojiGroups"
+        pickerPlacement="right"
+      >
+      </twemoji-picker>
+    </div>
+    <div>
+      <twemoji-picker
+        :emojiData="emojiDataAll"
+        :emojiGroups="emojiGroups"
+        pickerPlacement="left"
+      >
+      </twemoji-picker>
+    </div>
+    <div>
+      <twemoji-picker
+        :emojiData="emojiDataAll"
+        :emojiGroups="emojiGroups"
+        pickerPlacement="top"
+      >
+      </twemoji-picker>
+    </div>
+    <div>
+      <twemoji-picker
+        :emojiData="emojiDataAll"
+        :emojiGroups="emojiGroups"
+        pickerPlacement="bottom"
+      >
       </twemoji-picker>
     </div>
     <div>
       <twemoji-textarea
         class="margin-top text-justify"
+        pickerPlacement="bottom"
+        :pickerAutoflip="false"
         :content.sync="content"
         :emojiData="emojiDataThreeCollections"
         :emojiGroups="emojiGroups"

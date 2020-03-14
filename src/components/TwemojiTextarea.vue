@@ -6,6 +6,9 @@
   >
     <twemoji-picker
       :pickerWidth="pickerWidth"
+      :pickerPlacement="pickerPlacement"
+      :pickerArrowEnabled="pickerArrowEnabled"
+      :pickerAutoflip="pickerAutoflip"
       :pickerMaxHeight="pickerMaxHeight"
       :triggerType="triggerType"
       :emojiData="emojiData"
@@ -215,11 +218,72 @@ export default Vue.extend({
     // ** Picker Props **/
     pickerWidth: {
       default: 250,
-      type: Number as () => number
+      type: [Number as () => number, String as () => string],
+      validator: function(value) {
+        if (typeof value === 'string' && !value.startsWith('#')) {
+          console.error(
+            'The value you entered is invalid: should be a number or a ID tag beginning with "#"'
+          );
+        }
+        return true;
+      }
     },
     pickerMaxHeight: {
       default: 200,
       type: Number as () => number
+    },
+    pickerPlacement: {
+      default: 'top-end',
+      type: String as () => string,
+      validator: function(value) {
+        if (
+          ![
+            // TOP
+            'top-start',
+            'top',
+            'top-end',
+            // BOTTOM
+            'bottom-start',
+            'bottom',
+            'bottom-right',
+            // LEFT
+            'left-start',
+            'left',
+            'left-end',
+            // RIGHT
+            'right-start',
+            'right',
+            'right-end'
+          ].some((elem) => elem === value)
+        ) {
+          console.error(
+            'The value entered for the prop "pickerPlacement" is invalid. ' +
+              `Valid values: 
+                'top-start',
+                'top',
+                'top-end',
+                'bottom-start',
+                'bottom',
+                'bottom-right',
+                'left-start',
+                'left',
+                'left-end',
+                'right-start',
+                'right',
+                'right-end'
+              `
+          );
+        }
+        return true;
+      }
+    },
+    pickerArrowEnabled: {
+      default: true,
+      type: Boolean as () => boolean
+    },
+    pickerAutoflip: {
+      default: false,
+      type: Boolean as () => boolean
     },
     triggerType: {
       default: 'click',
