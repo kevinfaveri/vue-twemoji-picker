@@ -6,7 +6,7 @@ title: 'Twemoji Picker API'
 
 ## Props
 
-### disabled
+### emojiPickerDisabled
 - Type: ``boolean``
 - Default: ``false``
 
@@ -26,16 +26,22 @@ Define the emoji picker initial height and max height (in pixels).
 
 ### pickerPlacement
 - Type: ``string``
-- Default ``top``
+- Default ``top-end``
 - Valid Props: ``['top-start', 'top', 'top-end', 'bottom-start', 'bottom', 'bottom-right', 'left-start', 'left', 'left-end', 'right-start', 'right', 'right-end']``
 
-Define the emoji picker placement position.
+Define the emoji picker placement position relative to the ref element (like a button).
 
 ### pickerArrowEnabled
 - Type: ``boolean``
 - Default ``true``
 
 Define whether the emoji picker should render a reference arrow.
+
+## pickerAutoflip
+- Type: ``boolean``
+- Default ``false``
+
+Define the picker will attempt to flip to the opposite side if it does not fit at the pickerPlacement.
 
 ### triggerType
 - Type: ``string``

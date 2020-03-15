@@ -144,6 +144,10 @@ export default Vue.extend({
         }
         return true;
       }
+    },
+    closeOnClickaway: {
+      default: true,
+      type: Boolean as () => boolean
     }
   },
   mounted(): void {
@@ -161,7 +165,6 @@ export default Vue.extend({
 
     this.containerRef = this.$refs.container;
     this.buttonRef = this.$refs.button;
-    console.log('this.placement', this.placement);
 
     this.popperInstance = createPopper(this.buttonRef, this.containerRef, {
       placement: this.placement,
@@ -204,7 +207,7 @@ export default Vue.extend({
       }
     },
     clickAwayPopper(): void {
-      if (this.disabled) return;
+      if (this.disabled || !this.closeOnClickaway) return;
       const ctxPopperInstance = this.popperInstance;
 
       if (this.debouncedPopperOpen) {

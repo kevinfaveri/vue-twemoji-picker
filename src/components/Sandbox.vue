@@ -4,38 +4,14 @@
       <twemoji-picker
         :emojiData="emojiDataAll"
         :emojiGroups="emojiGroups"
-        pickerPlacement="right"
-      >
-      </twemoji-picker>
-    </div>
-    <div>
-      <twemoji-picker
-        :emojiData="emojiDataAll"
-        :emojiGroups="emojiGroups"
-        pickerPlacement="left"
-      >
-      </twemoji-picker>
-    </div>
-    <div>
-      <twemoji-picker
-        :emojiData="emojiDataAll"
-        :emojiGroups="emojiGroups"
-        pickerPlacement="top"
-      >
-      </twemoji-picker>
-    </div>
-    <div>
-      <twemoji-picker
-        :emojiData="emojiDataAll"
-        :emojiGroups="emojiGroups"
-        pickerPlacement="bottom"
+        pickerPlacement="top-end"
       >
       </twemoji-picker>
     </div>
     <div>
       <twemoji-textarea
         class="margin-top text-justify"
-        pickerPlacement="bottom"
+        pickerPlacement="top-start"
         :pickerAutoflip="false"
         :content.sync="content"
         :emojiData="emojiDataThreeCollections"
@@ -57,7 +33,6 @@
 </template>
 <style lang="css">
 @import '../assets/simple-grid.css';
-@import url('https://fonts.googleapis.com/css?family=Roboto');
 
 body {
   background-color: #fafafa;

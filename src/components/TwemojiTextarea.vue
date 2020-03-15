@@ -4,38 +4,13 @@
     :class="'bg-' + componentColor"
     :style="{ paddingBottom: maxlength ? '15px' : '0px' }"
   >
-    <twemoji-picker
-      :pickerWidth="pickerWidth"
-      :pickerPlacement="pickerPlacement"
-      :pickerArrowEnabled="pickerArrowEnabled"
-      :pickerAutoflip="pickerAutoflip"
-      :pickerMaxHeight="pickerMaxHeight"
-      :triggerType="triggerType"
-      :emojiData="emojiData"
-      :emojiGroups="emojiGroups"
-      :skinsSelection="skinsSelection"
-      :recentEmojisFeat="recentEmojisFeat"
-      :recentEmojisStorage="recentEmojisStorage"
-      :recentEmojiStorageName="recentEmojiStorageName"
-      :recentEmojiLimit="recentEmojiLimit"
-      :searchEmojisFeat="searchEmojisFeat"
-      :searchEmojiPlaceholder="searchEmojiPlaceholder"
-      :searchEmojiNotFound="searchEmojiNotFound"
-      :twemojiPath="twemojiPath"
-      :twemojiExtension="twemojiExtension"
-      :twemojiFolder="twemojiFolder"
-      :randomEmojiArray="randomEmojiArray"
-      :disabled="disableEmojiPicker"
-      @addTextBlur="addTextBlur"
-      @emojiUnicodeAdded="emojiUnicodeAdded"
-      @emojiImgAdded="emojiImgAdded"
-    ></twemoji-picker>
+    <twemoji-picker v-bind="propsFor('twemoji-picker')"></twemoji-picker>
 
     <div
       ref="twemojiTextarea"
       id="twemoji-textarea"
       class="twemojiTextarea"
-      :contenteditable="disabled ? false : true"
+      :contenteditable="textareaDisabled ? false : true"
       @input="updateContent"
       @paste="onPaste"
       @keydown.exact.enter="enterKey"
@@ -70,7 +45,7 @@
   position: relative;
   display: flex;
   flex-flow: row wrap;
-  border-radius: 25px;
+  border-radius: 1px;
 }
 
 img.emoji {
@@ -128,6 +103,14 @@ img.emoji {
 }
 
 /* Component Colors */
+.bg-default {
+  background-color: #ebebeb;
+}
+
+.btn-default {
+  background-color: #ebebeb;
+}
+
 .bg-cream {
   background-color: #ece7e7;
 }
@@ -200,11 +183,12 @@ img.emoji {
 import Vue from 'vue';
 import TextareaParser from '../services/TextareaParser';
 import EmojiService from '../services/EmojiService';
-import TwemojiPicker from './TwemojiPicker.vue';
+import TwemojiPicker from './TwemojiPicker';
 import SendIconImg from './SendIconImg.vue';
-import EmojiPack from '../interfaces/EmojiPack';
-import EmojiGroup from '../interfaces/EmojiGroup';
 import TwemojiOptions from '../interfaces/TwemojiOptions';
+
+import TwemojiProps from './TwemojiPicker/props';
+import { propsForMixin } from '../mixins/propsFor';
 
 export default Vue.extend({
   name: 'TwemojiTextarea',
@@ -213,194 +197,10 @@ export default Vue.extend({
     'twemoji-picker': TwemojiPicker,
     'send-icon-img': SendIconImg
   },
+  mixins: [propsForMixin],
 
   props: {
-    // ** Picker Props **/
-    pickerWidth: {
-      default: 250,
-      type: [Number as () => number, String as () => string],
-      validator: function(value) {
-        if (typeof value === 'string' && !value.startsWith('#')) {
-          console.error(
-            'The value you entered is invalid: should be a number or a ID tag beginning with "#"'
-          );
-        }
-        return true;
-      }
-    },
-    pickerMaxHeight: {
-      default: 200,
-      type: Number as () => number
-    },
-    pickerPlacement: {
-      default: 'top-end',
-      type: String as () => string,
-      validator: function(value) {
-        if (
-          ![
-            // TOP
-            'top-start',
-            'top',
-            'top-end',
-            // BOTTOM
-            'bottom-start',
-            'bottom',
-            'bottom-right',
-            // LEFT
-            'left-start',
-            'left',
-            'left-end',
-            // RIGHT
-            'right-start',
-            'right',
-            'right-end'
-          ].some((elem) => elem === value)
-        ) {
-          console.error(
-            'The value entered for the prop "pickerPlacement" is invalid. ' +
-              `Valid values: 
-                'top-start',
-                'top',
-                'top-end',
-                'bottom-start',
-                'bottom',
-                'bottom-right',
-                'left-start',
-                'left',
-                'left-end',
-                'right-start',
-                'right',
-                'right-end'
-              `
-          );
-        }
-        return true;
-      }
-    },
-    pickerArrowEnabled: {
-      default: true,
-      type: Boolean as () => boolean
-    },
-    pickerAutoflip: {
-      default: false,
-      type: Boolean as () => boolean
-    },
-    triggerType: {
-      default: 'click',
-      type: String as () => string,
-      validator: function(value) {
-        if (value !== 'click' && value !== 'hover') {
-          console.error(
-            'The value entered for the prop "triggerType" is invalid. ' +
-              'Valid values: "click" and "hover".'
-          );
-        }
-        return true;
-      }
-    },
-    emojiData: {
-      default: () => [],
-      type: Array as () => Array<EmojiPack>
-    },
-    emojiGroups: {
-      default: () => [],
-      type: Array as () => Array<EmojiGroup>
-    },
-    skinsSelection: {
-      default: false,
-      type: Boolean as () => boolean
-    },
-    recentEmojisFeat: {
-      default: false,
-      type: Boolean as () => boolean
-    },
-    recentEmojisStorage: {
-      default: 'none',
-      type: String as () => string,
-      validator: function(value) {
-        if (value !== 'local' && value !== 'session' && value !== 'none') {
-          console.error(
-            'The value entered for the prop "recentEmojisStorage" is invalid. ' +
-              'Valid values: "local", "session" and "none".'
-          );
-        }
-        return true;
-      }
-    },
-    recentEmojiStorageName: {
-      default: 'vue-recent-twemojis',
-      type: String as () => string
-    },
-    recentEmojiLimit: {
-      default: 12,
-      type: Number as () => number
-    },
-    searchEmojisFeat: {
-      default: false,
-      type: Boolean as () => boolean
-    },
-    searchEmojiPlaceholder: {
-      default: 'Search emojis.',
-      type: String as () => string
-    },
-    searchEmojiNotFound: {
-      default: 'No emojis found.',
-      type: String as () => string
-    },
-    twemojiPath: {
-      default: 'https://twemoji.maxcdn.com/2/',
-      type: String as () => string
-    },
-    twemojiExtension: {
-      default: '.png',
-      type: String as () => string,
-      validator: function(value) {
-        const bolValid =
-          ['.png', '.svg', '.jpg', '.jpeg', '.ico'].indexOf(value) !== -1;
-        if (bolValid === false) {
-          console.error(
-            'The value entered for the prop "twemojiPath" is invalid. ' +
-              'Valid values: ".png", ".svg", ".jpg", ".jpeg", ".ico".'
-          );
-        }
-        return true;
-      }
-    },
-    twemojiFolder: {
-      default: '72x72',
-      type: String as () => string
-    },
-    randomEmojiArray: {
-      default: () => [
-        '😀',
-        '😃',
-        '😄',
-        '😁',
-        '😆',
-        '😅',
-        '🤣',
-        '😂',
-        '🙂',
-        '🙃',
-        '😉',
-        '😊',
-        '🥴',
-        '😵',
-        '🤯',
-        '🤠',
-        '🥳',
-        '😎',
-        '🤓',
-        '🧐'
-      ],
-      type: Array as () => Array<string>,
-      validator: function(value) {
-        if (value && value.length === 0) {
-          console.error('The Array must have a length of one or more.');
-        }
-        return true;
-      }
-    },
+    ...TwemojiProps,
 
     // ** Textarea Props **/
     content: {
@@ -411,26 +211,32 @@ export default Vue.extend({
       default: false,
       type: Boolean as () => boolean
     },
-    disableEmojiPicker: {
+    emojiPickerDisabled: {
       default: false,
       type: Boolean as () => boolean
     },
-    disabled: {
+    textareaDisabled: {
       default: false,
       type: Boolean as () => boolean
     },
     componentColor: {
       type: String as () => string,
-      default: 'cream',
+      default: 'default',
       validator: function(value) {
         const bolValid =
-          ['cream', 'cherry', 'forest', 'ocean', 'sun', 'transparent'].indexOf(
-            value
-          ) !== -1;
+          [
+            'default',
+            'cream',
+            'cherry',
+            'forest',
+            'ocean',
+            'sun',
+            'transparent'
+          ].indexOf(value) !== -1;
         if (bolValid === false) {
           console.error(
             'The value entered for the prop "componentColor" is invalid. ' +
-              'Valid values: "cream", "cherry", "forest", "ocean", "sun".'
+              'Valid values: "default", "cream", "cherry", "forest", "ocean", "sun".'
           );
         }
         return true;

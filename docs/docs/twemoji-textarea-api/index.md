@@ -20,13 +20,13 @@ This is the content variable which will be the output of the textarea with the e
 
 The value of this prop represents whether the send button is enabled.
 
-### disableEmojiPicker
+### emojiPickerDisabled
 - Type: ``boolean``
 - Default: ``false``
 
 The value of this prop represents whether the emoji picker is enabled.
 
-### disabled
+### textareaDisabled
 - Type: ``boolean``
 - Default: ``false``
 
@@ -34,8 +34,8 @@ The value of this prop represents whether the textarea is enabled.
 
 ### componentColor
 - Type: ``string``
-- Default: ``'cream'``
-- Valid Props: ``['cream', 'cherry', 'forest', 'ocean', 'sun', 'transparent']``
+- Default: ``'default'``
+- Valid Props: ``['default', 'cream', 'cherry', 'forest', 'ocean', 'sun', 'transparent']``
 
 Define the component color style.
 

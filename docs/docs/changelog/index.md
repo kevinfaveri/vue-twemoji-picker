@@ -4,6 +4,11 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.5.0
+
+- Major visual rework
+- Disabled props in components (textarea and picker) now have specific names: emojiPickerDisabled and textareaDisabled
+
 ## 5.4.1
 
 - Fix autofocus bug in Twemoji Textarea
