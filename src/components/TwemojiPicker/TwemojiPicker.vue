@@ -7,8 +7,9 @@
       :placement="pickerPlacement"
       :autoflip="pickerAutoflip"
       :arrowEnabled="pickerArrowEnabled"
-      :offset="pickerArrowEnabled ? [0, 20] : [0, 10]"
+      :offset="[0, 25]"
       :closeOnClickaway="pickerCloseOnClickaway"
+      @popperOpenChanged="popperOpenChanged"
     >
       <template v-slot:container>
         <div id="emoji-container">
@@ -29,8 +30,7 @@
                 class="emoji-tab"
                 @click="changeEmojiListActive(index)"
                 :class="{ active: emojiGroupActive === index }"
-              >
-              </span>
+              ></span>
             </div>
 
             <div id="emoji-popover-search" v-if="searchEmojisFeat">
@@ -86,8 +86,7 @@
                     :key="emoji.unicode"
                     v-html="emoji.img"
                     @click="clickEmoji(emoji)"
-                  >
-                  </span>
+                  ></span>
                 </p>
               </div>
             </div>
@@ -110,8 +109,7 @@
                       :key="emoji.unicode"
                       v-html="emoji.img"
                       @click="clickEmoji(emoji)"
-                    >
-                    </span>
+                    ></span>
                   </p>
                 </div>
               </div>
@@ -139,72 +137,101 @@
     </popper>
   </div>
 </template>
-<style lang="css">
-/* Global */
-img.emoji {
-  height: 1.5rem;
-  width: 1.5rem;
-  vertical-align: -0.5rem;
-}
-
+<style lang="stylus">
 /* Parent Emoji Popover */
 #emoji-container {
   z-index: 1;
-}
 
-#emoji-popover-header {
-  padding: 5px;
-  overflow-y: hidden;
-  overflow-x: auto;
-  white-space: nowrap;
-}
+  > #emoji-popup {
+    img.emoji {
+      height: 1.5rem;
+      width: 1.5rem;
+      vertical-align: -0.5rem;
+    }
 
-.emoji-popover-inner {
-  border-top: #bdbcbc solid 1px;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
+    > #emoji-popover-header {
+      padding: 5px;
+      overflow-y: hidden;
+      overflow-x: auto;
+      white-space: nowrap;
 
-/* Inside Emoji Pack */
-.emoji-tab {
-  margin: 3px;
-  border-radius: 5px;
-  padding: 5px;
-  padding-bottom: 8px;
-  cursor: pointer;
-  border-top: 3px solid #e6e6e6;
-  border-left: 3px solid #e6e6e6;
-  border-right: 3px solid #e6e6e6;
-}
+      > .emoji-tab {
+        margin: 3px;
+        border-radius: 5px;
+        padding: 5px;
+        padding-bottom: 8px;
+        cursor: pointer;
+        border-top: 3px solid #e6e6e6;
+        border-left: 3px solid #e6e6e6;
+        border-right: 3px solid #e6e6e6;
 
-.emoji-tab:hover {
-  background-color: #bdbcbc;
-  border-color: #bdbcbc;
-}
+        &:hover {
+          background-color: #bdbcbc;
+          border-color: #bdbcbc;
+        }
 
-.emoji-tab.active {
-  background-color: #bdbcbc;
-  border-color: #bdbcbc;
-}
+        &.active {
+          background-color: #bdbcbc;
+          border-color: #bdbcbc;
+        }
+      }
+    }
 
-.emoji-list {
-  padding: 10px;
-  margin: 0px;
-  text-align: justify;
-}
+    .emoji-popover-inner {
+      border-top: #bdbcbc solid 1px;
+      overflow-y: auto;
+      overflow-x: hidden;
 
-.emoji-list > span {
-  font-size: 15px;
-  cursor: pointer;
-  border-radius: 15px;
-}
+      > div > .emoji-list {
+        padding: 10px;
+        margin: 0px;
+        text-align: justify;
 
-.emoji-list > span > img {
-  margin: 5px;
-}
+        > span {
+          font-size: 15px;
+          cursor: pointer;
+          border-radius: 15px;
 
-.emoji-list > span:hover {
-  background-color: #cacaca;
+          &:hover {
+            background-color: #cacaca;
+          }
+
+          > img {
+            margin: 5px;
+          }
+        }
+      }
+    }
+
+    #emoji-popover-search {
+      background-color: #e6e6e6;
+      border-radius: 3px;
+      margin-bottom: 5px;
+
+      > #search-header {
+        padding-top: 5px;
+        padding-bottom: 5px;
+        display: flex;
+        flex-flow: row wrap;
+
+        > input {
+          flex-grow: 90;
+          padding: 5px;
+          margin-left: 5px;
+          border: none;
+          border-radius: 5px;
+          background-color: #fafafa;
+        }
+
+        > span {
+          flex-grow: 10;
+          border-radius: 5px;
+          border: none;
+          background-color: transparent;
+        }
+      }
+    }
+  }
 }
 
 /* Popper Emoji */
@@ -217,59 +244,29 @@ img.emoji {
   border-radius: 25px;
   margin: 10px;
   background-color: transparent;
+
+  > div > img.emoji {
+    height: 25px;
+    width: 25px;
+  }
+
+  > #dummy-el {
+    height: 25px;
+    width: 25px;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
 }
 
-#btn-emoji-default > div > img.emoji {
-  height: 25px;
-  width: 25px;
-}
-
-#btn-emoji-default > #dummy-el {
-  height: 25px;
-  width: 25px;
-}
-
-#btn-emoji-default:disabled {
-  opacity: 0.6;
-  pointer-events: none;
-}
-
-/* Search Bar */
-#emoji-popover-search {
-  background-color: #e6e6e6;
-  border-radius: 3px;
-  margin-bottom: 5px;
-}
-
-#emoji-popover-search > #search-header {
-  padding-top: 5px;
-  padding-bottom: 5px;
-  display: flex;
-  flex-flow: row wrap;
-}
-
-#emoji-popover-search > #search-header > input {
-  flex-grow: 90;
-  padding: 5px;
-  margin-left: 5px;
-  border: none;
-  border-radius: 5px;
-  background-color: #fafafa;
-}
-
-#emoji-popover-search > #search-header > span {
-  flex-grow: 10;
-  border-radius: 5px;
-  border: none;
-  background-color: transparent;
-}
-
-/** Cursor */
+/* * Cursor */
 .clickable {
   cursor: pointer;
 }
 
-/** Transition - Fade */
+/* * Transition - Fade */
 .fade-in {
   opacity: 1;
   animation-name: fadeInOpacity;
@@ -282,9 +279,11 @@ img.emoji {
   0% {
     opacity: 0.4;
   }
+
   50% {
     opacity: 0.8;
   }
+
   100% {
     opacity: 1;
   }
@@ -302,10 +301,7 @@ import EmojiGroup from '../../interfaces/EmojiGroup';
 
 import Props from './props';
 
-// TODO: Close on clickaway = true or false;
 // TODO: Aceitar id do element para picker width (deve então setar um watcher deixando o width do player sempre igual ao id do element)
-// TODO: Separação entre groups usando flex (estudar possibilidade)
-// TODO: title para groups de forma internacionalizada
 export default Vue.extend({
   name: 'TwemojiPicker',
 
@@ -319,6 +315,8 @@ export default Vue.extend({
 
   data() {
     return {
+      isPickerOpen: false as boolean,
+
       showEmoji: false as boolean,
       showSkinsSelector: false as boolean,
       skinsListActive: [] as Array<EmojiSkin>,
@@ -528,6 +526,9 @@ export default Vue.extend({
         this.changeEmojiListActive(0);
         this.isSearchingEmoji = false;
       }
+    },
+    popperOpenChanged(popperOpen: boolean) {
+      this.isPickerOpen = popperOpen;
     }
   }
 });

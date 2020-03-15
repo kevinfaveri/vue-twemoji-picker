@@ -7,7 +7,11 @@ title: 'Changelog'
 ## 5.5.0
 
 - Major visual rework
+- Some code refactoring for spreading of props for TwemojiTextarea
+- Style has changed to stylus
 - Disabled props in components (textarea and picker) now have specific names: emojiPickerDisabled and textareaDisabled
+- componentColor prop in TwemojiTextarea now accepts only a string which represents a valid CSS color
+- pickerCloseOnClickaway prop added to TwemojiPicker
 
 ## 5.4.1
 

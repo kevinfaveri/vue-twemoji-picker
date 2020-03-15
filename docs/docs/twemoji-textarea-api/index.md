@@ -34,8 +34,8 @@ The value of this prop represents whether the textarea is enabled.
 
 ### componentColor
 - Type: ``string``
-- Default: ``'default'``
-- Valid Props: ``['default', 'cream', 'cherry', 'forest', 'ocean', 'sun', 'transparent']``
+- Default: ``'#EBEBEB'``
+- Valid Props: ``Any CSS valid color.``
 
 Define the component color style.
 

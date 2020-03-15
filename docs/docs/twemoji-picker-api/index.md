@@ -43,6 +43,12 @@ Define whether the emoji picker should render a reference arrow.
 
 Define the picker will attempt to flip to the opposite side if it does not fit at the pickerPlacement.
 
+## pickerCloseOnClickaway
+- Type: ``boolean``
+- Default ``true``
+
+Define the picker will close itself when clicking outside its boundaries.
+
 ### triggerType
 - Type: ``string``
 - Default: ``'click'``

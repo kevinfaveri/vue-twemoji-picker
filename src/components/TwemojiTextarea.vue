@@ -1,10 +1,17 @@
 <template>
   <div
     class="twemoji-textarea-outer"
-    :class="'bg-' + componentColor"
-    :style="{ paddingBottom: maxlength ? '15px' : '0px' }"
+    :style="{
+      paddingBottom: maxlength ? '15px' : '0px',
+      backgroundColor: componentColor
+    }"
   >
-    <twemoji-picker v-bind="propsFor('twemoji-picker')"></twemoji-picker>
+    <twemoji-picker
+      v-bind="propsFor('twemoji-picker')"
+      @addTextBlur="addTextBlur"
+      @emojiUnicodeAdded="emojiUnicodeAdded"
+      @emojiImgAdded="emojiImgAdded"
+    ></twemoji-picker>
 
     <div
       ref="twemojiTextarea"
@@ -35,148 +42,65 @@
     </div>
   </div>
 </template>
-<style lang="css">
-/* Global */
-#send-btn {
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
+<style lang="stylus">
 .twemoji-textarea-outer {
   position: relative;
   display: flex;
   flex-flow: row wrap;
   border-radius: 1px;
-}
 
-img.emoji {
-  height: 1.5rem;
-  width: 1.5rem;
-  vertical-align: -0.5rem;
-}
+  > #twemoji-textarea {
+    flex-grow: 95;
+    flex-basis: 0;
+    background-color: #fafafa;
+    font-size: 14px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    white-space: pre-wrap;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 25px;
+    text-align: left;
 
-/* Textarea */
-.twemojiTextarea {
-  flex-grow: 95;
-  flex-basis: 0;
-  background-color: #fafafa;
-  font-size: 14px;
-  overflow-y: auto;
-  overflow-x: hidden;
-  white-space: pre-wrap;
-  padding: 10px;
-  margin: 10px;
-  border-radius: 25px;
-  text-align: left;
-}
+    &[placeholder]:empty:before {
+      content: attr(placeholder);
+      position: absolute;
+      color: gray;
+      background-color: transparent;
+    }
 
-#twemoji-textarea[placeholder]:empty:before {
-  content: attr(placeholder);
-  position: absolute;
-  color: gray;
-  background-color: transparent;
-}
+    > img.emoji {
+      height: 1.5rem;
+      width: 1.5rem;
+      vertical-align: -0.5rem;
+    }
+  }
 
-#length-indicator {
-  position: absolute;
-  bottom: 2px;
-  right: 20px;
-  font-weight: bold;
-}
+  > #length-indicator {
+    position: absolute;
+    bottom: 2px;
+    right: 20px;
+    font-weight: bold;
+  }
 
-#send-btn {
-  cursor: pointer;
-  flex-grow: 5;
-  flex-basis: 0;
-  height: 40px;
-  border-radius: 25px;
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-right: 5px;
-  padding: 5px;
-}
+  >#send-btn {
+    cursor: pointer;
+    flex-grow: 5;
+    flex-basis: 0;
+    height: 40px;
+    border-radius: 25px;
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 5px;
+    padding: 5px;
 
-#send-btn > img {
-  width: 25px;
-  height: 25px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
-
-/* Component Colors */
-.bg-default {
-  background-color: #ebebeb;
-}
-
-.btn-default {
-  background-color: #ebebeb;
-}
-
-.bg-cream {
-  background-color: #ece7e7;
-}
-
-.btn-cream {
-  background-color: #ece7e7;
-}
-
-.btn-cream:hover {
-  background-color: #ded3d3;
-}
-
-.bg-cherry {
-  background-color: #dd7e91;
-}
-
-.btn-cherry {
-  background-color: #dd7e91;
-}
-
-.btn-cherry:hover {
-  background-color: #d45e76;
-}
-
-.bg-forest {
-  background-color: #84caaf;
-}
-
-.btn-forest {
-  background-color: #84caaf;
-}
-
-.btn-forest:hover {
-  background-color: #5eba97;
-}
-
-.bg-ocean {
-  background-color: #93b8e9;
-}
-
-.btn-ocean {
-  background-color: #93b8e9;
-}
-
-.btn-ocean:hover {
-  background-color: #6b9ee1;
-}
-
-.bg-sun {
-  background-color: #d6dfb0;
-}
-
-.btn-sun {
-  background-color: #d6dfb0;
-}
-
-.btn-sun:hover {
-  background-color: #c7d392;
-}
-
-.btn-transparent {
-  background-color: transparent;
-}
-
-.btn-transparent:hover {
-  background-color: transparent;
+    > img {
+      width: 25px;
+      height: 25px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+  }
 }
 </style>
 <script lang="ts">
@@ -221,22 +145,15 @@ export default Vue.extend({
     },
     componentColor: {
       type: String as () => string,
-      default: 'default',
-      validator: function(value) {
-        const bolValid =
-          [
-            'default',
-            'cream',
-            'cherry',
-            'forest',
-            'ocean',
-            'sun',
-            'transparent'
-          ].indexOf(value) !== -1;
+      default: '#EBEBEB',
+      validator: function(value: string) {
+        const s = new Option().style;
+        s.color = value;
+        const bolValid = s.color !== '';
         if (bolValid === false) {
           console.error(
             'The value entered for the prop "componentColor" is invalid. ' +
-              'Valid values: "default", "cream", "cherry", "forest", "ocean", "sun".'
+              'Please inform a valid CSS color.'
           );
         }
         return true;

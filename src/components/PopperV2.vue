@@ -6,7 +6,10 @@
       v-on-clickaway="clickAwayPopper"
       @mouseleave="hoverTriggerPopper"
     >
-      <div id="arrow" data-popper-arrow />
+      <div
+        :id="this.arrowEnabled ? 'arrow' : 'arrow-disabled'"
+        data-popper-arrow
+      />
       <div id="popper-inner">
         <slot name="container" v-if="containerRef" />
       </div>
@@ -22,12 +25,13 @@
   </div>
 </template>
 
-<style>
-/**Animation */
+<style lang="stylus">
+/* *Animation */
 @keyframes fadein {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -40,28 +44,26 @@
   border-radius: 3px;
   animation: fadein 300ms;
   z-index: 1;
-}
-
-#popper-container {
   display: none;
+
+  &[data-show] {
+    display: block;
+  }
 }
 
-#popper-container[data-show] {
-  display: block;
-}
-
-#arrow,
-#arrow::before {
+#arrow {
   position: absolute;
   z-index: -1;
-}
 
-#arrow::before {
-  content: '';
-  transform: rotate(45deg);
-  background: #ebebeb;
-  width: 24px;
-  height: 24px;
+  &::before {
+    position: absolute;
+    z-index: -1;
+    content: '';
+    transform: rotate(45deg);
+    background: #ebebeb;
+    width: 24px;
+    height: 24px;
+  }
 }
 
 #popper-container[data-popper-placement^='top'] > #arrow {
@@ -151,13 +153,9 @@ export default Vue.extend({
     }
   },
   mounted(): void {
-    const defaultModifiersObj = [
-      ...defaultModifiers,
-      offset,
-      preventOverflow,
-      arrow
-    ];
+    const defaultModifiersObj = [...defaultModifiers, offset, preventOverflow];
     if (this.autoflip) defaultModifiersObj.push(flip);
+    if (this.arrowEnabled) defaultModifiersObj.push(arrow);
 
     const createPopper = popperGenerator({
       defaultModifiers: defaultModifiersObj
@@ -186,6 +184,7 @@ export default Vue.extend({
   },
   watch: {
     popperOpen: function(val): void {
+      this.$emit('popperOpenChanged', val);
       setTimeout(() => {
         this.debouncedPopperOpen = val;
       }, 300);

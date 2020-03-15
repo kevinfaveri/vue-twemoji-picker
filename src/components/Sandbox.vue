@@ -10,11 +10,10 @@
     </div>
     <div>
       <twemoji-textarea
-        class="margin-top text-justify"
         pickerPlacement="top-start"
         :pickerAutoflip="false"
         :content.sync="content"
-        :emojiData="emojiDataThreeCollections"
+        :emojiData="emojiDataAll"
         :emojiGroups="emojiGroups"
         :skinsSelection="true"
         :enableSendBtn="true"
@@ -27,6 +26,7 @@
         :maxlength="100"
         @isContentOverflowed="isContentOverflowed"
         ref="twemojiTextareaRef"
+        :pickerArrowEnabled="false"
       ></twemoji-textarea>
     </div>
   </div>
