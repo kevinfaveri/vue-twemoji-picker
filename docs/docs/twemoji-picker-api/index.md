@@ -13,10 +13,10 @@ title: 'Twemoji Picker API'
 The value of this prop represents whether the component is disabled.
 
 ### pickerWidth
-- Type: ``number``
+- Type: ``number | string``
 - Default: ``250``
 
-Define the emoji picker width (in pixels).
+Define the emoji picker width (in number of pixels) OR receives an DOM element ID string beginning with "#" and then mimicks its width.
 
 ### pickerHeight
 - Type: ``number``
@@ -39,7 +39,7 @@ Define whether the emoji picker should render a reference arrow.
 
 ## pickerAutoflip
 - Type: ``boolean``
-- Default ``false``
+- Default ``true``
 
 Define the picker will attempt to flip to the opposite side if it does not fit at the pickerPlacement.
 

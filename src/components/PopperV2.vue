@@ -40,7 +40,7 @@
 #popper-container {
   padding: 0;
   background: #ebebeb;
-  border: 3px #ebebeb solid;
+  border: none;
   border-radius: 3px;
   animation: fadein 300ms;
   z-index: 1;
@@ -68,22 +68,22 @@
 
 #popper-container[data-popper-placement^='top'] > #arrow {
   bottom: 12px;
-  padding-right: 25px;
+  padding-right: 32px;
 }
 
 #popper-container[data-popper-placement^='bottom'] > #arrow {
   top: -12px;
-  padding-right: 25px;
+  padding-right: 32px;
 }
 
 #popper-container[data-popper-placement^='left'] > #arrow {
   right: 12px;
-  padding-bottom: 25px;
+  padding-bottom: 32px;
 }
 
 #popper-container[data-popper-placement^='right'] > #arrow {
   left: -12px;
-  padding-bottom: 25px;
+  padding-bottom: 32px;
 }
 </style>
 

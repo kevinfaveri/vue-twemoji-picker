@@ -72,7 +72,7 @@ export default {
     type: Boolean as () => boolean
   },
   pickerAutoflip: {
-    default: false,
+    default: true,
     type: Boolean as () => boolean
   },
   pickerCloseOnClickaway: {

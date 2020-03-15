@@ -15,7 +15,7 @@ const config = Object.assign({}, base, {
     file: 'dist/vue-twemoji-picker.esm.min.js',
     format: 'es'
   },
-  external: ['vue', 'vue-clickaway', 'twemoji', '@popperjs/core']
+  external: ['vue', 'vue-clickaway', 'twemoji', '@popperjs/core', 'lodash.pick']
 });
 
 config.plugins.push(analyze());

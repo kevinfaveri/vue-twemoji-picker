@@ -60,7 +60,7 @@
     white-space: pre-wrap;
     padding: 10px;
     margin: 10px;
-    border-radius: 25px;
+    border-radius: 10px;
     text-align: left;
 
     &[placeholder]:empty:before {
@@ -89,7 +89,6 @@
     flex-grow: 5;
     flex-basis: 0;
     height: 40px;
-    border-radius: 25px;
     margin-top: auto;
     margin-bottom: auto;
     margin-right: 5px;

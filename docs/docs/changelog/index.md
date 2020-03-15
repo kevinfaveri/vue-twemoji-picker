@@ -12,6 +12,7 @@ title: 'Changelog'
 - Disabled props in components (textarea and picker) now have specific names: emojiPickerDisabled and textareaDisabled
 - componentColor prop in TwemojiTextarea now accepts only a string which represents a valid CSS color
 - pickerCloseOnClickaway prop added to TwemojiPicker
+- pickerWidth prop for TwemojiTextarea and TwemojiPicker now accepts an DOM element ID string for mimicking the El width.
 
 ## 5.4.1
 

@@ -7,7 +7,7 @@
       :placement="pickerPlacement"
       :autoflip="pickerAutoflip"
       :arrowEnabled="pickerArrowEnabled"
-      :offset="[0, 25]"
+      :offset="[0, 30]"
       :closeOnClickaway="pickerCloseOnClickaway"
       @popperOpenChanged="popperOpenChanged"
     >
@@ -36,14 +36,17 @@
               ></span>
             </div>
 
-            <div id="emoji-popover-search" v-if="searchEmojisFeat">
+            <div
+              id="emoji-popover-search"
+              v-if="searchEmojisFeat"
+              v-show="!hideSearch"
+            >
               <div id="search-header">
                 <input
                   @input="searchEmojiByTerm"
                   :placeholder="searchEmojiPlaceholder"
                   v-model="searchTerm"
                 />
-                <span v-html="getEmojiImgFromUnicode('🔍')"></span>
               </div>
             </div>
 
@@ -51,8 +54,11 @@
               class="emoji-popover-inner"
               :style="{
                 width: calculatedPickerWidth + 'px',
-                height: pickerHeight + 'px'
+                height: hideSearch
+                  ? pickerHeight + 45 + 'px'
+                  : pickerHeight + 'px'
               }"
+              @scroll.passive="onScrollEmojiList"
             >
               <div v-if="isSearchingEmoji">
                 <strong
@@ -141,47 +147,43 @@
   </div>
 </template>
 <style lang="stylus">
-/* Parent Emoji Popover */
 #emoji-container {
   z-index: 1;
 
   > #emoji-popup {
     img.emoji {
-      height: 1.5rem;
-      width: 1.5rem;
+      height: 32px;
+      width: 32px;
       vertical-align: -0.5rem;
     }
 
     > #emoji-popover-header {
-      padding: 5px;
+      padding: 15px;
       overflow-y: hidden;
       overflow-x: auto;
       white-space: nowrap;
 
       > .emoji-tab {
         margin: 3px;
-        border-radius: 5px;
         padding: 5px;
-        padding-bottom: 8px;
+        padding: 8px 5px;
         cursor: pointer;
-        border-top: 3px solid #e6e6e6;
-        border-left: 3px solid #e6e6e6;
-        border-right: 3px solid #e6e6e6;
+        border-radius: 2px;
+        opacity: 0.5;
 
         &:hover {
-          background-color: #bdbcbc;
-          border-color: #bdbcbc;
+          border-bottom: 5px solid #b3b3b3;
+          opacity: 1;
         }
 
         &.active {
-          background-color: #bdbcbc;
-          border-color: #bdbcbc;
+          border-bottom: 5px solid #b3b3b3;
+          opacity: 1;
         }
       }
     }
 
     .emoji-popover-inner {
-      border-top: #bdbcbc solid 1px;
       overflow-y: auto;
       overflow-x: hidden;
 
@@ -207,23 +209,27 @@
     }
 
     #emoji-popover-search {
-      background-color: #e6e6e6;
+      background-color: #ebebeb;
       border-radius: 3px;
-      margin-bottom: 5px;
+      margin: 5px 0;
 
       > #search-header {
-        padding-top: 5px;
-        padding-bottom: 5px;
+        padding-top: 5px 0;
         display: flex;
-        flex-flow: row wrap;
 
         > input {
-          flex-grow: 90;
-          padding: 5px;
-          margin-left: 5px;
+          transition: background-color 300ms ease-in-out;
+          flex-grow: 1;
+          padding: 10px 5px;
+          margin: 0 10px;
           border: none;
           border-radius: 5px;
-          background-color: #fafafa;
+          background-color: #d9d9d9;
+          font-size: 1rem;
+
+          &:focus {
+            background-color: #f0f0f0;
+          }
         }
 
         > span {
@@ -244,18 +250,17 @@
   cursor: pointer;
   height: 45px;
   width: 45px;
-  border-radius: 25px;
   margin: 10px;
   background-color: transparent;
 
   > div > img.emoji {
-    height: 25px;
-    width: 25px;
+    height: 32px;
+    width: 32px;
   }
 
   > #dummy-el {
-    height: 25px;
-    width: 25px;
+    height: 32px;
+    width: 32px;
   }
 
   &:disabled {
@@ -304,7 +309,7 @@ import EmojiGroup from '../../interfaces/EmojiGroup';
 
 import Props from './props';
 
-// TODO: Aceitar id do element para picker width (deve então setar um watcher deixando o width do player sempre igual ao id do element)
+// TODO: Click and hold to show alternative skins
 export default Vue.extend({
   name: 'TwemojiPicker',
 
@@ -339,12 +344,16 @@ export default Vue.extend({
       searchEmojis: [] as Array<Emoji>,
       searchTimeout: null as any,
       isSearchingEmoji: false as boolean,
-      calculatedPickerWidth: null as number | null
+      calculatedPickerWidth: null as number | null,
+      hideSearch: false as boolean
     };
   },
 
   mounted() {
     this.setPickerWidth();
+    this.$nextTick(() => {
+      window.addEventListener('resize', this.setPickerWidth);
+    });
   },
 
   computed: {
@@ -544,12 +553,17 @@ export default Vue.extend({
         this.pickerWidth.startsWith('#')
       ) {
         const domId = this.pickerWidth.slice(1);
-        console.log('domId', domId);
         const domEl = document.getElementById(domId);
         if (domEl) this.calculatedPickerWidth = domEl.offsetWidth;
-        console.log('this.calculatedPickerWidth', this.calculatedPickerWidth);
       } else if (typeof this.pickerWidth === 'number') {
         this.calculatedPickerWidth = this.pickerWidth;
+      }
+    },
+    onScrollEmojiList(event: UIEvent) {
+      if ((event as any).target.scrollTop > 50) {
+        this.hideSearch = true;
+      } else {
+        this.hideSearch = false;
       }
     }
   }
