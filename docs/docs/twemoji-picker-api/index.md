@@ -20,7 +20,7 @@ Define the emoji picker width (in number of pixels) OR receives an DOM element I
 
 ### pickerHeight
 - Type: ``number``
-- Default: ``200``
+- Default: ``150``
 
 Define the emoji picker initial height and max height (in pixels).
 

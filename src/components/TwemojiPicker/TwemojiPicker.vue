@@ -1,6 +1,6 @@
 <template>
   <div>
-    <popper
+    <popup-emoji
       v-if="emojiData && emojiData.length > 0"
       :disabled="emojiPickerDisabled"
       :triggerType="triggerType"
@@ -10,6 +10,7 @@
       :offset="[0, 30]"
       :closeOnClickaway="pickerCloseOnClickaway"
       @popperOpenChanged="popperOpenChanged"
+      ref="popupEmoji"
     >
       <template v-slot:container>
         <div id="emoji-container">
@@ -65,6 +66,7 @@
                   :style="{
                     padding: '3px'
                   }"
+                  id="loading-label"
                   >{{ isLoadingLabel }}</strong
                 >
               </div>
@@ -143,7 +145,7 @@
           </button>
         </slot>
       </template>
-    </popper>
+    </popup-emoji>
   </div>
 </template>
 <style lang="stylus">
@@ -186,6 +188,10 @@
     .emoji-popover-inner {
       overflow-y: auto;
       overflow-x: hidden;
+
+      #loading-label {
+        margin: 0 5px;
+      }
 
       > div > .emoji-list {
         padding: 10px;
@@ -300,7 +306,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import EmojiService from '../../services/EmojiService';
-import PopperV2 from '../PopperV2.vue';
+import PopupEmoji from '../PopupEmoji.vue';
 import EmojiPack from '../../interfaces/EmojiPack';
 import Emoji from '../../interfaces/Emoji';
 import TwemojiOptions from '../../interfaces/TwemojiOptions';
@@ -314,7 +320,7 @@ export default Vue.extend({
   name: 'TwemojiPicker',
 
   components: {
-    popper: PopperV2
+    'popup-emoji': PopupEmoji
   },
 
   props: {

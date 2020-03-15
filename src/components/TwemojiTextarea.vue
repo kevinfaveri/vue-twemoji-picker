@@ -8,6 +8,7 @@
     }"
   >
     <twemoji-picker
+      ref="twemojiPicker"
       v-bind="propsFor('twemoji-picker')"
       @addTextBlur="addTextBlur"
       @emojiUnicodeAdded="emojiUnicodeAdded"
@@ -184,6 +185,9 @@ export default Vue.extend({
   computed: {
     twemojiTextarea(): HTMLElement {
       return this.$refs.twemojiTextarea as HTMLElement;
+    },
+    twemojiPicker(): HTMLElement {
+      return this.$refs.twemojiPicker as any;
     }
   },
 
@@ -211,6 +215,7 @@ export default Vue.extend({
         content = content.slice(0, -1);
       }
       this.actualContentLength = [...content].length;
+      this.twemojiPicker.$refs.popupEmoji.popperInstance.forceUpdate();
       this.$emit('update:content', content);
       this.$emit('actualContentLengthChanged', this.actualContentLength);
       this.$emit('contentChanged');
@@ -247,6 +252,7 @@ export default Vue.extend({
       }
 
       this.twemojiTextarea.scrollTop = this.twemojiTextarea.scrollHeight;
+      this.twemojiPicker.$refs.popupEmoji.popperInstance.forceUpdate();
     },
     onPaste(pasteEvent: ClipboardEvent): void {
       let pastedData;

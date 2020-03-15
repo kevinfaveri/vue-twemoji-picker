@@ -19,7 +19,7 @@ export default {
     }
   },
   pickerHeight: {
-    default: 200,
+    default: 150,
     type: Number as () => number
   },
   pickerPlacement: {
