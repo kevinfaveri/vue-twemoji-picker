@@ -1,6 +1,7 @@
 <template>
   <div
     class="twemoji-textarea-outer"
+    :id="idTextarea"
     :style="{
       paddingBottom: maxlength ? '15px' : '0px',
       backgroundColor: componentColor
@@ -127,6 +128,10 @@ export default Vue.extend({
     ...TwemojiProps,
 
     // ** Textarea Props **/
+    idTextarea: {
+      default: 'twemoji-textarea-outer',
+      type: String as () => string
+    },
     content: {
       default: '',
       type: String as () => string

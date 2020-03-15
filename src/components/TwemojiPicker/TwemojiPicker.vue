@@ -13,7 +13,10 @@
     >
       <template v-slot:container>
         <div id="emoji-container">
-          <div id="emoji-popup" :style="{ width: pickerWidth + 'px' }">
+          <div
+            id="emoji-popup"
+            :style="{ width: calculatedPickerWidth + 'px' }"
+          >
             <div id="emoji-popover-header" class="scroll-min">
               <span
                 v-if="recentEmojisFeat && recentEmojis.length !== 0"
@@ -47,7 +50,7 @@
             <div
               class="emoji-popover-inner"
               :style="{
-                width: pickerWidth + 'px',
+                width: calculatedPickerWidth + 'px',
                 height: pickerHeight + 'px'
               }"
             >
@@ -93,13 +96,13 @@
 
             <div
               id="emoji-skins-popup"
-              :style="{ width: pickerWidth + 'px' }"
+              :style="{ width: calculatedPickerWidth + 'px' }"
               v-if="showSkinsSelector"
             >
               <div
                 class="emoji-popover-inner"
                 :style="{
-                  width: pickerWidth + 'px'
+                  width: calculatedPickerWidth + 'px'
                 }"
               >
                 <div v-if="emojiListActive.length !== 0">
@@ -335,8 +338,13 @@ export default Vue.extend({
       searchTerm: '' as string,
       searchEmojis: [] as Array<Emoji>,
       searchTimeout: null as any,
-      isSearchingEmoji: false as boolean
+      isSearchingEmoji: false as boolean,
+      calculatedPickerWidth: null as number | null
     };
+  },
+
+  mounted() {
+    this.setPickerWidth();
   },
 
   computed: {
@@ -529,6 +537,20 @@ export default Vue.extend({
     },
     popperOpenChanged(popperOpen: boolean) {
       this.isPickerOpen = popperOpen;
+    },
+    setPickerWidth() {
+      if (
+        typeof this.pickerWidth === 'string' &&
+        this.pickerWidth.startsWith('#')
+      ) {
+        const domId = this.pickerWidth.slice(1);
+        console.log('domId', domId);
+        const domEl = document.getElementById(domId);
+        if (domEl) this.calculatedPickerWidth = domEl.offsetWidth;
+        console.log('this.calculatedPickerWidth', this.calculatedPickerWidth);
+      } else if (typeof this.pickerWidth === 'number') {
+        this.calculatedPickerWidth = this.pickerWidth;
+      }
     }
   }
 });

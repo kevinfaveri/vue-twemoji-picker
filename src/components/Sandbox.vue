@@ -27,6 +27,8 @@
         @isContentOverflowed="isContentOverflowed"
         ref="twemojiTextareaRef"
         :pickerArrowEnabled="false"
+        idTextarea="idTextarea"
+        pickerWidth="#idTextarea"
       ></twemoji-textarea>
     </div>
   </div>
