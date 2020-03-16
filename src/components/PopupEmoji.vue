@@ -102,7 +102,7 @@ import VueClickaway from 'vue-clickaway';
 
 export default Vue.extend({
   mixins: [VueClickaway.mixin],
-  name: 'PopperV2',
+  name: 'PopupEmoji',
   data() {
     return {
       // eslint-disable-next-line
@@ -127,7 +127,7 @@ export default Vue.extend({
       type: Boolean as () => boolean
     },
     offset: {
-      default: [0, -12],
+      default: () => [0, 30],
       type: Array as () => Array<number>
     },
     arrowEnabled: {
@@ -195,13 +195,13 @@ export default Vue.extend({
       if (this.disabled || this.triggerType !== 'click') return;
       const ctxPopperInstance = this.popperInstance;
 
-      if (this.containerRef.hasAttribute('data-show')) {
-        this.containerRef.removeAttribute('data-show');
+      if (this.$refs.container.hasAttribute('data-show')) {
+        this.$refs.container.removeAttribute('data-show');
         this.popperOpen = false;
         setTimeout(ctxPopperInstance.forceUpdate, 1);
       } else {
         this.popperOpen = true;
-        this.containerRef.setAttribute('data-show', '');
+        this.$refs.container.setAttribute('data-show', '');
         setTimeout(ctxPopperInstance.forceUpdate, 1);
       }
     },
@@ -210,7 +210,7 @@ export default Vue.extend({
       const ctxPopperInstance = this.popperInstance;
 
       if (this.debouncedPopperOpen) {
-        this.containerRef.removeAttribute('data-show');
+        this.$refs.container.removeAttribute('data-show');
         this.popperOpen = false;
         setTimeout(ctxPopperInstance.forceUpdate, 1);
       }
@@ -219,13 +219,13 @@ export default Vue.extend({
       if (this.disabled || this.triggerType !== 'hover') return;
       const ctxPopperInstance = this.popperInstance;
 
-      if (this.containerRef.hasAttribute('data-show')) {
-        this.containerRef.removeAttribute('data-show');
+      if (this.$refs.container.hasAttribute('data-show')) {
+        this.$refs.container.removeAttribute('data-show');
         this.popperOpen = false;
         setTimeout(ctxPopperInstance.forceUpdate, 1);
       } else {
         this.popperOpen = true;
-        this.containerRef.setAttribute('data-show', '');
+        this.$refs.container.setAttribute('data-show', '');
         setTimeout(ctxPopperInstance.forceUpdate, 1);
       }
     }

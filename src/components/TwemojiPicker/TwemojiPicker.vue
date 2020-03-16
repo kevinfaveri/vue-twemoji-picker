@@ -7,7 +7,6 @@
       :placement="pickerPlacement"
       :autoflip="pickerAutoflip"
       :arrowEnabled="pickerArrowEnabled"
-      :offset="[0, 30]"
       :closeOnClickaway="pickerCloseOnClickaway"
       @popperOpenChanged="popperOpenChanged"
       ref="popupEmoji"
@@ -97,34 +96,24 @@
                     :key="emoji.unicode"
                     v-html="emoji.img"
                     @click="clickEmoji(emoji)"
+                    @mousedown="startClickingSkinInterval(emoji)"
+                    @mouseleave="stopClickingSkinInterval"
+                    @mouseup="stopClickingSkinInterval"
+                    @touchstart="startClickingSkinInterval(emoji)"
+                    @touchend="stopClickingSkinInterval"
+                    @touchcancel="stopClickingSkinInterval"
+                    :id="`twemoji-picker-click-emoji-${emoji.unicode}`"
                   ></span>
                 </p>
               </div>
             </div>
 
-            <div
-              id="emoji-skins-popup"
-              :style="{ width: calculatedPickerWidth + 'px' }"
-              v-if="showSkinsSelector"
-            >
-              <div
-                class="emoji-popover-inner"
-                :style="{
-                  width: calculatedPickerWidth + 'px'
-                }"
-              >
-                <div v-if="emojiListActive.length !== 0">
-                  <p class="emoji-list">
-                    <span
-                      v-for="emoji in skinsListActive"
-                      :key="emoji.unicode"
-                      v-html="emoji.img"
-                      @click="clickEmoji(emoji)"
-                    ></span>
-                  </p>
-                </div>
-              </div>
-            </div>
+            <popup-skins
+              :emojiList="skinsListActive"
+              :closeOnClickaway="popupSkinsClickaway"
+              :clickEmoji="clickEmoji"
+              ref="popupSkins"
+            />
           </div>
         </div>
       </template>
@@ -146,6 +135,7 @@
         </slot>
       </template>
     </popup-emoji>
+    <span id="dummy-clickable-skin" />
   </div>
 </template>
 <style lang="stylus">
@@ -307,20 +297,21 @@
 import Vue from 'vue';
 import EmojiService from '../../services/EmojiService';
 import PopupEmoji from '../PopupEmoji.vue';
+import PopupSkins from '../PopupSkins.vue';
 import EmojiPack from '../../interfaces/EmojiPack';
 import Emoji from '../../interfaces/Emoji';
 import TwemojiOptions from '../../interfaces/TwemojiOptions';
-import EmojiSkin from '../../interfaces/EmojiSkin';
 import EmojiGroup from '../../interfaces/EmojiGroup';
 
 import Props from './props';
+import EmojiSkin from '../../interfaces/EmojiSkin';
 
-// TODO: Click and hold to show alternative skins
 export default Vue.extend({
   name: 'TwemojiPicker',
 
   components: {
-    'popup-emoji': PopupEmoji
+    'popup-emoji': PopupEmoji,
+    'popup-skins': PopupSkins
   },
 
   props: {
@@ -330,6 +321,9 @@ export default Vue.extend({
   data() {
     return {
       isPickerOpen: false as boolean,
+      clickingSkinInterval: false as any,
+      isClickingEmojiMouseDown: false as boolean,
+      popupSkinsClickaway: true as boolean,
 
       showEmoji: false as boolean,
       showSkinsSelector: false as boolean,
@@ -415,16 +409,22 @@ export default Vue.extend({
     },
 
     clickEmoji(emoji: Emoji): void {
+      this.$refs.popupSkins.setCloseOnClickaway(false);
       let emojiUnicode: string;
-      if (emoji.skins?.length > 0 && this.skinsSelection) {
-        this.skinsListActive = Array.from(emoji.skins);
-        this.skinsListActive.unshift({
-          unicode: emoji.unicode,
-          img: emoji.img
-        });
-        this.showSkinsSelector = true;
+      // eslint-disable-next-line
+      const vueContext = this;
+      setTimeout(() => {
+        vueContext.$refs.popupSkins.setCloseOnClickaway(true);
+      }, 1);
+
+      if (
+        (this.isClickingEmojiMouseDown || this.$refs.popupSkins.popperOpen) &&
+        emoji.skins?.length > 0 &&
+        this.skinsSelection
+      ) {
         return;
       } else {
+        this.$refs.popupSkins.closePopper();
         emojiUnicode = emoji.unicode;
       }
 
@@ -438,6 +438,31 @@ export default Vue.extend({
         'emojiImgAdded',
         EmojiService.getEmojiImgFromUnicode(emojiUnicode, this.twemojiOptions)
       );
+    },
+
+    startClickingSkinInterval(emoji: Emoji): void {
+      this.$refs.popupSkins.closePopper();
+      this.isClickingEmojiMouseDown = false;
+      if (emoji.skins?.length > 0 && this.skinsSelection) {
+        if (!this.clickingSkinInterval) {
+          this.clickingSkinInterval = setInterval(() => {
+            this.skinsListActive = Array.from(emoji.skins);
+            this.skinsListActive.unshift({
+              unicode: emoji.unicode,
+              img: emoji.img
+            });
+            this.$refs.popupSkins.instantiatePopper(
+              `twemoji-picker-click-emoji-${emoji.unicode}`
+            );
+          }, 500);
+        }
+      }
+    },
+
+    stopClickingSkinInterval(): void {
+      this.isClickingEmojiMouseDown = false;
+      clearInterval(this.clickingSkinInterval);
+      this.clickingSkinInterval = false;
     },
 
     getEmojiGroupDescription(emojiGroup: number): string {
@@ -566,6 +591,7 @@ export default Vue.extend({
       }
     },
     onScrollEmojiList(event: UIEvent) {
+      this.$refs.popupSkins.closePopper();
       if ((event as any).target.scrollTop > 50) {
         this.hideSearch = true;
       } else {
