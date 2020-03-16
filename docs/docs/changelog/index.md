@@ -13,6 +13,7 @@ title: 'Changelog'
 - componentColor prop in TwemojiTextarea now accepts only a string which represents a valid CSS color
 - pickerCloseOnClickaway prop added to TwemojiPicker
 - pickerWidth prop for TwemojiTextarea and TwemojiPicker now accepts an DOM element ID string for mimicking the El width.
+- Emoji skins now appear in a popup and are triggered by a "click and hold" interaction
 
 ## 5.4.1
 
