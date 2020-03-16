@@ -975,10 +975,10 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@kevinfaguiar/vue-twemoji-picker@5.5.1":
-  version "5.5.1"
-  resolved "https://registry.yarnpkg.com/@kevinfaguiar/vue-twemoji-picker/-/vue-twemoji-picker-5.5.1.tgz#0d9128caf7e4fbc9f0b126705f0657394cf8fdc7"
-  integrity sha512-BIwyNoi4SQd23rqfD51KGs59QV6VdI7Y25lxj3SxQML6g7xfXM2oHoQ+mGmswO4kPswyUVvRVWZ+8+WjQnd35w==
+"@kevinfaguiar/vue-twemoji-picker@5.5.2":
+  version "5.5.2"
+  resolved "https://registry.yarnpkg.com/@kevinfaguiar/vue-twemoji-picker/-/vue-twemoji-picker-5.5.2.tgz#10f6cc5853bf4ea81f83ae4cc5fbfb413ad8ad4c"
+  integrity sha512-dtGJyAWfBIzdUkv2vdXcacdVCAWVyp/3zCTpqYI3Vl2wT5POZWObgJLAI4J6fLpTxS2ui7VTnBNljenFt74RLQ==
   dependencies:
     "@popperjs/core" "^2.1.0"
     lodash.pick "^4.4.0"

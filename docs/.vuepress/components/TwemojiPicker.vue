@@ -6,7 +6,7 @@
       :skinsSelection="false"
       :searchEmojisFeat="true"
       searchEmojiPlaceholder="Search here."
-      searchEmojiNotFound="Emojis not found."
+      searchEmojiNotFound="Searched emoji not found."
       isLoadingLabel="Loading..."
     ></twemoji-picker>
   </div>
