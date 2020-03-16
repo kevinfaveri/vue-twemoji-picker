@@ -975,12 +975,13 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@kevinfaguiar/vue-twemoji-picker@5.4.1":
-  version "5.4.1"
-  resolved "https://registry.yarnpkg.com/@kevinfaguiar/vue-twemoji-picker/-/vue-twemoji-picker-5.4.1.tgz#3ee33964c07858373f2c91a09c9aae303cb47219"
-  integrity sha512-fnuyYwMs++iGsPW1tEoI0/MWz31yhg82perZ1woid6Vbex01NIwFnqPwbiDx2PsJLRo8FzfPnL+j8tLEXBsBEQ==
+"@kevinfaguiar/vue-twemoji-picker@5.5.1":
+  version "5.5.1"
+  resolved "https://registry.yarnpkg.com/@kevinfaguiar/vue-twemoji-picker/-/vue-twemoji-picker-5.5.1.tgz#0d9128caf7e4fbc9f0b126705f0657394cf8fdc7"
+  integrity sha512-BIwyNoi4SQd23rqfD51KGs59QV6VdI7Y25lxj3SxQML6g7xfXM2oHoQ+mGmswO4kPswyUVvRVWZ+8+WjQnd35w==
   dependencies:
     "@popperjs/core" "^2.1.0"
+    lodash.pick "^4.4.0"
     twemoji "^12.1.5"
     vue-clickaway "^2.2.2"
 

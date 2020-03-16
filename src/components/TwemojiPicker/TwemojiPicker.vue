@@ -3,6 +3,7 @@
     <popup-emoji
       v-if="emojiData && emojiData.length > 0"
       :disabled="emojiPickerDisabled"
+      :offset="pickerArrowEnabled ? [0, 35] : [0, 30]"
       :triggerType="triggerType"
       :placement="pickerPlacement"
       :autoflip="pickerAutoflip"

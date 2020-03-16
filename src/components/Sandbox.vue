@@ -25,10 +25,24 @@
         :maxlength="100"
         @isContentOverflowed="isContentOverflowed"
         ref="twemojiTextareaRef"
-        :pickerArrowEnabled="false"
+        :pickerArrowEnabled="true"
         idTextarea="idTextarea"
         pickerWidth="#idTextarea"
       ></twemoji-textarea>
+    </div>
+    <div>
+      <twemoji-textarea
+        :emojiData="emojiDataAll"
+        :emojiGroups="emojiGroups"
+        :skinsSelection="true"
+        :enableSendBtn="true"
+        :recentEmojisFeat="true"
+        :searchEmojisFeat="true"
+        :maxlength="100"
+        idTextarea="idTextarea"
+        pickerWidth="#idTextarea"
+      >
+      </twemoji-textarea>
     </div>
   </div>
 </template>

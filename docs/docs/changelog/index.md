@@ -4,6 +4,9 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.5.2
+- Fixed enter bug onEnterKey in TwemojiTextarea
+
 ## 5.5.1
 - pickerPlacement default is now 'top-start'
 

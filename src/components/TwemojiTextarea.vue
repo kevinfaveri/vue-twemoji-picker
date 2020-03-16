@@ -231,6 +231,7 @@ export default Vue.extend({
     },
     enterKey(event: KeyboardEvent): void {
       if (event.shiftKey === false) {
+        event.preventDefault();
         this.emitIsContentOverflowed();
         this.emitEnterKeyEvent(event);
       }
