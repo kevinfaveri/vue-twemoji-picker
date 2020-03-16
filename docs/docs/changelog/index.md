@@ -4,6 +4,9 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.5.1
+- pickerPlacement default is now 'top-start'
+
 ## 5.5.0
 
 - Major visual rework

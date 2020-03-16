@@ -119,7 +119,7 @@ export default Vue.extend({
       type: Boolean as () => boolean
     },
     placement: {
-      default: 'top',
+      default: 'top-start',
       type: String as () => string
     },
     autoflip: {

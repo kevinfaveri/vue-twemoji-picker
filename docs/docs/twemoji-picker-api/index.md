@@ -26,7 +26,7 @@ Define the emoji picker initial height and max height (in pixels).
 
 ### pickerPlacement
 - Type: ``string``
-- Default ``top-end``
+- Default ``top-start``
 - Valid Props: ``['top-start', 'top', 'top-end', 'bottom-start', 'bottom', 'bottom-right', 'left-start', 'left', 'left-end', 'right-start', 'right', 'right-end']``
 
 Define the emoji picker placement position relative to the ref element (like a button).

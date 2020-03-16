@@ -8,6 +8,8 @@
       :recentEmojisFeat="true"
       :searchEmojisFeat="true"
       :maxlength="100"
+      idTextarea="idTextarea"
+      pickerWidth="#idTextarea"
       >
     </twemoji-textarea>
   </div>

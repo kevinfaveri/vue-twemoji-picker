@@ -23,7 +23,7 @@ export default {
     type: Number as () => number
   },
   pickerPlacement: {
-    default: 'top-end',
+    default: 'top-start',
     type: String as () => string,
     validator: function(value: string) {
       if (

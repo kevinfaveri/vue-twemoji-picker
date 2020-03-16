@@ -10,7 +10,6 @@
     </div>
     <div>
       <twemoji-textarea
-        pickerPlacement="top-start"
         :pickerAutoflip="false"
         :content.sync="content"
         :emojiData="emojiDataAll"
