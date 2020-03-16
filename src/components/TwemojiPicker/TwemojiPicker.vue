@@ -593,10 +593,12 @@ export default Vue.extend({
     },
     onScrollEmojiList(event: UIEvent) {
       this.$refs.popupSkins.closePopper();
-      if ((event as any).target.scrollTop > 50) {
-        this.hideSearch = true;
-      } else {
-        this.hideSearch = false;
+      if (this.searchEmojisFeat) {
+        if ((event as any).target.scrollTop > 50) {
+          this.hideSearch = true;
+        } else {
+          this.hideSearch = false;
+        }
       }
     }
   }
