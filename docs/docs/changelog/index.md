@@ -4,6 +4,9 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.5.3
+- Fixed bug when tries to hide search bar when the feat is not enabled
+
 ## 5.5.2
 - Fixed enter bug onEnterKey in TwemojiTextarea
 
