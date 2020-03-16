@@ -10,6 +10,7 @@
       :maxlength="100"
       idTextarea="idTextarea"
       pickerWidth="#idTextarea"
+      :pickerArrowEnabled="false"
       >
     </twemoji-textarea>
   </div>
