@@ -380,6 +380,11 @@ export default Vue.extend({
     this.emojiListActive = this.emojiPack[0].emojiList;
     this.setRandomEmoji();
   },
+  watch: {
+    randomEmojiArray() {
+      this.setRandomEmoji();
+    }
+  },
 
   methods: {
     triggerShowEmoji(): void {

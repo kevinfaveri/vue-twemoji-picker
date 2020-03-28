@@ -4,6 +4,9 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.5.5
+- when randomEmojiArray is changed it now triggers a component update
+
 ## 5.5.4
 - Adds contentChangedHtml event to TwemojiTextarea
 
