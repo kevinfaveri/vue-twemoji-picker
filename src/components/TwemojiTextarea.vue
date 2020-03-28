@@ -209,6 +209,7 @@ export default Vue.extend({
     updateContent(event: Event): void {
       const targetedElement = event.target as HTMLElement;
       let content = targetedElement.innerHTML as any;
+      this.$emit('contentChangedHtml', content);
       content = TextareaParser.replaceEmojiWithAltAttribute(content);
       content = TextareaParser.unescapeHtml(content);
       if (content.length !== 0 && content[content.length - 1] === '\n') {
@@ -218,7 +219,7 @@ export default Vue.extend({
       this.twemojiPicker.$refs.popupEmoji.popperInstance.forceUpdate();
       this.$emit('update:content', content);
       this.$emit('actualContentLengthChanged', this.actualContentLength);
-      this.$emit('contentChanged');
+      this.$emit('contentChanged', content);
     },
     emitIsContentOverflowed() {
       if (this.actualContentLength > this.maxlength)

@@ -57,14 +57,19 @@ Define the textarea maxlength. If set to null has no default maxlength. If set t
 
 - This component inherits all Twemoji Picker events. You can check them [here](/docs/twemoji-picker-api#events).
 
-### contentChanged
+### contentChangedHtml
 
-This event fires everytime the textarea content is updated.
+This event fires everytime the textarea content is updated. Has one parameter which is the update content in HTML format in the textarea.
+
+### contentChanged
+- Parameter | Type : ``content | string``
+
+This event fires everytime the textarea content is updated. Has one parameter which is the update content in escaped format in the textarea.
 
 ### actualContentLengthChanged
 - Parameter | Type : ``actualLength | number``
 
-This event fires everytime the textarea content is updated. Has a parameter which indicates the length of the content (which is in fact not a simple content.length) because some emoji unicode in Javascript are sometimes counted as more than 1 in length value.
+This event fires everytime the textarea content is updated. Has one parameter which indicates the length of the content (which is in fact not a simple content.length) because some emoji unicode in Javascript are sometimes counted as more than 1 in length value.
 
 ```js
 actualContentLengthChanged(actualLength) {

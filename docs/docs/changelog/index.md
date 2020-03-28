@@ -4,6 +4,9 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.5.4
+- Adds contentChangedHtml event to TwemojiTextarea
+
 ## 5.5.3
 - Fixed bug when tries to hide search bar when the feat is not enabled
 
