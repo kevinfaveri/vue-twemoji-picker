@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <div>
-      <button @click="randomEmojiArrayClick">CHANGE RANDOM EMOJI ARRAY</button>
       <twemoji-picker
         :emojiData="emojiDataAll"
         :emojiGroups="emojiGroups"
         pickerPlacement="top-end"
         :randomEmojiArray="randomEmojiArray"
+        ref="picker"
       >
       </twemoji-picker>
     </div>
@@ -99,11 +99,19 @@ export default Vue.extend({
   data() {
     return {
       content: '',
-      isSlideOpen: false,
       randomEmojiArray: ['😀']
     };
   },
-
+  mounted() {
+    this.$watch(
+      () => {
+        return this.$refs.picker.isPickerOpen;
+      },
+      (value: boolean) => {
+        this.randomEmojiArray = value ? ['😄'] : ['🙂'];
+      }
+    );
+  },
   computed: {
     emojiDataAll() {
       return EmojiDataAll;
@@ -154,9 +162,6 @@ export default Vue.extend({
     },
     isContentOverflowed(isContentOverflowed: boolean) {
       console.log('isContentOverflowed', isContentOverflowed);
-    },
-    randomEmojiArrayClick() {
-      this.randomEmojiArray = ['🥳'];
     }
   }
 });

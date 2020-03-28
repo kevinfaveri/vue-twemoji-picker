@@ -383,6 +383,9 @@ export default Vue.extend({
   watch: {
     randomEmojiArray() {
       this.setRandomEmoji();
+    },
+    randomEmoji() {
+      setTimeout(() => this.$refs.popupEmoji.popperInstance.forceUpdate(), 100);
     }
   },
 
@@ -419,9 +422,10 @@ export default Vue.extend({
       let emojiUnicode: string;
       // eslint-disable-next-line
       const vueContext = this;
-      setTimeout(() => {
-        vueContext.$refs.popupSkins.setCloseOnClickaway(true);
-      }, 1);
+      setTimeout(
+        () => vueContext.$refs.popupSkins.setCloseOnClickaway(true),
+        1
+      );
 
       if (
         (this.isClickingEmojiMouseDown || this.$refs.popupSkins.popperOpen) &&
