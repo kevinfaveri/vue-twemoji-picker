@@ -184,6 +184,11 @@ export default Vue.extend({
   },
   watch: {
     popperOpen: function(val): void {
+      if (val) {
+        this.$refs.container.setAttribute('data-show', '');
+      } else {
+        this.$refs.container.removeAttribute('data-show');
+      }
       this.$emit('popperOpenChanged', val);
       setTimeout(() => {
         this.debouncedPopperOpen = val;
@@ -196,12 +201,10 @@ export default Vue.extend({
       const ctxPopperInstance = this.popperInstance;
 
       if (this.$refs.container.hasAttribute('data-show')) {
-        this.$refs.container.removeAttribute('data-show');
         this.popperOpen = false;
         setTimeout(ctxPopperInstance.forceUpdate, 1);
       } else {
         this.popperOpen = true;
-        this.$refs.container.setAttribute('data-show', '');
         setTimeout(ctxPopperInstance.forceUpdate, 1);
       }
     },
@@ -210,7 +213,6 @@ export default Vue.extend({
       const ctxPopperInstance = this.popperInstance;
 
       if (this.debouncedPopperOpen) {
-        this.$refs.container.removeAttribute('data-show');
         this.popperOpen = false;
         setTimeout(ctxPopperInstance.forceUpdate, 1);
       }
@@ -220,12 +222,10 @@ export default Vue.extend({
       const ctxPopperInstance = this.popperInstance;
 
       if (this.$refs.container.hasAttribute('data-show')) {
-        this.$refs.container.removeAttribute('data-show');
         this.popperOpen = false;
         setTimeout(ctxPopperInstance.forceUpdate, 1);
       } else {
         this.popperOpen = true;
-        this.$refs.container.setAttribute('data-show', '');
         setTimeout(ctxPopperInstance.forceUpdate, 1);
       }
     }

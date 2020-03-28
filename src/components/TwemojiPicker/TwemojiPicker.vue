@@ -305,6 +305,7 @@ import TwemojiOptions from '../../interfaces/TwemojiOptions';
 import EmojiGroup from '../../interfaces/EmojiGroup';
 
 import Props from './props';
+import PropWatchers from './prop-watchers';
 import EmojiSkin from '../../interfaces/EmojiSkin';
 
 export default Vue.extend({
@@ -321,7 +322,6 @@ export default Vue.extend({
 
   data() {
     return {
-      isPickerOpen: false as boolean,
       clickingSkinInterval: false as any,
       isClickingEmojiMouseDown: false as boolean,
       popupSkinsClickaway: true as boolean,
@@ -346,7 +346,8 @@ export default Vue.extend({
       searchTimeout: null as any,
       isSearchingEmoji: false as boolean,
       calculatedPickerWidth: null as number | null,
-      hideSearch: false as boolean
+      hideSearch: false as boolean,
+      isPickerOpen: false as boolean
     };
   },
 
@@ -368,6 +369,9 @@ export default Vue.extend({
   },
 
   created(): void {
+    // Init TwemojiPicker watchers
+    PropWatchers(this, this);
+
     this.twemojiOptions = {
       base: this.twemojiPath,
       ext: this.twemojiExtension,
@@ -381,8 +385,12 @@ export default Vue.extend({
     this.setRandomEmoji();
   },
   watch: {
-    randomEmojiArray() {
-      this.setRandomEmoji();
+    // Data Watchers
+    isPickerOpen(value) {
+      if (value !== this.$refs.popupEmoji.popperOpen) {
+        this.$refs.popupEmoji.popperOpen = value;
+        setTimeout(() => this.$refs.popupEmoji.popperInstance.forceUpdate(), 1);
+      }
     },
     randomEmoji() {
       setTimeout(() => this.$refs.popupEmoji.popperInstance.forceUpdate(), 100);

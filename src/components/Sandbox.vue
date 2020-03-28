@@ -5,10 +5,11 @@
         :emojiData="emojiDataAll"
         :emojiGroups="emojiGroups"
         pickerPlacement="top-end"
-        :randomEmojiArray="randomEmojiArray"
         ref="picker"
+        :emojiPickerDisabled="emojiPickerDisabled"
       >
       </twemoji-picker>
+      <button @click="onClickTest">Working Test</button>
     </div>
     <div>
       <twemoji-textarea
@@ -30,7 +31,10 @@
         :pickerArrowEnabled="true"
         idTextarea="idTextarea"
         pickerWidth="#idTextarea"
+        :randomEmojiArray="randomEmojiArray"
+        :emojiPickerDisabled="emojiPickerDisabled"
       ></twemoji-textarea>
+      <button @click="onClickTest">Working Test</button>
     </div>
     <div>
       <twemoji-textarea
@@ -99,13 +103,14 @@ export default Vue.extend({
   data() {
     return {
       content: '',
-      randomEmojiArray: ['😀']
+      randomEmojiArray: ['😀'],
+      emojiPickerDisabled: false
     };
   },
   mounted() {
     this.$watch(
       () => {
-        return this.$refs.picker.isPickerOpen;
+        return this.$refs.twemojiTextareaRef.twemojiPicker.isPickerOpen;
       },
       (value: boolean) => {
         this.randomEmojiArray = value ? ['😄'] : ['🙂'];
@@ -162,6 +167,16 @@ export default Vue.extend({
     },
     isContentOverflowed(isContentOverflowed: boolean) {
       console.log('isContentOverflowed', isContentOverflowed);
+    },
+    onClickTest() {
+      this.emojiPickerDisabled = !this.emojiPickerDisabled;
+    },
+    testChangeIsPickerOpen1() {
+      this.$refs.picker.isPickerOpen = !this.$refs.picker.isPickerOpen;
+    },
+    testChangeIsPickerOpen2() {
+      this.$refs.twemojiTextareaRef.twemojiPicker.isPickerOpen = !this.$refs
+        .twemojiTextareaRef.twemojiPicker.isPickerOpen;
     }
   }
 });

@@ -113,6 +113,7 @@ import SendIconImg from './SendIconImg.vue';
 import TwemojiOptions from '../interfaces/TwemojiOptions';
 
 import TwemojiProps from './TwemojiPicker/props';
+import TwemojiPropWatchers from './TwemojiPicker/prop-watchers';
 import { propsForMixin } from '../mixins/propsFor';
 
 export default Vue.extend({
@@ -183,10 +184,10 @@ export default Vue.extend({
   },
 
   computed: {
-    twemojiTextarea(): HTMLElement {
+    twemojiTextarea(): any {
       return this.$refs.twemojiTextarea as HTMLElement;
     },
-    twemojiPicker(): HTMLElement {
+    twemojiPicker(): any {
       return this.$refs.twemojiPicker as any;
     }
   },
@@ -200,6 +201,9 @@ export default Vue.extend({
   },
 
   mounted(): void {
+    // Init TwemojiPicker watchers
+    TwemojiPropWatchers(this, this.twemojiPicker);
+
     if (this.content.length === 0) {
       this.twemojiTextarea.innerHTML = this.content;
     }

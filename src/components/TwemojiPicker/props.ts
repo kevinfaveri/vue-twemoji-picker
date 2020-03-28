@@ -206,6 +206,6 @@ export default {
         console.error('The Array must have a length of one or more.');
       }
       return true;
-    }
+    },
   }
 }
