@@ -4,7 +4,7 @@ title: 'Services'
 
 # Services
 
-Services are auxiliary libraries used by this project which can me imported directly by the user if needed. Some functions may need a better study of the source code. **Issues regarding improvement for these services which does not bring any benefits to the TwemojiPicker or TwemojiTextarea will be closed.**
+Services are auxiliary libraries used by this project which can be imported directly by the user if needed. Some functions may need a better study of the source code. **Issues regarding improvement for these services which does not bring any benefits to the TwemojiPicker or TwemojiTextarea will be closed.**
 
 ## EmojiService
 
