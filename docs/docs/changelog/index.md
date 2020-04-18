@@ -4,6 +4,9 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.6.1
+- Tweaks TwemojiPicker positioning
+
 ## 5.6.0
 - Update deps and build pipeline
 
