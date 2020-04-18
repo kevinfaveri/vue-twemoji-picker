@@ -14,14 +14,14 @@
         <slot name="container" v-if="containerRef" />
       </div>
     </div>
-    <span
+    <div
       ref="button"
       id="popper-button"
       @click="clickTriggerPopper"
       @mouseenter="hoverTriggerPopper"
     >
       <slot name="button" v-if="buttonRef" />
-    </span>
+    </div>
   </div>
 </template>
 
@@ -51,6 +51,10 @@
   }
 }
 
+#popper-button {
+  display: inline-block;
+}
+
 #arrow {
   position: absolute;
   z-index: -1;
@@ -71,9 +75,19 @@
   padding-right: 32px;
 }
 
+#popper-container[data-popper-placement^='top-start'] > #arrow {
+  bottom: 12px;
+  padding-right: 20px;
+}
+
 #popper-container[data-popper-placement^='bottom'] > #arrow {
   top: -12px;
   padding-right: 32px;
+}
+
+#popper-container[data-popper-placement^='bottom-start'] > #arrow {
+  top: -12px;
+  padding-right: 20px;
 }
 
 #popper-container[data-popper-placement^='left'] > #arrow {
@@ -81,9 +95,19 @@
   padding-bottom: 32px;
 }
 
+#popper-container[data-popper-placement^='left-start'] > #arrow {
+  right: 12px;
+  padding-bottom: 5px;
+}
+
 #popper-container[data-popper-placement^='right'] > #arrow {
   left: -12px;
   padding-bottom: 32px;
+}
+
+#popper-container[data-popper-placement^='right-start'] > #arrow {
+  left: -12px;
+  padding-bottom: 5px;
 }
 </style>
 
@@ -91,12 +115,13 @@
 import Vue from 'vue';
 import {
   popperGenerator,
-  defaultModifiers
+  defaultModifiers,
 } from '@popperjs/core/lib/popper-lite';
 import flip from '@popperjs/core/lib/modifiers/flip';
 import offset from '@popperjs/core/lib/modifiers/offset';
 import arrow from '@popperjs/core/lib/modifiers/arrow';
 import preventOverflow from '@popperjs/core/lib/modifiers/preventOverflow';
+import PopperObject from '../interfaces/PopperObject';
 
 import VueClickaway from 'vue-clickaway';
 
@@ -110,34 +135,30 @@ export default Vue.extend({
       buttonRef: null as HTMLElement | null,
       popperOpen: false as boolean,
       debouncedPopperOpen: false as boolean,
-      popperInstance: null as any | null
+      popperInstance: null as any | null,
     };
   },
   props: {
     disabled: {
       default: false,
-      type: Boolean as () => boolean
+      type: Boolean as () => boolean,
     },
     placement: {
       default: 'top-start',
-      type: String as () => string
+      type: String as () => string,
     },
     autoflip: {
       default: false,
-      type: Boolean as () => boolean
-    },
-    offset: {
-      default: () => [0, 30],
-      type: Array as () => Array<number>
+      type: Boolean as () => boolean,
     },
     arrowEnabled: {
       default: false,
-      type: Boolean as () => boolean
+      type: Boolean as () => boolean,
     },
     triggerType: {
       default: 'click',
       type: String as () => string,
-      validator: function(value) {
+      validator: function (value) {
         if (value !== 'click' && value !== 'hover') {
           console.error(
             'The value entered for the prop "triggerType" is invalid. ' +
@@ -145,20 +166,28 @@ export default Vue.extend({
           );
         }
         return true;
-      }
+      },
+    },
+    extraPaddingOffset: {
+      default: false,
+      type: Boolean as () => boolean,
     },
     closeOnClickaway: {
       default: true,
-      type: Boolean as () => boolean
-    }
+      type: Boolean as () => boolean,
+    },
   },
   mounted(): void {
-    const defaultModifiersObj = [...defaultModifiers, offset, preventOverflow];
+    const defaultModifiersObj: any = [
+      ...defaultModifiers,
+      offset,
+      preventOverflow,
+    ];
     if (this.autoflip) defaultModifiersObj.push(flip);
     if (this.arrowEnabled) defaultModifiersObj.push(arrow);
 
     const createPopper = popperGenerator({
-      defaultModifiers: defaultModifiersObj
+      defaultModifiers: defaultModifiersObj,
     });
 
     this.containerRef = this.$refs.container;
@@ -170,20 +199,39 @@ export default Vue.extend({
         {
           name: 'offset',
           options: {
-            offset: this.offset
-          }
+            offset: ({ placement }: PopperObject) => {
+              if (placement.includes('bottom')) {
+                return this.arrowEnabled
+                  ? [0, 3]
+                  : [0, this.extraPaddingOffset ? 10 : -10];
+              }
+              if (placement.includes('top')) {
+                return this.arrowEnabled
+                  ? [0, 5]
+                  : [0, this.extraPaddingOffset ? 0 : -10];
+              }
+              if (placement.includes('left')) {
+                return this.arrowEnabled ? [0, 5] : [0, -10];
+              }
+              if (placement.includes('right')) {
+                return this.arrowEnabled ? [0, 5] : [0, -10];
+              } else {
+                return [0, 0];
+              }
+            },
+          },
         },
         {
           name: 'arrow',
           options: {
-            element: '#arrow'
-          }
-        }
-      ]
+            element: '#arrow',
+          },
+        },
+      ],
     });
   },
   watch: {
-    popperOpen: function(val): void {
+    popperOpen: function (val): void {
       if (val) {
         this.$refs.container.setAttribute('data-show', '');
       } else {
@@ -193,7 +241,7 @@ export default Vue.extend({
       setTimeout(() => {
         this.debouncedPopperOpen = val;
       }, 300);
-    }
+    },
   },
   methods: {
     clickTriggerPopper(): void {
@@ -228,7 +276,7 @@ export default Vue.extend({
         this.popperOpen = true;
         setTimeout(ctxPopperInstance.forceUpdate, 1);
       }
-    }
-  }
+    },
+  },
 });
 </script>

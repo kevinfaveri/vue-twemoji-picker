@@ -3,12 +3,12 @@
     <popup-emoji
       v-if="emojiData && emojiData.length > 0"
       :disabled="emojiPickerDisabled"
-      :offset="pickerArrowEnabled ? [0, 35] : [0, 30]"
       :triggerType="triggerType"
       :placement="pickerPlacement"
       :autoflip="pickerAutoflip"
       :arrowEnabled="pickerArrowEnabled"
       :closeOnClickaway="pickerCloseOnClickaway"
+      :extraPaddingOffset="pickerPaddingOffset"
       @popperOpenChanged="popperOpenChanged"
       ref="popupEmoji"
     >
@@ -57,14 +57,14 @@
                 width: calculatedPickerWidth + 'px',
                 height: hideSearch
                   ? pickerHeight + 45 + 'px'
-                  : pickerHeight + 'px'
+                  : pickerHeight + 'px',
               }"
               @scroll.passive="onScrollEmojiList"
             >
               <div v-if="isSearchingEmoji">
                 <strong
                   :style="{
-                    padding: '3px'
+                    padding: '3px',
                   }"
                   id="loading-label"
                   >{{ isLoadingLabel }}</strong
@@ -74,13 +74,13 @@
               <div
                 v-if="
                   searchTerm.length !== 0 &&
-                    searchEmojis.length === 0 &&
-                    isSearchingEmoji === false
+                  searchEmojis.length === 0 &&
+                  isSearchingEmoji === false
                 "
               >
                 <strong
                   :style="{
-                    padding: '3px'
+                    padding: '3px',
                   }"
                   >{{ searchEmojiNotFound }}</strong
                 >
@@ -313,11 +313,11 @@ export default Vue.extend({
 
   components: {
     'popup-emoji': PopupEmoji,
-    'popup-skins': PopupSkins
+    'popup-skins': PopupSkins,
   },
 
   props: {
-    ...Props
+    ...Props,
   },
 
   data() {
@@ -347,7 +347,7 @@ export default Vue.extend({
       isSearchingEmoji: false as boolean,
       calculatedPickerWidth: null as number | null,
       hideSearch: false as boolean,
-      isPickerOpen: false as boolean
+      isPickerOpen: false as boolean,
     };
   },
 
@@ -365,7 +365,7 @@ export default Vue.extend({
         this.randomEmoji,
         this.twemojiOptions
       );
-    }
+    },
   },
 
   created(): void {
@@ -375,7 +375,7 @@ export default Vue.extend({
     this.twemojiOptions = {
       base: this.twemojiPath,
       ext: this.twemojiExtension,
-      size: this.twemojiFolder
+      size: this.twemojiFolder,
     };
     if (this.recentEmojisFeat) {
       this.setRecentEmojis();
@@ -394,7 +394,7 @@ export default Vue.extend({
     },
     randomEmoji() {
       setTimeout(() => this.$refs.popupEmoji.popperInstance.forceUpdate(), 100);
-    }
+    },
   },
 
   methods: {
@@ -467,7 +467,7 @@ export default Vue.extend({
             this.skinsListActive = Array.from(emoji.skins);
             this.skinsListActive.unshift({
               unicode: emoji.unicode,
-              img: emoji.img
+              img: emoji.img,
             });
             this.$refs.popupSkins.instantiatePopper(
               `twemoji-picker-click-emoji-${emoji.unicode}`
@@ -542,7 +542,7 @@ export default Vue.extend({
             this.twemojiOptions
           ),
           skins: [],
-          tags: []
+          tags: [],
         });
       } else {
         this.recentEmojis.unshift({
@@ -552,7 +552,7 @@ export default Vue.extend({
             this.twemojiOptions
           ),
           skins: [],
-          tags: []
+          tags: [],
         });
       }
 
@@ -617,7 +617,7 @@ export default Vue.extend({
           this.hideSearch = false;
         }
       }
-    }
-  }
+    },
+  },
 });
 </script>

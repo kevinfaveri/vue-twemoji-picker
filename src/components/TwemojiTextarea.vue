@@ -13,6 +13,7 @@
       @addTextBlur="addTextBlur"
       @emojiUnicodeAdded="emojiUnicodeAdded"
       @emojiImgAdded="emojiImgAdded"
+      :pickerPaddingOffset="pickerAutoflip && typeof pickerWidth === 'string'"
     ></twemoji-picker>
 
     <div

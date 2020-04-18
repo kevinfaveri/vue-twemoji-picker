@@ -1,13 +1,13 @@
 <template>
   <div id="app">
-    <div>
+    <div id="test-picker">
       <twemoji-picker
         :emojiData="emojiDataAll"
         :emojiGroups="emojiGroups"
-        pickerPlacement="top-start"
+        pickerPlacement="left"
         ref="picker"
         :emojiPickerDisabled="emojiPickerDisabled"
-        :pickerArrowEnabled="true"
+        :pickerArrowEnabled="false"
       >
       </twemoji-picker>
       <button @click="onClickTest">Working Test</button>
@@ -46,6 +46,7 @@
         :recentEmojisFeat="true"
         :searchEmojisFeat="true"
         :maxlength="100"
+        :pickerArrowEnabled="false"
         idTextarea="idTextarea"
         pickerWidth="#idTextarea"
       >
@@ -75,6 +76,10 @@ a:hover {
 
 #app > div {
   margin: 100vh 0;
+}
+
+#test-picker {
+  padding-left: 500px;
 }
 </style>
 <script lang="ts">

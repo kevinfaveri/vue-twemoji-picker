@@ -207,5 +207,9 @@ export default {
       }
       return true;
     },
-  }
+  },
+  pickerPaddingOffset: {
+    default: false,
+    type: Boolean as () => boolean,
+  },
 }
