@@ -98,14 +98,14 @@ export default Vue.extend({
 
   components: {
     'twemoji-textarea': TwemojiTextarea,
-    'twemoji-picker': TwemojiPicker
+    'twemoji-picker': TwemojiPicker,
   },
 
   data() {
     return {
       content: '',
       randomEmojiArray: ['😀'],
-      emojiPickerDisabled: false
+      emojiPickerDisabled: false,
     };
   },
   mounted() {
@@ -150,7 +150,7 @@ export default Vue.extend({
     },
     emojiGroups() {
       return EmojiGroups;
-    }
+    },
   },
 
   methods: {
@@ -178,7 +178,7 @@ export default Vue.extend({
     testChangeIsPickerOpen2() {
       this.$refs.twemojiTextareaRef.twemojiPicker.isPickerOpen = !this.$refs
         .twemojiTextareaRef.twemojiPicker.isPickerOpen;
-    }
-  }
+    },
+  },
 });
 </script>
