@@ -48,7 +48,7 @@
     "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@kevinfaguiar/vue-twemoji-picker": "5.6.0",
+    "@kevinfaguiar/vue-twemoji-picker": "5.6.1",
     "@rollup/plugin-commonjs": "^11.1.0",
     "@rollup/plugin-image": "^2.0.4",
     "@rollup/plugin-node-resolve": "^7.1.3",
