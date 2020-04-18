@@ -12,9 +12,9 @@ const config = Object.assign({}, base, {
     name: 'VueTwemojiPicker',
     file: 'dist/vue-twemoji-picker.umd.min.js',
     format: 'umd',
-    globals
+    globals,
   },
-  external: ['vue']
+  external: ['vue'],
 });
 
 config.plugins.push(analyze());

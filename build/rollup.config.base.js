@@ -8,33 +8,47 @@ import typescript from '@rollup/plugin-typescript';
 import postcss from 'rollup-plugin-postcss';
 import replace from '@rollup/plugin-replace';
 
+const extensions = ['.js', '.jsx', '.ts', '.tsx', '.vue'];
+
 export default {
   input: 'src/wrapper.ts',
   plugins: [
-    image(),
     resolve({
       jsnext: true,
       main: true,
-      browser: true
+      browser: true,
+      extensions,
     }),
-    typescript(),
+    image(),
+    replace({
+      'process.env.NODE_ENV': JSON.stringify('production'),
+    }),
     vue({
       css: true,
       compileTemplate: true,
       style: {
-        postcssPlugins: [autoprefixer]
-      }
+        postcssPlugins: [autoprefixer],
+      },
     }),
     postcss({
-      plugins: [autoprefixer]
+      plugins: [autoprefixer],
     }),
+    typescript(),
     cjs(),
     babel({
       exclude: 'node_modules/**',
-      runtimeHelpers: true
+      runtimeHelpers: true,
+      extensions,
+      presets: [
+        [
+          '@vue/cli-plugin-babel/preset',
+          {
+            useBuiltIns: false,
+            polyfills: false,
+          },
+        ],
+        'babel-preset-typescript-vue',
+      ],
     }),
-    replace({
-      'process.env.NODE_ENV': JSON.stringify('production')
-    })
-  ]
+  ],
 };

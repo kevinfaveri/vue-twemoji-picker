@@ -4,7 +4,7 @@
     :id="idTextarea"
     :style="{
       paddingBottom: maxlength ? '15px' : '0px',
-      backgroundColor: componentColor
+      backgroundColor: componentColor,
     }"
   >
     <twemoji-picker
@@ -121,7 +121,7 @@ export default Vue.extend({
 
   components: {
     'twemoji-picker': TwemojiPicker,
-    'send-icon-img': SendIconImg
+    'send-icon-img': SendIconImg,
   },
   mixins: [propsForMixin],
 
@@ -131,28 +131,28 @@ export default Vue.extend({
     // ** Textarea Props **/
     idTextarea: {
       default: 'twemoji-textarea-outer',
-      type: String as () => string
+      type: String as () => string,
     },
     content: {
       default: '',
-      type: String as () => string
+      type: String as () => string,
     },
     enableSendBtn: {
       default: false,
-      type: Boolean as () => boolean
+      type: Boolean as () => boolean,
     },
     emojiPickerDisabled: {
       default: false,
-      type: Boolean as () => boolean
+      type: Boolean as () => boolean,
     },
     textareaDisabled: {
       default: false,
-      type: Boolean as () => boolean
+      type: Boolean as () => boolean,
     },
     componentColor: {
       type: String as () => string,
       default: '#EBEBEB',
-      validator: function(value: string) {
+      validator: function (value: string) {
         const s = new Option().style;
         s.color = value;
         const bolValid = s.color !== '';
@@ -163,23 +163,23 @@ export default Vue.extend({
           );
         }
         return true;
-      }
+      },
     },
     placeholder: {
       type: String as () => string,
-      default: ''
+      default: '',
     },
     maxlength: {
       type: Number as () => number,
-      default: null
-    }
+      default: null,
+    },
   },
 
   data() {
     return {
       savedRange: null as any,
       twemojiOptions: {} as TwemojiOptions,
-      actualContentLength: 0 as number
+      actualContentLength: 0 as number,
     };
   },
 
@@ -189,14 +189,14 @@ export default Vue.extend({
     },
     twemojiPicker(): any {
       return this.$refs.twemojiPicker as any;
-    }
+    },
   },
 
   created(): void {
     this.twemojiOptions = {
       base: this.twemojiPath,
       ext: this.twemojiExtension,
-      size: this.twemojiFolder
+      size: this.twemojiFolder,
     };
   },
 
@@ -345,7 +345,7 @@ export default Vue.extend({
     },
     emojiImgAdded(img: string): void {
       this.$emit('emojiImgAdded', img);
-    }
-  }
+    },
+  },
 });
 </script>

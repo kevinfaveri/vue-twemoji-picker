@@ -4,11 +4,11 @@ import EmojiPack from '@/interfaces/EmojiPack';
 export default {
   emojiPickerDisabled: {
     default: false,
-    type: Boolean as () => boolean
+    type: Boolean
   },
   pickerWidth: {
     default: 250,
-    type: [Number as () => number, String as () => string],
+    type: [Number, String],
     validator: function(value: string) {
       if (typeof value === 'string' && !value.startsWith('#')) {
         console.error(
@@ -20,11 +20,11 @@ export default {
   },
   pickerHeight: {
     default: 150,
-    type: Number as () => number
+    type: Number
   },
   pickerPlacement: {
     default: 'top-start',
-    type: String as () => string,
+    type: String,
     validator: function(value: string) {
       if (
         ![
@@ -69,19 +69,19 @@ export default {
   },
   pickerArrowEnabled: {
     default: true,
-    type: Boolean as () => boolean
+    type: Boolean
   },
   pickerAutoflip: {
     default: true,
-    type: Boolean as () => boolean
+    type: Boolean
   },
   pickerCloseOnClickaway: {
     default: true,
-    type: Boolean as () => boolean
+    type: Boolean
   },
   triggerType: {
     default: 'click',
-    type: String as () => string,
+    type: String,
     validator: function(value: string) {
       if (value !== 'click' && value !== 'hover') {
         console.error(
@@ -94,7 +94,7 @@ export default {
   },
   emojiData: {
     required: true,
-    type: Array as () => Array<EmojiPack>,
+    type: Array,
     validator: function(value: string) {
       if (!value || value.length === 0) {
         console.error(
@@ -107,19 +107,19 @@ export default {
   },
   emojiGroups: {
     required: true,
-    type: Array as () => Array<EmojiGroup>
+    type: Array
   },
   skinsSelection: {
     default: false,
-    type: Boolean as () => boolean
+    type: Boolean
   },
   recentEmojisFeat: {
     default: false,
-    type: Boolean as () => boolean
+    type: Boolean
   },
   recentEmojisStorage: {
     default: 'none',
-    type: String as () => string,
+    type: String,
     validator: function(value: string) {
       if (value !== 'local' && value !== 'session' && value !== 'none') {
         console.error(
@@ -132,35 +132,35 @@ export default {
   },
   recentEmojiStorageName: {
     default: 'vue-recent-twemojis',
-    type: String as () => string
+    type: String
   },
   recentEmojiLimit: {
     default: 12,
-    type: Number as () => number
+    type: Number
   },
   searchEmojisFeat: {
     default: false,
-    type: Boolean as () => boolean
+    type: Boolean
   },
   searchEmojiPlaceholder: {
     default: 'Search emojis.',
-    type: String as () => string
+    type: String
   },
   isLoadingLabel: {
     default: 'Loading...',
-    type: String as () => string
+    type: String
   },
   searchEmojiNotFound: {
     default: 'No emojis found.',
-    type: String as () => string
+    type: String
   },
   twemojiPath: {
     default: 'https://twemoji.maxcdn.com/2/',
-    type: String as () => string
+    type: String
   },
   twemojiExtension: {
     default: '.png',
-    type: String as () => string,
+    type: String,
     validator: function(value: string) {
       const bolValid =
         ['.png', '.svg', '.jpg', '.jpeg', '.ico'].indexOf(value) !== -1;
@@ -175,7 +175,7 @@ export default {
   },
   twemojiFolder: {
     default: '72x72',
-    type: String as () => string
+    type: String
   },
   randomEmojiArray: {
     default: () => [
@@ -200,7 +200,7 @@ export default {
       '🤓',
       '🧐'
     ],
-    type: Array as () => Array<string>,
+    type: Array,
     validator: function(value: string) {
       if (value && value.length === 0) {
         console.error('The Array must have a length of one or more.');

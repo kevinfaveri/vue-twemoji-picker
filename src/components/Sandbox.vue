@@ -4,9 +4,10 @@
       <twemoji-picker
         :emojiData="emojiDataAll"
         :emojiGroups="emojiGroups"
-        pickerPlacement="top-end"
+        pickerPlacement="top-start"
         ref="picker"
         :emojiPickerDisabled="emojiPickerDisabled"
+        :pickerArrowEnabled="true"
       >
       </twemoji-picker>
       <button @click="onClickTest">Working Test</button>

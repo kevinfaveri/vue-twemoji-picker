@@ -4,6 +4,9 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.6.0
+- Update deps and build pipeline
+
 ## 5.5.5
 - when randomEmojiArray is changed it now triggers a component update
 - when isPickerOpen (TwemojiPicker data) is changed it now triggers a component update
