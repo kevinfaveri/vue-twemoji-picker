@@ -3,8 +3,11 @@ This component is meant to be a developer friendly, easy integrable and performa
 
  ![Vue Twemoji Picker Preview](https://i.imgur.com/5uQc4EC.png)
 
-## Documentation, Demo, and Sponsoring
+## Documentation and Demo
 https://kevinfaguiar.github.io/vue-twemoji-picker
+
+## Funding
+If you like the project and find it useful, please consider supporting me (every coffe counts) clicking on the `Sponsor` button above.
 
 ## License
 MIT 2020 Licensed @kevinfaguiar | Twemoji graphics made by Twitter and licensed under CC-BY 4.0
