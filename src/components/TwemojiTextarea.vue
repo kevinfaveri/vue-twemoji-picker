@@ -117,6 +117,8 @@ import TwemojiProps from './TwemojiPicker/props';
 import TwemojiPropWatchers from './TwemojiPicker/prop-watchers';
 import { propsForMixin } from '../mixins/propsFor';
 
+import TwitterText from 'twitter-text';
+
 export default Vue.extend({
   name: 'TwemojiTextarea',
 
@@ -220,7 +222,9 @@ export default Vue.extend({
       if (content.length !== 0 && content[content.length - 1] === '\n') {
         content = content.slice(0, -1);
       }
-      this.actualContentLength = [...content].length;
+      this.actualContentLength = TwitterText.parseTweet(
+        content || ''
+      ).weightedLength;
       this.twemojiPicker.$refs.popupEmoji.popperInstance.forceUpdate();
       this.$emit('update:content', content);
       this.$emit('actualContentLengthChanged', this.actualContentLength);

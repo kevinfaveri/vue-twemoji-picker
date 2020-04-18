@@ -21,6 +21,7 @@ const config = Object.assign({}, base, {
     'twemoji',
     '@popperjs/core',
     'lodash.pick',
+    'twitter-text',
   ],
 });
 

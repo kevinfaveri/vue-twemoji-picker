@@ -4,6 +4,9 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.6.3
+- Content length calc now uses 'twitter-text' NPM package for better handling of emoji unicodes.
+
 ## 5.6.2
 - 'initialContent' prop added to TwemojiTextarea
 

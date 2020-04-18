@@ -1071,19 +1071,19 @@
     "@babel/helper-plugin-utils" "^7.8.3"
     "@babel/plugin-transform-typescript" "^7.9.0"
 
+"@babel/runtime@^7.3.1", "@babel/runtime@^7.9.2":
+  version "7.9.2"
+  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.2.tgz#d90df0583a3a252f09aaa619665367bae518db06"
+  integrity sha512-NE2DtOdufG7R5vnfQUTehdTfNycfUANEtCa9PssN9O/xmTzP4E08UI797ixaei6hBEVL9BI/PsdJS5x7mWoB9Q==
+  dependencies:
+    regenerator-runtime "^0.13.4"
+
 "@babel/runtime@^7.8.4":
   version "7.8.4"
   resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.8.4.tgz#d79f5a2040f7caa24d53e563aad49cbc05581308"
   integrity sha512-neAp3zt80trRVBI1x0azq6c57aNBqYZH8KhMm3TaB7wEI5Q4A2SHfBHE8w9gOhI/lrqxtEbXZgQIrHP+wvSGwQ==
   dependencies:
     regenerator-runtime "^0.13.2"
-
-"@babel/runtime@^7.9.2":
-  version "7.9.2"
-  resolved "https://registry.yarnpkg.com/@babel/runtime/-/runtime-7.9.2.tgz#d90df0583a3a252f09aaa619665367bae518db06"
-  integrity sha512-NE2DtOdufG7R5vnfQUTehdTfNycfUANEtCa9PssN9O/xmTzP4E08UI797ixaei6hBEVL9BI/PsdJS5x7mWoB9Q==
-  dependencies:
-    regenerator-runtime "^0.13.4"
 
 "@babel/template@^7.4.0", "@babel/template@^7.8.3":
   version "7.8.3"
@@ -1358,12 +1358,12 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@kevinfaguiar/vue-twemoji-picker@5.5.5":
-  version "5.5.5"
-  resolved "https://registry.yarnpkg.com/@kevinfaguiar/vue-twemoji-picker/-/vue-twemoji-picker-5.5.5.tgz#5c3207e79d5c8922627f3baa96af165c2e6179c4"
-  integrity sha512-xheDe4JwrUA3alZyMbwBBC5/e6sH1aWmPp+2/mhrmPFNoneX2FiQFyQ4W3RYp/J7JP0g4/X9T3iE78Elv6Glvg==
+"@kevinfaguiar/vue-twemoji-picker@5.6.1":
+  version "5.6.1"
+  resolved "https://registry.yarnpkg.com/@kevinfaguiar/vue-twemoji-picker/-/vue-twemoji-picker-5.6.1.tgz#ad4442d08595ded86b37870bf40218c96b8b0194"
+  integrity sha512-b6oqAVvLFoNYPtJOLa/vLHLg/5XLPVOhTIwwYH23Pb3ANirgVtgsNFM5Zi5Kn1GX+/Oji+sTGiVfZtH9KnSUaA==
   dependencies:
-    "@popperjs/core" "^2.1.0"
+    "@popperjs/core" "^2.3.3"
     lodash.pick "^4.4.0"
     twemoji "^12.1.5"
     vue-clickaway "^2.2.2"
@@ -1380,11 +1380,6 @@
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
-
-"@popperjs/core@^2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.1.0.tgz#09a7a352a40508156e1256efdc015593feca28e0"
-  integrity sha512-ntN5t5spqhQv28cLfmmt1dYabsudzR5A7PU15gr/gzcT/gzqAOnYFQPaLPFraDa7ZCJG2eJ1JsO7pgXbYXGIrw==
 
 "@popperjs/core@^2.3.3":
   version "2.3.3"
@@ -1658,6 +1653,11 @@
   version "12.1.1"
   resolved "https://registry.yarnpkg.com/@types/twemoji/-/twemoji-12.1.1.tgz#34c5dcecff438b5be173889a6ee8ad51ba90445f"
   integrity sha512-dW1B1WHTfrWmEzXb/tp8xsZqQHAyMB9JwLwbBqkIQVzmNUI02R7lJqxUpKFM114ygNZHKA1r74oPugCAiYHt1A==
+
+"@types/twitter-text@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@types/twitter-text/-/twitter-text-2.0.0.tgz#487cbe72aa15db64e6ac406df17804347bd716ee"
+  integrity sha512-bRlURk6hHRMSm37Wc5MPswV5ZWFAt2DYJ50ERoB5kzu6u+qGmzE83sRP5gA55uBW52uBnsBrorK7yEsPUYQWHQ==
 
 "@types/vue-clickaway@^2.2.0":
   version "2.2.0"
@@ -4006,7 +4006,7 @@ core-js-compat@^3.6.2, core-js-compat@^3.6.4:
     browserslist "^4.8.3"
     semver "7.0.0"
 
-core-js@^2.4.0:
+core-js@^2.4.0, core-js@^2.5.0:
   version "2.6.11"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.11.tgz#38831469f9922bded8ee21c9dc46985e0399308c"
   integrity sha512-5wjnpaT/3dV+XB4borEsnAYQchn00XSgTAWKDkEqv+K8KevjbzmofK6hfJ9TZIlpj2N0xQpazy7PiRQiWHqzWg==
@@ -10011,7 +10011,7 @@ punycode@1.3.2:
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.3.2.tgz#9653a036fb7c1ee42342f2325cceefea3926c48d"
   integrity sha1-llOgNvt8HuQjQvIyXM7v6jkmxI0=
 
-punycode@^1.2.4:
+punycode@1.4.1, punycode@^1.2.4:
   version "1.4.1"
   resolved "https://registry.yarnpkg.com/punycode/-/punycode-1.4.1.tgz#c0d5a63b2718800ad8e1eb0fa5269c84dd41845e"
   integrity sha1-wNWmOycYgArY4esPpSachN1BhF4=
@@ -11889,6 +11889,11 @@ twemoji-parser@12.1.3:
   resolved "https://registry.yarnpkg.com/twemoji-parser/-/twemoji-parser-12.1.3.tgz#916c0153e77bd5f1011e7a99cbeacf52e43c9371"
   integrity sha512-ND4LZXF4X92/PFrzSgGkq6KPPg8swy/U0yRw1k/+izWRVmq1HYi3khPwV3XIB6FRudgVICAaBhJfW8e8G3HC7Q==
 
+twemoji-parser@^11.0.2:
+  version "11.0.2"
+  resolved "https://registry.yarnpkg.com/twemoji-parser/-/twemoji-parser-11.0.2.tgz#24e87c2008abe8544c962f193b88b331de32b446"
+  integrity sha512-5kO2XCcpAql6zjdLwRwJjYvAZyDy3+Uj7v1ipBzLthQmDL7Ce19bEqHr3ImSNeoSW2OA8u02XmARbXHaNO8GhA==
+
 twemoji@^12.1.5:
   version "12.1.5"
   resolved "https://registry.yarnpkg.com/twemoji/-/twemoji-12.1.5.tgz#a961fb65a1afcb1f729ad7e59391f9fe969820b9"
@@ -11898,6 +11903,16 @@ twemoji@^12.1.5:
     jsonfile "^5.0.0"
     twemoji-parser "12.1.3"
     universalify "^0.1.2"
+
+twitter-text@^3.1.0:
+  version "3.1.0"
+  resolved "https://registry.yarnpkg.com/twitter-text/-/twitter-text-3.1.0.tgz#798e932b289f506efe2a1f03fe917ba30627f125"
+  integrity sha512-nulfUi3FN6z0LUjYipJid+eiwXvOLb8Ass7Jy/6zsXmZK3URte043m8fL3FyDzrK+WLpyqhHuR/TcARTN/iuGQ==
+  dependencies:
+    "@babel/runtime" "^7.3.1"
+    core-js "^2.5.0"
+    punycode "1.4.1"
+    twemoji-parser "^11.0.2"
 
 type-check@~0.3.2:
   version "0.3.2"

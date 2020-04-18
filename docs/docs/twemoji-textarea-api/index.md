@@ -70,7 +70,7 @@ This event fires everytime the textarea content is updated. Has one parameter wh
 ### actualContentLengthChanged
 - Parameter | Type : ``actualLength | number``
 
-This event fires everytime the textarea content is updated. Has one parameter which indicates the length of the content (which is in fact not a simple content.length) because some emoji unicode in Javascript are sometimes counted as more than 1 in length value.
+This event fires everytime the textarea content is updated. Has one parameter which indicates the length of the content. The explanation for length is better detailed [here](https://developer.twitter.com/en/docs/basics/counting-characters), since this library uses the 'twitter-text' library.
 
 ```js
 actualContentLengthChanged(actualLength) {
