@@ -49,6 +49,7 @@
         :pickerArrowEnabled="false"
         idTextarea="idTextarea"
         pickerWidth="#idTextarea"
+        initialContent="TEST BUG CONTENT"
       >
       </twemoji-textarea>
     </div>

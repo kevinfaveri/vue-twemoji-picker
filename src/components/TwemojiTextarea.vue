@@ -134,7 +134,7 @@ export default Vue.extend({
       default: 'twemoji-textarea-outer',
       type: String as () => string,
     },
-    content: {
+    initialContent: {
       default: '',
       type: String as () => string,
     },
@@ -205,8 +205,8 @@ export default Vue.extend({
     // Init TwemojiPicker watchers
     TwemojiPropWatchers(this, this.twemojiPicker);
 
-    if (this.content.length === 0) {
-      this.twemojiTextarea.innerHTML = this.content;
+    if (this.initialContent.length > 0) {
+      this.twemojiTextarea.innerHTML = this.initialContent;
     }
   },
 

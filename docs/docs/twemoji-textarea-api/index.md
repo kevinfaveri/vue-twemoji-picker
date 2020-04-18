@@ -8,11 +8,12 @@ title: 'Twemoji Textarea API'
 
 - This component inherits all Twemoji Picker props **except disabled** which for clarity issues has a new name as seen below. You can check them [here](/docs/twemoji-picker-api#props).
 
-### content
+### initialContent
+- Version: 5.6.2 onwards
 - Type: ``string``
 - Default: ``''``
 
-This is the content variable which will be the output of the textarea with the emoji art img tags converted to its equivalent Unicode character.
+This prop indicates the initial value of the textarea.
 
 ### enableSendBtn
 - Type: ``boolean``

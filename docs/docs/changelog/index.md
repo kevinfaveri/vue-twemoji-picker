@@ -4,6 +4,9 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.6.2
+- 'initialContent' prop added to TwemojiTextarea
+
 ## 5.6.1
 - Tweaks TwemojiPicker positioning
 
