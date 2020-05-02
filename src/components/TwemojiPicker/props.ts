@@ -1,5 +1,4 @@
-import EmojiGroup from '@/interfaces/EmojiGroup';
-import EmojiPack from '@/interfaces/EmojiPack';
+export const DEFAULT_PICKER_WIDTH = 250;
 
 export default {
   emojiPickerDisabled: {
@@ -7,12 +6,13 @@ export default {
     type: Boolean
   },
   pickerWidth: {
-    default: 250,
+    default: DEFAULT_PICKER_WIDTH,
     type: [Number, String],
     validator: function(value: string) {
       if (typeof value === 'string' && !value.startsWith('#')) {
-        console.error(
-          'The value you entered is invalid: should be a number or a ID tag beginning with "#"'
+        console.warn(
+          `The value you entered is invalid: should be a number or a ID tag beginning with "#". 
+          Using default value of 250px.`
         );
       }
       return true;

@@ -304,7 +304,7 @@ import Emoji from '../../interfaces/Emoji';
 import TwemojiOptions from '../../interfaces/TwemojiOptions';
 import EmojiGroup from '../../interfaces/EmojiGroup';
 
-import Props from './props';
+import Props, { DEFAULT_PICKER_WIDTH } from './props';
 import PropWatchers from './prop-watchers';
 import EmojiSkin from '../../interfaces/EmojiSkin';
 
@@ -606,6 +606,8 @@ export default Vue.extend({
         if (domEl) this.calculatedPickerWidth = domEl.offsetWidth;
       } else if (typeof this.pickerWidth === 'number') {
         this.calculatedPickerWidth = this.pickerWidth;
+      } else {
+        this.calculatedPickerWidth = DEFAULT_PICKER_WIDTH;
       }
     },
     onScrollEmojiList(event: UIEvent) {

@@ -4,6 +4,9 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.6.4
+- 'pickerWidth' now issues a warning if prop is invalid but then procceds to use default value.
+
 ## 5.6.3
 - Content length calc now uses 'twitter-text' NPM package for better handling of emoji unicodes.
 

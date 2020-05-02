@@ -8,9 +8,10 @@
         ref="picker"
         :emojiPickerDisabled="emojiPickerDisabled"
         :pickerArrowEnabled="false"
+        pickerWidth="#buttonson"
       >
       </twemoji-picker>
-      <button @click="onClickTest">Working Test</button>
+      <button @click="onClickTest" id="buttonson">Working Test</button>
     </div>
     <div>
       <twemoji-textarea

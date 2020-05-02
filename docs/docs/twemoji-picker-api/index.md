@@ -16,7 +16,7 @@ The value of this prop represents whether the component is disabled.
 - Type: ``number | string``
 - Default: ``250``
 
-Define the emoji picker width (in number of pixels) OR receives an DOM element ID string beginning with "#" and then mimicks its width.
+Define the emoji picker width (in number of pixels) OR receives an DOM element ID string beginning with "#" and then mimicks its width. Uses default value if prop is invalid.
 
 ### pickerHeight
 - Type: ``number``
