@@ -57,7 +57,7 @@
     "@rollup/plugin-typescript": "^4.1.1",
     "@types/jest": "^25.2.1",
     "@types/lodash.pick": "^4.4.6",
-    "@types/node": "^13.13.0",
+    "@types/node": "13.11.1",
     "@types/twemoji": "^12.1.1",
     "@types/twitter-text": "^2.0.0",
     "@types/vue-clickaway": "^2.2.0",
