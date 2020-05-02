@@ -50,11 +50,11 @@ Define the picker will attempt to flip to the opposite side if it does not fit a
 Define the picker will close itself when clicking outside its boundaries.
 
 ### pickerPaddingOffset
-- Version: 5.6.1 onwards
-- Type: ``boolean``
-- Default: ``false``
+- Version: 5.6.5 onwards
+- Type: ``Number``
+- Default: ``5``
 
-Defines if the picker should have an extra padding top/bottom. Useful when the picker is combined with a textarea.
+Defines if the picker should have an extra padding (in pixels) between the popup and the reference element. Useful when the picker is combined with a textarea.
 
 ### triggerType
 - Type: ``string``

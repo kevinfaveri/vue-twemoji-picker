@@ -9,6 +9,7 @@
         :emojiPickerDisabled="emojiPickerDisabled"
         :pickerArrowEnabled="false"
         pickerWidth="#buttonson"
+        :pickerPaddingOffset="-10"
       >
       </twemoji-picker>
       <button @click="onClickTest" id="buttonson">Working Test</button>
@@ -40,6 +41,7 @@
     </div>
     <div>
       <twemoji-textarea
+        id="twemojison"
         :emojiData="emojiDataAll"
         :emojiGroups="emojiGroups"
         :skinsSelection="true"
@@ -51,6 +53,7 @@
         idTextarea="idTextarea"
         pickerWidth="#idTextarea"
         initialContent="TEST BUG CONTENT"
+        :pickerPaddingOffset="15"
       >
       </twemoji-textarea>
     </div>
@@ -82,6 +85,10 @@ a:hover {
 
 #test-picker {
   padding-left: 500px;
+}
+
+#twemojison {
+  padding-top: 15px;
 }
 </style>
 <script lang="ts">

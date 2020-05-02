@@ -169,8 +169,8 @@ export default Vue.extend({
       },
     },
     extraPaddingOffset: {
-      default: false,
-      type: Boolean as () => boolean,
+      default: 5,
+      type: Number,
     },
     closeOnClickaway: {
       default: true,
@@ -202,19 +202,23 @@ export default Vue.extend({
             offset: ({ placement }: PopperObject) => {
               if (placement.includes('bottom')) {
                 return this.arrowEnabled
-                  ? [0, 3]
-                  : [0, this.extraPaddingOffset ? 10 : -10];
+                  ? [0, this.extraPaddingOffset]
+                  : [0, this.extraPaddingOffset];
               }
               if (placement.includes('top')) {
                 return this.arrowEnabled
-                  ? [0, 5]
-                  : [0, this.extraPaddingOffset ? 0 : -10];
+                  ? [0, this.extraPaddingOffset]
+                  : [0, this.extraPaddingOffset];
               }
               if (placement.includes('left')) {
-                return this.arrowEnabled ? [0, 5] : [0, -10];
+                return this.arrowEnabled
+                  ? [0, this.extraPaddingOffset]
+                  : [0, this.extraPaddingOffset];
               }
               if (placement.includes('right')) {
-                return this.arrowEnabled ? [0, 5] : [0, -10];
+                return this.arrowEnabled
+                  ? [0, this.extraPaddingOffset]
+                  : [0, this.extraPaddingOffset];
               } else {
                 return [0, 0];
               }

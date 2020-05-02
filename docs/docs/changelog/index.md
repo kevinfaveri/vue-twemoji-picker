@@ -4,6 +4,9 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.6.5
+- 'pickerPaddingOffset' has been reworked: it now accepts a Number repsentating pixels.
+
 ## 5.6.4
 - 'pickerWidth' now issues a warning if prop is invalid but then procceds to use default value.
 

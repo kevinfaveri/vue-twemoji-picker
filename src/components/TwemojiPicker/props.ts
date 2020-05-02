@@ -209,7 +209,7 @@ export default {
     },
   },
   pickerPaddingOffset: {
-    default: false,
-    type: Boolean as () => boolean,
+    default: 5,
+    type: Number,
   },
 }
