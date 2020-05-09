@@ -225,7 +225,8 @@ export default Vue.extend({
       this.actualContentLength = TwitterText.parseTweet(
         content || ''
       ).weightedLength;
-      this.twemojiPicker.$refs.popupEmoji.popperInstance.forceUpdate();
+      if (this.twemojiPicker.$refs.popupEmoji)
+        this.twemojiPicker.$refs.popupEmoji.popperInstance.forceUpdate();
       this.$emit('update:content', content);
       this.$emit('actualContentLengthChanged', this.actualContentLength);
       this.$emit('contentChanged', content);
@@ -263,7 +264,8 @@ export default Vue.extend({
       }
 
       this.twemojiTextarea.scrollTop = this.twemojiTextarea.scrollHeight;
-      this.twemojiPicker.$refs.popupEmoji.popperInstance.forceUpdate();
+      if (this.twemojiPicker.$refs.popupEmoji)
+        this.twemojiPicker.$refs.popupEmoji.popperInstance.forceUpdate();
     },
     onPaste(pasteEvent: ClipboardEvent): void {
       let pastedData;
