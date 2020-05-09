@@ -5,9 +5,6 @@ import visualizer from 'rollup-plugin-visualizer';
 
 const globals = {};
 globals['vue'] = 'Vue';
-globals['vue-clickaway'] = 'vueClickaway';
-globals['twemoji'] = 'Twwemoji';
-globals['@popperjs/core'] = '@popperjs/core';
 
 const config = Object.assign({}, base, {
   output: {
@@ -15,14 +12,7 @@ const config = Object.assign({}, base, {
     file: 'dist/vue-twemoji-picker.esm.min.js',
     format: 'es',
   },
-  external: [
-    'vue',
-    'vue-clickaway',
-    'twemoji',
-    '@popperjs/core',
-    'lodash.pick',
-    'twitter-text',
-  ],
+  external: ['vue'],
 });
 
 config.plugins.push(analyze());

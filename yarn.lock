@@ -1358,14 +1358,14 @@
     "@types/yargs" "^15.0.0"
     chalk "^3.0.0"
 
-"@kevinfaguiar/vue-twemoji-picker@^5.6.5":
-  version "5.6.5"
-  resolved "https://registry.yarnpkg.com/@kevinfaguiar/vue-twemoji-picker/-/vue-twemoji-picker-5.6.5.tgz#b76fe191abefc9a59117a02eb2cc10b5c68b1acd"
-  integrity sha512-8e24mP8J1vuQg80bXbR9V7igXsMkZAb9WoSBRz54Qw4QjpnTXKaBULeYpGWUYTRbArWxLfx2naXMzKCqTG4z/g==
+"@kevinfaguiar/vue-twemoji-picker@^5.7.0":
+  version "5.7.0"
+  resolved "https://registry.yarnpkg.com/@kevinfaguiar/vue-twemoji-picker/-/vue-twemoji-picker-5.7.0.tgz#0b86d6ad9d207f6f28dbe5896e090fd5835b7239"
+  integrity sha512-GXjosGyC/jshsvKLpeHXahZyAOG7ZD0pY6S33PKrzUQJIvSsa8jbA3RI+u+PIOD4aFSAaMNYeHhDFMqtPjRo+A==
   dependencies:
-    "@popperjs/core" "^2.3.3"
+    "@popperjs/core" "^2.4.0"
     lodash.pick "^4.4.0"
-    twemoji "^12.1.5"
+    twemoji "^13.0.0"
     twitter-text "^3.1.0"
     vue-clickaway "^2.2.2"
 
@@ -1381,11 +1381,6 @@
   version "1.1.3"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.stat/-/fs.stat-1.1.3.tgz#2b5a3ab3f918cca48a8c754c08168e3f03eba61b"
   integrity sha512-shAmDyaQC4H92APFoIaVDHCx5bStIocgvbwQyxPRrbUY20V1EYTbSDchWbuwlMG3V17cprZhA6+78JfB+3DTPw==
-
-"@popperjs/core@^2.3.3":
-  version "2.3.3"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.3.3.tgz#8731722aeb7330e8fd9eb5d424be6b98dea7d6da"
-  integrity sha512-yEvVC8RfhRPkD9TUn7cFcLcgoJePgZRAOR7T21rcRY5I8tpuhzeWfGa7We7tB14fe9R7wENdqUABcMdwD4SQLw==
 
 "@popperjs/core@^2.4.0":
   version "2.4.0"
@@ -11947,11 +11942,6 @@ tweetnacl@^0.14.3, tweetnacl@~0.14.0:
   resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-0.14.5.tgz#5ae68177f192d4456269d108afa93ff8743f4f64"
   integrity sha1-WuaBd/GS1EViadEIr6k/+HQ/T2Q=
 
-twemoji-parser@12.1.3:
-  version "12.1.3"
-  resolved "https://registry.yarnpkg.com/twemoji-parser/-/twemoji-parser-12.1.3.tgz#916c0153e77bd5f1011e7a99cbeacf52e43c9371"
-  integrity sha512-ND4LZXF4X92/PFrzSgGkq6KPPg8swy/U0yRw1k/+izWRVmq1HYi3khPwV3XIB6FRudgVICAaBhJfW8e8G3HC7Q==
-
 twemoji-parser@13.0.0:
   version "13.0.0"
   resolved "https://registry.yarnpkg.com/twemoji-parser/-/twemoji-parser-13.0.0.tgz#bd9d1b98474f1651dc174696b45cabefdfa405af"
@@ -11961,16 +11951,6 @@ twemoji-parser@^11.0.2:
   version "11.0.2"
   resolved "https://registry.yarnpkg.com/twemoji-parser/-/twemoji-parser-11.0.2.tgz#24e87c2008abe8544c962f193b88b331de32b446"
   integrity sha512-5kO2XCcpAql6zjdLwRwJjYvAZyDy3+Uj7v1ipBzLthQmDL7Ce19bEqHr3ImSNeoSW2OA8u02XmARbXHaNO8GhA==
-
-twemoji@^12.1.5:
-  version "12.1.5"
-  resolved "https://registry.yarnpkg.com/twemoji/-/twemoji-12.1.5.tgz#a961fb65a1afcb1f729ad7e59391f9fe969820b9"
-  integrity sha512-B0PBVy5xomwb1M/WZxf/IqPZfnoIYy1skXnlHjMwLwTNfZ9ljh8VgWQktAPcJXu8080WoEh6YwQGPVhDVqvrVQ==
-  dependencies:
-    fs-extra "^8.0.1"
-    jsonfile "^5.0.0"
-    twemoji-parser "12.1.3"
-    universalify "^0.1.2"
 
 twemoji@^13.0.0:
   version "13.0.0"

@@ -18,6 +18,7 @@ export default {
       main: true,
       browser: true,
       extensions,
+      preferBuiltins: false,
     }),
     image(),
     replace({
