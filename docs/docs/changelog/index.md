@@ -4,6 +4,10 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.7.0
+- Emoji Dataset updated for the 13.0 spec from 2020 🚀
+- Minor bug for emoji search bar fixed
+
 ## 5.6.5
 - 'pickerPaddingOffset' has been reworked and now accepts a Number that represents pixels.
 

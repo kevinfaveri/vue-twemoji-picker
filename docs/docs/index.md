@@ -7,7 +7,7 @@ title: 'Introduction'
 Vue Twemoji Picker was born when, in a project, I've faced a challenge: I couldn't find a performatic enough emoji picker. 
 So I did what every developer does when he doesn't find a library ready: wrote my own.
 
-This library is meant to be a developer friendly, easy integrable and performatic emoji picker (with some batteries) using the Twitter emoji arts (Twemojis). Emoji Unicode 12 (latest emoji spec, from 2019, which includes skins) is used as the base dataset.
+This library is meant to be a developer friendly, easy integrable and performatic emoji picker (with some batteries) using the Twitter emoji arts (Twemojis). Emoji Unicode 13 (latest emoji spec, from 2020) is used as the base dataset.
 
 Updates to the emoji list of this library depends on two factors: release of the new standard of emojis released yearly and release of official Twitter emoji arts for the new released standard.
 
