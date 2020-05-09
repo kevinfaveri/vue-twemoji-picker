@@ -97,15 +97,15 @@ a:hover {
 
 import Vue from 'vue';
 import { TwemojiPicker, TwemojiTextarea } from '../wrapper';
-import EmojiDataAll from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-all-groups.json';
-import EmojiDataAnimalsNature from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-animals-nature.json';
-import EmojiDataFoodDrink from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-food-drink.json';
-import EmojiDataTravelPlaces from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-travel-places.json';
-import EmojiDataActivities from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-activities.json';
-import EmojiDataObjects from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-objects.json';
-import EmojiDataSymbols from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-symbols.json';
-import EmojiDataFlags from '@kevinfaguiar/vue-twemoji-picker/emoji-data/en/emoji-group-flags.json';
-import EmojiGroups from '@kevinfaguiar/vue-twemoji-picker/emoji-data/emoji-groups.json';
+import EmojiDataAll from '../../emoji-data/en/emoji-all-groups.json';
+import EmojiDataAnimalsNature from '../../emoji-data/en/emoji-group-animals-nature.json';
+import EmojiDataFoodDrink from '../../emoji-data/en/emoji-group-food-drink.json';
+import EmojiDataTravelPlaces from '../../emoji-data/en/emoji-group-travel-places.json';
+import EmojiDataActivities from '../../emoji-data/en/emoji-group-activities.json';
+import EmojiDataObjects from '../../emoji-data/en/emoji-group-objects.json';
+import EmojiDataSymbols from '../../emoji-data/en/emoji-group-symbols.json';
+import EmojiDataFlags from '../../emoji-data/en/emoji-group-flags.json';
+import EmojiGroups from '../../emoji-data/emoji-groups.json';
 
 export default Vue.extend({
   name: 'App',
