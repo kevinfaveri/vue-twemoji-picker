@@ -4,6 +4,9 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.7.1
+- Fixes ESM build
+
 ## 5.7.0
 - Emoji Dataset updated for the 13.0 spec from 2020 🚀
 - Minor bug for emoji search bar fixed
