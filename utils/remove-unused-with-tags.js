@@ -2,7 +2,7 @@ const groupMetaData = require('emojibase-data/meta/groups.json');
 const fs = require('fs');
 
 function generateEmojiPackByLang(lang) {
-  fs.mkdirSync(`../emoji-data/${lang}`, (err) => {});
+  fs.mkdirSync(`./emoji-data/${lang}/`, { recursive: true });
 
   const emojiPackLang = require('emojibase-data/' + lang + '/compact.json');
   const emojiArray = [];
@@ -21,14 +21,14 @@ function generateEmojiPackByLang(lang) {
 
     const emojiObj = {
       unicode: emojiPackLang[i].unicode,
-      tags: emojiPackLang[i].tags
+      tags: emojiPackLang[i].tags,
     };
     if (emojiPackLang[i].skins !== undefined) {
       emojiObj.skins = [];
       for (let j = 0; j < emojiPackLang[i].skins.length; j++) {
         emojiObj.skins.push({
           unicode: emojiPackLang[i].skins[j].unicode,
-          tags: emojiPackLang[i].skins[j].tags
+          tags: emojiPackLang[i].skins[j].tags,
         });
       }
     }
@@ -43,32 +43,27 @@ function generateEmojiPackByLang(lang) {
 
   const groupMeta = groupMetaData.groups;
   for (let i = 0; i < emojiArray.length; i++) {
-    if (i === 2) {
-      continue;
-    } else {
-      let emojiGroupName = '';
-      for (const group in groupMeta) {
-        if (group == emojiArray[i].group) {
-          emojiGroupName = groupMeta[group];
-          break;
-        }
+    let emojiGroupName = '';
+    for (const group in groupMeta) {
+      if (group == emojiArray[i].group) {
+        emojiGroupName = groupMeta[group];
+        break;
       }
-
-      const emojiGroupString = JSON.stringify(emojiArray[i]);
-      console.log(`emoji-data/${lang}/emoji-group-${emojiGroupName}.json`);
-      fs.writeFileSync(
-        `../emoji-data/${lang}/emoji-group-${emojiGroupName}.json`,
-        emojiGroupString,
-        'utf-8'
-      );
     }
+
+    const emojiGroupString = JSON.stringify(emojiArray[i]);
+    console.log(`emoji-data/${lang}/emoji-group-${emojiGroupName}.json`);
+    fs.writeFileSync(
+      `./emoji-data/${lang}/emoji-group-${emojiGroupName}.json`,
+      emojiGroupString,
+      'utf-8'
+    );
   }
 
-  emojiArray.splice(2, 1);
   const emojiArrayString = JSON.stringify(emojiArray);
   console.log('emoji-data/' + lang + 'emoji-all-groups.json');
   fs.writeFileSync(
-    `../emoji-data/${lang}/emoji-all-groups.json`,
+    `./emoji-data/${lang}/emoji-all-groups.json`,
     emojiArrayString,
     'utf-8'
   );
@@ -93,7 +88,7 @@ const langArray = [
   'es',
   'es-mx',
   'sv',
-  'th'
+  'th',
 ];
 
 for (let i = 0; i < langArray.length; i++) {
