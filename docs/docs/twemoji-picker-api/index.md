@@ -79,7 +79,7 @@ This is the array of emoji groups which is delivered to the component... [Pre-co
 - Type: ``boolean``
 - Default: ``false``
 
-The value of this prop represents whether the skins feature is enabled.
+The value of this prop represents whether the skins feature is enabled. If enabled the user must perform a click-n-hold gesture for the popup featuring the available skins to appear.
 
 ### recentEmojisFeat
 - Type: ``boolean``
