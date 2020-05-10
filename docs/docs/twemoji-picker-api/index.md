@@ -186,8 +186,7 @@ The HTMLElement provided for the slot will be DOM element which will trigger the
   :emojiData="emojiDataAll"
   :emojiGroups="emojiGroups"
 >
-  <template v-slot:twemoji-picker-button
-    >
+  <template v-slot:twemoji-picker-button>
     <button>OMG A HEADLESS COMPONENT</button>
   </template>
 </twemoji-picker>

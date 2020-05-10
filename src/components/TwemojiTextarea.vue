@@ -14,7 +14,11 @@
       @emojiUnicodeAdded="emojiUnicodeAdded"
       @emojiImgAdded="emojiImgAdded"
       :pickerPaddingOffset="pickerPaddingOffset"
-    ></twemoji-picker>
+    >
+      <template v-for="(_, slotName) in $slots" v-slot:[slotName]>
+        <slot :name="slotName" />
+      </template>
+    </twemoji-picker>
 
     <div
       ref="twemojiTextarea"

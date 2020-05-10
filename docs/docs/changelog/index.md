@@ -4,6 +4,10 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.7.2
+
+- Added a Vue slot which enables the usage of TwemojiPicker as a headless component when using TwemojiTextarea component
+
 ## 5.7.1
 - Fixes ESM build
 

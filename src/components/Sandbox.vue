@@ -27,7 +27,7 @@
         :recentEmojisFeat="true"
         recentEmojisStorage="none"
         :searchEmojisFeat="true"
-        placeholder="Textarea Placeholder"
+        placeholder="Textarea Placeholders"
         :maxlength="100"
         @isContentOverflowed="isContentOverflowed"
         ref="twemojiTextareaRef"
@@ -36,7 +36,8 @@
         pickerWidth="#idTextarea"
         :randomEmojiArray="randomEmojiArray"
         :emojiPickerDisabled="emojiPickerDisabled"
-      ></twemoji-textarea>
+      >
+      </twemoji-textarea>
       <button @click="onClickTest">Working Test</button>
     </div>
     <div>
