@@ -21,7 +21,7 @@ footer: 'MIT Licensed | Copyright © 2020-present @kevinfaguiar | Twemoji graphi
       content="Compact emoji datasets which can be added on demand per category which guarantees a really fast rendering." />
     <ChildBlock 
       title="Advanced Features 🔎" 
-      content="Search, recently used, and optional textarea component for easily integration into apps." />
+      content="Search, recently used, and a custom textarea component which includes emoji rendering right out of the box." />
     <ChildBlock 
       title="Inclusive 💕" 
       content="Support emoji variations: skin tones, hair color and diversity." />

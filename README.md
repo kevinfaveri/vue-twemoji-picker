@@ -2,7 +2,7 @@
 
 ![Vue Twemoji Picker Preview](https://i.imgur.com/oAycozy.png)
 
-This component is meant to be a developer friendly, easy integrable and performatic emoji picker (with some batteries) using the Twitter emoji arts (Twemojis). Emoji Unicode 13.0 (latest emoji spec, from 2020) is used as the base dataset.
+This component is meant to be a developer friendly, easy integrable and performatic emoji picker (with some batteries) using the Twitter emoji arts (Twemojis). Emoji Unicode 13.0 (latest emoji spec, from 2020) is used as the base dataset. It also includes advanced features like search, recently used and a custom textarea component which includes Twemoji rendering right out of the box.
 
 ## Documentation and Demo
 https://kevinfaguiar.github.io/vue-twemoji-picker
