@@ -18,6 +18,22 @@
             id="emoji-popup"
             :style="{ width: calculatedPickerWidth + 'px' }"
           >
+            <div id="emoji-popover-search" v-if="searchEmojisFeat">
+              <div
+                id="search-header"
+                :class="{ 'is-focused': isSearchFocused }"
+              >
+                <span v-html="getEmojiImgFromUnicode('🔍')"></span>
+                <input
+                  @input="searchEmojiByTerm"
+                  :placeholder="searchEmojiPlaceholder"
+                  v-model="searchTerm"
+                  @focus="isSearchFocused = true"
+                  @blur="isSearchFocused = false"
+                />
+              </div>
+            </div>
+
             <div id="emoji-popover-header" class="scroll-min">
               <span
                 v-if="recentEmojisFeat && recentEmojis.length !== 0"
@@ -38,26 +54,10 @@
             </div>
 
             <div
-              id="emoji-popover-search"
-              v-if="searchEmojisFeat"
-              v-show="!hideSearch"
-            >
-              <div id="search-header">
-                <input
-                  @input="searchEmojiByTerm"
-                  :placeholder="searchEmojiPlaceholder"
-                  v-model="searchTerm"
-                />
-              </div>
-            </div>
-
-            <div
               class="emoji-popover-inner"
               :style="{
                 width: calculatedPickerWidth + 'px',
-                height: hideSearch
-                  ? pickerHeight + 45 + 'px'
-                  : pickerHeight + 'px',
+                height: pickerHeight + 'px',
               }"
               @scroll.passive="onScrollEmojiList"
             >
@@ -144,6 +144,10 @@
   z-index: 1;
 
   > #emoji-popup {
+    border: 1px solid #f0f0f0;
+    border-radius: 5px;
+    padding: 3px;
+
     img.emoji {
       height: 32px;
       width: 32px;
@@ -156,6 +160,21 @@
       overflow-x: auto;
       white-space: nowrap;
 
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: #f2f2f2;
+      }
+
+      &::-webkit-scrollbar{
+        height: 12px;
+        background-color: #f2f2f2;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #c1c1c1;
+      }
+
       > .emoji-tab {
         margin: 3px;
         padding: 5px;
@@ -163,15 +182,18 @@
         cursor: pointer;
         border-radius: 2px;
         opacity: 0.5;
+        filter: grayscale(1);
 
         &:hover {
           border-bottom: 5px solid #b3b3b3;
           opacity: 1;
+          filter: grayscale(0);
         }
 
         &.active {
           border-bottom: 5px solid #b3b3b3;
           opacity: 1;
+          filter: grayscale(0);
         }
       }
     }
@@ -179,6 +201,22 @@
     .emoji-popover-inner {
       overflow-y: auto;
       overflow-x: hidden;
+      background-color: #f7f7f7;
+
+      &::-webkit-scrollbar-track {
+        border-radius: 10px;
+        background-color: #f2f2f2;
+      }
+
+      &::-webkit-scrollbar{
+        width: 12px;
+        background-color: #f2f2f2;
+      }
+
+      &::-webkit-scrollbar-thumb {
+        border-radius: 10px;
+        background-color: #c1c1c1;
+      }
 
       #loading-label {
         margin: 0 5px;
@@ -206,34 +244,41 @@
     }
 
     #emoji-popover-search {
-      background-color: #ebebeb;
+      background-color: #f7f7f7;
       border-radius: 3px;
       margin: 5px 0;
 
       > #search-header {
         padding-top: 5px 0;
         display: flex;
+        border: 1px solid #e6e6e6;
+        border-radius: 25px;
 
-        > input {
+        &.is-focused {
+          background-color: #fcfcfc;
           transition: background-color 300ms ease-in-out;
-          flex-grow: 1;
-          padding: 10px 5px;
-          margin: 0 10px;
-          border: none;
-          border-radius: 5px;
-          background-color: #d9d9d9;
-          font-size: 1rem;
-
-          &:focus {
-            background-color: #f0f0f0;
+          > span {
+            filter: grayscale(0);
+            transition: filter 300ms ease-in-out;
           }
         }
 
         > span {
-          flex-grow: 10;
-          border-radius: 5px;
+          flex-grow: 1;
+          padding: 5px 10px;
+          width: 32px !important;
+          text-align: center;
+          filter: grayscale(1);
+        }
+
+        > input {
+          flex-grow: 99;
+          padding: 10px 5px;
+          margin: 0 10px;
           border: none;
-          background-color: transparent;
+          font-size: 1rem;
+          background-color: inherit;
+          outline: none;
         }
       }
     }
@@ -345,8 +390,8 @@ export default Vue.extend({
       searchEmojis: [] as Array<Emoji>,
       searchTimeout: null as any,
       isSearchingEmoji: false as boolean,
+      isSearchFocused: false as boolean,
       calculatedPickerWidth: null as number | null,
-      hideSearch: false as boolean,
       isPickerOpen: false as boolean,
     };
   },
@@ -393,7 +438,13 @@ export default Vue.extend({
       }
     },
     randomEmoji() {
-      setTimeout(() => this.$refs.popupEmoji.popperInstance.forceUpdate(), 100);
+      // eslint-disable-next-line
+      const vueContext = this;
+
+      setTimeout(() => {
+        if (vueContext.$refs.popupEmoji)
+          vueContext.$refs.popupEmoji.popperInstance.forceUpdate();
+      }, 100);
     },
   },
 
@@ -603,7 +654,7 @@ export default Vue.extend({
       ) {
         const domId = this.pickerWidth.slice(1);
         const domEl = document.getElementById(domId);
-        if (domEl) this.calculatedPickerWidth = domEl.offsetWidth;
+        if (domEl) this.calculatedPickerWidth = domEl.offsetWidth - 8;
       } else if (typeof this.pickerWidth === 'number') {
         this.calculatedPickerWidth = this.pickerWidth;
       } else {
@@ -612,13 +663,6 @@ export default Vue.extend({
     },
     onScrollEmojiList(event: UIEvent) {
       this.$refs.popupSkins.closePopper();
-      if (this.searchEmojisFeat) {
-        if ((event as any).target.scrollTop > 30) {
-          this.hideSearch = true;
-        } else {
-          this.hideSearch = false;
-        }
-      }
     },
   },
 });

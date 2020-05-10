@@ -39,7 +39,7 @@
 
 #popper-container {
   padding: 0;
-  background: #ebebeb;
+  background: #f7f7f7;
   border: none;
   border-radius: 3px;
   animation: fadein 300ms;
@@ -64,7 +64,7 @@
     z-index: -1;
     content: '';
     transform: rotate(45deg);
-    background: #ebebeb;
+    background: #f0f0f0;
     width: 24px;
     height: 24px;
   }

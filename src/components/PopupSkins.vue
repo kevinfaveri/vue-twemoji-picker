@@ -39,7 +39,7 @@
 #popper-skins-container {
   box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
   padding: 0;
-  background: #f2f2f2;
+  background: #f7f7f7;
   border: none;
   border-radius: 3px;
   animation: fadein 300ms;
@@ -60,7 +60,7 @@
     z-index: -1;
     content: '';
     transform: rotate(45deg);
-    background: #f2f2f2;
+    background: #f0f0f0;
     width: 24px;
     height: 24px;
   }
@@ -92,7 +92,7 @@
 import Vue from 'vue';
 import {
   popperGenerator,
-  defaultModifiers
+  defaultModifiers,
 } from '@popperjs/core/lib/popper-lite';
 import offset from '@popperjs/core/lib/modifiers/offset';
 import preventOverflow from '@popperjs/core/lib/modifiers/preventOverflow';
@@ -112,26 +112,26 @@ export default Vue.extend({
       debouncedPopperOpen: false as boolean,
       popperInstance: null as any | null,
       holdingInterval: null as any,
-      closeOnClickaway: true as boolean
+      closeOnClickaway: true as boolean,
     };
   },
   props: {
     disabled: {
       default: false,
-      type: Boolean as () => boolean
+      type: Boolean as () => boolean,
     },
     offset: {
       default: () => [0, 30],
-      type: Array as () => Array<number>
+      type: Array as () => Array<number>,
     },
     emojiList: {
       required: true,
-      type: Array as () => Array<EmojiSkin>
+      type: Array as () => Array<EmojiSkin>,
     },
     clickEmoji: {
       required: true,
-      type: Function as () => Function
-    }
+      type: Function as () => Function,
+    },
   },
   computed: {
     createPopper() {
@@ -139,27 +139,27 @@ export default Vue.extend({
         ...defaultModifiers,
         offset,
         preventOverflow,
-        arrow
+        arrow,
       ];
 
       return popperGenerator({
-        defaultModifiers: defaultModifiersObj
+        defaultModifiers: defaultModifiersObj,
       });
-    }
+    },
   },
   mounted(): void {
     this.containerRef = this.$refs.container;
   },
   watch: {
-    popperOpen: function(val): void {
+    popperOpen: function (val): void {
       this.$emit('popperOpenChanged', val);
       setTimeout(() => {
         this.debouncedPopperOpen = val;
       }, 300);
     },
-    closeOnClickaway: function(val): void {
+    closeOnClickaway: function (val): void {
       this.$emit('closeOnClickaway', val);
-    }
+    },
   },
   methods: {
     clickAwayPopper(): void {
@@ -183,16 +183,16 @@ export default Vue.extend({
             {
               name: 'offset',
               options: {
-                offset: this.offset
-              }
+                offset: this.offset,
+              },
             },
             {
               name: 'arrow',
               options: {
-                element: '#skins-arrow'
-              }
-            }
-          ]
+                element: '#skins-arrow',
+              },
+            },
+          ],
         }
       );
       this.$refs.container.setAttribute('data-show', true);
@@ -208,7 +208,7 @@ export default Vue.extend({
     },
     setCloseOnClickaway(bool: boolean): void {
       this.closeOnClickaway = bool;
-    }
-  }
+    },
+  },
 });
 </script>

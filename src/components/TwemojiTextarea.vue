@@ -68,6 +68,7 @@
     margin: 10px;
     border-radius: 10px;
     text-align: left;
+    cursor: text;
 
     &[placeholder]:empty:before {
       content: attr(placeholder);
@@ -158,7 +159,7 @@ export default Vue.extend({
     },
     componentColor: {
       type: String as () => string,
-      default: '#EBEBEB',
+      default: '#f0f0f0',
       validator: function (value: string) {
         const s = new Option().style;
         s.color = value;
