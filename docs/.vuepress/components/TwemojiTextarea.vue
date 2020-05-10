@@ -13,7 +13,7 @@
       :pickerArrowEnabled="false"
       :pickerPaddingOffset="0"
       componentColor="#F7F7F7"
-      placeholder="Type here..."
+      placeholder="Type some emojis..."
       >
     </twemoji-textarea>
   </div>
