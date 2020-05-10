@@ -59,7 +59,7 @@
   > #twemoji-textarea {
     flex-grow: 95;
     flex-basis: 0;
-    background-color: #fafafa;
+    background-color: #ffffff;
     font-size: 14px;
     overflow-y: auto;
     overflow-x: hidden;
@@ -159,7 +159,7 @@ export default Vue.extend({
     },
     componentColor: {
       type: String as () => string,
-      default: '#f0f0f0',
+      default: '#F7F7F7',
       validator: function (value: string) {
         const s = new Option().style;
         s.color = value;

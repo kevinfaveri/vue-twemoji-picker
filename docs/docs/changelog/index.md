@@ -4,6 +4,9 @@ title: 'Changelog'
 
 # Changelog
 
+## 5.7.4
+- Minor style bugfix for components
+
 ## 5.7.3
 - Style update for TwemojiPicker
 

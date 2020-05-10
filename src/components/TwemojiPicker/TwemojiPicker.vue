@@ -37,7 +37,7 @@
             <div id="emoji-popover-header" class="scroll-min">
               <span
                 v-if="recentEmojisFeat && recentEmojis.length !== 0"
-                v-html="getEmojiImgFromUnicode('⏱️')"
+                v-html="getEmojiImgFromUnicode('🕒')"
                 class="emoji-tab"
                 @click="changeEmojiListActive(-1)"
                 :class="{ active: emojiGroupActive === -1 }"
@@ -155,7 +155,7 @@
     }
 
     > #emoji-popover-header {
-      padding: 15px;
+      padding: 15px 5px;
       overflow-y: hidden;
       overflow-x: auto;
       white-space: nowrap;
@@ -264,6 +264,10 @@
         }
 
         > span {
+          > img {
+            width: 24px;
+            height: 24px;
+          }
           flex-grow: 1;
           padding: 5px 10px;
           width: 32px !important;

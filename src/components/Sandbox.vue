@@ -36,6 +36,7 @@
         pickerWidth="#idTextarea"
         :randomEmojiArray="randomEmojiArray"
         :emojiPickerDisabled="emojiPickerDisabled"
+        :textareaDisabled="textareaDisabled"
       >
       </twemoji-textarea>
       <button @click="onClickTest">Working Test</button>
@@ -64,7 +65,7 @@
 @import '../assets/simple-grid.css';
 
 body {
-  background-color: #fafafa;
+  background-color: #ffffff;
 }
 
 a {
@@ -121,6 +122,7 @@ export default Vue.extend({
       content: '',
       randomEmojiArray: ['😀'],
       emojiPickerDisabled: false,
+      textareaDisabled: false,
     };
   },
   mounted() {
@@ -186,6 +188,7 @@ export default Vue.extend({
     },
     onClickTest() {
       this.emojiPickerDisabled = !this.emojiPickerDisabled;
+      this.textareaDisabled = !this.textareaDisabled;
     },
     testChangeIsPickerOpen1() {
       this.$refs.picker.isPickerOpen = !this.$refs.picker.isPickerOpen;
