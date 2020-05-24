@@ -37,13 +37,13 @@ Define the emoji picker placement position relative to the ref element (like a b
 
 Define whether the emoji picker should render a reference arrow.
 
-## pickerAutoflip
+### pickerAutoflip
 - Type: ``boolean``
 - Default ``true``
 
 Define the picker will attempt to flip to the opposite side if it does not fit at the pickerPlacement.
 
-## pickerCloseOnClickaway
+### pickerCloseOnClickaway
 - Type: ``boolean``
 - Default ``true``
 
