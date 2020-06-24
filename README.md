@@ -5,9 +5,10 @@
 This component is meant to be a developer friendly, easy integrable and performatic emoji picker (with some batteries) using the Twitter emoji arts (Twemojis). Emoji Unicode 13.0 (latest emoji spec, from 2020) is used as the base dataset. It also includes advanced features like search, recently used and a custom textarea component which renders Twemojis right out of the box.
 
 ## Documentation and Demo
+
 https://kevinfaguiar.github.io/vue-twemoji-picker
 
-## Funding
+## Sponsoring
 
 Patreon: https://www.patreon.com/kevinfaguiar
 
@@ -24,4 +25,5 @@ PagSeguro: https://pag.ae/7W8bEJKYK
 Picpay: https://picpay.me/kevinfguiar
 
 ## License
+
 MIT 2020 Licensed @kevinfaguiar | Twemoji graphics made by Twitter and licensed under CC-BY 4.0
