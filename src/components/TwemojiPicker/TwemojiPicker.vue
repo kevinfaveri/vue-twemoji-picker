@@ -125,6 +125,7 @@
             @mouseleave="onMouseLeaveEmojiBtn()"
             :disabled="emojiPickerDisabled"
             id="btn-emoji-default"
+            type="button"
           >
             <div
               v-show="showEmoji"
