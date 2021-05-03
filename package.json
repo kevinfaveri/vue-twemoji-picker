@@ -36,7 +36,8 @@
     "build:umd": "rollup --config build/rollup.config.umd.js",
     "publish:lib:npm": "npm publish --access public",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "prepare": "npm run build"
   },
   "dependencies": {
     "@popperjs/core": "^2.4.0",
