@@ -6,7 +6,7 @@ This component is meant to be a developer friendly, easy integrable and performa
 
 ## Documentation and Demo
 
-https://kevinfaguiar.github.io/vue-twemoji-picker
+https://kevinfaveri.github.io/vue-twemoji-picker
 
 ## Sponsoring
 
@@ -26,4 +26,4 @@ Picpay: https://picpay.me/kevinfguiar
 
 ## License
 
-MIT 2020 Licensed @kevinfaguiar | Twemoji graphics made by Twitter and licensed under CC-BY 4.0
+MIT 2020 Licensed @kevinfaveri | Twemoji graphics made by Twitter and licensed under CC-BY 4.0
