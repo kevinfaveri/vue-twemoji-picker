@@ -37,6 +37,7 @@
         :randomEmojiArray="randomEmojiArray"
         :emojiPickerDisabled="emojiPickerDisabled"
         :textareaDisabled="textareaDisabled"
+        :emoji-text-weight-changed="emojiTextWeightChanged"
       >
       </twemoji-textarea>
       <button @click="onClickTest">Working Test</button>
@@ -56,6 +57,7 @@
         pickerWidth="#idTextarea"
         initialContent="TEST BUG CONTENT"
         :pickerPaddingOffset="15"
+        :emoji-text-weight-changed="emojiTextWeightChanged"
       >
       </twemoji-textarea>
     </div>
@@ -123,6 +125,7 @@ export default Vue.extend({
       randomEmojiArray: ['😀'],
       emojiPickerDisabled: false,
       textareaDisabled: false,
+      emojiTextWeightChanged: false,
     };
   },
   mounted() {
@@ -189,6 +192,7 @@ export default Vue.extend({
     onClickTest() {
       this.emojiPickerDisabled = !this.emojiPickerDisabled;
       this.textareaDisabled = !this.textareaDisabled;
+      this.emojiTextWeightChanged = !this.emojiTextWeightChanged;
     },
     testChangeIsPickerOpen1() {
       this.$refs.picker.isPickerOpen = !this.$refs.picker.isPickerOpen;
