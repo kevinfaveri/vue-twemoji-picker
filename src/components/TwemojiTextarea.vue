@@ -231,9 +231,12 @@ export default Vue.extend({
       if (this.emojiTextWeightChanged) {
         this.actualContentLength = TwitterText.parseTweet(
           content || '', {
+            version: 3,
             maxWeightedTweetLength: 280,
             scale: 100,
-            defaultWeight: 100
+            defaultWeight: 100,
+            transformedURLLength: 23,
+            ranges: []
           }
         ).weightedLength;
       } else {
@@ -247,6 +250,7 @@ export default Vue.extend({
       this.$emit('update:content', content);
       this.$emit('actualContentLengthChanged', this.actualContentLength);
       this.$emit('contentChanged', content);
+      this.$emit('emojiTextChanged', {value: content, length: this.actualContentLength});
     },
     emitIsContentOverflowed() {
       if (this.actualContentLength > this.maxlength)
