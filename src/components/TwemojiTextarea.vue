@@ -227,9 +227,21 @@ export default Vue.extend({
       if (content.length !== 0 && content[content.length - 1] === '\n') {
         content = content.slice(0, -1);
       }
-      this.actualContentLength = TwitterText.parseTweet(
-        content || ''
-      ).weightedLength;
+
+      if (this.emojiTextWeightChanged) {
+        this.actualContentLength = TwitterText.parseTweet(
+          content || '', {
+            maxWeightedTweetLength: 280,
+            scale: 100,
+            defaultWeight: 100
+          }
+        ).weightedLength;
+      } else {
+        this.actualContentLength = TwitterText.parseTweet(
+          content || ''
+        ).weightedLength;
+      }
+
       if (this.twemojiPicker.$refs.popupEmoji)
         this.twemojiPicker.$refs.popupEmoji.popperInstance.forceUpdate();
       this.$emit('update:content', content);

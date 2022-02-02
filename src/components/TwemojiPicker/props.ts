@@ -212,4 +212,8 @@ export default {
     default: 5,
     type: Number,
   },
+  emojiTextWeightChanged: {
+    default: false,
+    type: Boolean
+  },
 }
