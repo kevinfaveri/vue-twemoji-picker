@@ -13,6 +13,7 @@ const config = Object.assign({}, base, {
     file: 'dist/vue-twemoji-picker.umd.min.js',
     format: 'umd',
     globals,
+    sourceMap: false,
   },
   external: ['vue'],
 });
