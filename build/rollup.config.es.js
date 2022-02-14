@@ -10,6 +10,7 @@ const config = Object.assign({}, base, {
   output: {
     name: 'VueTwemojiPicker',
     file: 'dist/vue-twemoji-picker.esm.min.js',
+    sourceMap: false,
     format: 'es',    
   },
   external: ['vue'],

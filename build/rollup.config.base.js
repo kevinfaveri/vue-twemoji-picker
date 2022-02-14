@@ -34,7 +34,9 @@ export default {
     postcss({
       plugins: [autoprefixer],
     }),
-    typescript(),
+    typescript({
+      sourceMap: false,
+    }),
     cjs(),
     babel({
       exclude: 'node_modules/**',
