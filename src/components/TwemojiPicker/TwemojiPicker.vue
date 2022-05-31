@@ -9,6 +9,7 @@
       :arrowEnabled="pickerArrowEnabled"
       :closeOnClickaway="pickerCloseOnClickaway"
       :extraPaddingOffset="pickerPaddingOffset"
+      :darkTheme="darkTheme"
       @popperOpenChanged="popperOpenChanged"
       ref="popupEmoji"
     >
@@ -16,9 +17,12 @@
         <div id="emoji-container">
           <div
             id="emoji-popup"
-            :style="{ width: calculatedPickerWidth + 'px' }"
+            :style="{
+              width: calculatedPickerWidth + 'px',
+              backgroundColor: pickerTheme,
+            }"
           >
-            <div id="emoji-popover-search" v-if="searchEmojisFeat">
+            <div id="emoji-popover-search" v-if="searchEmojisFeat" :style="{ backgroundColor: pickerTheme }">
               <div
                 id="search-header"
                 :class="{ 'is-focused': isSearchFocused }"
@@ -34,7 +38,7 @@
               </div>
             </div>
 
-            <div id="emoji-popover-header" class="scroll-min">
+            <div id="emoji-popover-header" class="scroll-min" :style="{ backgroundColor: pickerTheme }">
               <span
                 v-if="recentEmojisFeat && recentEmojis.length !== 0"
                 v-html="getEmojiImgFromUnicode('🕒')"
@@ -56,6 +60,7 @@
             <div
               class="emoji-popover-inner"
               :style="{
+                backgroundColor: pickerTheme,
                 width: calculatedPickerWidth + 'px',
                 height: pickerHeight + 'px',
               }"
@@ -201,7 +206,7 @@
     .emoji-popover-inner {
       overflow-y: auto;
       overflow-x: hidden;
-      background-color: #f7f7f7;
+      /**background-color: #f7f7f7; **/
 
       &::-webkit-scrollbar-track {
         border-radius: 10px;
@@ -244,7 +249,7 @@
     }
 
     #emoji-popover-search {
-      background-color: #f7f7f7;
+      /* background-color: #f7f7f7; */
       border-radius: 3px;
       margin: 5px 0;
 
@@ -408,6 +413,13 @@ export default Vue.extend({
   },
 
   computed: {
+    pickerTheme(): string {
+      if (this.darkTheme) {
+        return '#696761';
+      } else {
+        return '#f7f7f7';
+      }
+    },
     randomEmojiImg(): string {
       this.triggerShowEmoji();
       return EmojiService.getEmojiImgFromUnicode(
