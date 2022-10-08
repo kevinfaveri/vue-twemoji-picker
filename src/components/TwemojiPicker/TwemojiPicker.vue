@@ -23,7 +23,6 @@
                 id="search-header"
                 :class="{ 'is-focused': isSearchFocused }"
               >
-                <span v-html="getEmojiImgFromUnicode('🔍')"></span>
                 <input
                   @input="searchEmojiByTerm"
                   :placeholder="searchEmojiPlaceholder"
@@ -31,6 +30,7 @@
                   @focus="isSearchFocused = true"
                   @blur="isSearchFocused = false"
                 />
+                <img src="http://revsocialnetwork.com/img/icons/secondary/common/search.png" class="icon-rev-xs" />
               </div>
             </div>
 
