@@ -36,11 +36,11 @@
     "build:umd": "rollup --config build/rollup.config.umd.js",
     "publish:lib:npm": "npm publish --access public",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint",    
-    "prepare": "npm run build:lib"
+    "lint": "vue-cli-service lint"    
   },
   "dependencies": {
     "@popperjs/core": "^2.4.0",
+    "caniuse-lite": "^1.0.30001425",
     "lodash.pick": "^4.4.0",
     "twemoji": "^13.0.0",
     "twitter-text": "^3.1.0",
