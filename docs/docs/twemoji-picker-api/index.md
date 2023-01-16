@@ -135,7 +135,7 @@ Defines the loading label.
 
 ### twemojiPath
 - Type: ``string``
-- Default: ``'https://twemoji.maxcdn.com/2/'``
+- Default: ``'https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/'``
 
 Defines the CDN where the Twemoji official library will request the emoji arts.
 
