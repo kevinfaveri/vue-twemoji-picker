@@ -155,7 +155,7 @@ export default {
     type: String
   },
   twemojiPath: {
-    default: 'https://twemoji.maxcdn.com/2/',
+    default: 'https://cdnjs.cloudflare.com/ajax/libs/twemoji/14.0.2/',
     type: String
   },
   twemojiExtension: {
