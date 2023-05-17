@@ -8,22 +8,6 @@ This component is meant to be a developer friendly, easy integrable and performa
 
 https://kevinfaveri.github.io/vue-twemoji-picker
 
-## Sponsoring
-
-Patreon: https://www.patreon.com/kevinfaguiar
-
-Ko-fi: https://ko-fi.com/kevinfaveri
-
-LiberaPay: https://liberapay.com/kevinfaguiar
-
-Bitcoin: https://www.blockchain.com/pt/btc/address/bc1q3ln0v73ketq3fzeh2saa2tsew4xmrwepdj42jw
-
-Paypal: https://cutt.ly/kevin-paypal
-
-PagSeguro: https://pag.ae/7W8bEJKYK
-
-Picpay: https://picpay.me/kevinfguiar
-
 ## License
 
 MIT 2020 Licensed @kevinfaveri | Twemoji graphics made by Twitter and licensed under CC-BY 4.0
