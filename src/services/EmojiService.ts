@@ -40,7 +40,7 @@ export default {
             emoji.unicode = emojiAuxObj.unicode;
           }
 
-          emoji.img = this.getEmojiImgFromUnicode(
+          emoji.img = emojiAuxObj.img || this.getEmojiImgFromUnicode(
             emoji.unicode,
             twemojiOptions
           );
@@ -83,7 +83,7 @@ export default {
             emoji.unicode = emojiPackArray[i].emojiList[j].unicode;
           }
 
-          emoji.img = this.getEmojiImgFromUnicode(
+          emoji.img = emojiAuxObj.img || this.getEmojiImgFromUnicode(
             emoji.unicode,
             twemojiOptions
           );
