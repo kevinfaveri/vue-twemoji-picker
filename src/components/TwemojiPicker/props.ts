@@ -216,4 +216,12 @@ export default {
     default: false,
     type: Boolean
   },
+  theme: {
+    default: '',
+    type: String,
+  },
+  darkTheme: {
+    default: false,
+    type: Boolean,
+  },
 }
